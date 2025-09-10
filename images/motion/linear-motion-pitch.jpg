@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" style="background: #f0f9ff;">
+  <!-- Background field -->
+  <rect width="400" height="200" fill="#22c55e" opacity="0.2"/>
+  
+  <!-- Pitcher's mound -->
+  <ellipse cx="50" cy="100" rx="20" ry="10" fill="#d4b084" opacity="0.8"/>
+  <circle cx="50" cy="100" r="8" fill="#fbbf24"/>
+  <text x="50" y="130" text-anchor="middle" font-size="10" fill="#374151">Pitcher</text>
+  
+  <!-- Home plate -->
+  <path d="M 350 95 L 345 90 L 345 105 L 350 110 L 355 105 L 355 90 Z" fill="#f3f4f6" stroke="#374151"/>
+  <text x="350" y="125" text-anchor="middle" font-size="10" fill="#374151">Home Plate</text>
+  
+  <!-- Linear motion arrow -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+  
+  <!-- Straight line trajectory -->
+  <line x1="70" y1="100" x2="330" y2="100" 
+        stroke="#dc2626" stroke-width="4" 
+        marker-end="url(#arrowhead)" stroke-dasharray="8,4"/>
+  
+  <!-- Baseball at different positions -->
+  <circle cx="100" cy="100" r="4" fill="#ffffff" stroke="#dc2626" opacity="0.8"/>
+  <circle cx="150" cy="100" r="4" fill="#ffffff" stroke="#dc2626" opacity="0.6"/>
+  <circle cx="200" cy="100" r="4" fill="#ffffff" stroke="#dc2626" opacity="0.4"/>
+  <circle cx="250" cy="100" r="4" fill="#ffffff" stroke="#dc2626" opacity="0.3"/>
+  
+  <!-- Velocity vectors -->
+  <g stroke="#3b82f6" stroke-width="2" fill="none">
+    <line x1="100" y1="85" x2="125" y2="85" marker-end="url(#arrowhead)"/>
+    <line x1="200" y1="85" x2="225" y2="85" marker-end="url(#arrowhead)"/>
+    <text x="112" y="80" font-size="8" fill="#3b82f6">v = constant</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">
+    Linear Motion: Fastball Pitch
+  </text>
+  <text x="200" y="40" text-anchor="middle" font-size="12" fill="#6b7280">
+    Straight-line trajectory with constant velocity
+  </text>
+  
+  <!-- Distance measurement -->
+  <text x="200" y="160" text-anchor="middle" font-size="10" fill="#374151">
+    Distance: 60 feet 6 inches
+  </text>
+  
+</svg>

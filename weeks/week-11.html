@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11: Measurement and Data Analysis</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
+    <link rel="stylesheet" href="../css/week-template.css">
+    <link rel="stylesheet" href="../css/physics-calculators.css">
+    <link rel="stylesheet" href="../css/assessment-system.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="week-header">
+                <h1 class="week-title">Week 11: Measurement and Data Analysis</h1>
+                <p class="week-description">
+                    This week focuses on quantitative data collection, analysis, and interpretation of baseball pitching characteristics using iPhone, Pocket Radar, and potentially Rapsodo technology.
+                </p>
+            </header>
+
+            <section class="day-section" id="day-1">
+                <div class="day-header">
+                    <h2 class="day-title">Day 1: Units & Significant Figures</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-2">
+                <div class="day-header">
+                    <h2 class="day-title">Day 2: Accuracy, Precision & Error</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-3">
+                <div class="day-header">
+                    <h2 class="day-title">Day 3: Pocket Radar Data Collection</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-4">
+                <div class="day-header">
+                    <h2 class="day-title">Day 4: Data Visualization</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-5">
+                <div class="day-header">
+                    <h2 class="day-title">Day 5: Advanced Data Analysis</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <!-- Assessment Section -->
+            <div class="week-assignments">
+                <h2>📝 Week 11 Assessments</h2>
+                <div id="week11-quiz-container" data-quiz="week11"></div>
+                <div id="week11-practice-container"></div>
+                <div id="week11-lab-container"></div>
+            </div>
+        </main>
+
+        <nav class="nav-sidebar">
+            <div class="nav-header">
+                <div class="nav-title">Physics of Baseball</div>
+                <div class="nav-subtitle">Week 11: Measurement and Data Analysis</div>
+            </div>
+
+            <div class="home-nav">
+                <a href="../index.html" class="home-link"><span>🏠</span><span>Course Home</span></a>
+            </div>
+
+            <div class="week-nav">
+                <div class="nav-section-title">Weeks</div>
+                <div class="week-links">
+                    <a href="week-01.html" class="week-link"><span>1</span><span>Introduction to Motion</span></a>
+                    <a href="week-02.html" class="week-link"><span>2</span><span>Projectile Motion</span></a>
+                    <a href="week-03.html" class="week-link"><span>3</span><span>Forces and Newton's Laws</span></a>
+                    <a href="week-04.html" class="week-link"><span>4</span><span>Momentum and Impulse</span></a>
+                    <a href="week-05.html" class="week-link"><span>5</span><span>Work and Energy</span></a>
+                    <a href="week-06.html" class="week-link"><span>6</span><span>Circular Motion</span></a>
+                    <a href="week-07.html" class="week-link"><span>7</span><span>Torque and Angular Momentum</span></a>
+                    <a href="week-08.html" class="week-link"><span>8</span><span>Physics of Spin</span></a>
+                    <a href="week-09.html" class="week-link"><span>9</span><span>Aerodynamics</span></a>
+                    <a href="week-10.html" class="week-link"><span>10</span><span>Pitching Mechanics</span></a>
+                    <a href="week-11.html" class="week-link active"><span>11</span><span>Measurement and Data</span></a>
+                    <a href="week-12.html" class="week-link"><span>12</span><span>Equipment Physics</span></a>
+                    <a href="week-13.html" class="week-link"><span>13</span><span>Review and Application</span></a>
+                </div>
+            </div>
+
+            <div class="daily-nav">
+                <div class="nav-section-title">This Week</div>
+                <div class="daily-links">
+                    <a href="#day-1" class="daily-link"><span>📏</span><span>Units & Significant Figures</span></a>
+                    <a href="#day-2" class="daily-link"><span>🎯</span><span>Accuracy, Precision & Error</span></a>
+                    <a href="#day-3" class="daily-link"><span>📡</span><span>Pocket Radar Data Collection</span></a>
+                    <a href="#day-4" class="daily-link"><span>📈</span><span>Data Visualization</span></a>
+                    <a href="#day-5" class="daily-link"><span>🔬</span><span>Advanced Data Analysis</span></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/week-template.js"></script>
+    <script>
+        // Week 11 specific JS
+        function calculateConversion() {
+            const value = parseFloat(document.getElementById('input-value').value);
+            const conversionType = document.getElementById('conversion-type').value;
+            let result, units;
+            
+            if (isNaN(value)) return;
+            
+            switch(conversionType) {
+                case 'mph-ms':
+                    result = value * 0.447;
+                    units = 'm/s';
+                    break;
+                case 'ms-mph':
+                    result = value * 2.237;
+                    units = 'mph';
+                    break;
+                case 'rpm-rads':
+                    result = value * 2 * Math.PI / 60;
+                    units = 'rad/s';
+                    break;
+                case 'rads-rpm':
+                    result = value * 60 / (2 * Math.PI);
+                    units = 'RPM';
+                    break;
+                case 'ft-m':
+                    result = value * 0.3048;
+                    units = 'm';
+                    break;
+                case 'm-ft':
+                    result = value * 3.281;
+                    units = 'ft';
+                    break;
+                default:
+                    result = 0;
+                    units = '';
+            }
+            
+            document.getElementById('conversion-result').textContent = result.toFixed(3);
+            document.getElementById('result-units').textContent = units;
+        }
+
+        function calculateStatistics() {
+            const input = document.getElementById('data-values').value;
+            const values = input.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+            
+            if (values.length === 0) return;
+            
+            // Sort values for median calculation
+            const sortedValues = [...values].sort((a, b) => a - b);
+            
+            // Calculate statistics
+            const count = values.length;
+            const mean = values.reduce((sum, v) => sum + v, 0) / count;
+            const median = count % 2 === 0 
+                ? (sortedValues[count/2 - 1] + sortedValues[count/2]) / 2 
+                : sortedValues[Math.floor(count/2)];
+            const variance = values.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / (count - 1);
+            const stddev = Math.sqrt(variance);
+            const min = sortedValues[0];
+            const max = sortedValues[count - 1];
+            const range = max - min;
+            
+            // Update display
+            document.getElementById('stat-count').textContent = count;
+            document.getElementById('stat-mean').textContent = mean.toFixed(2);
+            document.getElementById('stat-median').textContent = median.toFixed(2);
+            document.getElementById('stat-stddev').textContent = stddev.toFixed(2);
+            document.getElementById('stat-range').textContent = range.toFixed(2);
+            document.getElementById('stat-min').textContent = min.toFixed(2);
+            document.getElementById('stat-max').textContent = max.toFixed(2);
+            
+            document.getElementById('stats-display').style.display = 'block';
+        }
+
+        // Auto-calculate when values change
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('input-value').addEventListener('input', calculateConversion);
+            document.getElementById('conversion-type').addEventListener('change', calculateConversion);
+            
+            // Calculate initial values
+            calculateConversion();
+            calculateStatistics();
+        });
+    </script>
+</body>
+</html>

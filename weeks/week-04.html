@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Momentum and Impulse - Physics of Baseball</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
+    <link rel="stylesheet" href="../css/week-template.css">
+    <link rel="stylesheet" href="../css/physics-calculators.css">
+    <link rel="stylesheet" href="../css/assessment-system.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <header class="week-header">
+                <h1 class="week-title">Week 4: Momentum and Impulse</h1>
+                <p class="week-description">
+                    This week, we'll explore how momentum is generated and transferred through the pitching motion, and how impulse determines the final velocity of a pitch.
+                </p>
+            </header>
+
+            <section class="day-section" id="day-1">
+                <div class="day-header">
+                    <h2 class="day-title">Day 1: Understanding Momentum</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-2">
+                <div class="day-header">
+                    <h2 class="day-title">Day 2: Understanding Impulse</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-3">
+                <div class="day-header">
+                    <h2 class="day-title">Day 3: Impulse-Momentum Theorem</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-4">
+                <div class="day-header">
+                    <h2 class="day-title">Day 4: Laboratory Investigation</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <section class="day-section" id="day-5">
+                <div class="day-header">
+                    <h2 class="day-title">Day 5: Applications and Assessment</h2>
+                </div>
+                <p>...</p>
+            </section>
+
+            <!-- Assessment Section -->
+            <div class="week-assignments">
+                <h2>📝 Week 4 Assessments</h2>
+                <div id="week4-quiz-container" data-quiz="week4"></div>
+                <div id="week4-practice-container"></div>
+                <div id="week4-lab-container"></div>
+            </div>
+        </main>
+
+        <nav class="nav-sidebar">
+            <div class="nav-header">
+                <div class="nav-title">Physics of Baseball</div>
+                <div class="nav-subtitle">Week 4: Momentum and Impulse</div>
+            </div>
+
+            <div class="home-nav">
+                <a href="../index.html" class="home-link"><span>🏠</span><span>Course Home</span></a>
+            </div>
+
+            <div class="week-nav">
+                <div class="nav-section-title">Weeks</div>
+                <div class="week-links">
+                    <a href="week-01.html" class="week-link"><span>1</span><span>Introduction to Motion</span></a>
+                    <a href="week-02.html" class="week-link"><span>2</span><span>Projectile Motion</span></a>
+                    <a href="week-03.html" class="week-link"><span>3</span><span>Forces and Newton's Laws</span></a>
+                    <a href="week-04.html" class="week-link active"><span>4</span><span>Momentum and Impulse</span></a>
+                    <a href="week-05.html" class="week-link"><span>5</span><span>Work and Energy</span></a>
+                    <a href="week-06.html" class="week-link"><span>6</span><span>Circular Motion</span></a>
+                    <a href="week-07.html" class="week-link"><span>7</span><span>Torque and Angular Momentum</span></a>
+                    <a href="week-08.html" class="week-link"><span>8</span><span>Physics of Spin</span></a>
+                    <a href="week-09.html" class="week-link"><span>9</span><span>Aerodynamics</span></a>
+                    <a href="week-10.html" class="week-link"><span>10</span><span>Pitching Mechanics</span></a>
+                    <a href="week-11.html" class="week-link"><span>11</span><span>Measurement and Data</span></a>
+                    <a href="week-12.html" class="week-link"><span>12</span><span>Equipment Physics</span></a>
+                    <a href="week-13.html" class="week-link"><span>13</span><span>Review and Application</span></a>
+                </div>
+            </div>
+
+            <div class="daily-nav">
+                <div class="nav-section-title">This Week</div>
+                <div class="daily-links">
+                    <a href="#day-1" class="daily-link"><span>📏</span><span>Understanding Momentum</span></a>
+                    <a href="#day-2" class="daily-link"><span>⏱️</span><span>Understanding Impulse</span></a>
+                    <a href="#day-3" class="daily-link"><span>⚖️</span><span>Impulse-Momentum Theorem</span></a>
+                    <a href="#day-4" class="daily-link"><span>🔬</span><span>Laboratory Investigation</span></a>
+                    <a href="#day-5" class="daily-link"><span>🏆</span><span>Applications and Assessment</span></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/week-template.js"></script>
+    <script>
+        // Week 4 specific JS
+        function calculateMomentum() {
+            const mass = parseFloat(document.getElementById('momentum-mass').value);
+            const velocity = parseFloat(document.getElementById('momentum-velocity').value);
+            
+            if (isNaN(mass) || isNaN(velocity)) {
+                alert('Please enter valid numbers for mass and velocity');
+                return;
+            }
+            
+            const momentum = mass * velocity;
+            const kineticEnergy = 0.5 * mass * velocity * velocity;
+            const velocityMph = velocity * 2.237;
+            
+            document.getElementById('momentum-result').textContent = momentum.toFixed(2) + ' kg⋅m/s';
+            document.getElementById('kinetic-energy').textContent = kineticEnergy.toFixed(0) + ' J';
+            
+            // Update mph field
+            document.getElementById('momentum-velocity-mph').value = velocityMph.toFixed(1);
+            
+            // Determine scenario
+            if (velocityMph < 70) {
+                document.getElementById('scenario-type').textContent = 'Slow Pitch';
+            } else if (velocityMph < 85) {
+                document.getElementById('scenario-type').textContent = 'Average Fastball';
+            } else if (velocityMph < 95) {
+                document.getElementById('scenario-type').textContent = 'Good Fastball';
+            } else {
+                document.getElementById('scenario-type').textContent = 'Elite Fastball';
+            }
+        }
+
+        function calculateImpulse() {
+            const force = parseFloat(document.getElementById('impulse-force').value);
+            const time = parseFloat(document.getElementById('impulse-time').value);
+            const mass = parseFloat(document.getElementById('impulse-mass').value);
+            
+            if (isNaN(force) || isNaN(time) || isNaN(mass)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            const impulse = force * time;
+            const velocityChange = impulse / mass;
+            const finalVelocityMph = velocityChange * 2.237;
+            
+            document.getElementById('impulse-result').textContent = impulse.toFixed(1) + ' N⋅s';
+            document.getElementById('velocity-change').textContent = velocityChange.toFixed(1) + ' m/s';
+            document.getElementById('final-velocity-mph').textContent = finalVelocityMph.toFixed(1) + ' mph';
+        }
+
+        function calculateTheorem() {
+            const vi = parseFloat(document.getElementById('theorem-vi').value);
+            const vf = parseFloat(document.getElementById('theorem-vf').value);
+            const mass = parseFloat(document.getElementById('theorem-mass').value);
+            const time = parseFloat(document.getElementById('theorem-time').value);
+            
+            if (isNaN(vi) || isNaN(vf) || isNaN(mass) || isNaN(time)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            const deltaP = mass * (vf - vi);
+            const impulse = deltaP;
+            const averageForce = impulse / time;
+            const finalSpeedMph = vf * 2.237;
+            
+            document.getElementById('theorem-delta-p').textContent = deltaP.toFixed(2) + ' kg⋅m/s';
+            document.getElementById('theorem-impulse').textContent = impulse.toFixed(2) + ' N⋅s';
+            document.getElementById('theorem-force').textContent = averageForce.toFixed(1) + ' N';
+            document.getElementById('theorem-speed-mph').textContent = finalSpeedMph.toFixed(1) + ' mph';
+        }
+
+        function loadPitchingScenario() {
+            document.getElementById('momentum-mass').value = '0.145';
+            document.getElementById('momentum-velocity').value = '40';
+            calculateMomentum();
+        }
+
+        function loadBattingScenario() {
+            document.getElementById('momentum-mass').value = '0.145';
+            document.getElementById('momentum-velocity').value = '50';
+            calculateMomentum();
+        }
+
+        function loadCatchingScenario() {
+            document.getElementById('momentum-mass').value = '0.145';
+            document.getElementById('momentum-velocity').value = '35';
+            calculateMomentum();
+        }
+
+        // Update velocity when mph changes
+        document.getElementById('momentum-velocity-mph').addEventListener('input', function() {
+            const mph = parseFloat(this.value);
+            if (!isNaN(mph)) {
+                const ms = mph / 2.237;
+                document.getElementById('momentum-velocity').value = ms.toFixed(1);
+                calculateMomentum();
+            }
+        });
+
+        // Update mph when m/s changes
+        document.getElementById('momentum-velocity').addEventListener('input', function() {
+            const ms = parseFloat(this.value);
+            if (!isNaN(ms)) {
+                const mph = ms * 2.237;
+                document.getElementById('momentum-velocity-mph').value = mph.toFixed(1);
+            }
+        });
+
+        // Initialize calculations
+        calculateMomentum();
+        calculateImpulse();
+        calculateTheorem();
+    </script>
+</body>
+</html>
