@@ -22,36 +22,398 @@
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Baseball Seams & Aerodynamics</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Equipment Analysis</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🌪️</span>
+                            <div class="topic-info">
+                                <h4>Seam Aerodynamics</h4>
+                                <p>How raised seams create turbulent boundary layer and enhance Magnus effect.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🖐️</span>
+                            <div class="topic-info">
+                                <h4>Grip Enhancement</h4>
+                                <p>Seam texture provides finger contact points for spin generation and control.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">💨</span>
+                            <div class="topic-info">
+                                <h4>Airflow Disruption</h4>
+                                <p>Comparing smooth vs textured surface effects on drag and lift forces.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Performance Impact</h4>
+                                <p>How seam design affects pitch movement, velocity, and control.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 Seam Physics and Performance</h3>
+                        <div class="concept-comparison">
+                            <div class="concept-item">
+                                <h4>Aerodynamic Effects</h4>
+                                <ul>
+                                    <li>Smooth ball: C_D ≈ 0.20 (laminar flow)</li>
+                                    <li>Official baseball: C_D ≈ 0.35 (turbulent flow from seams)</li>
+                                    <li>Seam height: ~3mm creates boundary layer disruption</li>
+                                </ul>
+                            </div>
+                            <div class="concept-item">
+                                <h4>Magnus Effect Enhancement</h4>
+                                <ul>
+                                    <li>Seams create asymmetric airflow patterns</li>
+                                    <li>Enhanced spin-dependent movement</li>
+                                    <li>Improved pitcher control and deception</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">⚾</div>
+                            <div class="activity-content">
+                                <h4>Smooth vs Seamed Ball Demo (20 min)</h4>
+                                <p>Compare airflow patterns around smooth balls vs official baseballs using hair dryer.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">✋</div>
+                            <div class="activity-content">
+                                <h4>Grip Analysis (20 min)</h4>
+                                <p>Analyze how seam positioning affects different pitch grips and spin generation.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>Aerodynamic Calculations (10 min)</h4>
+                                <p>Calculate drag coefficient differences between smooth and seamed baseballs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Pitcher's Mound Physics</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Mechanical Analysis</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">⛰️</span>
+                            <div class="topic-info">
+                                <h4>Mound Elevation Advantage</h4>
+                                <p>10-inch height provides 0.36 J potential energy advantage (PE = mgh).</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📀</span>
+                            <div class="topic-info">
+                                <h4>Release Angle Optimization</h4>
+                                <p>Improved downward trajectory and strike zone targeting.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Velocity Enhancement</h4>
+                                <p>Gravitational assist and kinetic chain optimization.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📎</span>
+                            <div class="topic-info">
+                                <h4>Regulation Standards</h4>
+                                <p>MLB specifications and physics reasoning behind dimensions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🧮 Interactive Mound Physics Calculator</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section">
+                            <h4>Mound Energy Calculator</h4>
+                            <div class="calculator-inputs">
+                                <label>Ball Mass (kg): <input type="number" id="ball-mass" value="0.145" step="0.001"></label>
+                                <label>Mound Height (inches): <input type="number" id="mound-height" value="10" step="0.5"></label>
+                                <div class="calculator-result">
+                                    <p>Potential Energy: <span id="pe-result">0.36</span> J</p>
+                                    <p>Velocity Benefit: <span id="velocity-benefit">1.8</span> mph (approx)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📏</div>
+                            <div class="activity-content">
+                                <h4>Mound Measurements (15 min)</h4>
+                                <p>Measure and analyze standard pitcher's mound dimensions and specifications.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>Energy Calculations (25 min)</h4>
+                                <p>Calculate potential energy advantages and trajectory improvements from elevation.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Strategy Analysis (10 min)</h4>
+                                <p>Analyze how mound physics affects pitching strategy and game play.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Glove Physics & Impact</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Safety Engineering</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🧤</span>
+                            <div class="topic-info">
+                                <h4>Impact Force Reduction</h4>
+                                <p>Gloves extend impact time (FΔt = mΔv), reducing peak forces on hands.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔲</span>
+                            <div class="topic-info">
+                                <h4>Padding Distribution</h4>
+                                <p>Force distributed over larger area reduces peak stress and injury risk.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🧢</span>
+                            <div class="topic-info">
+                                <h4>Material Properties</h4>
+                                <p>Leather flexibility and padding compression optimize energy absorption.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Catch Mechanics</h4>
+                                <p>Proper technique maximizes glove physics for safe ball reception.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🧮 Interactive Impact Force Calculator</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section">
+                            <h4>Glove Impact Calculator</h4>
+                            <div class="calculator-inputs">
+                                <label>Ball Velocity (mph): <input type="number" id="ball-velocity" value="90" step="1"></label>
+                                <label>Contact Time (s): <input type="number" id="contact-time" value="0.05" step="0.01"></label>
+                                <div class="calculator-result">
+                                    <p>Impact Force: <span id="impact-result">261</span> N</p>
+                                    <p>Force Reduction: <span id="force-reduction">80</span>% vs bare hand</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>Impact Force Analysis (25 min)</h4>
+                                <p>Calculate and compare impact forces with and without gloves.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧤</div>
+                            <div class="activity-content">
+                                <h4>Glove Design Evaluation (20 min)</h4>
+                                <p>Analyze different glove designs and their physics-based safety features.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Catch Technique Optimization (5 min)</h4>
+                                <p>Apply physics principles to improve catching safety and effectiveness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Protective Gear Physics</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Safety Analysis</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🚪</span>
+                            <div class="topic-info">
+                                <h4>Energy Absorption</h4>
+                                <p>Helmet and padding materials absorb and dissipate impact energy.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔲</span>
+                            <div class="topic-info">
+                                <h4>Force Distribution</h4>
+                                <p>Spreading impact forces over larger surface areas reduces injury risk.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔄</span>
+                            <div class="topic-info">
+                                <h4>Deflection Design</h4>
+                                <p>Curved surfaces redirect projectiles away from vulnerable areas.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚖️</span>
+                            <div class="topic-info">
+                                <h4>Weight vs Protection</h4>
+                                <p>Balancing safety benefits with performance and mobility needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🚪</div>
+                            <div class="activity-content">
+                                <h4>Protection Analysis (25 min)</h4>
+                                <p>Evaluate protective equipment using physics principles of energy and force.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔍</div>
+                            <div class="activity-content">
+                                <h4>Material Testing (20 min)</h4>
+                                <p>Compare energy absorption and force distribution of different materials.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Safety Optimization (5 min)</h4>
+                                <p>Apply findings to improve protective equipment design and usage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Bat Physics Introduction</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Collision Mechanics</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🏹</span>
+                            <div class="topic-info">
+                                <h4>Bat-Ball Collision</h4>
+                                <p>Conservation of momentum (p₁ + p₂ = p₃) governs energy transfer.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Sweet Spot Physics</h4>
+                                <p>Optimal impact location minimizes vibration, maximizes energy transfer.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🧢</span>
+                            <div class="topic-info">
+                                <h4>Material Properties</h4>
+                                <p>Wood vs aluminum affects collision dynamics and ball exit velocity.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📎</span>
+                            <div class="topic-info">
+                                <h4>Regulations</h4>
+                                <p>Physics-based rules ensure fair play and player safety.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🏹</div>
+                            <div class="activity-content">
+                                <h4>Collision Analysis (25 min)</h4>
+                                <p>Apply conservation laws to analyze bat-ball interactions.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔍</div>
+                            <div class="activity-content">
+                                <h4>Sweet Spot Investigation (20 min)</h4>
+                                <p>Identify and analyze the physics of optimal bat impact locations.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📎</div>
+                            <div class="activity-content">
+                                <h4>Equipment Comparison (5 min)</h4>
+                                <p>Compare physics properties of different bat materials and designs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->

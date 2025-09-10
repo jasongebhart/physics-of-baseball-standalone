@@ -19,39 +19,535 @@
                 </p>
             </header>
 
+            <section id="objectives" class="day-section">
+                <h2>🎯 Learning Objectives</h2>
+                <ul>
+                    <li>Define and calculate momentum and impulse in physical systems</li>
+                    <li>Apply the impulse-momentum theorem to analyze pitching mechanics</li>
+                    <li>Explain how momentum is transferred through the kinetic chain during pitching</li>
+                    <li>Measure and analyze the relationship between impulse and pitch velocity</li>
+                </ul>
+            </section>
+
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Understanding Momentum</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Introductory</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📏</span>
+                            <div class="topic-info">
+                                <h4>Momentum Definition</h4>
+                                <p>Product of mass and velocity (p = mv).</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚾</span>
+                            <div class="topic-info">
+                                <h4>Baseball Applications</h4>
+                                <p>How momentum applies to pitch velocity.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🧭</span>
+                            <div class="topic-info">
+                                <h4>Vector Properties</h4>
+                                <p>Momentum has both magnitude and direction.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🧮</span>
+                            <div class="topic-info">
+                                <h4>Units & Calculations</h4>
+                                <p>kg⋅m/s and practical examples.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 Momentum in Baseball</h3>
+                        <div class="formula-display">
+                            <h4>Vector Form: ⃗p = m⃗v</h4>
+                            <p><strong>Units:</strong> kg⋅m/s</p>
+                        </div>
+                        
+                        <h4>Baseball Example:</h4>
+                        <p><strong>Ball mass</strong> = 0.145 kg<br>
+                        <strong>Pitch speed</strong> = 40 m/s (90 mph)<br>
+                        <strong>Momentum</strong> = 0.145 × 40 = 5.8 kg⋅m/s</p>
+                        
+                        <div class="calculator-container">
+                            <h4>⚾ Interactive Momentum Calculator</h4>
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label>Mass (kg): <input type="number" id="momentum-mass" value="0.145" step="0.001" min="0"></label>
+                                </div>
+                                <div class="control-group">
+                                    <label>Velocity (m/s): <input type="number" id="momentum-velocity" value="40" step="1" min="0"></label>
+                                </div>
+                                <button id="calc-momentum-btn" class="calculate-button">Calculate Momentum</button>
+                            </div>
+                            <div class="calculator-results">
+                                <div class="result-item">
+                                    <strong>Momentum:</strong> <span id="momentum-result">5.8 kg⋅m/s</span>
+                                </div>
+                                <div class="result-item">
+                                    <strong>Velocity (mph):</strong> <span id="velocity-mph">89.5 mph</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4>⚾ Try These Scenarios:</h4>
+                        <ul>
+                            <li><strong>Pitching:</strong> Different pitch velocities and momentum</li>
+                            <li><strong>Batting Contact:</strong> Massive momentum changes in hitting</li>
+                            <li><strong>Catching:</strong> Momentum absorption techniques</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Momentum Calculations (15 min)</h4>
+                                <p>Calculate momentum for different pitch speeds and ball masses using p = mv.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎥</div>
+                            <div class="activity-content">
+                                <h4>Video Analysis (20 min)</h4>
+                                <p>Watch slow-motion pitching videos to observe momentum buildup through body motion.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🤔</div>
+                            <div class="activity-content">
+                                <h4>Momentum Scenarios (15 min)</h4>
+                                <p>Discuss how different body types and pitching styles affect momentum generation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Understanding Impulse</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Building</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">⏱️</span>
+                            <div class="topic-info">
+                                <h4>Impulse Definition</h4>
+                                <p>Product of force and time (J = FΔt).</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚾</span>
+                            <div class="topic-info">
+                                <h4>Baseball Contact Time</h4>
+                                <p>Analyzing pitcher-ball contact duration.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">💪</span>
+                            <div class="topic-info">
+                                <h4>Force Application</h4>
+                                <p>How force magnitude affects impulse.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔄</span>
+                            <div class="topic-info">
+                                <h4>Follow-Through Importance</h4>
+                                <p>Why extending contact time matters.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 Impulse: Force Over Time</h3>
+                        <div class="formula-display">
+                            <h4>Mathematical Form: ⃗J = ⃗FΔt</h4>
+                            <p><strong>Units:</strong> N⋅s = kg⋅m/s (same as momentum!)</p>
+                        </div>
+                        
+                        <h4>Baseball Applications:</h4>
+                        <ul>
+                            <li><strong>Pitcher's hand contact:</strong> ~0.01 seconds</li>
+                            <li><strong>Force application:</strong> Hundreds of Newtons</li>
+                            <li><strong>Result:</strong> Ball velocity up to 100+ mph</li>
+                            <li><strong>Key Point:</strong> Longer contact time or greater force = higher velocity</li>
+                        </ul>
+                        
+                        <div class="calculator-container">
+                            <h4>⏱️ Interactive Impulse Calculator</h4>
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label>Force (N): <input type="number" id="impulse-force" value="500" step="10" min="0"></label>
+                                </div>
+                                <div class="control-group">
+                                    <label>Time (s): <input type="number" id="impulse-time" value="0.01" step="0.001" min="0"></label>
+                                </div>
+                                <button id="calc-impulse-btn" class="calculate-button">Calculate Impulse</button>
+                            </div>
+                            <div class="calculator-results">
+                                <div class="result-item">
+                                    <strong>Impulse:</strong> <span id="impulse-result">5.0 N⋅s</span>
+                                </div>
+                                <div class="result-item">
+                                    <strong>Momentum Change:</strong> <span id="momentum-change">5.0 kg⋅m/s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>Impulse Calculations (15 min)</h4>
+                                <p>Calculate impulse using J = FΔt for various force and time combinations.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">⏱️</div>
+                            <div class="activity-content">
+                                <h4>Contact Time Analysis (20 min)</h4>
+                                <p>Measure and compare contact times in different throwing motions.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Force-Time Variations (15 min)</h4>
+                                <p>Demonstrate how same impulse can be achieved with different force-time combinations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Impulse-Momentum Theorem</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Experimental</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">⚖️</span>
+                            <div class="topic-info">
+                                <h4>Theorem Relationship</h4>
+                                <p>J = Δp connects impulse to momentum change.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔗</span>
+                            <div class="topic-info">
+                                <h4>Kinetic Chain Transfer</h4>
+                                <p>Momentum flows from legs to ball through body segments.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚡</span>
+                            <div class="topic-info">
+                                <h4>Transfer Efficiency</h4>
+                                <p>Timing and coordination maximize momentum transfer.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🏆</span>
+                            <div class="topic-info">
+                                <h4>Elite Performance</h4>
+                                <p>How professional pitchers optimize momentum transfer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 The Impulse-Momentum Connection</h3>
+                        <div class="formula-display">
+                            <h4>The Relationship: ⃗J = Δ⃗p</h4>
+                            <h5>Expanded Form: ⃗FΔt = m⃗v<sub>f</sub> - m⃗v<sub>i</sub></h5>
+                        </div>
+                        
+                        <h4>Kinetic Chain Transfer:</h4>
+                        <div class="kinetic-chain">
+                            <p><strong>Legs → Hips → Torso → Shoulder → Arm → Ball</strong></p>
+                            <p><em>Large mass, slow speed → Small mass, high speed</em></p>
+                        </div>
+                        
+                        <div class="calculator-container">
+                            <h4>⚖️ Impulse-Momentum Calculator</h4>
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label>Initial Velocity (m/s): <input type="number" id="vi-input" value="0" step="1" min="0"></label>
+                                </div>
+                                <div class="control-group">
+                                    <label>Final Velocity (m/s): <input type="number" id="vf-input" value="40" step="1" min="0"></label>
+                                </div>
+                                <div class="control-group">
+                                    <label>Mass (kg): <input type="number" id="mass-theorem" value="0.145" step="0.001" min="0"></label>
+                                </div>
+                                <button id="calc-theorem-btn" class="calculate-button">Calculate Δp</button>
+                            </div>
+                            <div class="calculator-results">
+                                <div class="result-item">
+                                    <strong>Momentum Change (Δp):</strong> <span id="delta-momentum">5.8 kg⋅m/s</span>
+                                </div>
+                                <div class="result-item">
+                                    <strong>Required Impulse (J):</strong> <span id="required-impulse">5.8 N⋅s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📐</div>
+                            <div class="activity-content">
+                                <h4>Theorem Calculations (15 min)</h4>
+                                <p>Use J = Δp to solve for unknown forces, times, or velocity changes.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎭</div>
+                            <div class="activity-content">
+                                <h4>Professional Analysis (25 min)</h4>
+                                <p>Analyze momentum transfer in professional pitchers using video and data.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">💡</div>
+                            <div class="activity-content">
+                                <h4>Optimization Discussion (10 min)</h4>
+                                <p>Brainstorm techniques for maximizing impulse in pitching mechanics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Laboratory Investigation</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Experimental</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📱</span>
+                            <div class="topic-info">
+                                <h4>High-Speed Analysis</h4>
+                                <p>Using video to measure contact times and velocities.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📏</span>
+                            <div class="topic-info">
+                                <h4>Momentum Measurements</h4>
+                                <p>Calculating momentum changes from velocity data.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔬</span>
+                            <div class="topic-info">
+                                <h4>Experimental Verification</h4>
+                                <p>Testing the impulse-momentum theorem experimentally.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📊</span>
+                            <div class="topic-info">
+                                <h4>Data Analysis</h4>
+                                <p>Interpreting results and identifying patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔬 Lab: Force-Time Relationships</h3>
+                        <div class="procedure-timeline">
+                            <div class="procedure-step">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">📱</div>
+                                <div class="step-content">
+                                    <h4>High-Speed Recording (20 min)</h4>
+                                    <p>Capture pitching motions at high frame rates and measure contact times</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">📊</div>
+                                <div class="step-content">
+                                    <h4>Momentum Analysis (20 min)</h4>
+                                    <p>Calculate momentum changes and impulse from velocity measurements</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">🔬</div>
+                                <div class="step-content">
+                                    <h4>Theorem Verification (10 min)</h4>
+                                    <p>Compare calculated impulse with momentum changes to verify J = Δp</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">⏱️</div>
+                            <div class="activity-content">
+                                <h4>Force-Time Analysis (20 min)</h4>
+                                <p>Measure contact time and velocity changes to calculate impulse.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔄</div>
+                            <div class="activity-content">
+                                <h4>Momentum Transfer Study (20 min)</h4>
+                                <p>Analyze body segment contributions to total momentum.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-content">
+                                <h4>Theorem Verification (10 min)</h4>
+                                <p>Verify J = Δp using experimental measurements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Applications and Assessment</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Synthesis</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🏆</span>
+                            <div class="topic-info">
+                                <h4>Professional Case Studies</h4>
+                                <p>Analyze elite pitchers' momentum transfer techniques.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">👤</span>
+                            <div class="topic-info">
+                                <h4>Body Type Variations</h4>
+                                <p>How different physiques optimize momentum transfer.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Technique Optimization</h4>
+                                <p>Methods for maximizing impulse delivery.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📈</span>
+                            <div class="topic-info">
+                                <h4>Performance Analysis</h4>
+                                <p>Connecting theory to measurable improvements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🎯 Week 4 Synthesis: Momentum Mastery</h3>
+                        <div class="procedure-timeline">
+                            <div class="procedure-step">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">📹</div>
+                                <div class="step-content">
+                                    <h4>Self-Analysis (15 min)</h4>
+                                    <p>Record your own pitching motion and identify momentum transfer points</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">🔬</div>
+                                <div class="step-content">
+                                    <h4>Impulse Calculation (20 min)</h4>
+                                    <p>Apply J = Δp to analyze your pitching efficiency</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">💡</div>
+                                <div class="step-content">
+                                    <h4>Improvement Plan (15 min)</h4>
+                                    <p>Develop strategies to optimize your momentum transfer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">⭐</div>
+                            <div class="activity-content">
+                                <h4>Elite Pitcher Analysis (20 min)</h4>
+                                <p>Study momentum transfer in professional pitchers like Chapman, Ryan, Johnson.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Optimization Strategies (20 min)</h4>
+                                <p>Develop techniques for maximizing individual momentum transfer efficiency.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📝</div>
+                            <div class="activity-content">
+                                <h4>Knowledge Assessment (10 min)</h4>
+                                <p>Demonstrate understanding of impulse-momentum concepts and applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->
@@ -108,120 +604,99 @@
     <script type="module" src="../js/main.js"></script>
     <script src="../js/week-template.js"></script>
     <script>
-        // Week 4 specific JS
-        function calculateMomentum() {
-            const mass = parseFloat(document.getElementById('momentum-mass').value);
-            const velocity = parseFloat(document.getElementById('momentum-velocity').value);
+        // Week 4 specific JS - Momentum and Impulse Calculators
+        document.addEventListener('DOMContentLoaded', function() {
+            // Momentum Calculator
+            const momentumMass = document.getElementById('momentum-mass');
+            const momentumVelocity = document.getElementById('momentum-velocity');
+            const calcMomentumBtn = document.getElementById('calc-momentum-btn');
+            const momentumResult = document.getElementById('momentum-result');
+            const velocityMph = document.getElementById('velocity-mph');
             
-            if (isNaN(mass) || isNaN(velocity)) {
-                alert('Please enter valid numbers for mass and velocity');
-                return;
+            function calculateMomentum() {
+                const mass = parseFloat(momentumMass.value);
+                const velocity = parseFloat(momentumVelocity.value);
+                
+                if (isNaN(mass) || isNaN(velocity) || mass <= 0 || velocity < 0) {
+                    momentumResult.textContent = 'Invalid input';
+                    velocityMph.textContent = '--';
+                    return;
+                }
+                
+                const momentum = mass * velocity;
+                const velocityInMph = velocity * 2.237; // Convert m/s to mph
+                
+                momentumResult.textContent = momentum.toFixed(2) + ' kg⋅m/s';
+                velocityMph.textContent = velocityInMph.toFixed(1) + ' mph';
             }
             
-            const momentum = mass * velocity;
-            const kineticEnergy = 0.5 * mass * velocity * velocity;
-            const velocityMph = velocity * 2.237;
+            // Impulse Calculator
+            const impulseForce = document.getElementById('impulse-force');
+            const impulseTime = document.getElementById('impulse-time');
+            const calcImpulseBtn = document.getElementById('calc-impulse-btn');
+            const impulseResult = document.getElementById('impulse-result');
+            const momentumChange = document.getElementById('momentum-change');
             
-            document.getElementById('momentum-result').textContent = momentum.toFixed(2) + ' kg⋅m/s';
-            document.getElementById('kinetic-energy').textContent = kineticEnergy.toFixed(0) + ' J';
-            
-            // Update mph field
-            document.getElementById('momentum-velocity-mph').value = velocityMph.toFixed(1);
-            
-            // Determine scenario
-            if (velocityMph < 70) {
-                document.getElementById('scenario-type').textContent = 'Slow Pitch';
-            } else if (velocityMph < 85) {
-                document.getElementById('scenario-type').textContent = 'Average Fastball';
-            } else if (velocityMph < 95) {
-                document.getElementById('scenario-type').textContent = 'Good Fastball';
-            } else {
-                document.getElementById('scenario-type').textContent = 'Elite Fastball';
-            }
-        }
-
-        function calculateImpulse() {
-            const force = parseFloat(document.getElementById('impulse-force').value);
-            const time = parseFloat(document.getElementById('impulse-time').value);
-            const mass = parseFloat(document.getElementById('impulse-mass').value);
-            
-            if (isNaN(force) || isNaN(time) || isNaN(mass)) {
-                alert('Please enter valid numbers');
-                return;
+            function calculateImpulse() {
+                const force = parseFloat(impulseForce.value);
+                const time = parseFloat(impulseTime.value);
+                
+                if (isNaN(force) || isNaN(time) || force < 0 || time <= 0) {
+                    impulseResult.textContent = 'Invalid input';
+                    momentumChange.textContent = '--';
+                    return;
+                }
+                
+                const impulse = force * time;
+                
+                impulseResult.textContent = impulse.toFixed(1) + ' N⋅s';
+                momentumChange.textContent = impulse.toFixed(1) + ' kg⋅m/s';
             }
             
-            const impulse = force * time;
-            const velocityChange = impulse / mass;
-            const finalVelocityMph = velocityChange * 2.237;
+            // Impulse-Momentum Theorem Calculator
+            const viInput = document.getElementById('vi-input');
+            const vfInput = document.getElementById('vf-input');
+            const massTheorem = document.getElementById('mass-theorem');
+            const calcTheoremBtn = document.getElementById('calc-theorem-btn');
+            const deltaMomentum = document.getElementById('delta-momentum');
+            const requiredImpulse = document.getElementById('required-impulse');
             
-            document.getElementById('impulse-result').textContent = impulse.toFixed(1) + ' N⋅s';
-            document.getElementById('velocity-change').textContent = velocityChange.toFixed(1) + ' m/s';
-            document.getElementById('final-velocity-mph').textContent = finalVelocityMph.toFixed(1) + ' mph';
-        }
-
-        function calculateTheorem() {
-            const vi = parseFloat(document.getElementById('theorem-vi').value);
-            const vf = parseFloat(document.getElementById('theorem-vf').value);
-            const mass = parseFloat(document.getElementById('theorem-mass').value);
-            const time = parseFloat(document.getElementById('theorem-time').value);
-            
-            if (isNaN(vi) || isNaN(vf) || isNaN(mass) || isNaN(time)) {
-                alert('Please enter valid numbers');
-                return;
+            function calculateTheorem() {
+                const vi = parseFloat(viInput.value);
+                const vf = parseFloat(vfInput.value);
+                const mass = parseFloat(massTheorem.value);
+                
+                if (isNaN(vi) || isNaN(vf) || isNaN(mass) || mass <= 0) {
+                    deltaMomentum.textContent = 'Invalid input';
+                    requiredImpulse.textContent = '--';
+                    return;
+                }
+                
+                const deltaP = mass * (vf - vi);
+                
+                deltaMomentum.textContent = deltaP.toFixed(2) + ' kg⋅m/s';
+                requiredImpulse.textContent = deltaP.toFixed(2) + ' N⋅s';
             }
             
-            const deltaP = mass * (vf - vi);
-            const impulse = deltaP;
-            const averageForce = impulse / time;
-            const finalSpeedMph = vf * 2.237;
+            // Event listeners
+            calcMomentumBtn.addEventListener('click', calculateMomentum);
+            momentumMass.addEventListener('input', calculateMomentum);
+            momentumVelocity.addEventListener('input', calculateMomentum);
             
-            document.getElementById('theorem-delta-p').textContent = deltaP.toFixed(2) + ' kg⋅m/s';
-            document.getElementById('theorem-impulse').textContent = impulse.toFixed(2) + ' N⋅s';
-            document.getElementById('theorem-force').textContent = averageForce.toFixed(1) + ' N';
-            document.getElementById('theorem-speed-mph').textContent = finalSpeedMph.toFixed(1) + ' mph';
-        }
-
-        function loadPitchingScenario() {
-            document.getElementById('momentum-mass').value = '0.145';
-            document.getElementById('momentum-velocity').value = '40';
+            calcImpulseBtn.addEventListener('click', calculateImpulse);
+            impulseForce.addEventListener('input', calculateImpulse);
+            impulseTime.addEventListener('input', calculateImpulse);
+            
+            calcTheoremBtn.addEventListener('click', calculateTheorem);
+            viInput.addEventListener('input', calculateTheorem);
+            vfInput.addEventListener('input', calculateTheorem);
+            massTheorem.addEventListener('input', calculateTheorem);
+            
+            // Initial calculations
             calculateMomentum();
-        }
-
-        function loadBattingScenario() {
-            document.getElementById('momentum-mass').value = '0.145';
-            document.getElementById('momentum-velocity').value = '50';
-            calculateMomentum();
-        }
-
-        function loadCatchingScenario() {
-            document.getElementById('momentum-mass').value = '0.145';
-            document.getElementById('momentum-velocity').value = '35';
-            calculateMomentum();
-        }
-
-        // Update velocity when mph changes
-        document.getElementById('momentum-velocity-mph').addEventListener('input', function() {
-            const mph = parseFloat(this.value);
-            if (!isNaN(mph)) {
-                const ms = mph / 2.237;
-                document.getElementById('momentum-velocity').value = ms.toFixed(1);
-                calculateMomentum();
-            }
+            calculateImpulse();
+            calculateTheorem();
         });
-
-        // Update mph when m/s changes
-        document.getElementById('momentum-velocity').addEventListener('input', function() {
-            const ms = parseFloat(this.value);
-            if (!isNaN(ms)) {
-                const mph = ms * 2.237;
-                document.getElementById('momentum-velocity-mph').value = mph.toFixed(1);
-            }
-        });
-
-        // Initialize calculations
-        calculateMomentum();
-        calculateImpulse();
-        calculateTheorem();
     </script>
 </body>
 </html>

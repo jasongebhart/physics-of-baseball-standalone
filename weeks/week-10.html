@@ -22,36 +22,280 @@
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Physics Principles Review</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🔗 Integration</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">⚖️</div>
+                        <div class="topic-content">
+                            <h3>Newton's Laws Review</h3>
+                            <p>Ground reaction forces, action-reaction in pitching, F = ma applications.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚡</div>
+                        <div class="topic-content">
+                            <h3>Energy & Work Integration</h3>
+                            <p>Work-energy theorem, kinetic/potential energy in pitching motion.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h3>Momentum Applications</h3>
+                            <p>Impulse-momentum theorem, momentum transfer through body segments.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🌀</div>
+                        <div class="topic-content">
+                            <h3>Torque & Angular Motion</h3>
+                            <p>Rotational mechanics, angular momentum in spin generation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>Integrating Physics and Pitching</h3>
+                    <div class="concept-card integration">
+                        <h4>Physics Principles in Pitching</h4>
+                        <div class="integration-content">
+                            <p><strong>Newton's Laws:</strong> Ground force → Body acceleration → Ball velocity</p>
+                            <p><strong>Work-Energy:</strong> W = ΔKE = ½mv²_f - ½mv²_i</p>
+                            <p><strong>Impulse-Momentum:</strong> F_avg × Δt = mΔv</p>
+                            <p><strong>Angular Momentum:</strong> L = Iω (conserved during rotation)</p>
+                            <div class="key-insight">
+                                <strong>Integration:</strong> All principles work simultaneously in efficient pitching delivery
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="impulse-calculator">
+                    <h3>Impulse-Momentum Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Force Application Analysis</h4>
+                            <div class="input-group">
+                                <label for="force">Average Force (N):</label>
+                                <input type="number" id="force" value="500" step="10" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="time">Contact Time (s):</label>
+                                <input type="number" id="time" value="0.15" step="0.01" min="0.01">
+                            </div>
+                            <div class="input-group">
+                                <label for="mass">Baseball Mass (kg):</label>
+                                <input type="number" id="mass" value="0.145" step="0.001" min="0.1">
+                            </div>
+                            <div class="result">
+                                <strong>Impulse: <span id="impulse-result">75.00</span> N·s</strong><br>
+                                <strong>Ball Velocity: <span id="ball-velocity-result">115.6</span> mph</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Kinetic Chain & Sequential Motion</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🔗 Systems Analysis</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🦵</div>
+                        <div class="topic-content">
+                            <h3>Ground Force Generation</h3>
+                            <p>Leg drive creates foundation force, Newton's third law reaction.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h3>Hip Rotation Power</h3>
+                            <p>Core rotation transfers energy from legs to upper body.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">💪</div>
+                        <div class="topic-content">
+                            <h3>Shoulder & Torso Action</h3>
+                            <p>Trunk rotation and shoulder external rotation build energy.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h3>Arm Acceleration</h3>
+                            <p>Final energy concentration in forearm and ball release.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>The Kinetic Chain in Action</h3>
+                    <div class="concept-card sequence">
+                        <h4>Sequential Energy Transfer</h4>
+                        <div class="sequence-content">
+                            <div class="sequence-step">
+                                <h5>Stage 1: Ground Force (Legs)</h5>
+                                <ul>
+                                    <li>Generate reaction force from mound</li>
+                                    <li>Create stable base for rotation</li>
+                                </ul>
+                            </div>
+                            <div class="sequence-step">
+                                <h5>Stage 2: Hip Rotation (Core)</h5>
+                                <ul>
+                                    <li>Transfer linear to angular momentum</li>
+                                    <li>Accelerate body's center of mass</li>
+                                </ul>
+                            </div>
+                            <div class="sequence-step">
+                                <h5>Stage 3: Trunk & Shoulder (Torso)</h5>
+                                <ul>
+                                    <li>External rotation builds elastic energy</li>
+                                    <li>Prepare for explosive internal rotation</li>
+                                </ul>
+                            </div>
+                            <div class="sequence-step">
+                                <h5>Stage 4: Arm & Release (Final)</h5>
+                                <ul>
+                                    <li>Convert stored energy to ball velocity</li>
+                                    <li>Precise timing maximizes efficiency</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Maximizing Velocity</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">⚡ Force & Time</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="interactive-calculator" id="energy-transfer-calculator">
+                    <h3>Energy Transfer Efficiency Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Kinetic Chain Energy Analysis</h4>
+                            <div class="input-group">
+                                <label for="initial-energy">Initial Energy (J):</label>
+                                <input type="number" id="initial-energy" value="200" step="10" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="efficiency">Transfer Efficiency (%):</label>
+                                <input type="number" id="efficiency" value="65" step="1" min="0" max="100">
+                            </div>
+                            <div class="result">
+                                <strong>Transferred Energy: <span id="transferred-energy">130.0</span> J</strong><br>
+                                <strong>Resulting Velocity: <span id="energy-velocity">95.5</span> mph</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Control & Energy Efficiency</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">⚖️ Balance & Precision</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="concept-showcase">
+                    <h3>Balancing Power and Accuracy</h3>
+                    <div class="concept-card balance">
+                        <h4>Control vs. Velocity Trade-offs</h4>
+                        <div class="balance-content">
+                            <p><strong>Maximum Effort:</strong> 100% force → High velocity, reduced control</p>
+                            <p><strong>Optimal Effort:</strong> 85-90% force → Good velocity, maintained control</p>
+                            <p><strong>Control Focus:</strong> 70-80% force → Reduced velocity, maximum precision</p>
+                            <div class="key-insight">
+                                <strong>Sweet Spot:</strong> 85-90% effort maximizes both velocity and control
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Biomechanics & Video Analysis</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">📹 Analysis & Application</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="procedure-timeline">
+                    <h3>Final Challenge: Personal Mechanics Analysis</h3>
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📹</div>
+                        <div class="step-content">
+                            <h4>Video Recording</h4>
+                            <p>Record pitching motion from multiple angles at high speed (240fps)</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🔬</div>
+                        <div class="step-content">
+                            <h4>Physics Analysis</h4>
+                            <p>Identify all physics principles in your mechanics using measurement tools</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">📋</div>
+                        <div class="step-content">
+                            <h4>Optimization Plan</h4>
+                            <p>Develop personal improvement plan based on physics analysis</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-summary">
+                    <h3>Week 10 Summary: Key Concepts</h3>
+                    <div class="concepts-grid">
+                        <div class="concept-item">
+                            <h4>Newton's Laws in Pitching</h4>
+                            <p>Ground reaction forces create action-reaction pairs. F_net = ma drives acceleration</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Work-Energy Transfer</h4>
+                            <p>W = ΔKE. Energy flows sequentially from legs → core → arm → ball</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Impulse-Momentum Application</h4>
+                            <p>F_avg × Δt = mΔv. Longer force application time increases ball velocity</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Kinetic Chain Efficiency</h4>
+                            <p>Sequential activation: legs → hips → torso → shoulder → arm maximizes power</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->

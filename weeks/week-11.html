@@ -22,36 +22,460 @@
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Units & Significant Figures</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Foundational</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📏</span>
+                            <div class="topic-info">
+                                <h4>Measurement Units</h4>
+                                <p>Distance (m, ft), time (s, ms), velocity (mph, m/s), angular velocity (RPM, rad/s).</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔄</span>
+                            <div class="topic-info">
+                                <h4>Unit Conversions</h4>
+                                <p>Converting between metric and imperial systems for baseball measurements.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Significant Figures</h4>
+                                <p>Rules for maintaining precision in calculations and measurements.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚖️</span>
+                            <div class="topic-info">
+                                <h4>Scientific Notation</h4>
+                                <p>Expressing very large or small numbers clearly and precisely.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 Baseball Measurement Units</h3>
+                        <div class="concept-comparison">
+                            <div class="concept-item">
+                                <h4>Velocity Conversions</h4>
+                                <ul>
+                                    <li>1 mph = 0.447 m/s</li>
+                                    <li>1 m/s = 2.237 mph</li>
+                                    <li>90 mph = 40.2 m/s (typical fastball)</li>
+                                </ul>
+                            </div>
+                            <div class="concept-item">
+                                <h4>Angular Velocity</h4>
+                                <ul>
+                                    <li>1 RPM = 0.105 rad/s</li>
+                                    <li>2400 RPM = 251 rad/s (typical spin)</li>
+                                    <li>ω = 2πf (frequency to angular velocity)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🧮 Interactive Unit Converter</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section">
+                            <h4>Unit Conversion Calculator</h4>
+                            <div class="calculator-inputs">
+                                <label>Input Value: <input type="number" id="input-value" value="90" step="0.1"></label>
+                                <label>Conversion Type: 
+                                    <select id="conversion-type">
+                                        <option value="mph-ms">mph to m/s</option>
+                                        <option value="ms-mph">m/s to mph</option>
+                                        <option value="rpm-rads">RPM to rad/s</option>
+                                        <option value="rads-rpm">rad/s to RPM</option>
+                                        <option value="ft-m">feet to meters</option>
+                                        <option value="m-ft">meters to feet</option>
+                                    </select>
+                                </label>
+                                <div class="calculator-result">
+                                    <p>Result: <span id="conversion-result">40.2</span> <span id="result-units">m/s</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🔄</div>
+                            <div class="activity-content">
+                                <h4>Conversion Practice (20 min)</h4>
+                                <p>Practice converting baseball measurements between mph/m/s, feet/meters, RPM/rad/s.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Significant Figure Rules (20 min)</h4>
+                                <p>Apply significant figure rules to real pitching data calculations.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📐</div>
+                            <div class="activity-content">
+                                <h4>Measurement Precision (10 min)</h4>
+                                <p>Determine appropriate precision for different types of baseball measurements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Accuracy, Precision & Error</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Analytical</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Accuracy Definition</h4>
+                                <p>Closeness to the true or accepted value in measurements.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📍</span>
+                            <div class="topic-info">
+                                <h4>Precision Definition</h4>
+                                <p>Reproducibility and consistency in repeated measurements.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚠️</span>
+                            <div class="topic-info">
+                                <h4>Measurement Error</h4>
+                                <p>Random errors affect precision; systematic errors affect accuracy.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📊</span>
+                            <div class="topic-info">
+                                <h4>Error Analysis</h4>
+                                <p>Identifying sources and minimizing impact on data quality.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-showcase">
+                        <h3>🔑 Accuracy vs Precision</h3>
+                        <div class="concept-comparison">
+                            <div class="concept-item">
+                                <h4>High Accuracy, High Precision</h4>
+                                <p><strong>Ideal scenario</strong></p>
+                                <p>Measurements consistently close to true value</p>
+                            </div>
+                            <div class="concept-item">
+                                <h4>High Accuracy, Low Precision</h4>
+                                <p><strong>Random error present</strong></p>
+                                <p>Average is correct, but scattered measurements</p>
+                            </div>
+                            <div class="concept-item">
+                                <h4>Low Accuracy, High Precision</h4>
+                                <p><strong>Systematic error present</strong></p>
+                                <p>Consistent measurements, but offset from true value</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Radar Gun Comparison (20 min)</h4>
+                                <p>Compare multiple radar readings to assess precision and identify systematic errors.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Error Source Identification (20 min)</h4>
+                                <p>Analyze potential sources of error in baseball measurement scenarios.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">⚖️</div>
+                            <div class="activity-content">
+                                <h4>Calibration Practice (10 min)</h4>
+                                <p>Understand how calibration improves measurement accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Pocket Radar Data Collection</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Practical</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📡</span>
+                            <div class="topic-info">
+                                <h4>Radar Technology</h4>
+                                <p>Doppler effect principles and radar gun operation for velocity measurement.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📊</span>
+                            <div class="topic-info">
+                                <h4>Data Collection Protocol</h4>
+                                <p>Systematic methods for gathering consistent, reliable measurement data.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📋</span>
+                            <div class="topic-info">
+                                <h4>Data Recording</h4>
+                                <p>Proper documentation and organization of experimental measurements.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">⚙️</span>
+                            <div class="topic-info">
+                                <h4>Equipment Calibration</h4>
+                                <p>Ensuring measurement accuracy through proper equipment setup.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="procedure-timeline">
+                        <h3>📝 Lab Procedure: Radar Data Collection</h3>
+                        <div class="procedure-steps">
+                            <div class="procedure-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Equipment Setup (10 min)</h4>
+                                    <p>Position Pocket Radar, establish measurement distance, calibrate equipment.</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Data Collection (30 min)</h4>
+                                    <p>Record multiple pitches, document conditions, maintain consistent protocol.</p>
+                                </div>
+                            </div>
+                            <div class="procedure-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Data Organization (10 min)</h4>
+                                    <p>Organize data in tables, check for outliers, prepare for analysis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📡</div>
+                            <div class="activity-content">
+                                <h4>Radar Setup & Calibration (15 min)</h4>
+                                <p>Learn proper radar gun positioning and calibration procedures.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Systematic Data Collection (25 min)</h4>
+                                <p>Collect velocity data using standardized measurement protocols.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📋</div>
+                            <div class="activity-content">
+                                <h4>Data Quality Assessment (10 min)</h4>
+                                <p>Review collected data for consistency and identify potential errors.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Data Visualization</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Analytical</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📈</span>
+                            <div class="topic-info">
+                                <h4>Graph Types</h4>
+                                <p>Bar graphs (categories), scatter plots (correlations), line graphs (trends).</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📊</span>
+                            <div class="topic-info">
+                                <h4>Data Patterns</h4>
+                                <p>Identifying trends, outliers, and relationships in pitching data.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📎</span>
+                            <div class="topic-info">
+                                <h4>Histograms</h4>
+                                <p>Distribution visualization and frequency analysis of velocity data.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔗</span>
+                            <div class="topic-info">
+                                <h4>Correlation Analysis</h4>
+                                <p>Scatter plots to explore relationships between variables.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📈</div>
+                            <div class="activity-content">
+                                <h4>Graph Creation (25 min)</h4>
+                                <p>Create various graph types using collected pitching data.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔍</div>
+                            <div class="activity-content">
+                                <h4>Pattern Recognition (20 min)</h4>
+                                <p>Analyze graphs to identify trends and relationships in data.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📎</div>
+                            <div class="activity-content">
+                                <h4>Distribution Analysis (5 min)</h4>
+                                <p>Interpret histograms and understand data distribution characteristics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Advanced Data Analysis</h2>
+                    <div class="day-meta">
+                        <span class="duration">50 minutes</span>
+                        <span class="complexity">Advanced</span>
+                    </div>
                 </div>
-                <p>...</p>
+                
+                <div class="day-content">
+                    <h3>🎯 Key Topics</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <span class="topic-icon">📊</span>
+                            <div class="topic-info">
+                                <h4>Statistical Measures</h4>
+                                <p>Range, mean, median, standard deviation for data characterization.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔗</span>
+                            <div class="topic-info">
+                                <h4>Correlation Analysis</h4>
+                                <p>Identifying relationships between pitching variables.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">📯</span>
+                            <div class="topic-info">
+                                <h4>Outlier Detection</h4>
+                                <p>Identifying and handling unusual data points appropriately.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Performance Assessment</h4>
+                                <p>Using statistical analysis for pitcher evaluation and improvement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🧮 Statistical Analysis Calculator</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section">
+                            <h4>Data Statistics Calculator</h4>
+                            <div class="calculator-inputs">
+                                <label>Data Values (comma-separated): 
+                                    <input type="text" id="data-values" value="88, 90, 89, 91, 87, 92, 88, 90" placeholder="Enter values...">
+                                </label>
+                                <button onclick="calculateStatistics()">Calculate Statistics</button>
+                                <div class="calculator-result" id="stats-display" style="display: none;">
+                                    <p>Count: <span id="stat-count">8</span></p>
+                                    <p>Mean: <span id="stat-mean">89.4</span></p>
+                                    <p>Median: <span id="stat-median">89.5</span></p>
+                                    <p>Std Dev: <span id="stat-stddev">1.7</span></p>
+                                    <p>Range: <span id="stat-range">5</span></p>
+                                    <p>Min: <span id="stat-min">87</span> | Max: <span id="stat-max">92</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🚀 Activities</h3>
+                    <div class="activities-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Statistical Calculations (25 min)</h4>
+                                <p>Calculate descriptive statistics for pitching velocity data sets.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔍</div>
+                            <div class="activity-content">
+                                <h4>Correlation Investigation (20 min)</h4>
+                                <p>Explore relationships between different pitching metrics.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Performance Interpretation (5 min)</h4>
+                                <p>Use statistical findings to assess and improve pitching performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->

@@ -22,36 +22,580 @@
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Angular Motion Fundamentals</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">📊 Introductory</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h3>Angular Displacement</h3>
+                            <p>The angle through which an object rotates (θ = s/r).</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚡</div>
+                        <div class="topic-content">
+                            <h3>Angular Velocity</h3>
+                            <p>Rate of angular change (ω = Δθ/Δt).</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚾</div>
+                        <div class="topic-content">
+                            <h3>Baseball Applications</h3>
+                            <p>Arm rotation in pitching mechanics.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📐</div>
+                        <div class="topic-content">
+                            <h3>Units & Conversions</h3>
+                            <p>Radians per second, degrees per second.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Today's Activities</h3>
+                    <div class="timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🔍</div>
+                            <div class="activity-content">
+                                <h4>Rotation Identification</h4>
+                                <p>Identify all rotational components in the pitching motion.</p>
+                                <span class="activity-duration">15 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>Angular Calculations</h4>
+                                <p>Calculate angular velocities using ω = Δθ/Δt for pitching scenarios.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎾</div>
+                            <div class="activity-content">
+                                <h4>Ball on String Demo</h4>
+                                <p>Demonstrate circular motion concepts with hands-on demonstration.</p>
+                                <span class="activity-duration">15 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>Angular Motion in Baseball</h3>
+                    <div class="concept-card data">
+                        <h4>Angular Velocity in Pitching</h4>
+                        <div class="data-content">
+                            <p><strong>Formula:</strong> ω = Δθ/Δt</p>
+                            <p><strong>Units:</strong> rad/s or °/s</p>
+                            <div class="data-table">
+                                <h5>Professional Pitchers:</h5>
+                                <div class="data-row">
+                                    <span>Elite arm angular velocity:</span>
+                                    <span>7000-9000°/s</span>
+                                </div>
+                                <div class="data-row">
+                                    <span>Peak shoulder rotation:</span>
+                                    <span>6000-8000°/s</span>
+                                </div>
+                                <div class="data-row">
+                                    <span>Forearm rotation:</span>
+                                    <span>4000-6000°/s</span>
+                                </div>
+                            </div>
+                            <div class="key-insight">
+                                <strong>Key Insight:</strong> Faster rotation = higher velocity potential
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="rotational-calculator">
+                    <h3>Rotational Mechanics Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Angular Velocity Calculator</h4>
+                            <div class="input-group">
+                                <label for="angular-displacement">Angular Displacement (degrees):</label>
+                                <input type="number" id="angular-displacement" value="180" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="time-duration">Time Duration (seconds):</label>
+                                <input type="number" id="time-duration" value="0.1" step="0.001" min="0.001">
+                            </div>
+                            <div class="result">
+                                <strong>Angular Velocity: <span id="angular-velocity-result">1800</span> °/s</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Linear-Angular Relationships</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">📈 Building</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🔗</div>
+                        <div class="topic-content">
+                            <h3>v = ωr Relationship</h3>
+                            <p>Connection between linear and angular velocity.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📏</div>
+                        <div class="topic-content">
+                            <h3>Radius Effect</h3>
+                            <p>How arm length affects pitch velocity.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚾</div>
+                        <div class="topic-content">
+                            <h3>Pitching Applications</h3>
+                            <p>Optimizing arm position for maximum velocity.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📊</div>
+                        <div class="topic-content">
+                            <h3>Velocity Analysis</h3>
+                            <p>Calculating theoretical vs actual pitch speeds.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Today's Activities</h3>
+                    <div class="timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🧮</div>
+                            <div class="activity-content">
+                                <h4>v = ωr Calculations</h4>
+                                <p>Calculate linear velocities from angular velocity and radius measurements.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📏</div>
+                            <div class="activity-content">
+                                <h4>Radius Effect Demo</h4>
+                                <p>Compare velocities with different arm positions and effective radii.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🏆</div>
+                            <div class="activity-content">
+                                <h4>Professional Analysis</h4>
+                                <p>Analyze how elite pitchers optimize their v = ωr relationship.</p>
+                                <span class="activity-duration">10 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>The v = ωr Connection</h3>
+                    <div class="concept-card formula">
+                        <h4>Linear-Angular Velocity Relationship</h4>
+                        <div class="formula-content">
+                            <p><strong>Relationship:</strong> v = ωr</p>
+                            <p>v = linear velocity, ω = angular velocity, r = radius</p>
+                            <div class="example">
+                                <p><strong>Baseball Example:</strong></p>
+                                <p>ω = 8000°/s = 140 rad/s</p>
+                                <p>r = 0.6 m (effective arm length)</p>
+                                <p>v = 140 × 0.6 = 84 m/s ≈ 188 mph</p>
+                            </div>
+                            <div class="key-insight">
+                                <strong>Key Point:</strong> Longer effective radius = higher velocity!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="linear-angular-calc">
+                    <h3>v = ωr Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Linear Velocity from Angular Motion</h4>
+                            <div class="input-group">
+                                <label for="omega-input">Angular Velocity (rad/s):</label>
+                                <input type="number" id="omega-input" value="140" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="radius-input">Radius (m):</label>
+                                <input type="number" id="radius-input" value="0.6" step="0.01" min="0">
+                            </div>
+                            <div class="result">
+                                <strong>Linear Velocity: <span id="linear-velocity-result">84.0</span> m/s (<span id="linear-velocity-mph">188</span> mph)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Centripetal Force & Acceleration</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🧪 Experimental</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h3>Centripetal Force Definition</h3>
+                            <p>Inward force required for circular motion.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🔢</div>
+                        <div class="topic-content">
+                            <h3>Force Calculations</h3>
+                            <p>Fc = mω²r and Fc = mv²/r formulas.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🦴</div>
+                        <div class="topic-content">
+                            <h3>Joint Forces</h3>
+                            <p>Forces on shoulder and elbow during pitching.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚠️</div>
+                        <div class="topic-content">
+                            <h3>Injury Prevention</h3>
+                            <p>How proper mechanics reduce harmful forces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Today's Activities</h3>
+                    <div class="timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Centripetal Calculations</h4>
+                                <p>Calculate centripetal forces for various pitching scenarios.</p>
+                                <span class="activity-duration">15 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🦴</div>
+                            <div class="activity-content">
+                                <h4>Joint Force Analysis</h4>
+                                <p>Analyze forces on pitcher's joints and their relationship to injury risk.</p>
+                                <span class="activity-duration">25 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🛡️</div>
+                            <div class="activity-content">
+                                <h4>Prevention Discussion</h4>
+                                <p>Discuss proper mechanics for reducing harmful centripetal forces.</p>
+                                <span class="activity-duration">10 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>Centripetal Forces in Pitching</h3>
+                    <div class="concept-card warning">
+                        <h4>Centripetal Force</h4>
+                        <div class="warning-content">
+                            <p><strong>Formulas:</strong> F<sub>c</sub> = mω²r or F<sub>c</sub> = mv²/r</p>
+                            <div class="data-table">
+                                <h5>Forces in Pitching:</h5>
+                                <div class="data-row">
+                                    <span>Shoulder joint:</span>
+                                    <span>800-1200 N centripetal force</span>
+                                </div>
+                                <div class="data-row">
+                                    <span>Elbow joint:</span>
+                                    <span>600-900 N centripetal force</span>
+                                </div>
+                                <div class="warning-note">
+                                    <span>Poor mechanics can double these forces!</span>
+                                </div>
+                            </div>
+                            <div class="key-insight">
+                                <strong>Injury Prevention:</strong> Proper kinetic chain reduces joint stress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="centripetal-calc">
+                    <h3>Centripetal Force Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Centripetal Force Calculator</h4>
+                            <div class="input-group">
+                                <label for="cf-mass">Mass (kg):</label>
+                                <input type="number" id="cf-mass" value="0.145" step="0.001" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="cf-velocity">Velocity (m/s):</label>
+                                <input type="number" id="cf-velocity" value="40" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="cf-radius">Radius (m):</label>
+                                <input type="number" id="cf-radius" value="0.6" step="0.01" min="0.01">
+                            </div>
+                            <div class="result">
+                                <strong>Centripetal Force: <span id="cf-result">387</span> N</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Laboratory Investigation</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🧪 Experimental</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">📱</div>
+                        <div class="topic-content">
+                            <h3>High-Speed Analysis</h3>
+                            <p>Using 240fps video to measure angular velocities.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🔬</div>
+                        <div class="topic-content">
+                            <h3>Experimental Verification</h3>
+                            <p>Testing v = ωr relationship experimentally.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📏</div>
+                        <div class="topic-content">
+                            <h3>Measurement Techniques</h3>
+                            <p>Accurate angle and velocity measurements.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📊</div>
+                        <div class="topic-content">
+                            <h3>Data Analysis</h3>
+                            <p>Processing and interpreting rotational data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Today's Activities</h3>
+                    <div class="timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">⏱️</div>
+                            <div class="activity-content">
+                                <h4>Angular Velocity Measurement</h4>
+                                <p>Record pitching motions and calculate angular velocities from video analysis.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧪</div>
+                            <div class="activity-content">
+                                <h4>v = ωr Testing</h4>
+                                <p>Compare calculated velocities with radar gun measurements.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📏</div>
+                            <div class="activity-content">
+                                <h4>Radius Effect Analysis</h4>
+                                <p>Test how different arm positions affect the v = ωr relationship.</p>
+                                <span class="activity-duration">10 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="procedure-timeline">
+                    <h3>Week 6 Lab: Rotational Mechanics</h3>
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📱</div>
+                        <div class="step-content">
+                            <h4>High-Speed Recording</h4>
+                            <p>Capture pitching at 240fps and measure angular displacements frame by frame</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🧮</div>
+                        <div class="step-content">
+                            <h4>Angular Analysis</h4>
+                            <p>Calculate ω = Δθ/Δt and use v = ωr to predict velocities</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">📊</div>
+                        <div class="step-content">
+                            <h4>Verification</h4>
+                            <p>Compare calculated velocities with radar gun measurements</p>
+                            <span class="step-duration">10 min</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Kinetic Chain & Applications</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🎓 Synthesis</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🔗</div>
+                        <div class="topic-content">
+                            <h3>Sequential Rotation</h3>
+                            <p>How body segments rotate in sequence to maximize velocity.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⭐</div>
+                        <div class="topic-content">
+                            <h3>Elite Analysis</h3>
+                            <p>Studying professional pitchers' rotational mechanics.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h3>Optimization</h3>
+                            <p>Improving personal rotational efficiency.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📈</div>
+                        <div class="topic-content">
+                            <h3>Performance Enhancement</h3>
+                            <p>Using angular motion principles for improvement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Today's Activities</h3>
+                    <div class="timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon">🔗</div>
+                            <div class="activity-content">
+                                <h4>Kinetic Chain Analysis</h4>
+                                <p>Study sequential rotation patterns in elite pitchers.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <h4>Personal Optimization</h4>
+                                <p>Develop strategies to improve your own rotational mechanics.</p>
+                                <span class="activity-duration">20 min</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📝</div>
+                            <div class="activity-content">
+                                <h4>Knowledge Assessment</h4>
+                                <p>Demonstrate understanding of circular motion concepts and applications.</p>
+                                <span class="activity-duration">10 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="procedure-timeline">
+                    <h3>Final Challenge: Kinetic Chain Optimization</h3>
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">🎥</div>
+                        <div class="step-content">
+                            <h4>Rotational Analysis</h4>
+                            <p>Record and analyze your pitching motion for angular velocities</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🔬</div>
+                        <div class="step-content">
+                            <h4>Optimization Calculation</h4>
+                            <p>Apply v = ωr to identify improvement opportunities</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🏆</div>
+                        <div class="step-content">
+                            <h4>Performance Plan</h4>
+                            <p>Develop training plan to optimize rotational mechanics</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-summary">
+                    <h3>Week 6 Summary: Key Concepts</h3>
+                    <div class="concepts-grid">
+                        <div class="concept-item">
+                            <h4>Angular Displacement</h4>
+                            <p>The angle through which an object rotates (θ = s/r)</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Angular Velocity</h4>
+                            <p>Rate of angular change (ω = Δθ/Δt) - Pro pitchers reach 7000-9000°/s</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Centripetal Force</h4>
+                            <p>Inward force for circular motion (F<sub>c</sub> = mω²r) - hundreds of Newtons in pitching</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Linear-Angular Relationship</h4>
+                            <p>Linear velocity v = ωr - ball speed depends on arm rotation and radius</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->
@@ -108,7 +652,79 @@
     <script type="module" src="../js/main.js"></script>
     <script src="../js/week-template.js"></script>
     <script>
-        // Week 6 specific JS
+        // Week 6 Circular Motion Calculator JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Angular Velocity Calculator
+            const angularDisplacement = document.getElementById('angular-displacement');
+            const timeDuration = document.getElementById('time-duration');
+            const angularVelocityResult = document.getElementById('angular-velocity-result');
+
+            function calculateAngularVelocity() {
+                if (angularDisplacement && timeDuration && angularVelocityResult) {
+                    const displacement = parseFloat(angularDisplacement.value) || 0;
+                    const time = parseFloat(timeDuration.value) || 0.001;
+                    const angularVel = displacement / time;
+                    angularVelocityResult.textContent = angularVel.toFixed(0);
+                }
+            }
+
+            if (angularDisplacement && timeDuration) {
+                angularDisplacement.addEventListener('input', calculateAngularVelocity);
+                timeDuration.addEventListener('input', calculateAngularVelocity);
+            }
+
+            // Linear-Angular Velocity Calculator
+            const omegaInput = document.getElementById('omega-input');
+            const radiusInput = document.getElementById('radius-input');
+            const linearVelocityResult = document.getElementById('linear-velocity-result');
+            const linearVelocityMph = document.getElementById('linear-velocity-mph');
+
+            function calculateLinearVelocity() {
+                if (omegaInput && radiusInput && linearVelocityResult) {
+                    const omega = parseFloat(omegaInput.value) || 0;
+                    const radius = parseFloat(radiusInput.value) || 0;
+                    const linearVel = omega * radius;
+                    const linearVelMph = linearVel * 2.237; // Convert m/s to mph
+                    
+                    linearVelocityResult.textContent = linearVel.toFixed(1);
+                    if (linearVelocityMph) {
+                        linearVelocityMph.textContent = linearVelMph.toFixed(0);
+                    }
+                }
+            }
+
+            if (omegaInput && radiusInput) {
+                omegaInput.addEventListener('input', calculateLinearVelocity);
+                radiusInput.addEventListener('input', calculateLinearVelocity);
+            }
+
+            // Centripetal Force Calculator
+            const cfMass = document.getElementById('cf-mass');
+            const cfVelocity = document.getElementById('cf-velocity');
+            const cfRadius = document.getElementById('cf-radius');
+            const cfResult = document.getElementById('cf-result');
+
+            function calculateCentripetalForce() {
+                if (cfMass && cfVelocity && cfRadius && cfResult) {
+                    const mass = parseFloat(cfMass.value) || 0;
+                    const velocity = parseFloat(cfVelocity.value) || 0;
+                    const radius = parseFloat(cfRadius.value) || 0.01;
+                    const force = (mass * velocity * velocity) / radius;
+                    cfResult.textContent = force.toFixed(0);
+                }
+            }
+
+            if (cfMass && cfVelocity && cfRadius) {
+                cfMass.addEventListener('input', calculateCentripetalForce);
+                cfVelocity.addEventListener('input', calculateCentripetalForce);
+                cfRadius.addEventListener('input', calculateCentripetalForce);
+            }
+
+            // Initialize calculations
+            calculateAngularVelocity();
+            calculateLinearVelocity();
+            calculateCentripetalForce();
+        });
     </script>
 </body>
 </html>

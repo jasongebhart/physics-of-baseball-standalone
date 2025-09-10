@@ -22,36 +22,291 @@
             <section class="day-section" id="day-1">
                 <div class="day-header">
                     <h2 class="day-title">Day 1: Torque Fundamentals</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">📖 Theoretical</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h3>Torque Definition</h3>
+                            <p>Vector quantity τ = r × F = rF sin θ, units N·m, right-hand rule.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚖️</div>
+                        <div class="topic-content">
+                            <h3>Moment of Inertia</h3>
+                            <p>Resistance to rotational acceleration I = Σmr², body position effects.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">⚾</div>
+                        <div class="topic-content">
+                            <h3>Pitching Applications</h3>
+                            <p>Ground force → Hip rotation → Shoulder torque, kinetic chain, lever arms.</p>
+                        </div>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📐</div>
+                        <div class="topic-content">
+                            <h3>Angular Acceleration</h3>
+                            <p>τ = Iα (rotational equivalent of F = ma).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-showcase">
+                    <h3>Torque: The Rotational Force</h3>
+                    <div class="concept-card formula">
+                        <h4>Torque in Pitching</h4>
+                        <div class="formula-content">
+                            <p><strong>Vector Form:</strong> τ⃗ = r⃗ × F⃗</p>
+                            <p><strong>Scalar Form:</strong> τ = rF sin θ</p>
+                            <p><strong>Units:</strong> N·m (Newton-meters)</p>
+                            <div class="example">
+                                <p><strong>Angular Acceleration:</strong> τ = Iα</p>
+                                <p>(Rotational equivalent of F = ma)</p>
+                                <p><strong>Pitching Chain:</strong> Ground force → Hip torque → Shoulder torque → Ball acceleration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="torque-calculator">
+                    <h3>Torque Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>Torque Calculation</h4>
+                            <div class="input-group">
+                                <label for="torque-force">Force (N):</label>
+                                <input type="number" id="torque-force" value="500" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="torque-radius">Lever Arm (m):</label>
+                                <input type="number" id="torque-radius" value="0.3" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="torque-angle">Angle (degrees):</label>
+                                <input type="number" id="torque-angle" value="90" step="1" min="0" max="180">
+                            </div>
+                            <div class="result">
+                                <strong>Torque: <span id="torque-result">150</span> N·m</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-2">
                 <div class="day-header">
                     <h2 class="day-title">Day 2: Angular Momentum Principles</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">💭 Conceptual</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="concept-showcase">
+                    <h3>Angular Momentum Conservation</h3>
+                    <div class="concept-card sequence">
+                        <h4>Kinetic Chain Transfer</h4>
+                        <div class="sequence-content">
+                            <p><strong>Angular Momentum:</strong> L = Iω</p>
+                            <div class="sequence-steps">
+                                <div class="sequence-step">
+                                    <h5>1. Hips</h5>
+                                    <p>Large I, moderate ω → High L</p>
+                                </div>
+                                <div class="sequence-step">
+                                    <h5>2. Torso</h5>
+                                    <p>Medium I, higher ω → Transfers L</p>
+                                </div>
+                                <div class="sequence-step">
+                                    <h5>3. Shoulder</h5>
+                                    <p>Small I, very high ω → Concentrates L</p>
+                                </div>
+                                <div class="sequence-step">
+                                    <h5>4. Arm/Ball</h5>
+                                    <p>Tiny I, extreme ω → Maximum velocity</p>
+                                </div>
+                            </div>
+                            <div class="key-insight">
+                                <strong>Conservation:</strong> L<sub>total</sub> remains constant during transfer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-calculator" id="angular-momentum-calc">
+                    <h3>Angular Momentum Calculator</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-section">
+                            <h4>L = Iω Calculator</h4>
+                            <div class="input-group">
+                                <label for="moment-inertia">Moment of Inertia (kg·m²):</label>
+                                <input type="number" id="moment-inertia" value="2.5" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="angular-vel">Angular Velocity (rad/s):</label>
+                                <input type="number" id="angular-vel" value="10" step="0.1" min="0">
+                            </div>
+                            <div class="result">
+                                <strong>Angular Momentum: <span id="angular-momentum-result">25</span> kg·m²/s</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
                     <h2 class="day-title">Day 3: Torque in Pitch Types</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🎯 Applied</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="concept-showcase">
+                    <h3>Torque Creates Spin</h3>
+                    <div class="concept-card comparison">
+                        <h4>Pitch Type Torque Patterns</h4>
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <h5>🔥 Fastball Torque</h5>
+                                <ul>
+                                    <li>Maximum shoulder internal rotation</li>
+                                    <li>Straight-line torque application</li>
+                                    <li>Creates pure backspin</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item">
+                                <h5>🌀 Curveball Torque</h5>
+                                <ul>
+                                    <li>Wrist supination + finger snap</li>
+                                    <li>Modified lever arm angle</li>
+                                    <li>Creates topspin rotation</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item">
+                                <h5>🎯 Slider Torque</h5>
+                                <ul>
+                                    <li>Diagonal torque application</li>
+                                    <li>Combination rotation pattern</li>
+                                    <li>Creates tilted spin axis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-4">
                 <div class="day-header">
                     <h2 class="day-title">Day 4: Laboratory Investigation</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🧪 Experimental</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="procedure-timeline">
+                    <h3>Week 7 Lab: Rotational Force Analysis</h3>
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📱</div>
+                        <div class="step-content">
+                            <h4>Pitch Recording</h4>
+                            <p>Capture different pitch types at 240fps, focusing on wrist and finger action</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🌀</div>
+                        <div class="step-content">
+                            <h4>Spin Analysis</h4>
+                            <p>Measure spin rates and calculate torques required for different pitch movements</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">⚖️</div>
+                        <div class="step-content">
+                            <h4>Conservation Testing</h4>
+                            <p>Analyze angular momentum transfer through kinetic chain sequences</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-5">
                 <div class="day-header">
                     <h2 class="day-title">Day 5: Pitch Design & Applications</h2>
+                    <div class="day-meta">
+                        <span class="duration">⏱️ 50 minutes</span>
+                        <span class="complexity">🎓 Synthesis</span>
+                    </div>
                 </div>
-                <p>...</p>
+
+                <div class="procedure-timeline">
+                    <h3>Final Challenge: Personal Pitch Design</h3>
+                    <div class="procedure-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">🎥</div>
+                        <div class="step-content">
+                            <h4>Torque Analysis</h4>
+                            <p>Record and analyze your torque generation across different pitch types</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🔬</div>
+                        <div class="step-content">
+                            <h4>Optimization Calculation</h4>
+                            <p>Calculate torques and identify efficiency improvements</p>
+                            <span class="step-duration">20 min</span>
+                        </div>
+                    </div>
+                    <div class="procedure-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🎨</div>
+                        <div class="step-content">
+                            <h4>Pitch Design</h4>
+                            <p>Design new pitch based on torque and angular momentum principles</p>
+                            <span class="step-duration">15 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-summary">
+                    <h3>Week 7 Summary: Key Concepts</h3>
+                    <div class="concepts-grid">
+                        <div class="concept-item">
+                            <h4>Torque</h4>
+                            <p>Rotational force (τ = r × F = rF sin θ), creates angular acceleration</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Moment of Inertia</h4>
+                            <p>Resistance to rotational acceleration (I = Σmr²), body position affects I</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Angular Momentum</h4>
+                            <p>Rotational momentum (L = Iω), conserved in closed systems</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Kinetic Chain Transfer</h4>
+                            <p>Sequential transfer from large I/low ω to small I/high ω</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Assessment Section -->
@@ -108,7 +363,53 @@
     <script type="module" src="../js/main.js"></script>
     <script src="../js/week-template.js"></script>
     <script>
-        // Week 7 specific JS
+        // Week 7 Torque and Angular Momentum Calculator JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Torque Calculator
+            const torqueForce = document.getElementById('torque-force');
+            const torqueRadius = document.getElementById('torque-radius');
+            const torqueAngle = document.getElementById('torque-angle');
+            const torqueResult = document.getElementById('torque-result');
+
+            function calculateTorque() {
+                if (torqueForce && torqueRadius && torqueAngle && torqueResult) {
+                    const force = parseFloat(torqueForce.value) || 0;
+                    const radius = parseFloat(torqueRadius.value) || 0;
+                    const angle = parseFloat(torqueAngle.value) || 0;
+                    const torque = force * radius * Math.sin(angle * Math.PI / 180);
+                    torqueResult.textContent = torque.toFixed(1);
+                }
+            }
+
+            if (torqueForce && torqueRadius && torqueAngle) {
+                torqueForce.addEventListener('input', calculateTorque);
+                torqueRadius.addEventListener('input', calculateTorque);
+                torqueAngle.addEventListener('input', calculateTorque);
+            }
+
+            // Angular Momentum Calculator
+            const momentInertia = document.getElementById('moment-inertia');
+            const angularVel = document.getElementById('angular-vel');
+            const angularMomentumResult = document.getElementById('angular-momentum-result');
+
+            function calculateAngularMomentum() {
+                if (momentInertia && angularVel && angularMomentumResult) {
+                    const I = parseFloat(momentInertia.value) || 0;
+                    const omega = parseFloat(angularVel.value) || 0;
+                    const L = I * omega;
+                    angularMomentumResult.textContent = L.toFixed(1);
+                }
+            }
+
+            if (momentInertia && angularVel) {
+                momentInertia.addEventListener('input', calculateAngularMomentum);
+                angularVel.addEventListener('input', calculateAngularMomentum);
+            }
+
+            // Initialize calculations
+            calculateTorque();
+            calculateAngularMomentum();
+        });
     </script>
 </body>
 </html>
