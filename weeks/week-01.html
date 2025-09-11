@@ -730,11 +730,11 @@
         import { QuizSystem, PracticeProblems } from '../js/assessment.js';
 
         // Initialize calculators
-        const calculators = new PhysicsCalculators();
+        const calculators = new VelocityCalculator();
         calculators.initVelocityCalculator();
 
         // Initialize assessment system
-        const assessmentSystem = new AssessmentSystem();
+        const assessmentSystem = new QuizSystem();
         await assessmentSystem.init();
         
         // Create quiz for week 1
@@ -749,9 +749,6 @@
         assessmentSystem.createLabReport('week1', 'Motion Analysis', 'lab-report');
 
         // Initialize Navigation
-        console.log('Attempting to initialize navigation...');
-        const navigation = new NavigationComponent();
-        console.log('Navigation component created:', navigation);
         const dailyLinks = [
             { href: '#day-1', icon: '🎯', title: 'What is Motion? Setting the Stage' },
             { href: '#day-2', icon: '📐', title: 'Displacement and Distance' },
