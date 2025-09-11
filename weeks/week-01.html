@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 1: Introduction to the Physics of Motion</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
-    <link rel="stylesheet" href="../src/styles/modern-theme.css">
-    <link rel="stylesheet" href="../src/styles/week-template.css">
-    <link rel="stylesheet" href="../src/styles/physics-calculators.css">
-    <link rel="stylesheet" href="../src/styles/assessment-system.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/calculators.css">
 </head>
 <body>
     <div class="container">
@@ -728,10 +726,8 @@
 
     <!-- JavaScript for Interactive Features -->
     <script type="module">
-        import { PhysicsCalculators } from '../src/components/calculators/physics-calculators.js';
-        import { AssessmentSystem } from '../src/components/assessment/assessment-system.js';
-        import { PracticeProblems } from '../src/components/assessment/practice-problems.js';
-        import { NavigationComponent } from '../src/components/navigation/navigation-component.js';
+        import { VelocityCalculator } from '../js/calculators.js';
+        import { QuizSystem, PracticeProblems } from '../js/assessment.js';
 
         // Initialize calculators
         const calculators = new PhysicsCalculators();

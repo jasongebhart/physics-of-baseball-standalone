@@ -1,0 +1,322 @@
+/**
+ * Calculator Styles
+ * Styling for interactive physics calculators
+ */
+
+/* Calculator Container */
+.calculator-container {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.calculator-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+/* Controls */
+.controls {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.slider-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.slider-container label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.slider-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Range Sliders */
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-light);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-webkit-slider-track {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-light);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-light);
+    border: none;
+}
+
+/* Checkboxes */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Canvas */
+canvas {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background: var(--surface);
+    margin: var(--spacing-lg) 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Results Display */
+.results {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.result-grid > div {
+    padding: var(--spacing-sm);
+    background: var(--background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-light);
+}
+
+.result-grid strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.formulas {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.formulas > div {
+    margin-bottom: var(--spacing-sm);
+    background: var(--border-light);
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+}
+
+/* Velocity Calculator */
+.velocity-calculator .result {
+    background: var(--success-color);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: var(--spacing-lg);
+}
+
+/* Baseball Diamond Visualization */
+.baseball-diamond {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.diamond-svg {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    display: block;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.diamond-controls {
+    text-align: center;
+}
+
+.diamond-controls h4 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.control-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.control-group select {
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.results-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-item {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.result-item .label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.result-item .value {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Animation for runner path */
+@keyframes dash {
+    from {
+        stroke-dashoffset: var(--path-length);
+        opacity: 0.3;
+    }
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .controls {
+        gap: var(--spacing-md);
+    }
+    
+    .slider-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .slider-value {
+        text-align: left;
+    }
+    
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    canvas {
+        height: 250px;
+    }
+    
+    .diamond-svg {
+        height: 300px;
+    }
+}
+
+/* Physics-specific enhancements */
+.trajectory-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+.trajectory-info > div {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: rgba(37, 99, 235, 0.05);
+    border-radius: 4px;
+}
+
+.physics-note {
+    background: var(--border-light);
+    border-left: 4px solid var(--primary-color);
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.physics-note strong {
+    color: var(--text-color);
+}

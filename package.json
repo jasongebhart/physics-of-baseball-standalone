@@ -1,37 +1,29 @@
 {
   "name": "physics-of-baseball",
   "version": "1.0.0",
-  "description": "Interactive physics of baseball educational web application",
+  "description": "Interactive physics of baseball educational web application - Modern Vanilla JavaScript",
   "type": "module",
   "scripts": {
-    "test": "vitest --config=config/vitest.config.js",
-    "test:ui": "vitest --ui --config=config/vitest.config.js",
-    "test:watch": "vitest --watch --config=config/vitest.config.js",
-    "test:coverage": "vitest --coverage --config=config/vitest.config.js",
-    "test:e2e": "playwright test --config=config/playwright.config.js",
-    "test:e2e:ui": "playwright test --ui --config=config/playwright.config.js",
-    "lighthouse:ci": "lhci autorun --config=config/lighthouserc.js",
-    "serve": "python -m http.server 8080",
-    "dev": "python -m http.server 8080"
+    "dev": "python -m http.server 8080",
+    "start": "python -m http.server 8080",
+    "test": "open tests/test-runner.html",
+    "serve": "python -m http.server 8080"
   },
   "keywords": [
     "physics",
-    "baseball",
+    "baseball", 
     "education",
-    "interactive"
+    "interactive",
+    "vanilla-js",
+    "modern-web"
   ],
   "author": "Your Name",
   "license": "MIT",
-  "devDependencies": {
-    "@axe-core/playwright": "^4.8.0",
-    "@lhci/cli": "^0.12.0",
-    "@playwright/test": "^1.40.0",
-    "@vitest/coverage-v8": "^1.0.0",
-    "@vitest/ui": "^1.0.0",
-    "jsdom": "^23.2.0",
-    "lighthouse": "^11.0.0",
-    "playwright": "^1.40.0",
-    "vitest": "^1.0.0",
-    "wait-on": "^8.0.4"
-  }
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
 }

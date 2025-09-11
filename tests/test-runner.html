@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Tests - Physics of Baseball</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .test-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .test-results {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .test-output {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .status {
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        
+        .status.running {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+        
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+        
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #f87171;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2563eb;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 Physics Tests</h1>
+        <p>Lightweight browser-based testing for physics calculations</p>
+    </div>
+
+    <div class="test-controls">
+        <button class="btn btn-primary" onclick="runTests()">Run All Tests</button>
+        <button class="btn btn-secondary" onclick="clearOutput()">Clear Output</button>
+    </div>
+
+    <div id="status-container"></div>
+    
+    <div class="test-results">
+        <h3>Test Output</h3>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <div class="stats" id="stats" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-value" id="passed-count">0</div>
+                <div class="stat-label">Passed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="failed-count">0</div>
+                <div class="stat-label">Failed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-count">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="duration">0s</div>
+                <div class="stat-label">Duration</div>
+            </div>
+        </div>
+        <div class="test-output" id="output"></div>
+    </div>
+
+    <script type="module">
+        import { test } from './physics.test.js';
+        
+        let originalConsole = {};
+        let testOutput = '';
+        let testStartTime = 0;
+        
+        function setupConsoleCapture() {
+            const outputElement = document.getElementById('output');
+            
+            // Capture console methods
+            originalConsole.log = console.log;
+            originalConsole.error = console.error;
+            originalConsole.warn = console.warn;
+            
+            console.log = (...args) => {
+                const message = args.join(' ');
+                testOutput += message + '\n';
+                outputElement.textContent = testOutput;
+                outputElement.scrollTop = outputElement.scrollHeight;
+                originalConsole.log(...args);
+            };
+            
+            console.error = (...args) => {
+                const message = args.join(' ');
+                testOutput += message + '\n';
+                outputElement.textContent = testOutput;
+                outputElement.scrollTop = outputElement.scrollHeight;
+                originalConsole.error(...args);
+            };
+        }
+        
+        function restoreConsole() {
+            console.log = originalConsole.log;
+            console.error = originalConsole.error;
+            console.warn = originalConsole.warn;
+        }
+        
+        function showStatus(message, type = 'running') {
+            const container = document.getElementById('status-container');
+            container.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function updateProgress(current, total) {
+            const progress = document.getElementById('progress');
+            const percentage = total > 0 ? (current / total) * 100 : 0;
+            progress.style.width = `${percentage}%`;
+        }
+        
+        function updateStats(results, duration) {
+            const statsEl = document.getElementById('stats');
+            const total = results.passed + results.failed;
+            
+            document.getElementById('passed-count').textContent = results.passed;
+            document.getElementById('failed-count').textContent = results.failed;
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('duration').textContent = `${duration}s`;
+            
+            statsEl.style.display = 'grid';
+        }
+        
+        window.runTests = async function() {
+            testOutput = '';
+            testStartTime = performance.now();
+            
+            showStatus('🔄 Running physics tests...', 'running');
+            setupConsoleCapture();
+            
+            try {
+                // Run the tests
+                const results = await test.run();
+                const duration = ((performance.now() - testStartTime) / 1000).toFixed(2);
+                
+                updateStats(results, duration);
+                updateProgress(results.passed + results.failed, results.passed + results.failed);
+                
+                if (results.failed === 0) {
+                    showStatus(`✅ All tests passed! (${results.passed} tests in ${duration}s)`, 'success');
+                } else {
+                    showStatus(`❌ ${results.failed} test(s) failed, ${results.passed} passed (${duration}s)`, 'error');
+                }
+                
+            } catch (error) {
+                showStatus(`❌ Test execution failed: ${error.message}`, 'error');
+                console.error('Test execution error:', error);
+            } finally {
+                restoreConsole();
+            }
+        };
+        
+        window.clearOutput = function() {
+            testOutput = '';
+            document.getElementById('output').textContent = '';
+            document.getElementById('status-container').innerHTML = '';
+            document.getElementById('stats').style.display = 'none';
+            document.getElementById('progress').style.width = '0%';
+        };
+        
+        // Auto-run tests on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                runTests();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
