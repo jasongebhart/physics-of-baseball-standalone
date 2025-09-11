@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" style="background: #f0f9ff;">
+  <!-- Background field -->
+  <rect width="400" height="200" fill="#22c55e" opacity="0.2"/>
+  
+  <!-- Pitcher's mound -->
+  <ellipse cx="200" cy="150" rx="30" ry="15" fill="#d4b084" opacity="0.8"/>
+  
+  <!-- Pitcher figure with rotational elements -->
+  <g transform="translate(200,120)">
+    <!-- Body -->
+    <ellipse rx="8" ry="15" fill="#1e40af" opacity="0.8"/>
+    <!-- Head -->
+    <circle cy="-20" r="6" fill="#fde047"/>
+    <!-- Arms showing rotation -->
+    <g stroke="#dc2626" stroke-width="3" fill="none">
+      <!-- Arm positions showing rotation -->
+      <path d="M -8,-5 Q -20,-15 -15,-25" opacity="0.3"/>
+      <path d="M -8,-5 Q -25,0 -30,10" opacity="0.5"/>
+      <path d="M -8,-5 Q -20,15 -10,25" opacity="0.7"/>
+      <path d="M -8,-5 Q 15,10 25,5" opacity="1.0"/>
+    </g>
+    
+    <!-- Rotation arrows -->
+    <g stroke="#dc2626" stroke-width="2" fill="none">
+      <path d="M -30,-10 A 20,20 0 0,1 -10,-30" marker-end="url(#arrowhead)"/>
+      <path d="M 10,-30 A 20,20 0 0,1 30,-10" marker-end="url(#arrowhead)"/>
+      <path d="M 30,10 A 20,20 0 0,1 10,30" marker-end="url(#arrowhead)"/>
+      <path d="M -10,30 A 20,20 0 0,1 -30,10" marker-end="url(#arrowhead)"/>
+    </g>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" 
+            refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc2626"/>
+    </marker>
+  </defs>
+  
+  <!-- Angular velocity indicators -->
+  <g stroke="#3b82f6" stroke-width="2" fill="none">
+    <circle cx="200" cy="120" r="50" opacity="0.3" stroke-dasharray="5,5"/>
+    <text x="260" y="125" font-size="10" fill="#3b82f6">ω (angular velocity)</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">
+    Rotational Motion: Pitcher's Windup
+  </text>
+  <text x="200" y="40" text-anchor="middle" font-size="12" fill="#6b7280">
+    Angular movement around body axis
+  </text>
+  
+  <!-- Physics notation -->
+  <text x="50" y="170" font-size="10" fill="#374151">
+    τ = Iα (torque = moment of inertia × angular acceleration)
+  </text>
+  
+</svg>
