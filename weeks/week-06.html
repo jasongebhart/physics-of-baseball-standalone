@@ -7,13 +7,20 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <link rel="stylesheet" href="../css/phase2-enhancements.css">
 </head>
 <body>
     <div class="container">
         <main class="main-content">
             <header class="week-header">
-                <h1 class="week-title">Week 6: Circular Motion and Angular Velocity</h1>
+                <div class="header-top">
+                    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                    </button>
+                    <h1 class="week-title">Week 6: Circular Motion and Angular Velocity</h1>
+                </div>
                 <p class="week-description">
                     This week, we'll explore rotational mechanics in pitching, examining how angular motion contributes to velocity generation and the kinetic chain sequence.
                 </p>
@@ -609,36 +616,224 @@
                 </div>
                 
                 <div class="tab-content active" id="quiz-tab">
-                    <div class="quiz-container">
-                        <div class="quiz-header">
-                            <h3>🧠 Week 6 Quiz: Circular Motion and Angular Velocity</h3>
-                            <div class="quiz-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="quiz-progress"></div>
-                                </div>
-                                <span class="progress-text">0 / 3</span>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>📝 Quiz Topics</h3>
+                            <div class="difficulty-badges">
+                                <span class="difficulty-badge basic">Basic</span>
+                                <span class="difficulty-badge intermediate">Intermediate</span>
+                                <span class="difficulty-badge advanced">Advanced</span>
                             </div>
                         </div>
-                        <div id="quiz-content"></div>
-                        <div id="quiz-results" style="display: none;"></div>
-                        <div class="quiz-actions">
-                            <button id="submit-quiz-btn" class="btn btn-primary">Submit Quiz</button>
-                            <button id="reset-quiz-btn" class="btn btn-secondary">Reset Quiz</button>
+                        
+                        <div class="topic-previews">
+                            <div class="topic-preview">
+                                <div class="preview-icon">🔄</div>
+                                <div class="preview-content">
+                                    <h4>Circular Motion Fundamentals</h4>
+                                    <p>Test understanding of circular motion concepts and their applications in baseball pitching mechanics.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">Angular Velocity</span>
+                                        <span class="tag">Centripetal Force</span>
+                                        <span class="tag">ω = v/r</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="topic-preview">
+                                <div class="preview-icon">🌀</div>
+                                <div class="preview-content">
+                                    <h4>Angular Kinematics</h4>
+                                    <p>Apply angular displacement, velocity, and acceleration concepts to analyze rotational pitching motion.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">Angular Displacement</span>
+                                        <span class="tag">Angular Acceleration</span>
+                                        <span class="tag">Rotational Mechanics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="topic-preview">
+                                <div class="preview-icon">⚾</div>
+                                <div class="preview-content">
+                                    <h4>Baseball Applications</h4>
+                                    <p>Analyze circular motion in pitching mechanics, arm rotation, and ball release optimization.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">Arm Rotation</span>
+                                        <span class="tag">Release Point</span>
+                                        <span class="tag">Linear-Angular Relations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Ready to test your knowledge?</p>
+                                <button class="btn btn-primary assessment-start-btn" id="start-quiz" aria-label="Start Week 6 Circular Motion Quiz">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🚀</span>
+                                    <span class="btn-text">Start Interactive Quiz</span>
+                                </button>
+                                <p class="assessment-info">16-20 questions • ~11 minutes</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="tab-content" id="practice-tab">
-                    <div class="practice-section">
-                        <h3>🎯 Practice Problems</h3>
-                        <div id="practice-problems"></div>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>🎯 Practice Problems</h3>
+                            <div class="difficulty-badges">
+                                <span class="difficulty-badge basic">Guided</span>
+                                <span class="difficulty-badge intermediate">Independent</span>
+                                <span class="difficulty-badge advanced">Challenge</span>
+                            </div>
+                        </div>
+                        
+                        <div class="problem-categories">
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">🔄</span>
+                                    <h4>Angular Motion Calculations</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set A:</strong> Calculate angular displacement, velocity, and acceleration in pitching scenarios.</p>
+                                    <ul class="problem-list">
+                                        <li>🌀 Angular velocity calculations for arm rotation</li>
+                                        <li>📐 Angular displacement measurements in pitching motion</li>
+                                        <li>⚡ Angular acceleration analysis during ball release</li>
+                                        <li>🔢 Converting between linear and angular quantities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">💫</span>
+                                    <h4>Centripetal Force Analysis</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set B:</strong> Apply centripetal force concepts to analyze forces in rotational pitching motion.</p>
+                                    <ul class="problem-list">
+                                        <li>🌟 Centripetal force calculations during arm rotation</li>
+                                        <li>💪 Forces required to maintain circular motion</li>
+                                        <li>🎯 Radius effects on centripetal force requirements</li>
+                                        <li>⚖️ Force analysis at different points in pitching arc</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">🏆</span>
+                                    <h4>Advanced Rotational Problems</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set C:</strong> Complex problems involving multiple rotational concepts and optimization.</p>
+                                    <ul class="problem-list">
+                                        <li>🔄 Multi-joint rotational analysis in pitching</li>
+                                        <li>⚙️ Optimization of angular velocities for maximum ball speed</li>
+                                        <li>📊 Comparative analysis of different pitching mechanics</li>
+                                        <li>🎛️ Advanced problems integrating circular motion with other concepts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Practice makes perfect!</p>
+                                <button class="btn btn-secondary assessment-start-btn" id="start-practice" aria-label="Start Week 6 Practice Problems">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🎯</span>
+                                    <span class="btn-text">Start Practice Problems</span>
+                                </button>
+                                <p class="assessment-info">4 circular motion problems • Detailed solutions</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tab-content" id="lab-tab">
-                    <div class="lab-section">
-                        <h3>🔬 Lab Report Template</h3>
-                        <div id="lab-report"></div>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>🔬 Laboratory Experiment</h3>
+                            <div class="lab-badges">
+                                <span class="lab-badge data">Data Collection</span>
+                                <span class="lab-badge analysis">Analysis</span>
+                                <span class="lab-badge report">Report Writing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-overview">
+                            <div class="lab-card">
+                                <div class="lab-header">
+                                    <span class="lab-icon">🌀</span>
+                                    <h4>Circular Motion and Angular Velocity in Baseball Pitching</h4>
+                                </div>
+                                <div class="lab-content">
+                                    <p><strong>Objective:</strong> Investigate rotational motion in baseball pitching and analyze the relationship between angular and linear velocities.</p>
+                                    
+                                    <div class="lab-sections">
+                                        <div class="lab-section">
+                                            <h5>📋 Pre-Lab Preparation</h5>
+                                            <ul>
+                                                <li>Review circular motion equations and angular kinematics</li>
+                                                <li>Set up high-speed cameras for rotational motion capture</li>
+                                                <li>Prepare angular velocity measurement equipment</li>
+                                                <li>Safety protocols for rotational motion analysis</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>🔬 Experimental Procedure</h5>
+                                            <ul>
+                                                <li>Record angular positions of arm segments throughout pitching</li>
+                                                <li>Measure angular velocities at key phases of motion</li>
+                                                <li>Calculate centripetal forces acting during rotation</li>
+                                                <li>Analyze relationship between angular velocity and ball speed</li>
+                                                <li>Compare rotational patterns across different pitch types</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>📊 Data Analysis</h5>
+                                            <ul>
+                                                <li>Calculate angular velocities using θ/t measurements</li>
+                                                <li>Apply v = ωr to determine linear velocities</li>
+                                                <li>Determine centripetal accelerations and forces</li>
+                                                <li>Create graphs showing angular velocity vs. time</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>📝 Lab Report Components</h5>
+                                            <ul>
+                                                <li>Introduction: Circular motion principles in biomechanics</li>
+                                                <li>Methods: Motion capture and angular measurement procedures</li>
+                                                <li>Results: Angular velocity data, calculations, and graphs</li>
+                                                <li>Discussion: Relationship between rotation and pitching performance</li>
+                                                <li>Conclusion: Applications for optimizing rotational mechanics</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Ready for hands-on investigation?</p>
+                                <button class="btn btn-accent assessment-start-btn" id="start-lab" aria-label="Start Week 6 Laboratory Investigation">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🔬</span>
+                                    <span class="btn-text">Start Lab Investigation</span>
+                                </button>
+                                <p class="assessment-info">Rotation analysis • Velocity measurements • Report writing</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -688,24 +883,178 @@
 
     <script type="module" src="../js/main.js"></script>
     <script src="../js/week-template.js"></script>
+    <script type="module" src="../js/interactive-learning.js"></script>
     <script type="module">
         import { VelocityCalculator } from '../js/calculators.js';
         import { QuizSystem } from '../js/assessment.js';
-        import { PracticeProblems } from '../js/assessment.js';
 
         // Initialize assessment system
-        const assessmentSystem = new QuizSystem();
-        await assessmentSystem.init();
-        
-        // Create quiz for week 6
-        assessmentSystem.createQuiz('week6', 'quiz-content');
-        
-        // Initialize practice problems
-        const practiceProblems = new PracticeProblems();
-        practiceProblems.createProblems('week6', 'practice-problems');
-        
-        // Create lab report template
-        assessmentSystem.createLabReport('week6', 'Circular Motion Analysis', 'lab-report');
+        const quizSystem = new QuizSystem();
+
+        // Assessment button handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quiz functionality
+            const startQuizBtn = document.getElementById('start-quiz');
+            if (startQuizBtn) {
+                startQuizBtn.addEventListener('click', async function() {
+                    const spinner = this.querySelector('.loading-spinner');
+                    if (spinner) spinner.style.display = 'inline-block';
+                    this.disabled = true;
+                    
+                    try {
+                        const quizTab = document.getElementById('quiz-tab');
+                        quizTab.innerHTML = '<div id="week6-quiz-container"></div>';
+                        
+                        // Import and use Enhanced Quiz System
+                        const { EnhancedQuizSystem } = await import('../js/enhanced-assessment.js');
+                        const enhancedQuizSystem = new EnhancedQuizSystem('week6-quiz-container');
+                        await enhancedQuizSystem.createQuiz('week6');
+                        
+                        document.querySelector('[data-tab="quiz"]').click();
+                    } catch (error) {
+                        console.error('Failed to load quiz:', error);
+                        alert('Failed to load quiz. Please try again.');
+                    } finally {
+                        if (spinner) spinner.style.display = 'none';
+                        this.disabled = false;
+                    }
+                });
+            }
+            
+            // Practice problems functionality
+            const startPracticeBtn = document.getElementById('start-practice');
+            if (startPracticeBtn) {
+                startPracticeBtn.addEventListener('click', function() {
+                    const practiceTab = document.getElementById('practice-tab');
+                    practiceTab.innerHTML = `
+                        <div class="practice-problems">
+                            <h3>🎯 Week 6 Practice Problems: Circular Motion and Angular Velocity</h3>
+                            <div class="problem-set">
+                                <div class="problem-card">
+                                    <h4>Problem 1: Angular Velocity Calculations</h4>
+                                    <p>A pitcher's arm rotates through 270° in 0.15 seconds during the acceleration phase of a pitch. Calculate:</p>
+                                    <ol>
+                                        <li>The angular velocity in degrees per second</li>
+                                        <li>The angular velocity in radians per second</li>
+                                        <li>If the effective arm length is 0.65 m, what is the linear velocity at ball release?</li>
+                                    </ol>
+                                    <button class="btn btn-small toggle-solution">Show Solution</button>
+                                    <div class="solution" style="display: none;">
+                                        <p><strong>Solution:</strong></p>
+                                        <p>Given: θ = 270°, t = 0.15 s, r = 0.65 m</p>
+                                        <p>1. ω = θ/t = 270°/0.15 s = 1800°/s</p>
+                                        <p>2. Converting to rad/s: ω = 1800° × (π/180°) = 31.4 rad/s</p>
+                                        <p>3. Linear velocity: v = ωr = 31.4 × 0.65 = 20.4 m/s (45.7 mph)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="problem-card">
+                                    <h4>Problem 2: Centripetal Force Analysis</h4>
+                                    <p>A baseball (mass 0.145 kg) follows a circular path with radius 0.6 m at a speed of 35 m/s during the pitching motion. Calculate:</p>
+                                    <ol>
+                                        <li>The centripetal acceleration of the ball</li>
+                                        <li>The centripetal force required to maintain this circular motion</li>
+                                        <li>How would doubling the velocity affect the centripetal force?</li>
+                                    </ol>
+                                    <button class="btn btn-small toggle-solution">Show Solution</button>
+                                    <div class="solution" style="display: none;">
+                                        <p><strong>Solution:</strong></p>
+                                        <p>Given: m = 0.145 kg, r = 0.6 m, v = 35 m/s</p>
+                                        <p>1. Centripetal acceleration: a_c = v²/r = 35²/0.6 = 2042 m/s²</p>
+                                        <p>2. Centripetal force: F_c = ma_c = 0.145 × 2042 = 296 N</p>
+                                        <p>3. If v doubles: F_c = m(2v)²/r = 4mv²/r = 4 × 296 = 1184 N (force quadruples!)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="problem-card">
+                                    <h4>Problem 3: Optimization Problem</h4>
+                                    <p>Two pitchers have different arm lengths. Pitcher A has an effective arm length of 0.55 m, Pitcher B has 0.70 m. Both achieve the same angular velocity of 120 rad/s. Calculate:</p>
+                                    <ol>
+                                        <li>The ball speed for each pitcher using v = ωr</li>
+                                        <li>Which pitcher has the advantage and by what percentage?</li>
+                                        <li>What angular velocity would Pitcher A need to match Pitcher B's ball speed?</li>
+                                    </ol>
+                                    <button class="btn btn-small toggle-solution">Show Solution</button>
+                                    <div class="solution" style="display: none;">
+                                        <p><strong>Solution:</strong></p>
+                                        <p>Given: r_A = 0.55 m, r_B = 0.70 m, ω = 120 rad/s</p>
+                                        <p>1. v_A = ωr_A = 120 × 0.55 = 66 m/s (148 mph)</p>
+                                        <p>   v_B = ωr_B = 120 × 0.70 = 84 m/s (188 mph)</p>
+                                        <p>2. Pitcher B has advantage: (84-66)/66 × 100% = 27.3% faster</p>
+                                        <p>3. For equal speeds: ω_A = v_B/r_A = 84/0.55 = 153 rad/s</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add solution toggle functionality
+                    document.querySelectorAll('.toggle-solution').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const solution = this.nextElementSibling;
+                            const isVisible = solution.style.display !== 'none';
+                            solution.style.display = isVisible ? 'none' : 'block';
+                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
+                        });
+                    });
+                    
+                    document.querySelector('[data-tab="practice"]').click();
+                });
+            }
+            
+            // Lab functionality
+            const startLabBtn = document.getElementById('start-lab');
+            if (startLabBtn) {
+                startLabBtn.addEventListener('click', function() {
+                    const labTab = document.getElementById('lab-tab');
+                    labTab.innerHTML = `
+                        <div class="lab-container">
+                            <h3>🔬 Week 6 Lab: Circular Motion and Angular Velocity</h3>
+                            <div class="lab-report-template">
+                                <h4>Lab Report Template</h4>
+                                <div class="lab-section">
+                                    <h5>Objective</h5>
+                                    <p>Investigate rotational motion in baseball pitching and analyze the relationship between angular velocity, radius, and linear velocity using the v = ωr relationship.</p>
+                                </div>
+                                <div class="lab-section">
+                                    <h5>Materials</h5>
+                                    <ul>
+                                        <li>High-speed camera (240 fps or higher)</li>
+                                        <li>Motion analysis software with angle measurement tools</li>
+                                        <li>Radar gun for velocity verification</li>
+                                        <li>Measuring tape for radius measurements</li>
+                                        <li>Baseballs and pitching equipment</li>
+                                        <li>Protractor or digital angle measurement tools</li>
+                                    </ul>
+                                </div>
+                                <div class="lab-section">
+                                    <h5>Procedure</h5>
+                                    <ol>
+                                        <li>Set up high-speed camera to capture pitching motion from side view</li>
+                                        <li>Measure effective arm length (shoulder to ball release point)</li>
+                                        <li>Record multiple pitches at high frame rate</li>
+                                        <li>Analyze video frame by frame to measure angular displacement</li>
+                                        <li>Calculate angular velocities during different phases of pitching</li>
+                                        <li>Use v = ωr to predict ball velocities</li>
+                                        <li>Compare calculated velocities with radar gun measurements</li>
+                                        <li>Calculate centripetal forces acting during arm rotation</li>
+                                    </ol>
+                                </div>
+                                <div class="lab-section">
+                                    <h5>Data Analysis</h5>
+                                    <p>Create graphs of angular velocity vs. time throughout the pitching motion. Calculate the relationship between angular velocity and final ball speed. Determine centripetal accelerations and forces at peak rotation. Compare experimental v = ωr results with radar measurements.</p>
+                                </div>
+                                <div class="lab-section">
+                                    <h5>Expected Results</h5>
+                                    <p>Angular velocities should peak near ball release (7000-9000°/s for elite pitchers). The v = ωr relationship should closely predict actual ball speeds. Centripetal forces should be substantial (hundreds of Newtons) during peak rotation phases.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.querySelector('[data-tab="lab"]').click();
+                });
+            }
+        });
 
         // Tab functionality
         document.querySelectorAll('.tab-button').forEach(button => {
@@ -799,6 +1148,61 @@
             calculateAngularVelocity();
             calculateLinearVelocity();
             calculateCentripetalForce();
+        });
+    </script>
+    
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+    
+    <script>
+        // Mobile Navigation Toggle - Phase 1 Critical Fix
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navSidebar = document.querySelector('.nav-sidebar');
+            const navOverlay = document.getElementById('nav-overlay');
+            
+            if (!navToggle || !navSidebar || !navOverlay) return;
+            
+            function toggleNav() {
+                const isOpen = navSidebar.classList.contains('open');
+                
+                if (isOpen) {
+                    navSidebar.classList.remove('open');
+                    navOverlay.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                } else {
+                    navSidebar.classList.add('open');
+                    navOverlay.classList.add('active');
+                    navToggle.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Focus management
+                    const firstFocusable = navSidebar.querySelector('a, button');
+                    if (firstFocusable) firstFocusable.focus();
+                }
+            }
+            
+            // Toggle button click
+            navToggle.addEventListener('click', toggleNav);
+            
+            // Overlay click to close
+            navOverlay.addEventListener('click', toggleNav);
+            
+            // Escape key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navSidebar.classList.contains('open')) {
+                    toggleNav();
+                    navToggle.focus();
+                }
+            });
+            
+            // Close on navigation link click (mobile)
+            navSidebar.addEventListener('click', function(e) {
+                if (e.target.matches('a') && window.innerWidth <= 768) {
+                    toggleNav();
+                }
+            });
         });
     </script>
 </body>

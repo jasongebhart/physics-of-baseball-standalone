@@ -58,6 +58,11 @@ export function createCanvas(container, width = 500, height = 300) {
 export class ProjectileCalculator {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+        if (!this.container) {
+            console.warn(`ProjectileCalculator: Container with id '${containerId}' not found`);
+            return;
+        }
+        
         this.velocity = 30; // m/s
         this.angle = 25; // degrees
         this.height = 1.8; // meters
@@ -67,6 +72,8 @@ export class ProjectileCalculator {
     }
     
     init() {
+        if (!this.container) return;
+        
         this.container.innerHTML = `
             <h3>⚾ Projectile Motion Calculator</h3>
             <div class="controls"></div>
@@ -178,6 +185,11 @@ export class ProjectileCalculator {
 export class EnergyCalculator {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+        if (!this.container) {
+            console.warn(`EnergyCalculator: Container with id '${containerId}' not found`);
+            return;
+        }
+        
         this.mass = PHYSICS_CONSTANTS.BASEBALL_MASS;
         this.velocity = 40;
         this.height = 2;
@@ -188,6 +200,8 @@ export class EnergyCalculator {
     }
     
     init() {
+        if (!this.container) return;
+        
         this.container.innerHTML = `
             <h3>⚡ Energy & Work Calculator</h3>
             <div class="controls"></div>
@@ -245,10 +259,16 @@ export class EnergyCalculator {
 export class VelocityCalculator {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+        if (!this.container) {
+            console.warn(`VelocityCalculator: Container with id '${containerId}' not found`);
+            return;
+        }
         this.init();
     }
     
     init() {
+        if (!this.container) return;
+        
         this.container.innerHTML = `
             <h3>🏃‍♂️ Velocity Calculator</h3>
             <div class="input-group">

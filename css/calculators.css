@@ -1,7 +1,25 @@
 /**
  * Calculator Styles
  * Styling for interactive physics calculators
+ * Uses CSS variables from main.css
  */
+
+/* Import variables from main.css or define fallbacks */
+:root {
+    /* Fallback variables for calculators.css */
+    --background: var(--color-surface, #ffffff);
+    --surface: var(--color-surface-elevated, #f8f9fa);
+    --border: var(--color-outline, #e0e0e0);
+    --border-radius: var(--radius-md, 0.5rem);
+    --primary-color: var(--color-primary, #1976d2);
+    --secondary-color: var(--color-secondary, #ffa726);
+    --text-color: var(--color-on-surface, #333333);
+    --spacing-xs: var(--space-xs, 0.25rem);
+    --spacing-sm: var(--space-sm, 0.5rem);
+    --spacing-md: var(--space-md, 1rem);
+    --spacing-lg: var(--space-lg, 1.618rem);
+    --spacing-xl: var(--space-xl, 2.618rem);
+}
 
 /* Calculator Container */
 .calculator-container {
@@ -175,12 +193,25 @@ canvas {
 }
 
 /* Baseball Diamond Visualization */
+/* Enhanced Baseball Diamond Container */
+.baseball-diamond-container {
+    background: linear-gradient(135deg, 
+        color-mix(in srgb, var(--color-accent) 15%, transparent),
+        color-mix(in srgb, var(--color-secondary) 10%, transparent));
+    border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    margin: var(--space-xl) 0;
+    box-shadow: var(--shadow-elevation-2);
+    position: relative;
+}
+
 .baseball-diamond {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
+    background: var(--color-surface);
+    border: 2px solid var(--color-outline);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .diamond-svg {
@@ -191,39 +222,194 @@ canvas {
     margin: 0 auto var(--spacing-lg);
 }
 
+/* Enhanced Diamond Controls */
 .diamond-controls {
     text-align: center;
+    margin-top: var(--space-xl);
 }
 
 .diamond-controls h4 {
-    margin-bottom: var(--spacing-md);
-    color: var(--primary-color);
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
 }
 
+.diamond-controls h4::before {
+    content: '📊';
+    font-size: var(--font-size-lg);
+}
+
+/* Enhanced Control Groups */
 .control-group {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--space-xl);
+    background: var(--color-surface-elevated);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-outline-variant);
 }
 
 .control-group label {
     display: block;
-    margin-bottom: var(--spacing-sm);
-    font-weight: 500;
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
 }
 
 .control-group select {
-    max-width: 200px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
     display: block;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-outline);
+    background: var(--color-surface);
+    color: var(--color-on-surface);
+    font-size: var(--font-size-base);
+    transition: all var(--duration-normal) var(--easing);
 }
 
+.control-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* Enhanced Results Display with Better Spacing */
 .results-display {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-md);
-    margin: var(--spacing-lg) 0;
-    max-width: 600px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin: var(--space-2xl) 0;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    padding: var(--space-lg);
+}
+
+.result-item {
+    background: var(--color-surface-elevated);
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-outline-variant);
+    text-align: center;
+    position: relative;
+    transition: transform var(--duration-normal) var(--easing);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: var(--shadow-elevation-1);
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevation-2);
+}
+
+.result-item .label {
+    display: block;
+    font-size: var(--font-size-base);
+    color: var(--color-on-surface-variant);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.result-item .value {
+    display: block;
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: var(--space-md);
+    line-height: 1.2;
+}
+
+/* Baseball Animation Styles */
+@keyframes dash {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes runner-move {
+    0% {
+        offset-distance: 0%;
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        offset-distance: 100%;
+        transform: scale(1);
+    }
+}
+
+/* Animate Runner Button Enhancement */
+#animate-runner {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border: none;
+    color: white;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--easing);
+    margin-top: var(--space-lg);
+    box-shadow: var(--shadow-elevation-1);
+}
+
+#animate-runner:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevation-3);
+}
+
+#animate-runner:active {
+    transform: translateY(0);
+}
+
+#animate-runner:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive Improvements for Results Display */
+@media (max-width: 768px) {
+    .results-display {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        margin: var(--space-xl) 0;
+        padding: var(--space-md);
+        max-width: 100%;
+    }
+    
+    .result-item {
+        padding: var(--space-lg);
+        min-height: 100px;
+    }
+    
+    .result-item .label {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--space-sm);
+    }
+    
+    .result-item .value {
+        font-size: var(--font-size-xl);
+        margin-top: var(--space-sm);
+    }
 }
 
 .result-item {

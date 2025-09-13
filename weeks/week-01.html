@@ -7,6 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
+    <link rel="stylesheet" href="../css/phase2-enhancements.css">
 </head>
 <body>
     <div class="container">
@@ -183,18 +184,48 @@
                     <!-- Interactive Baseball Diamond Calculator -->
                     <div class="interactive-section">
                         <h3>⚾ Interactive Baseball Diamond</h3>
-                        <div class="baseball-diamond-container">
+                        <div class="baseball-diamond-container" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(255, 167, 38, 0.1)); border: 1px solid rgba(33, 150, 243, 0.2); border-radius: 1rem; padding: 2rem; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                             <svg class="baseball-diamond" viewBox="0 0 400 400" width="400" height="400">
-                                <!-- Diamond outline -->
+                                <!-- Gradient definitions -->
+                                <defs>
+                                    <radialGradient id="fieldGradient" cx="50%" cy="50%" r="70%">
+                                        <stop offset="0%" style="stop-color:#a8e6cf;stop-opacity:0.8"/>
+                                        <stop offset="100%" style="stop-color:#88d8a3;stop-opacity:0.9"/>
+                                    </radialGradient>
+                                    <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"/>
+                                        <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1"/>
+                                    </linearGradient>
+                                    <radialGradient id="moundGradient" cx="50%" cy="30%" r="60%">
+                                        <stop offset="0%" style="stop-color:#cd853f;stop-opacity:1"/>
+                                        <stop offset="100%" style="stop-color:#8b4513;stop-opacity:1"/>
+                                    </radialGradient>
+                                </defs>
+                                
+                                <!-- Enhanced Diamond outline with shadow -->
                                 <polygon points="200,50 350,200 200,350 50,200" 
-                                         fill="#90EE90" stroke="#8B4513" stroke-width="3" opacity="0.8"/>
-                                <!-- Bases -->
-                                <rect x="195" y="345" width="10" height="10" fill="white" stroke="#000" stroke-width="1"/>
-                                <rect x="195" y="45" width="10" height="10" fill="white" stroke="#000" stroke-width="1"/>
-                                <rect x="45" y="195" width="10" height="10" fill="white" stroke="#000" stroke-width="1"/>
-                                <rect x="345" y="195" width="10" height="10" fill="white" stroke="#000" stroke-width="1"/>
-                                <!-- Pitcher's mound -->
-                                <circle cx="200" cy="200" r="8" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                         fill="url(#fieldGradient)" stroke="#6b8e23" stroke-width="4" 
+                                         filter="drop-shadow(2px 2px 4px rgba(0,0,0,0.3))"/>
+                                
+                                <!-- Base paths (90-foot baselines) -->
+                                <line x1="200" y1="350" x2="350" y2="200" stroke="#deb887" stroke-width="2" opacity="0.6"/>
+                                <line x1="350" y1="200" x2="200" y2="50" stroke="#deb887" stroke-width="2" opacity="0.6"/>
+                                <line x1="200" y1="50" x2="50" y2="200" stroke="#deb887" stroke-width="2" opacity="0.6"/>
+                                <line x1="50" y1="200" x2="200" y2="350" stroke="#deb887" stroke-width="2" opacity="0.6"/>
+                                
+                                <!-- Enhanced Bases -->
+                                <rect x="192" y="342" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                      stroke="#333" stroke-width="2" transform="rotate(45 200 350)"/>
+                                <rect x="192" y="42" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                      stroke="#333" stroke-width="2" transform="rotate(45 200 50)"/>
+                                <rect x="42" y="192" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                      stroke="#333" stroke-width="2" transform="rotate(45 50 200)"/>
+                                <rect x="342" y="192" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                      stroke="#333" stroke-width="2" transform="rotate(45 350 200)"/>
+                                
+                                <!-- Enhanced Pitcher's mound -->
+                                <circle cx="200" cy="200" r="12" fill="url(#moundGradient)" stroke="#654321" stroke-width="2"/>
+                                <circle cx="200" cy="200" r="8" fill="none" stroke="#654321" stroke-width="1" opacity="0.5"/>
                                 <!-- Base labels -->
                                 <text x="200" y="375" text-anchor="middle" font-size="12" fill="#000">Home</text>
                                 <text x="200" y="35" text-anchor="middle" font-size="12" fill="#000">2nd</text>
@@ -203,13 +234,32 @@
                                 <text x="200" y="185" text-anchor="middle" font-size="10" fill="#000">Pitcher</text>
                                 <!-- Runner path (will be drawn by JavaScript) -->
                                 <path id="runner-path" stroke="#ff6b6b" stroke-width="4" fill="none" opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                
+                                <!-- Simple Visible Animated Runner -->
+                                <g id="animated-runner">
+                                    <!-- Large visible runner circle -->
+                                    <circle r="12" fill="#FF5722" stroke="#FFFFFF" stroke-width="3" opacity="0">
+                                        <animateMotion id="runner-motion" dur="4s" repeatCount="1" begin="indefinite" rotate="auto">
+                                            <mpath href="#runner-path"/>
+                                        </animateMotion>
+                                    </circle>
+                                    
+                                    <!-- Runner number -->
+                                    <text text-anchor="middle" dy="4" font-size="8" fill="white" font-weight="bold" opacity="0">
+                                        🏃
+                                        <animateMotion id="runner-emoji" dur="4s" repeatCount="1" begin="indefinite" rotate="auto">
+                                            <mpath href="#runner-path"/>
+                                        </animateMotion>
+                                    </text>
+                                </g>
+                                
                                 <!-- Distance lines -->
                                 <line id="distance-line" stroke="#4ECDC4" stroke-width="2" opacity="0"/>
                                 <line id="displacement-line" stroke="#45B7D1" stroke-width="3" stroke-dasharray="5,5" opacity="0"/>
                             </svg>
                             
-                            <div class="diamond-controls">
-                                <h4>Baseball Distance vs Displacement Calculator</h4>
+                            <div class="diamond-controls" style="text-align: center; margin-top: 2rem;">
+                                <h4 style="margin-bottom: 1.5rem; color: #1976d2; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">📊 Baseball Distance vs Displacement Calculator</h4>
                                 <div class="control-group">
                                     <label>Scenario:</label>
                                     <select id="base-scenario">
@@ -235,7 +285,7 @@
                                         <span id="difference" class="value">0 ft</span>
                                     </div>
                                 </div>
-                                <button id="animate-runner" class="btn btn-primary">Animate Runner 🏃‍♂️</button>
+                                <button id="animate-runner" onclick="console.log('Inline onclick triggered'); animateRunner();" style="background: linear-gradient(135deg, #1976d2, #4caf50); border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-size: 1.125rem; font-weight: 600; cursor: pointer; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: all 0.25s ease;">Animate Runner 🏃‍♂️</button>
                             </div>
                         </div>
                     </div>
@@ -245,7 +295,12 @@
                         <h3>🎭 Types of Motion in Baseball</h3>
                         <div class="motion-grid">
                             <div class="motion-card">
-                                <img src="../images/motion/linear-motion-pitch.jpg" alt="Linear motion during a fastball pitch" class="motion-image"/>
+                                <div class="motion-image-placeholder linear-motion">
+                                    <div class="motion-icon">➡️</div>
+                                    <div class="motion-visual">
+                                        <div class="linear-arrow"></div>
+                                    </div>
+                                </div>
                                 <div class="motion-info">
                                     <h4>Linear Motion</h4>
                                     <p>Motion in a straight line, such as a fastball traveling from pitcher to catcher</p>
@@ -253,7 +308,12 @@
                                 </div>
                             </div>
                             <div class="motion-card">
-                                <img src="../images/motion/rotational-motion-windup.jpg" alt="Rotational motion during pitcher's windup" class="motion-image"/>
+                                <div class="motion-image-placeholder rotational-motion">
+                                    <div class="motion-icon">🔄</div>
+                                    <div class="motion-visual">
+                                        <div class="rotation-circle"></div>
+                                    </div>
+                                </div>
                                 <div class="motion-info">
                                     <h4>Rotational Motion</h4>
                                     <p>Motion around an axis, such as a pitcher's arm rotation during windup</p>
@@ -261,7 +321,12 @@
                                 </div>
                             </div>
                             <div class="motion-card">
-                                <img src="../images/motion/projectile-motion-arc.jpg" alt="Projectile motion of a home run ball" class="motion-image"/>
+                                <div class="motion-image-placeholder projectile-motion">
+                                    <div class="motion-icon">📈</div>
+                                    <div class="motion-visual">
+                                        <div class="projectile-arc"></div>
+                                    </div>
+                                </div>
                                 <div class="motion-info">
                                     <h4>Projectile Motion</h4>
                                     <p>Curved motion under gravity's influence, such as the arc of a fly ball</p>
@@ -269,7 +334,12 @@
                                 </div>
                             </div>
                             <div class="motion-card">
-                                <img src="../images/motion/combined-motion-slider.jpg" alt="Combined linear and rotational motion" class="motion-image"/>
+                                <div class="motion-image-placeholder combined-motion">
+                                    <div class="motion-icon">🌀</div>
+                                    <div class="motion-visual">
+                                        <div class="combined-motion-visual"></div>
+                                    </div>
+                                </div>
                                 <div class="motion-info">
                                     <h4>Combined Motion</h4>
                                     <p>Motion involving both linear and rotational components simultaneously</p>
@@ -406,76 +476,155 @@
             <!-- Day 4: Advanced Motion Analysis -->
             <section class="day-section" id="day-4">
                 <div class="day-header">
-                    <h2 class="day-title">Day 4: Advanced Motion Analysis</h2>
+                    <h2 class="day-title">Day 4: Advanced Motion Analysis & Data Interpretation</h2>
                     <div class="day-meta">
-                        <span class="duration">50 minutes</span>
+                        <span class="duration">60 minutes</span>
                         <span class="complexity">Advanced</span>
+                        <span class="focus">Data Analysis</span>
                     </div>
                 </div>
                 
                 <div class="day-content">
-                    <h3>🎯 Key Topics</h3>
-                    <div class="topics-grid">
-                        <div class="topic-card">
-                            <span class="topic-icon">📊</span>
-                            <div class="topic-info">
-                                <h4>Graphical Analysis</h4>
-                                <p>Interpret position-time and velocity-time graphs for baseball motion.</p>
+                    <!-- Enhanced Learning Objectives -->
+                    <div class="objectives-overview advanced-objectives">
+                        <h3>🎯 Advanced Learning Objectives</h3>
+                        <ul>
+                            <li>Master graphical analysis techniques for position-time and velocity-time graphs</li>
+                            <li>Calculate derivatives and integrals from motion graphs to find velocity and displacement</li>
+                            <li>Apply error analysis methods to real baseball measurement data</li>
+                            <li>Compare theoretical physics models with actual game statistics</li>
+                        </ul>
+                    </div>
+
+                    <!-- Key Concepts with Enhanced Visual Design -->
+                    <h3>🧠 Advanced Analysis Methods</h3>
+                    <div class="advanced-topics-grid">
+                        <div class="advanced-topic-card kinematics-card">
+                            <div class="topic-header">
+                                <span class="topic-icon">📊</span>
+                                <h4>Kinematic Equations</h4>
+                            </div>
+                            <div class="topic-content">
+                                <div class="equation-display">
+                                    <p><strong>v = u + at</strong></p>
+                                    <p><strong>s = ut + ½at²</strong></p>
+                                    <p><strong>v² = u² + 2as</strong></p>
+                                </div>
+                                <p>Apply these fundamental equations to analyze baseball trajectories and predict ball positions.</p>
+                                <div class="real-world-example">
+                                    <span class="example-icon">⚾</span>
+                                    <span>Example: Predicting where a fly ball will land</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="topic-card">
-                            <span class="topic-icon">🔍</span>
-                            <div class="topic-info">
-                                <h4>Precision Measurement</h4>
-                                <p>Use advanced techniques to measure motion with higher accuracy.</p>
+
+                        <div class="advanced-topic-card calculus-card">
+                            <div class="topic-header">
+                                <span class="topic-icon">📈</span>
+                                <h4>Calculus Applications</h4>
+                            </div>
+                            <div class="topic-content">
+                                <div class="calculus-concepts">
+                                    <p><strong>Derivatives:</strong> Position → Velocity → Acceleration</p>
+                                    <p><strong>Integrals:</strong> Acceleration → Velocity → Position</p>
+                                </div>
+                                <p>Use calculus to find instantaneous rates of change and areas under curves.</p>
+                                <div class="real-world-example">
+                                    <span class="example-icon">📊</span>
+                                    <span>Example: Finding max velocity from position data</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="topic-card">
-                            <span class="topic-icon">📈</span>
-                            <div class="topic-info">
-                                <h4>Data Analysis</h4>
-                                <p>Analyze patterns in motion data and identify trends.</p>
+
+                        <div class="advanced-topic-card statistics-card">
+                            <div class="topic-header">
+                                <span class="topic-icon">🔍</span>
+                                <h4>Statistical Analysis</h4>
+                            </div>
+                            <div class="topic-content">
+                                <div class="stats-methods">
+                                    <p><strong>Uncertainty Analysis:</strong> ±measurement errors</p>
+                                    <p><strong>Regression Analysis:</strong> Best-fit lines and curves</p>
+                                    <p><strong>Error Propagation:</strong> How errors compound</p>
+                                </div>
+                                <p>Quantify measurement precision and identify sources of experimental error.</p>
+                                <div class="real-world-example">
+                                    <span class="example-icon">🎯</span>
+                                    <span>Example: Analyzing radar gun accuracy</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="concept-showcase">
-                        <h3>🔑 Motion Graphs: Advanced Analysis</h3>
-                        <div class="concept-comparison">
-                            <div class="concept-item">
-                                <h4>Position-Time Graphs</h4>
-                                <p><strong>Show how position changes over time</strong></p>
-                                <p><em>Slope = velocity</em></p>
-                            </div>
-                            <div class="concept-item">
-                                <h4>Velocity-Time Graphs</h4>
-                                <p><strong>Show how velocity changes over time</strong></p>
-                                <p><em>Slope = acceleration, Area = displacement</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>🏃‍♂️ Activities</h3>
-                    <div class="activities-timeline">
-                        <div class="activity-item">
+
+                    <!-- Interactive Activities with Enhanced Design -->
+                    <h3>🔬 Hands-On Analysis Activities</h3>
+                    <div class="enhanced-activities-grid">
+                        <div class="enhanced-activity-item lab-activity">
+                            <div class="activity-badge">Lab</div>
                             <div class="activity-icon">📊</div>
                             <div class="activity-content">
-                                <h4>Graph Interpretation (20 min)</h4>
-                                <p>Analyze real motion graphs from baseball plays and identify key features.</p>
+                                <h4>Professional Graph Analysis (25 min)</h4>
+                                <p><strong>Challenge:</strong> Analyze real MLB Statcast data to determine launch angles and exit velocities from position-time graphs.</p>
+                                <div class="activity-details">
+                                    <div class="detail-item">
+                                        <span class="detail-icon">🎯</span>
+                                        <span>Use slope calculations to find instantaneous velocity</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">📈</span>
+                                        <span>Calculate area under velocity curves for displacement</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">🏆</span>
+                                        <span>Compare your analysis to official MLB data</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="activity-item">
+
+                        <div class="enhanced-activity-item research-activity">
+                            <div class="activity-badge">Research</div>
                             <div class="activity-icon">🔍</div>
                             <div class="activity-content">
-                                <h4>Error Analysis (20 min)</h4>
-                                <p>Examine sources of measurement error and methods to minimize uncertainty.</p>
+                                <h4>Error Analysis Investigation (20 min)</h4>
+                                <p><strong>Mission:</strong> Identify and quantify sources of measurement uncertainty in baseball analytics.</p>
+                                <div class="activity-details">
+                                    <div class="detail-item">
+                                        <span class="detail-icon">⚾</span>
+                                        <span>Examine radar gun precision vs. video analysis</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">🌤️</span>
+                                        <span>Consider environmental factors (wind, temperature)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">📊</span>
+                                        <span>Calculate confidence intervals for measurements</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">📈</div>
+
+                        <div class="enhanced-activity-item challenge-activity">
+                            <div class="activity-badge">Challenge</div>
+                            <div class="activity-icon">🧮</div>
                             <div class="activity-content">
-                                <h4>Data Comparison (10 min)</h4>
-                                <p>Compare theoretical predictions with experimental measurements.</p>
+                                <h4>Predictive Modeling Challenge (15 min)</h4>
+                                <p><strong>Goal:</strong> Create mathematical models to predict ball trajectories and validate against real game data.</p>
+                                <div class="activity-details">
+                                    <div class="detail-item">
+                                        <span class="detail-icon">🎯</span>
+                                        <span>Build kinematic equations for specific scenarios</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">📈</span>
+                                        <span>Test model accuracy against known outcomes</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-icon">🏅</span>
+                                        <span>Refine models to improve prediction accuracy</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -485,25 +634,59 @@
                         <h3>📊 Interactive Motion Graphs</h3>
                         <div class="graph-analysis-container">
                             <div class="graph-display">
-                                <canvas id="motion-graph" width="400" height="300" style="border: 1px solid #ccc; border-radius: 8px;"></canvas>
+                                <div class="motion-graph-placeholder" id="motion-graph-visual">
+                                    <div class="graph-axes">
+                                        <div class="y-axis">
+                                            <span class="axis-label" id="y-axis-label">Position (m)</span>
+                                            <div class="axis-line"></div>
+                                            <div class="tick-marks">
+                                                <span>20</span>
+                                                <span>15</span>
+                                                <span>10</span>
+                                                <span>5</span>
+                                                <span>0</span>
+                                            </div>
+                                        </div>
+                                        <div class="x-axis">
+                                            <div class="axis-line"></div>
+                                            <span class="axis-label">Time (s)</span>
+                                            <div class="tick-marks">
+                                                <span>0</span>
+                                                <span>1</span>
+                                                <span>2</span>
+                                                <span>3</span>
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graph-line" id="motion-line"></div>
+                                    <div class="data-point" style="left: 20%; bottom: 20%;">⚾</div>
+                                    <div class="data-point" style="left: 40%; bottom: 40%;">⚾</div>
+                                    <div class="data-point" style="left: 60%; bottom: 60%;">⚾</div>
+                                    <div class="data-point" style="left: 80%; bottom: 80%;">⚾</div>
+                                </div>
                                 <div class="graph-controls">
-                                    <label>Graph Type: 
-                                        <select id="graph-type">
-                                            <option value="position">Position vs Time</option>
-                                            <option value="velocity">Velocity vs Time</option>
-                                        </select>
-                                    </label>
-                                    <label>Motion Type:
-                                        <select id="motion-type">
-                                            <option value="constant">Constant Velocity</option>
-                                            <option value="accelerating">Accelerating</option>
-                                            <option value="decelerating">Decelerating</option>
-                                        </select>
-                                    </label>
+                                    <div class="control-group">
+                                        <label>Graph Type: 
+                                            <select id="graph-type" onchange="updateGraph()">
+                                                <option value="position">Position vs Time</option>
+                                                <option value="velocity">Velocity vs Time</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Motion Type:
+                                            <select id="motion-type" onchange="updateGraph()">
+                                                <option value="constant">Constant Velocity</option>
+                                                <option value="accelerating">Accelerating</option>
+                                                <option value="decelerating">Decelerating</option>
+                                            </select>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="graph-analysis">
-                                <h4>Graph Analysis</h4>
+                                <h4>📈 Graph Analysis</h4>
                                 <div class="analysis-result">
                                     <p><strong>Slope:</strong> <span id="slope-value">5.0 m/s</span></p>
                                     <p><strong>Interpretation:</strong> <span id="slope-meaning">Constant velocity</span></p>
@@ -613,53 +796,208 @@
                 </div>
             </section>
 
-            <!-- Assessment Section -->
+            <!-- Enhanced Assessment Section -->
             <section class="assessment-section">
-                <h2>📝 Week 1 Assessment</h2>
-                
-                <div class="assessment-tabs">
-                    <button class="tab-button active" data-tab="quiz">Quiz</button>
-                    <button class="tab-button" data-tab="practice">Practice Problems</button>
-                    <button class="tab-button" data-tab="lab">Lab Report</button>
-                </div>
-                
-                <div class="tab-content active" id="quiz-tab">
-                    <div class="quiz-container">
-                        <div class="quiz-header">
-                            <h3>🧠 Week 1 Quiz: Motion Fundamentals</h3>
-                            <div class="quiz-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="quiz-progress"></div>
-                                </div>
-                                <span class="progress-text">0 / 5</span>
-                            </div>
+                <div class="assessment-header">
+                    <div class="assessment-title-group">
+                        <h2>🎯 Week 1 Comprehensive Assessment</h2>
+                        <p class="assessment-subtitle">Test your understanding of motion fundamentals through interactive quizzes, practice problems, and lab analysis</p>
+                    </div>
+                    <div class="assessment-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Assessment Types</span>
                         </div>
-                        
-                        <div id="quiz-content">
-                            <!-- Fallback content will be replaced by JavaScript -->
-                            <div class="quiz-loading">
-                                <p>📚 Loading interactive quiz content...</p>
-                                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
-                                    Questions will appear here covering motion fundamentals, distance vs displacement, and velocity calculations.
-                                </p>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-value">25</span>
+                            <span class="stat-label">Questions</span>
                         </div>
-                        
-                        <div class="quiz-actions">
-                            <button class="btn btn-primary" id="submit-quiz-btn">Submit Quiz</button>
-                            <button class="btn btn-secondary" id="reset-quiz-btn">Reset</button>
+                        <div class="stat-item">
+                            <span class="stat-value">45</span>
+                            <span class="stat-label">Minutes</span>
                         </div>
-                        
-                        <div id="quiz-results" class="quiz-results" style="display: none;"></div>
                     </div>
                 </div>
                 
-                <div class="tab-content" id="practice-tab">
-                    <div id="practice-problems"></div>
+                <div class="assessment-tabs-container">
+                    <div class="assessment-tabs">
+                        <button class="tab-button active" data-tab="quiz">
+                            <span class="tab-icon">🧠</span>
+                            <span class="tab-text">Interactive Quiz</span>
+                            <span class="tab-badge">10 Questions</span>
+                        </button>
+                        <button class="tab-button" data-tab="practice">
+                            <span class="tab-icon">🔬</span>
+                            <span class="tab-text">Practice Problems</span>
+                            <span class="tab-badge">8 Problems</span>
+                        </button>
+                        <button class="tab-button" data-tab="lab">
+                            <span class="tab-icon">📊</span>
+                            <span class="tab-text">Lab Analysis</span>
+                            <span class="tab-badge">3 Reports</span>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="tab-content" id="lab-tab">
-                    <div id="lab-report"></div>
+                <div class="assessment-content">
+                    <div class="tab-content active" id="quiz-tab">
+                        <div class="quiz-container">
+                            <div class="quiz-header">
+                                <div class="quiz-title-section">
+                                    <h3>🧠 Interactive Physics Quiz</h3>
+                                    <p class="quiz-description">Multiple choice and calculation questions testing your grasp of motion concepts</p>
+                                </div>
+                                <div class="quiz-meta">
+                                    <div class="quiz-difficulty">
+                                        <span class="difficulty-label">Difficulty:</span>
+                                        <div class="difficulty-stars">
+                                            <span class="star filled">★</span>
+                                            <span class="star filled">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="quiz-progress"></div>
+                                        </div>
+                                        <span class="progress-text">0 / 10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="quiz-content">
+                                <!-- Enhanced Fallback Content -->
+                                <div class="quiz-loading">
+                                    <div class="loading-animation">
+                                        <div class="loading-spinner"></div>
+                                        <h4>Loading Interactive Quiz...</h4>
+                                    </div>
+                                    <div class="quiz-preview">
+                                        <h5>📚 Quiz Topics Preview:</h5>
+                                        <div class="topic-preview-grid">
+                                            <div class="topic-preview-item">
+                                                <span class="topic-icon">📐</span>
+                                                <span>Distance vs Displacement</span>
+                                            </div>
+                                            <div class="topic-preview-item">
+                                                <span class="topic-icon">🏃</span>
+                                                <span>Speed vs Velocity</span>
+                                            </div>
+                                            <div class="topic-preview-item">
+                                                <span class="topic-icon">📊</span>
+                                                <span>Motion Graphs</span>
+                                            </div>
+                                            <div class="topic-preview-item">
+                                                <span class="topic-icon">⚾</span>
+                                                <span>Baseball Physics</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-actions">
+                                <button class="quiz-btn quiz-btn-primary" id="submit-quiz-btn">
+                                    <span class="btn-icon">✓</span>
+                                    <span>Submit Quiz</span>
+                                </button>
+                                <button class="quiz-btn quiz-btn-secondary" id="reset-quiz-btn">
+                                    <span class="btn-icon">🔄</span>
+                                    <span>Reset</span>
+                                </button>
+                            </div>
+                            
+                            <div id="quiz-results" class="quiz-results" style="display: none;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="practice-tab">
+                        <div class="practice-container">
+                            <div class="practice-header">
+                                <h3>🔬 Practice Problem Set</h3>
+                                <p>Work through these step-by-step problems to master motion calculations</p>
+                            </div>
+                            <div id="practice-problems">
+                                <!-- Enhanced Fallback Content -->
+                                <div class="practice-loading">
+                                    <div class="loading-animation">
+                                        <div class="loading-spinner"></div>
+                                        <h4>Loading Practice Problems...</h4>
+                                    </div>
+                                    <div class="practice-preview">
+                                        <div class="problem-preview-grid">
+                                            <div class="problem-preview-item">
+                                                <span class="problem-number">1</span>
+                                                <div class="problem-info">
+                                                    <h5>Baseball Throw Analysis</h5>
+                                                    <p>Calculate distance and displacement for a curved throw</p>
+                                                </div>
+                                            </div>
+                                            <div class="problem-preview-item">
+                                                <span class="problem-number">2</span>
+                                                <div class="problem-info">
+                                                    <h5>Runner Speed Calculation</h5>
+                                                    <p>Determine average speed from timing data</p>
+                                                </div>
+                                            </div>
+                                            <div class="problem-preview-item">
+                                                <span class="problem-number">3</span>
+                                                <div class="problem-info">
+                                                    <h5>Motion Graph Interpretation</h5>
+                                                    <p>Analyze position-time graphs for key insights</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="lab-tab">
+                        <div class="lab-container">
+                            <div class="lab-header">
+                                <h3>📊 Laboratory Data Analysis</h3>
+                                <p>Analyze real experimental data and draw physics conclusions</p>
+                            </div>
+                            <div id="lab-report">
+                                <!-- Enhanced Fallback Content -->
+                                <div class="lab-loading">
+                                    <div class="loading-animation">
+                                        <div class="loading-spinner"></div>
+                                        <h4>Loading Lab Experiments...</h4>
+                                    </div>
+                                    <div class="lab-preview">
+                                        <div class="lab-experiments-grid">
+                                            <div class="lab-experiment-item">
+                                                <span class="lab-icon">⚾</span>
+                                                <div class="lab-info">
+                                                    <h5>Ball Drop Analysis</h5>
+                                                    <p>Measure free fall motion and calculate acceleration</p>
+                                                </div>
+                                            </div>
+                                            <div class="lab-experiment-item">
+                                                <span class="lab-icon">🏃</span>
+                                                <div class="lab-info">
+                                                    <h5>Runner Timing Study</h5>
+                                                    <p>Track base-running speeds and compare techniques</p>
+                                                </div>
+                                            </div>
+                                            <div class="lab-experiment-item">
+                                                <span class="lab-icon">📈</span>
+                                                <div class="lab-info">
+                                                    <h5>Video Motion Analysis</h5>
+                                                    <p>Extract motion data from slow-motion video</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -726,39 +1064,30 @@
 
     <!-- JavaScript for Interactive Features -->
     <script type="module">
-        import { VelocityCalculator } from '../js/calculators.js';
-        import { QuizSystem, PracticeProblems } from '../js/assessment.js';
+        import { EnhancedQuizSystem } from '../js/enhanced-assessment.js';
+        import InteractiveLearningSystem from '../js/interactive-learning.js';
 
-        // Initialize calculators
-        const calculators = new VelocityCalculator();
-        calculators.initVelocityCalculator();
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize enhanced assessment system if containers exist
+            const quizContainer = document.getElementById('quiz-content');
+            if (quizContainer) {
+                const enhancedAssessmentSystem = new EnhancedQuizSystem('quiz-content');
+                await enhancedAssessmentSystem.createQuiz('week1');
+                window.assessmentSystem = enhancedAssessmentSystem;
+            }
 
-        // Initialize assessment system
-        const assessmentSystem = new QuizSystem();
-        await assessmentSystem.init();
-        
-        // Create quiz for week 1
-        assessmentSystem.createQuiz('week1', 'quiz-content');
-        
-        // Initialize practice problems
-        const practiceProblems = new PracticeProblems();
-        await practiceProblems.init();
-        practiceProblems.createPracticeSet('week1', 'practice-problems');
-        
-        // Create lab report template
-        assessmentSystem.createLabReport('week1', 'Motion Analysis', 'lab-report');
+            // Initialize interactive learning system
+            window.interactiveLearningSystem = new InteractiveLearningSystem();
 
-        // Initialize Navigation
-        const dailyLinks = [
-            { href: '#day-1', icon: '🎯', title: 'What is Motion? Setting the Stage' },
-            { href: '#day-2', icon: '📐', title: 'Displacement and Distance' },
-            { href: '#day-3', icon: '🏃', title: 'Velocity and Speed' },
-            { href: '#day-4', icon: '📊', title: 'Advanced Motion Analysis' },
-            { href: '#day-5', icon: '🎯', title: 'Applications and Problem Solving' }
-        ];
-        console.log('About to call initNavigation...');
-        navigation.initNavigation(1, 'Week 1: Introduction to the Physics of Motion', dailyLinks, 'navigation-container');
-        console.log('Navigation initialization completed');
+            // Initialize practice problems if container exists
+            const practiceContainer = document.getElementById('practice-problems');
+            if (practiceContainer) {
+                const practiceProblems = new PracticeProblems('practice-problems');
+                practiceProblems.createPracticeSet('week1');
+            }
+        });
+
+        // Navigation is already in HTML - no JavaScript initialization needed
 
         // Tab functionality
         document.querySelectorAll('.tab-button').forEach(button => {
@@ -775,8 +1104,7 @@
             });
         });
 
-        // Make assessment system globally available
-        window.assessmentSystem = assessmentSystem;
+        // Assessment system is already made globally available above
 
         // Baseball Diamond Interactive
         const baseScenarios = {
@@ -808,9 +1136,22 @@
             console.log('Path set successfully, path length:', runnerPath.getTotalLength());
         }
 
-        function animateRunner() {
+        // Make function globally available
+        window.animateRunner = function() {
             console.log('Animate Runner button clicked!');
             const runnerPath = document.getElementById('runner-path');
+            const animatedRunner = document.getElementById('animated-runner');
+            const animateButton = document.getElementById('animate-runner');
+            
+            console.log('Elements found:', {
+                runnerPath: !!runnerPath,
+                animatedRunner: !!animatedRunner,
+                animateButton: !!animateButton
+            });
+            
+            // Disable button during animation
+            animateButton.disabled = true;
+            animateButton.textContent = 'Running... 🏃‍♂️';
             
             // Make sure path has data before trying to animate
             if (!runnerPath.getAttribute('d')) {
@@ -822,34 +1163,208 @@
                 const pathLength = runnerPath.getTotalLength();
                 
                 if (pathLength > 0) {
-                    // Reset animation
+                    console.log('Path length:', pathLength, 'Starting animations...');
+                    
+                    // Show the animated runner elements
+                    const runnerCircle = animatedRunner.querySelector('circle');
+                    const runnerText = animatedRunner.querySelector('text');
+                    
+                    if (runnerCircle) {
+                        runnerCircle.style.opacity = '1';
+                        runnerCircle.setAttribute('opacity', '1');
+                        console.log('Runner circle visibility set to 1');
+                    }
+                    
+                    if (runnerText) {
+                        runnerText.style.opacity = '1';
+                        runnerText.setAttribute('opacity', '1');
+                        console.log('Runner text visibility set to 1');
+                    }
+                    
+                    animatedRunner.style.opacity = '1';
+                    console.log('Runner group visibility set to 1');
+                    
+                    // Reset path animation
                     runnerPath.style.strokeDasharray = pathLength;
                     runnerPath.style.strokeDashoffset = pathLength;
                     runnerPath.style.animation = 'none';
+                    console.log('Path animation reset');
                     
-                    // Trigger animation
+                    // Start path drawing animation (slower)
                     setTimeout(() => {
-                        runnerPath.style.animation = 'dash 2s ease-in-out forwards';
+                        runnerPath.style.animation = 'dash 4s ease-in-out forwards';
+                        console.log('Path drawing animation started (4s duration)');
                     }, 10);
+                    
+                    // Start runner motion animation
+                    const runnerMotions = document.querySelectorAll('[id^="runner-motion"], [id^="runner-emoji"]');
+                    console.log('Found runner motion elements:', runnerMotions.length);
+                    runnerMotions.forEach((motion, index) => {
+                        console.log('Starting motion element', index, motion.id);
+                        try {
+                            motion.beginElement();
+                        } catch (error) {
+                            console.error('Error starting animation for element', motion.id, error);
+                        }
+                    });
+                    
+                    // Show progress indicator
+                    animateButton.style.background = 'linear-gradient(135deg, #FF9800, #F44336)';
+                    
+                    // Re-enable button and hide runner after animation (4s + buffer)
+                    setTimeout(() => {
+                        animateButton.disabled = false;
+                        animateButton.textContent = 'Animate Runner 🏃‍♂️';
+                        animateButton.style.background = 'linear-gradient(135deg, #1976d2, #4caf50)';
+                        
+                        // Hide runner elements
+                        const runnerCircle = animatedRunner.querySelector('circle');
+                        const runnerText = animatedRunner.querySelector('text');
+                        
+                        if (runnerCircle) {
+                            runnerCircle.style.opacity = '0';
+                            runnerCircle.setAttribute('opacity', '0');
+                        }
+                        if (runnerText) {
+                            runnerText.style.opacity = '0';
+                            runnerText.setAttribute('opacity', '0');
+                        }
+                        
+                        animatedRunner.style.opacity = '0';
+                        console.log('Animation completed, runner hidden');
+                    }, 4500);
+                    
                 } else {
                     console.log('Path length is 0, cannot animate');
+                    animateButton.disabled = false;
+                    animateButton.textContent = 'Animate Runner 🏃‍♂️';
                 }
             } catch (error) {
                 console.error('Error animating runner:', error);
                 // Fallback - just show the path
                 runnerPath.style.opacity = '1';
+                animateButton.disabled = false;
+                animateButton.textContent = 'Animate Runner 🏃‍♂️';
             }
+        }; // End of window.animateRunner
+
+        // Interactive Motion Graph Function
+        window.updateGraph = function() {
+            const graphType = document.getElementById('graph-type').value;
+            const motionType = document.getElementById('motion-type').value;
+            
+            const yAxisLabel = document.getElementById('y-axis-label');
+            const motionLine = document.getElementById('motion-line');
+            const dataPoints = document.querySelectorAll('.data-point');
+            const slopeValue = document.getElementById('slope-value');
+            const slopeMeaning = document.getElementById('slope-meaning');
+            const physicalMeaning = document.getElementById('physical-meaning');
+            
+            // Update Y-axis label
+            yAxisLabel.textContent = graphType === 'position' ? 'Position (m)' : 'Velocity (m/s)';
+            
+            // Update graph line and data points based on motion type
+            if (motionType === 'constant') {
+                motionLine.style.background = 'linear-gradient(to right, transparent 48%, var(--color-primary) 48%, var(--color-primary) 52%, transparent 52%)';
+                dataPoints[0].style.cssText = 'left: 20%; bottom: 20%;';
+                dataPoints[1].style.cssText = 'left: 40%; bottom: 40%;';
+                dataPoints[2].style.cssText = 'left: 60%; bottom: 60%;';
+                dataPoints[3].style.cssText = 'left: 80%; bottom: 80%;';
+                
+                if (graphType === 'position') {
+                    slopeValue.textContent = '5.0 m/s';
+                    slopeMeaning.textContent = 'Constant positive slope';
+                    physicalMeaning.textContent = 'Baseball travels at constant velocity';
+                } else {
+                    slopeValue.textContent = '0 m/s²';
+                    slopeMeaning.textContent = 'Zero slope';
+                    physicalMeaning.textContent = 'No acceleration - constant speed';
+                }
+            } else if (motionType === 'accelerating') {
+                motionLine.style.background = 'radial-gradient(ellipse at bottom left, var(--color-accent) 20%, transparent 50%)';
+                dataPoints[0].style.cssText = 'left: 20%; bottom: 15%;';
+                dataPoints[1].style.cssText = 'left: 40%; bottom: 35%;';
+                dataPoints[2].style.cssText = 'left: 60%; bottom: 65%;';
+                dataPoints[3].style.cssText = 'left: 80%; bottom: 85%;';
+                
+                if (graphType === 'position') {
+                    slopeValue.textContent = 'Increasing';
+                    slopeMeaning.textContent = 'Curved upward';
+                    physicalMeaning.textContent = 'Baseball speeds up over time';
+                } else {
+                    slopeValue.textContent = '2.0 m/s²';
+                    slopeMeaning.textContent = 'Positive slope';
+                    physicalMeaning.textContent = 'Constant acceleration';
+                }
+            } else { // decelerating
+                motionLine.style.background = 'radial-gradient(ellipse at top left, var(--color-baseball) 20%, transparent 50%)';
+                dataPoints[0].style.cssText = 'left: 20%; bottom: 85%;';
+                dataPoints[1].style.cssText = 'left: 40%; bottom: 65%;';
+                dataPoints[2].style.cssText = 'left: 60%; bottom: 35%;';
+                dataPoints[3].style.cssText = 'left: 80%; bottom: 15%;';
+                
+                if (graphType === 'position') {
+                    slopeValue.textContent = 'Decreasing';
+                    slopeMeaning.textContent = 'Curved downward';
+                    physicalMeaning.textContent = 'Baseball slows down over time';
+                } else {
+                    slopeValue.textContent = '-2.0 m/s²';
+                    slopeMeaning.textContent = 'Negative slope';
+                    physicalMeaning.textContent = 'Constant deceleration';
+                }
+            }
+            
+            console.log('Graph updated:', graphType, motionType);
+        };
+
+        // Initialize baseball diamond with debugging
+        function initializeDiamond() {
+            const baseScenarioSelect = document.getElementById('base-scenario');
+            const animateButton = document.getElementById('animate-runner');
+            
+            console.log('Initializing diamond controls...');
+            console.log('Base scenario select:', !!baseScenarioSelect);
+            console.log('Animate button:', !!animateButton);
+            
+            if (baseScenarioSelect) {
+                baseScenarioSelect.addEventListener('change', (e) => {
+                    console.log('Scenario changed to:', e.target.value);
+                    updateBaseDiamond(e.target.value);
+                });
+                console.log('Base scenario event listener added');
+            }
+
+            if (animateButton) {
+                animateButton.addEventListener('click', (e) => {
+                    console.log('Event listener: Animate button clicked!');
+                    e.preventDefault();
+                    window.animateRunner();
+                });
+                console.log('Animate button event listener added');
+                
+                // Also add hover effect to test if button is responsive
+                animateButton.addEventListener('mouseenter', () => {
+                    console.log('Button hover detected');
+                    animateButton.style.transform = 'translateY(-2px)';
+                });
+                
+                animateButton.addEventListener('mouseleave', () => {
+                    animateButton.style.transform = 'translateY(0)';
+                });
+            } else {
+                console.error('Animate button not found!');
+            }
+            
+            // Initialize with single base scenario
+            updateBaseDiamond('single');
         }
-
-        // Initialize baseball diamond
-        document.getElementById('base-scenario').addEventListener('change', (e) => {
-            updateBaseDiamond(e.target.value);
-        });
-
-        document.getElementById('animate-runner').addEventListener('click', animateRunner);
-
-        // Initialize with single base scenario
-        updateBaseDiamond('single');
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDiamond);
+        } else {
+            initializeDiamond();
+        }
     </script>
 </body>
 </html>

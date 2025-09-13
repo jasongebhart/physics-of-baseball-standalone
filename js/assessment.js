@@ -25,7 +25,7 @@ export class QuizSystem {
 
     async loadQuiz(weekId) {
         try {
-            const response = await fetch(`/data/quizzes.json`);
+            const response = await fetch(`../data/quizzes.json`);
             const data = await response.json();
             return data[weekId];
         } catch (error) {

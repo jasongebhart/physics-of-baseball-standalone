@@ -1,6 +1,8 @@
 {
     "week1": {
+        "weekId": "week1",
         "title": "Week 1: Introduction to Physics of Motion",
+        "description": "Test your understanding of fundamental motion concepts in baseball physics",
         "questions": [
             {
                 "id": 1,
@@ -13,7 +15,18 @@
                     "There is no difference"
                 ],
                 "correct": 2,
-                "explanation": "Distance measures the total path traveled (scalar), while displacement measures the straight-line change in position (vector)."
+                "points": 1,
+                "topic": "Kinematics Fundamentals",
+                "explanation": "Distance measures the total path traveled (scalar), while displacement measures the straight-line change in position (vector).",
+                "commonMistakes": {
+                    "0": "Remember that vectors have direction, scalars don't. Distance is the scalar, displacement is the vector.",
+                    "1": "While this is often true, it's not the fundamental difference between the concepts.",
+                    "3": "These are distinctly different concepts - one describes total path, the other describes net change in position."
+                },
+                "hints": [
+                    "Think about running around a track vs. your final position",
+                    "Consider which quantity cares about direction and which doesn't"
+                ]
             },
             {
                 "id": 2,
@@ -26,19 +39,40 @@
                     "30 m/s"
                 ],
                 "correct": 0,
-                "explanation": "The horizontal component is v₀ cos(θ) = 30 cos(25°) ≈ 27.2 m/s"
+                "points": 1,
+                "topic": "Vector Components",
+                "formula": "vₓ = v₀ cos(θ), vᵧ = v₀ sin(θ)",
+                "explanation": "The horizontal component is v₀ cos(θ) = 30 cos(25°) ≈ 27.2 m/s",
+                "commonMistakes": {
+                    "1": "This would be the vertical component using sine, not the horizontal component.",
+                    "2": "Tangent is not used for vector components; use cosine for horizontal, sine for vertical.",
+                    "3": "This is the total velocity magnitude, not just the horizontal component."
+                },
+                "hints": [
+                    "Remember: cosine for horizontal (adjacent), sine for vertical (opposite)",
+                    "Draw a right triangle with the velocity vector as the hypotenuse"
+                ]
             },
             {
                 "id": 3,
                 "type": "short-answer",
                 "question": "Explain why velocity and speed are different physical quantities.",
                 "sampleAnswer": "Velocity is a vector quantity that includes both magnitude and direction, while speed is a scalar quantity that only describes magnitude. A baseball traveling in a circle at constant speed has changing velocity due to direction changes.",
-                "points": 5
+                "points": 5,
+                "topic": "Scalar vs Vector Quantities",
+                "keywords": ["vector", "scalar", "direction", "magnitude"],
+                "hints": [
+                    "Think about what information each quantity provides",
+                    "Consider a car driving around a circular track at constant speed",
+                    "One quantity tells you 'how fast', the other tells you 'how fast and which way'"
+                ]
             }
         ]
     },
     "week2": {
+        "weekId": "week2",
         "title": "Week 2: Understanding Projectile Motion",
+        "description": "Test your understanding of projectile motion principles in baseball",
         "questions": [
             {
                 "id": 1,
@@ -46,7 +80,19 @@
                 "question": "At what angle should a baseball be thrown to achieve maximum range (ignoring air resistance)?",
                 "options": ["30°", "45°", "60°", "90°"],
                 "correct": 1,
-                "explanation": "For projectile motion without air resistance, maximum range occurs at 45° launch angle."
+                "points": 1,
+                "topic": "Projectile Motion Optimization",
+                "formula": "Range = (v₀² sin(2θ))/g",
+                "explanation": "For projectile motion without air resistance, maximum range occurs at 45° launch angle.",
+                "commonMistakes": {
+                    "0": "30° would give less than maximum range - the optimal angle is higher.",
+                    "2": "60° is too steep - you'd get good height but not maximum distance.",
+                    "3": "90° would make the ball go straight up and land at the same spot!"
+                },
+                "hints": [
+                    "Think about the trade-off between height and horizontal distance",
+                    "The range equation involves sin(2θ), which is maximum when 2θ = 90°"
+                ]
             },
             {
                 "id": 2,
@@ -71,7 +117,9 @@
         ]
     },
     "week3": {
+        "weekId": "week3", 
         "title": "Week 3: Forces and Newton's Laws of Motion",
+        "description": "Test your understanding of forces and Newton's laws in baseball",
         "questions": [
             {
                 "id": 1,
@@ -103,7 +151,9 @@
         ]
     },
     "week4": {
+        "weekId": "week4",
         "title": "Week 4: Momentum and Impulse",
+        "description": "Test your understanding of momentum and impulse in baseball collisions",
         "questions": [
             {
                 "id": 1,
@@ -128,7 +178,9 @@
         ]
     },
     "week5": {
+        "weekId": "week5",
         "title": "Week 5: Work and Energy in Baseball Pitching",
+        "description": "Test your understanding of work, energy, and power in baseball pitching mechanics",
         "questions": [
             {
                 "id": 1,
@@ -136,24 +188,56 @@
                 "question": "Which type of energy does a baseball have at the top of its trajectory?",
                 "options": ["Only kinetic energy", "Only potential energy", "Both kinetic and potential energy", "Neither type"],
                 "correct": 2,
-                "explanation": "At the top of its trajectory, the ball has potential energy due to its height and kinetic energy due to its horizontal motion."
+                "points": 1,
+                "topic": "Energy Types",
+                "explanation": "At the top of its trajectory, the ball has potential energy due to its height and kinetic energy due to its horizontal motion.",
+                "commonMistakes": {
+                    "0": "Remember that vertical velocity is zero at the top, but horizontal velocity continues.",
+                    "1": "The ball still has horizontal motion at the top of trajectory, giving it kinetic energy.",
+                    "3": "The ball has both height (potential energy) and motion (kinetic energy)."
+                },
+                "hints": [
+                    "Think about what happens to horizontal and vertical velocity components separately",
+                    "Energy is conserved - what forms can it take?"
+                ]
             },
             {
                 "id": 2,
                 "type": "calculation",
                 "question": "Calculate the kinetic energy of a 0.145 kg baseball traveling at 30 m/s.",
                 "formula": "KE = ½mv²",
+                "topic": "Kinetic Energy Calculations",
                 "solution": {
                     "step1": "Given: m = 0.145 kg, v = 30 m/s",
                     "step2": "KE = ½mv² = ½ × 0.145 kg × (30 m/s)² = ½ × 0.145 × 900 = 65.25 J",
                     "answer": "65.25 J"
                 },
-                "points": 6
+                "keywords": ["kinetic", "energy", "velocity", "mass"],
+                "points": 6,
+                "hints": [
+                    "Remember that velocity is squared in the kinetic energy formula",
+                    "Don't forget the ½ factor in the kinetic energy equation"
+                ]
+            },
+            {
+                "id": 3,
+                "type": "short-answer",
+                "question": "Explain how the work-energy theorem applies to a pitcher accelerating a baseball.",
+                "sampleAnswer": "The work-energy theorem states that the net work done on an object equals its change in kinetic energy. A pitcher applies force through a distance during the acceleration phase, doing positive work on the ball. This work directly converts to the ball's kinetic energy, increasing its speed from zero to the final velocity at release.",
+                "topic": "Work-Energy Theorem",
+                "keywords": ["work", "energy", "force", "distance", "acceleration"],
+                "points": 5,
+                "hints": [
+                    "Consider what happens when force is applied through a distance",
+                    "Think about how the ball's motion changes during the pitch"
+                ]
             }
         ]
     },
     "week6": {
+        "weekId": "week6",
         "title": "Week 6: Circular Motion and Angular Velocity",
+        "description": "Test your understanding of rotational motion and angular mechanics in pitching",
         "questions": [
             {
                 "id": 1,
@@ -161,7 +245,18 @@
                 "question": "What provides the centripetal force for a curveball's spinning motion?",
                 "options": ["Gravity", "Air pressure differences", "The pitcher's hand", "Friction with air"],
                 "correct": 1,
-                "explanation": "Air pressure differences created by the ball's spin (Magnus effect) provide the centripetal force that curves the ball's path."
+                "points": 1,
+                "topic": "Centripetal Force",
+                "explanation": "Air pressure differences created by the ball's spin (Magnus effect) provide the centripetal force that curves the ball's path.",
+                "commonMistakes": {
+                    "0": "Gravity acts downward, not toward the center of the curved path.",
+                    "2": "The pitcher's hand only contacts the ball during release, not throughout flight.",
+                    "3": "Friction affects spin but doesn't provide the centripetal force for the curved path."
+                },
+                "hints": [
+                    "Think about what causes the ball to curve after it leaves the pitcher's hand",
+                    "Consider the Magnus effect and pressure differences"
+                ]
             },
             {
                 "id": 2,
@@ -178,7 +273,9 @@
         ]
     },
     "week7": {
+        "weekId": "week7",
         "title": "Week 7: Torque and Angular Momentum",
+        "description": "Test your understanding of rotational forces and angular momentum in baseball",
         "questions": [
             {
                 "id": 1,
@@ -198,7 +295,9 @@
         ]
     },
     "week8": {
+        "weekId": "week8",
         "title": "Week 8: The Physics of Spin",
+        "description": "Test your understanding of spin effects and the Magnus force in baseball flight",
         "questions": [
             {
                 "id": 1,

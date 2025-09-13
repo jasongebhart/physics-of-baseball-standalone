@@ -7,13 +7,20 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <link rel="stylesheet" href="../css/phase2-enhancements.css">
 </head>
 <body>
     <div class="container">
         <main class="main-content">
             <header class="week-header">
-                <h1 class="week-title">Week 7: Torque and Angular Momentum</h1>
+                <div class="header-top">
+                    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                    </button>
+                    <h1 class="week-title">Week 7: Torque and Angular Momentum</h1>
+                </div>
                 <p class="week-description">
                     This week, we'll explore how pitchers generate and transfer rotational force, examining torque application and angular momentum in creating both velocity and spin.
                 </p>
@@ -320,36 +327,224 @@
                 </div>
                 
                 <div class="tab-content active" id="quiz-tab">
-                    <div class="quiz-container">
-                        <div class="quiz-header">
-                            <h3>🧠 Week 7 Quiz: Torque and Angular Momentum</h3>
-                            <div class="quiz-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="quiz-progress"></div>
-                                </div>
-                                <span class="progress-text">0 / 3</span>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>📝 Quiz Topics</h3>
+                            <div class="difficulty-badges">
+                                <span class="difficulty-badge basic">Basic</span>
+                                <span class="difficulty-badge intermediate">Intermediate</span>
+                                <span class="difficulty-badge advanced">Advanced</span>
                             </div>
                         </div>
-                        <div id="quiz-content"></div>
-                        <div id="quiz-results" style="display: none;"></div>
-                        <div class="quiz-actions">
-                            <button id="submit-quiz-btn" class="btn btn-primary">Submit Quiz</button>
-                            <button id="reset-quiz-btn" class="btn btn-secondary">Reset Quiz</button>
+                        
+                        <div class="topic-previews">
+                            <div class="topic-preview">
+                                <div class="preview-icon">🔧</div>
+                                <div class="preview-content">
+                                    <h4>Torque Fundamentals</h4>
+                                    <p>Test understanding of torque concepts and their applications in baseball pitching rotations.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">τ = r × F</span>
+                                        <span class="tag">Lever Arm</span>
+                                        <span class="tag">Rotational Force</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="topic-preview">
+                                <div class="preview-icon">🌪️</div>
+                                <div class="preview-content">
+                                    <h4>Angular Momentum</h4>
+                                    <p>Apply angular momentum principles to analyze rotational motion conservation in pitching.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">L = Iω</span>
+                                        <span class="tag">Conservation</span>
+                                        <span class="tag">Moment of Inertia</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="topic-preview">
+                                <div class="preview-icon">⚾</div>
+                                <div class="preview-content">
+                                    <h4>Baseball Applications</h4>
+                                    <p>Analyze torque and angular momentum in pitching mechanics and performance optimization.</p>
+                                    <div class="preview-tags">
+                                        <span class="tag">Body Rotation</span>
+                                        <span class="tag">Joint Torques</span>
+                                        <span class="tag">Performance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Ready to test your knowledge?</p>
+                                <button class="btn btn-primary assessment-start-btn" id="start-quiz" aria-label="Start Week 7 Torque and Angular Momentum Quiz">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🚀</span>
+                                    <span class="btn-text">Start Interactive Quiz</span>
+                                </button>
+                                <p class="assessment-info">16-20 questions • ~12 minutes</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="tab-content" id="practice-tab">
-                    <div class="practice-section">
-                        <h3>🎯 Practice Problems</h3>
-                        <div id="practice-problems"></div>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>🎯 Practice Problems</h3>
+                            <div class="difficulty-badges">
+                                <span class="difficulty-badge basic">Guided</span>
+                                <span class="difficulty-badge intermediate">Independent</span>
+                                <span class="difficulty-badge advanced">Challenge</span>
+                            </div>
+                        </div>
+                        
+                        <div class="problem-categories">
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">🔧</span>
+                                    <h4>Torque Calculations</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set A:</strong> Calculate torques and analyze rotational effects in baseball scenarios.</p>
+                                    <ul class="problem-list">
+                                        <li>🔧 Torque calculations for joint rotations</li>
+                                        <li>📏 Lever arm analysis in pitching mechanics</li>
+                                        <li>💪 Muscle torque requirements for rotation</li>
+                                        <li>🔢 Cross product calculations for torque vectors</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">🌪️</span>
+                                    <h4>Angular Momentum Analysis</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set B:</strong> Apply angular momentum conservation and transfer principles.</p>
+                                    <ul class="problem-list">
+                                        <li>🌀 Angular momentum calculations (L = Iω)</li>
+                                        <li>⚖️ Conservation of angular momentum applications</li>
+                                        <li>🔄 Moment of inertia effects on rotation</li>
+                                        <li>🎯 Angular momentum transfer through kinetic chain</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="category-card">
+                                <div class="category-header">
+                                    <span class="category-icon">🏆</span>
+                                    <h4>Advanced Rotational Dynamics</h4>
+                                </div>
+                                <div class="category-content">
+                                    <p><strong>Problem Set C:</strong> Complex problems involving torque and angular momentum optimization.</p>
+                                    <ul class="problem-list">
+                                        <li>🔄 Multi-segment torque and momentum analysis</li>
+                                        <li>⚙️ Optimization of rotational mechanics</li>
+                                        <li>📊 Comparative analysis of pitching techniques</li>
+                                        <li>🎛️ Advanced integration of rotational dynamics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Practice makes perfect!</p>
+                                <button class="btn btn-secondary assessment-start-btn" id="start-practice" aria-label="Start Week 7 Practice Problems">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🎯</span>
+                                    <span class="btn-text">Start Practice Problems</span>
+                                </button>
+                                <p class="assessment-info">4 torque problems • Step-by-step solutions</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tab-content" id="lab-tab">
-                    <div class="lab-section">
-                        <h3>🔬 Lab Report Template</h3>
-                        <div id="lab-report"></div>
+                    <div class="assessment-preview">
+                        <div class="preview-header">
+                            <h3>🔬 Laboratory Experiment</h3>
+                            <div class="lab-badges">
+                                <span class="lab-badge data">Data Collection</span>
+                                <span class="lab-badge analysis">Analysis</span>
+                                <span class="lab-badge report">Report Writing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-overview">
+                            <div class="lab-card">
+                                <div class="lab-header">
+                                    <span class="lab-icon">🔧</span>
+                                    <h4>Torque and Angular Momentum in Baseball Pitching</h4>
+                                </div>
+                                <div class="lab-content">
+                                    <p><strong>Objective:</strong> Investigate torque generation and angular momentum transfer in baseball pitching mechanics.</p>
+                                    
+                                    <div class="lab-sections">
+                                        <div class="lab-section">
+                                            <h5>📋 Pre-Lab Preparation</h5>
+                                            <ul>
+                                                <li>Review torque and angular momentum equations</li>
+                                                <li>Set up torque measurement equipment and sensors</li>
+                                                <li>Prepare motion capture for rotational analysis</li>
+                                                <li>Safety protocols for biomechanical torque measurements</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>🔬 Experimental Procedure</h5>
+                                            <ul>
+                                                <li>Measure joint torques throughout pitching motion</li>
+                                                <li>Calculate moments of inertia for body segments</li>
+                                                <li>Analyze angular momentum transfer sequences</li>
+                                                <li>Document torque-velocity relationships</li>
+                                                <li>Compare torque patterns across pitch types</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>📊 Data Analysis</h5>
+                                            <ul>
+                                                <li>Calculate torques using τ = r × F measurements</li>
+                                                <li>Apply L = Iω to determine angular momentum</li>
+                                                <li>Analyze conservation of angular momentum</li>
+                                                <li>Create torque-time and momentum-time graphs</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="lab-section">
+                                            <h5>📝 Lab Report Components</h5>
+                                            <ul>
+                                                <li>Introduction: Torque and angular momentum principles</li>
+                                                <li>Methods: Measurement procedures and equipment setup</li>
+                                                <li>Results: Torque and momentum calculations with graphs</li>
+                                                <li>Discussion: Rotational dynamics in pitching performance</li>
+                                                <li>Conclusion: Applications for improving rotational efficiency</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="assessment-actions">
+                            <div class="assessment-cta">
+                                <p class="cta-text">Ready for hands-on investigation?</p>
+                                <button class="btn btn-accent assessment-start-btn" id="start-lab" aria-label="Start Week 7 Laboratory Investigation">
+                                    <span class="loading-spinner" style="display: none;" aria-hidden="true"></span>
+                                    <span class="btn-icon">🔬</span>
+                                    <span class="btn-text">Start Lab Investigation</span>
+                                </button>
+                                <p class="assessment-info">Angular motion analysis • Torque measurement • Report writing</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -399,24 +594,147 @@
 
     <script type="module" src="../js/main.js"></script>
     <script src="../js/week-template.js"></script>
+    <script type="module" src="../js/interactive-learning.js"></script>
     <script type="module">
-        import { VelocityCalculator } from '../js/calculators.js';
         import { QuizSystem } from '../js/assessment.js';
-        import { PracticeProblems } from '../js/assessment.js';
 
-        // Initialize assessment system
-        const assessmentSystem = new QuizSystem();
-        await assessmentSystem.init();
-        
-        // Create quiz for week 7
-        assessmentSystem.createQuiz('week7', 'quiz-content');
-        
-        // Initialize practice problems
-        const practiceProblems = new PracticeProblems();
-        practiceProblems.createProblems('week7', 'practice-problems');
-        
-        // Create lab report template
-        assessmentSystem.createLabReport('week7', 'Torque and Angular Momentum Analysis', 'lab-report');
+        // Assessment button handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quiz functionality
+            const startQuizBtn = document.getElementById('start-quiz');
+            if (startQuizBtn) {
+                startQuizBtn.addEventListener('click', async function() {
+                    const spinner = this.querySelector('.loading-spinner');
+                    if (spinner) spinner.style.display = 'inline-block';
+                    this.disabled = true;
+                    
+                    try {
+                        const quizTab = document.getElementById('quiz-content');
+                        quizTab.innerHTML = '<div id="week7-quiz-container"></div>';
+                        
+                        // Import and use Enhanced Quiz System
+                        const { EnhancedQuizSystem } = await import('../js/enhanced-assessment.js');
+                        const enhancedQuizSystem = new EnhancedQuizSystem('week7-quiz-container');
+                        await enhancedQuizSystem.createQuiz('week7');
+                        document.querySelector('[data-tab="quiz"]').click();
+                    } catch (error) {
+                        console.error('Failed to load quiz:', error);
+                        alert('Failed to load quiz. Please try again.');
+                    } finally {
+                        if (spinner) spinner.style.display = 'none';
+                        this.disabled = false;
+                    }
+                });
+            }
+            
+            // Practice problems functionality
+            const startPracticeBtn = document.getElementById('start-practice');
+            if (startPracticeBtn) {
+                startPracticeBtn.addEventListener('click', function() {
+                    const practiceTab = document.getElementById('practice-content');
+                    const existingProblems = practiceTab.querySelector('.problem-set');
+                    if (existingProblems) {
+                        practiceTab.innerHTML = `
+                            <div class="practice-problems">
+                                <h3>🎯 Week 7 Practice Problems: Torque and Angular Momentum</h3>
+                                <div class="problem-set">
+                                    ${existingProblems.innerHTML}
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add solution toggle functionality
+                        practiceTab.querySelectorAll('.show-solution, .toggle-solution').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const solution = this.parentElement.querySelector('.solution, .problem-solution');
+                                if (solution.style.display === 'none' || !solution.style.display) {
+                                    solution.style.display = 'block';
+                                    this.textContent = 'Hide Solution';
+                                } else {
+                                    solution.style.display = 'none';
+                                    this.textContent = 'Show Solution';
+                                }
+                            });
+                        });
+                    }
+                    document.querySelector('[data-tab="practice"]').click();
+                });
+            }
+            
+            // Lab functionality
+            const startLabBtn = document.getElementById('start-lab');
+            if (startLabBtn) {
+                startLabBtn.addEventListener('click', function() {
+                    const labTab = document.getElementById('lab-content');
+                    labTab.innerHTML = `
+                        <div class="lab-investigation">
+                            <h3>🔬 Week 7 Lab: Torque and Angular Momentum Analysis</h3>
+                            <div class="lab-content">
+                                <div class="lab-intro">
+                                    <p>This laboratory investigation explores rotational motion in baseball through measurement and analysis of torque and angular momentum.</p>
+                                </div>
+                                
+                                <div class="lab-objectives">
+                                    <h4>🎯 Learning Objectives</h4>
+                                    <ul>
+                                        <li>Measure torque in bat swings and pitching motions</li>
+                                        <li>Calculate angular momentum during rotational movements</li>
+                                        <li>Analyze the relationship between torque and angular acceleration</li>
+                                        <li>Investigate conservation of angular momentum</li>
+                                        <li>Apply rotational dynamics to batting and pitching performance</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="lab-procedure">
+                                    <h4>📋 Experimental Procedure</h4>
+                                    <div class="procedure-steps">
+                                        <div class="step-card">
+                                            <h5>Step 1: Equipment Setup</h5>
+                                            <p>Gather materials: baseball bats of different lengths/masses, baseballs, torque meter, high-speed camera, measuring tape.</p>
+                                        </div>
+                                        <div class="step-card">
+                                            <h5>Step 2: Bat Measurements</h5>
+                                            <p>Measure bat dimensions, mass, and center of mass location for moment of inertia calculations.</p>
+                                        </div>
+                                        <div class="step-card">
+                                            <h5>Step 3: Swing Analysis</h5>
+                                            <p>Record bat swings using high-speed video to measure angular velocity and angular acceleration.</p>
+                                        </div>
+                                        <div class="step-card">
+                                            <h5>Step 4: Torque Measurements</h5>
+                                            <p>Use torque sensors to measure the torque applied during different phases of the swing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="lab-analysis">
+                                    <h4>📊 Data Analysis</h4>
+                                    <p>Calculate and analyze:</p>
+                                    <ul>
+                                        <li>Moment of inertia for different bat configurations</li>
+                                        <li>Angular velocity and acceleration throughout swing</li>
+                                        <li>Torque values during acceleration and deceleration phases</li>
+                                        <li>Angular momentum conservation during bat-ball collision</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="lab-conclusion">
+                                    <h4>🎯 Applications and Conclusions</h4>
+                                    <p>Discuss practical applications including:</p>
+                                    <ul>
+                                        <li>Optimal bat weight and length for different players</li>
+                                        <li>Importance of follow-through in batting technique</li>
+                                        <li>How torque affects bat speed and hitting power</li>
+                                        <li>Applications to pitching mechanics and arm motion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.querySelector('[data-tab="lab"]').click();
+                });
+            }
+        });
 
         // Tab functionality
         document.querySelectorAll('.tab-button').forEach(button => {
@@ -484,6 +802,61 @@
             // Initialize calculations
             calculateTorque();
             calculateAngularMomentum();
+        });
+    </script>
+    
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+    
+    <script>
+        // Mobile Navigation Toggle - Phase 1 Critical Fix
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navSidebar = document.querySelector('.nav-sidebar');
+            const navOverlay = document.getElementById('nav-overlay');
+            
+            if (!navToggle || !navSidebar || !navOverlay) return;
+            
+            function toggleNav() {
+                const isOpen = navSidebar.classList.contains('open');
+                
+                if (isOpen) {
+                    navSidebar.classList.remove('open');
+                    navOverlay.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                } else {
+                    navSidebar.classList.add('open');
+                    navOverlay.classList.add('active');
+                    navToggle.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Focus management
+                    const firstFocusable = navSidebar.querySelector('a, button');
+                    if (firstFocusable) firstFocusable.focus();
+                }
+            }
+            
+            // Toggle button click
+            navToggle.addEventListener('click', toggleNav);
+            
+            // Overlay click to close
+            navOverlay.addEventListener('click', toggleNav);
+            
+            // Escape key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navSidebar.classList.contains('open')) {
+                    toggleNav();
+                    navToggle.focus();
+                }
+            });
+            
+            // Close on navigation link click (mobile)
+            navSidebar.addEventListener('click', function(e) {
+                if (e.target.matches('a') && window.innerWidth <= 768) {
+                    toggleNav();
+                }
+            });
         });
     </script>
 </body>

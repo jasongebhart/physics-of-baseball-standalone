@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" href="../css/phase2-enhancements.css">
+    <link rel="stylesheet" >
 </head>
 <body>
     <div class="container">
@@ -897,30 +897,8 @@
     <script src="../js/week-template.js"></script>
     <script type="module">
         import { QuizSystem } from '../js/assessment.js';
-        import { EnhancedQuizSystem } from '../js/enhanced-assessment.js';
-        import InteractiveLearningSystem from '../js/interactive-learning.js';
 
         // Assessment button handlers
-            // Initialize enhanced assessment system if containers exist
-            const quizContainer = document.getElementById('quiz-content');
-            if (quizContainer) {
-                const enhancedAssessmentSystem = new EnhancedQuizSystem('quiz-content');
-                await enhancedAssessmentSystem.createQuiz('week9');
-                window.assessmentSystem = enhancedAssessmentSystem;
-            }
-
-            // Initialize interactive learning system
-            window.interactiveLearningSystem = new InteractiveLearningSystem();
-
-            // Initialize practice problems if container exists
-            const practiceContainer = document.getElementById('practice-problems');
-            if (practiceContainer) {
-                const practiceProblems = new PracticeProblems('practice-problems');
-                practiceProblems.createPracticeSet('week9');
-            }
-
-        });
-        document.addEventListener('DOMContentLoaded', async function() {
         document.addEventListener('DOMContentLoaded', function() {
             // Quiz functionality
             const startQuizBtn = document.getElementById('start-quiz');

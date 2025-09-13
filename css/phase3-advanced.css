@@ -1,0 +1,683 @@
+/*
+ * Phase 3 Advanced Features CSS
+ * Comprehensive styling for advanced learning analytics, social features, 
+ * offline functionality, accessibility enhancements, and performance optimizations
+ */
+
+/* =================================
+   LEARNING ANALYTICS STYLES
+   ================================= */
+
+.analytics-dashboard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.analytics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.analytics-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.analytics-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.analytics-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.progress-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.progress-chart {
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-line {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    border-radius: 1px;
+}
+
+.learning-path-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+}
+
+.path-node {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.path-node.completed {
+    background: #4caf50;
+    color: white;
+}
+
+.path-node.current {
+    background: #ff9800;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.path-node.future {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.path-connector {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    margin: 0 0.5rem;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* =================================
+   SOCIAL SHARING STYLES
+   ================================= */
+
+.social-sharing-panel {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.social-sharing-panel.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.social-share-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-share-button:hover {
+    transform: translateX(5px);
+}
+
+.social-share-button.twitter {
+    background: #1da1f2;
+    color: white;
+}
+
+.social-share-button.facebook {
+    background: #4267b2;
+    color: white;
+}
+
+.social-share-button.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.social-share-button.reddit {
+    background: #ff4500;
+    color: white;
+}
+
+.share-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.achievement-notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+    z-index: 1001;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.achievement-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.achievement-notification .achievement-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+/* =================================
+   OFFLINE FUNCTIONALITY STYLES
+   ================================= */
+
+.offline-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ff5722;
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    z-index: 1002;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.offline-indicator.visible {
+    transform: translateY(0);
+}
+
+.sync-status {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.sync-status.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sync-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    animation: spin 1s linear infinite;
+}
+
+.sync-icon.synced {
+    animation: none;
+    color: #4caf50;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.pwa-install-prompt {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+    z-index: 1001;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.pwa-install-prompt.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.install-button {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.install-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =================================
+   ENHANCED ACCESSIBILITY STYLES
+   ================================= */
+
+.accessibility-controls {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1003;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.accessibility-controls.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.accessibility-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 50px;
+    height: 50px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1004;
+    transition: all 0.3s ease;
+}
+
+.accessibility-toggle:hover {
+    background: #1976d2;
+    transform: scale(1.05);
+}
+
+.control-group {
+    margin-bottom: 1rem;
+}
+
+.control-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.control-range {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.control-checkbox {
+    margin-right: 0.5rem;
+}
+
+/* High contrast mode */
+body.high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.high-contrast .container,
+body.high-contrast .main-content,
+body.high-contrast .nav-sidebar {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.high-contrast a {
+    color: #00ff00 !important;
+}
+
+body.high-contrast button {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+/* Large text mode */
+body.large-text {
+    font-size: 1.25rem;
+}
+
+body.large-text h1 { font-size: 3rem; }
+body.large-text h2 { font-size: 2.5rem; }
+body.large-text h3 { font-size: 2rem; }
+body.large-text h4 { font-size: 1.75rem; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus indicators */
+.enhanced-focus:focus {
+    outline: 3px solid #ff6b6b !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 5px rgba(255, 107, 107, 0.3) !important;
+}
+
+/* =================================
+   PERFORMANCE OPTIMIZATION STYLES
+   ================================= */
+
+.performance-monitor {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    z-index: 1005;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.performance-monitor.visible {
+    opacity: 1;
+}
+
+.perf-metric {
+    display: block;
+    margin: 0.25rem 0;
+}
+
+.perf-metric.good { color: #4caf50; }
+.perf-metric.warning { color: #ff9800; }
+.perf-metric.critical { color: #f44336; }
+
+.loading-optimization {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-optimization::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Lazy loading placeholders */
+.lazy-content {
+    min-height: 200px;
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: loading 1.4s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.lazy-content.loaded {
+    animation: none;
+    background: transparent;
+}
+
+/* =================================
+   RESPONSIVE ENHANCEMENTS
+   ================================= */
+
+@media (max-width: 768px) {
+    .social-sharing-panel {
+        right: 1rem;
+        padding: 0.75rem;
+    }
+    
+    .analytics-dashboard {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .progress-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .accessibility-controls {
+        left: 0.5rem;
+        top: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    .accessibility-toggle {
+        left: 0.5rem;
+        top: 0.5rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .pwa-install-prompt {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-notification {
+        left: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+    
+    .offline-indicator {
+        font-size: 0.875rem;
+    }
+    
+    .performance-monitor {
+        display: none; /* Hide on very small screens */
+    }
+}
+
+/* =================================
+   DARK MODE ENHANCEMENTS
+   ================================= */
+
+@media (prefers-color-scheme: dark) {
+    .social-sharing-panel,
+    .sync-status,
+    .accessibility-controls {
+        background: #2d2d2d;
+        color: #fff;
+    }
+    
+    .control-label {
+        color: #fff;
+    }
+    
+    .lazy-content {
+        background: linear-gradient(90deg, #333 25%, transparent 37%, #333 63%);
+    }
+}
+
+/* =================================
+   ANIMATION LIBRARY
+   ================================= */
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+.scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% { 
+        transform: scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =================================
+   PRINT OPTIMIZATIONS
+   ================================= */
+
+@media print {
+    .social-sharing-panel,
+    .accessibility-controls,
+    .accessibility-toggle,
+    .performance-monitor,
+    .pwa-install-prompt,
+    .offline-indicator,
+    .sync-status,
+    .achievement-notification {
+        display: none !important;
+    }
+    
+    .analytics-dashboard {
+        background: none;
+        color: #000;
+        border: 1px solid #ccc;
+    }
+    
+    .metric-card {
+        background: none;
+        border: 1px solid #ddd;
+    }
+}
