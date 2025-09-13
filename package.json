@@ -9,10 +9,12 @@
     "serve": "python -m http.server 8080",
     "test": "playwright test",
     "test:regression": "playwright test tests/regression/",
-    "test:headed": "HEADED=true playwright test tests/regression/",
+    "test:headed": "cross-env HEADED=true playwright test tests/regression/",
+    "test:headed:win": "set HEADED=true && playwright test tests/regression/",
     "test:debug": "playwright test --project=debug",
     "test:mobile": "playwright test --project=regression-mobile-chrome --project=regression-mobile-safari",
-    "test:ci": "CI=true playwright test tests/regression/",
+    "test:ci": "cross-env CI=true playwright test tests/regression/",
+    "test:ci:win": "set CI=true && playwright test tests/regression/",
     "test:report": "playwright show-report",
     "test:install": "playwright install",
     "test:original": "open tests/test-runner.html"
@@ -30,7 +32,8 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.40.0"
+    "@playwright/test": "^1.40.0",
+    "cross-env": "^7.0.3"
   },
   "engines": {
     "node": ">=18.0.0"

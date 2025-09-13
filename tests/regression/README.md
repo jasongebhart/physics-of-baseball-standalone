@@ -62,11 +62,14 @@ Comprehensive Playwright test suite for the Physics of Baseball interactive cour
 
 ### Local Development (with browser visible)
 ```bash
-# Run all regression tests with browser visible
-HEADED=true npx playwright test tests/regression/
+# Run all regression tests with browser visible (cross-platform)
+npm run test:headed
 
-# Run specific test file
-HEADED=true npx playwright test tests/regression/homepage-navigation.spec.js
+# Windows-specific (if cross-env not available)
+npm run test:headed:win
+
+# Run specific test file with browser visible
+set HEADED=true && npx playwright test tests/regression/homepage-navigation.spec.js
 
 # Run with debug mode (slower, with tracing)
 npx playwright test --project=debug
@@ -77,11 +80,14 @@ npx playwright test --project=regression-chromium
 
 ### CI/CD (headless mode)
 ```bash
-# Run all regression tests (headless)
-CI=true npx playwright test tests/regression/
+# Run all regression tests (headless, cross-platform)
+npm run test:ci
 
-# Run with specific reporter for CI
-CI=true npx playwright test --reporter=github,html
+# Windows-specific (if cross-env not available)
+npm run test:ci:win
+
+# Direct command with environment variable
+set CI=true && npx playwright test tests/regression/
 ```
 
 ### Quick Testing Commands
