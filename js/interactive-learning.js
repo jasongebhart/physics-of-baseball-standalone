@@ -25,9 +25,21 @@ export class InteractiveLearningSystem {
     }
 
     init() {
-        this.initializeExpandableSections();
+        // Skip expandable sections for Week 1 since it has good static organization
+        const isWeek1 = document.title.includes('Week 1') || 
+                       document.querySelector('.week-title')?.textContent.includes('Week 1');
+        
+        if (!isWeek1) {
+            this.initializeExpandableSections();
+        }
+        
         this.initializeTooltips();
-        this.initializeConceptCards();
+        
+        // Skip concept cards for Week 1 since it has manual concept sections
+        if (!isWeek1) {
+            this.initializeConceptCards();
+        }
+        
         this.initializeInteractiveElements();
         this.initializeProgressIndicators();
         this.setupKeyboardNavigation();
@@ -666,6 +678,15 @@ export class InteractiveLearningSystem {
     }
 
     initializeProgressIndicators() {
+        // Skip progress indicators for Week 1 to avoid visual clutter
+        const isWeek1 = document.title.includes('Week 1') || 
+                       document.querySelector('.week-title')?.textContent.includes('Week 1');
+        
+        if (isWeek1) {
+            console.log('Progress indicators disabled for Week 1 to maintain clean design');
+            return;
+        }
+        
         this.createOverallProgressBar();
         this.updateProgressIndicators();
     }
@@ -832,6 +853,14 @@ export class InteractiveLearningSystem {
     }
 
     markSectionComplete(sectionId) {
+        // Skip section completion for Week 1 to maintain clean design
+        const isWeek1 = document.title.includes('Week 1') || 
+                       document.querySelector('.week-title')?.textContent.includes('Week 1');
+        
+        if (isWeek1) {
+            return;
+        }
+        
         const progressIndicator = document.getElementById(`progress-${sectionId}`);
         const completeBtn = document.querySelector(`[data-section="${sectionId}"]`);
         
@@ -852,11 +881,19 @@ export class InteractiveLearningSystem {
         const words = text.trim().split(/\s+/).length;
         return Math.max(1, Math.ceil(words / wordsPerMinute));
     }
+
+    addCollaborativeElements() {
+        // Placeholder method for collaborative features
+        // This would include features like:
+        // - Study group formation
+        // - Peer review capabilities
+        // - Shared notes and annotations
+        // - Discussion threads
+        console.log('Collaborative elements placeholder - not yet implemented');
+    }
 }
 
-// Auto-initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.interactiveLearningSystem = new InteractiveLearningSystem();
-});
+// Note: InteractiveLearningSystem is initialized manually in each week's HTML file
+// to allow for week-specific configurations and avoid duplicate instances
 
 export default InteractiveLearningSystem;

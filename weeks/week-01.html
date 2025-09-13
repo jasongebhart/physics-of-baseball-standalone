@@ -8,24 +8,1385 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
     <link rel="stylesheet" href="../css/phase2-enhancements.css">
+    <style>
+        /* Global Layout Fixes */
+        * {
+            box-sizing: border-box;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* Skip Navigation Links */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-primary, #1a472a);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: bold;
+        }
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus indicators for interactive elements */
+        .toggle-details-btn:focus,
+        .vocabulary-toggle-btn:focus,
+        .day-indicator:focus {
+            outline: 2px solid var(--color-accent, #f39c12);
+            outline-offset: 2px;
+        }
+        
+        /* Mobile optimizations for interactive elements */
+        @media (max-width: 768px) {
+            /* Baseball diamond mobile optimization */
+            .diamond-layout {
+                flex-direction: column;
+            }
+            
+            .diamond-visual {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            .baseball-diamond {
+                width: 100%;
+                height: auto;
+                min-height: 300px;
+            }
+            
+            .diamond-controls {
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            /* Larger touch targets for mobile */
+            .scenario-select,
+            .calculator-input {
+                min-height: 44px;
+                font-size: 16px;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                width: 100%;
+            }
+            
+            .control-label,
+            .input-label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+            
+            .control-hint,
+            .input-hint {
+                display: block;
+                font-size: 0.9em;
+                color: #666;
+                font-weight: normal;
+                margin-top: 0.25rem;
+            }
+            
+            .control-help,
+            .input-help {
+                font-size: 0.8em;
+                color: #888;
+                margin-top: 0.25rem;
+            }
+            
+            .input-group {
+                margin-bottom: 1rem;
+            }
+            
+            /* Improve text readability on mobile */
+            .baseball-diamond text {
+                font-size: 14px;
+                font-weight: bold;
+            }
+            
+            /* Stack calculator elements vertically */
+            .physics-calculators {
+                flex-direction: column;
+            }
+            
+            .calculator-section,
+            .calculator-examples {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            /* Better spacing for motion cards on mobile */
+            .motion-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .motion-card {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .baseball-diamond {
+                min-height: 250px;
+            }
+            
+            .baseball-diamond text {
+                font-size: 12px;
+            }
+            
+            .controls-header {
+                background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+                padding: 1rem;
+                border-radius: 12px 12px 0 0;
+                border-bottom: 2px solid #2196f3;
+                margin-bottom: 0;
+            }
+            
+            .controls-header h4 {
+                margin: 0;
+                color: #1565c0;
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+            
+            .control-panel {
+                background: #ffffff;
+                padding: 1.5rem;
+                border-radius: 0 0 12px 12px;
+                border: 2px solid #e3f2fd;
+                border-top: none;
+                box-shadow: 0 4px 12px rgba(33, 150, 243, 0.1);
+                margin-bottom: 2rem;
+            }
+            
+            .results-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                background: #f8f9fa;
+                padding: 1.5rem;
+                border-radius: 12px;
+                border: 2px solid #e9ecef;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+            
+            .result-card {
+                background: white;
+                border-radius: 10px;
+                padding: 1.25rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                border-left: 4px solid transparent;
+            }
+            
+            .result-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            }
+            
+            .result-card.distance-card {
+                border-left-color: #4caf50;
+            }
+            
+            .result-card.displacement-card {
+                border-left-color: #2196f3;
+            }
+            
+            .result-card.difference-card {
+                border-left-color: #ff9800;
+            }
+            
+            .result-icon {
+                font-size: 2rem;
+                flex-shrink: 0;
+            }
+            
+            .result-content {
+                flex: 1;
+            }
+            
+            .result-label {
+                display: block;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.25rem;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            
+            .result-description {
+                display: block;
+                color: #666;
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+                line-height: 1.3;
+            }
+            
+            .result-value {
+                display: block;
+                font-weight: 700;
+                font-size: 1.2rem;
+                color: #2c3e50;
+            }
+            
+            .scenario-selector {
+                margin-bottom: 1.5rem;
+            }
+            
+            .control-label {
+                display: block;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .control-hint {
+                display: block;
+                font-weight: normal;
+                color: #666;
+                font-size: 0.8rem;
+                margin-top: 0.25rem;
+                font-style: italic;
+            }
+            
+            .scenario-select {
+                width: 100%;
+                padding: 12px 16px;
+                border: 2px solid #e3f2fd;
+                border-radius: 8px;
+                font-size: 1rem;
+                background: white;
+                color: #333;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                cursor: pointer;
+            }
+            
+            .scenario-select:focus {
+                outline: none;
+                border-color: #2196f3;
+                box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+            }
+            
+            .control-help {
+                margin-top: 0.5rem;
+                padding: 0.5rem;
+                background: #f0f8ff;
+                border-radius: 6px;
+                font-size: 0.8rem;
+                color: #1565c0;
+                border-left: 3px solid #2196f3;
+            }
+            
+            .animate-btn {
+                background: linear-gradient(135deg, #4caf50, #45a049);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .animate-btn:hover {
+                background: linear-gradient(135deg, #45a049, #4caf50);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+            }
+            
+            .animate-btn:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+            }
+            
+            .animate-btn:disabled {
+                background: linear-gradient(135deg, #bbb, #999);
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .btn-icon {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Enhanced Activity Visual Styles */
+        .activity-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .activity-duration,
+        .activity-type {
+            background: var(--color-accent, #f39c12);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .activity-goal {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--color-primary, #1a472a);
+        }
+        
+        .goal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .goal-icon {
+            font-size: 1.2rem;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .workflow-step {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: var(--color-primary, #1a472a);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content h6 {
+            margin: 0 0 0.25rem 0;
+            color: var(--color-primary, #1a472a);
+        }
+        
+        .step-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .motion-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .motion-type-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .motion-type-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .motion-type-card.spinning {
+            border-top: 4px solid #e74c3c;
+        }
+        
+        .motion-type-card.linear {
+            border-top: 4px solid #3498db;
+        }
+        
+        .motion-type-card.combined {
+            border-top: 4px solid #9b59b6;
+        }
+        
+        .motion-icon-large {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .motion-type-card h6 {
+            margin: 0.5rem 0;
+            color: var(--color-primary, #1a472a);
+        }
+        
+        .motion-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            justify-content: center;
+        }
+        
+        .example-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 0.2rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            border: 1px solid #dee2e6;
+        }
+        
+        .discussion-questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .question-card {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .question-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .question-card p {
+            margin: 0;
+            font-weight: 500;
+            color: #856404;
+        }
+        
+        .preview-section {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-left: 4px solid #28a745;
+        }
+        
+        .preview-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .preview-content h6 {
+            margin: 0 0 0.5rem 0;
+            color: #155724;
+        }
+        
+        .preview-content p {
+            margin: 0;
+            color: #155724;
+        }
+        
+        @media (max-width: 768px) {
+            .workflow-steps {
+                flex-direction: column;
+            }
+            
+            .motion-types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .discussion-questions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* White Space and Visual Breathing Room Improvements */
+        
+        /* Main sections spacing */
+        .day-section {
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+            clear: both;
+            position: relative;
+        }
+        
+        .day-header {
+            margin-bottom: 2.5rem;
+        }
+        
+        .concept-showcase {
+            margin: 6rem 0;
+            padding: 6rem 3rem;
+            clear: both;
+            position: relative;
+            z-index: 0;
+            background: transparent;
+            width: 100%;
+            max-width: none;
+            min-height: 1800px;
+        }
+        
+        .topics-grid {
+            margin: 2rem 0;
+            gap: 1.5rem;
+        }
+        
+        .topic-card {
+            padding: 1.5rem;
+        }
+        
+        /* Activity sections spacing */
+        .activities-timeline {
+            margin-top: 3rem;
+            clear: both;
+            position: relative;
+        }
+        
+        .activity-item {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+        }
+        
+        .activity-content h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .activity-description {
+            margin-top: 1rem;
+        }
+        
+        /* Interactive sections spacing */
+        .interactive-section {
+            margin: 3rem 0;
+            padding: 2rem;
+        }
+        
+        .baseball-diamond-section {
+            margin: 3rem 0;
+        }
+        
+        .motion-gallery {
+            margin: 2.5rem 0;
+            padding: 1.5rem 0;
+        }
+        
+        .motion-grid {
+            margin-top: 2rem;
+            gap: 2rem;
+        }
+        
+        .motion-card {
+            padding: 1.5rem;
+        }
+        
+        /* Calculator sections spacing */
+        .physics-calculators {
+            margin: 2.5rem 0;
+        }
+        
+        .calculator-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+        
+        .calculator-examples {
+            margin-top: 2rem;
+            padding: 1.5rem;
+        }
+        
+        /* Assessment sections spacing */
+        .assessment-section {
+            margin: 3rem 0;
+            padding: 2rem;
+        }
+        
+        /* Typography spacing improvements */
+        h1, h2, h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4, h5 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section headers breathing room */
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        
+        .section-description {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Enhanced spacing for specific components */
+        .vocabulary-toggle-section {
+            margin: 2rem 0;
+        }
+        
+        .course-details-toggle {
+            margin: 1.5rem 0;
+        }
+        
+        .week-progress-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+        }
+        
+        .breadcrumb-nav {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Card and container spacing */
+        .week-header {
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .day-meta {
+            margin-top: 1rem;
+        }
+        
+        /* Enhanced spacing for better visual hierarchy */
+        .example-problems {
+            margin-top: 1.5rem;
+        }
+        
+        .example-item {
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+        
+        /* Question and discussion spacing */
+        .discussion-section {
+            margin: 2rem 0;
+        }
+        
+        .question-card {
+            margin-bottom: 1rem;
+        }
+        
+        /* Preview and summary sections */
+        .preview-section {
+            margin: 2rem 0;
+        }
+        
+        .motion-summary {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+        }
+        
+        /* Enhanced Button Styling */
+        .vocabulary-toggle-btn,
+        .toggle-details-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        .vocabulary-toggle-btn:hover,
+        .toggle-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #5a6fd8 0%, #6b4190 100%);
+        }
+        
+        .vocabulary-toggle-btn:active,
+        .toggle-details-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+        }
+        
+        .vocab-toggle-icon,
+        .toggle-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .vocabulary-toggle-btn[aria-expanded="true"] .vocab-toggle-icon,
+        .toggle-details-btn[aria-expanded="true"] .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .vocab-toggle-text,
+        .toggle-text {
+            font-weight: 600;
+        }
+        
+        /* Special styling for vocabulary button */
+        .vocabulary-toggle-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+        
+        .vocabulary-toggle-btn:hover {
+            background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .vocabulary-toggle-btn:focus,
+        .toggle-details-btn:focus {
+            outline: 3px solid rgba(102, 126, 234, 0.4);
+            outline-offset: 2px;
+        }
+        
+        /* Button container styling */
+        .vocabulary-toggle-section,
+        .course-details-toggle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        /* Enhanced Vocabulary Card Styling */
+        .vocabulary-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 0;
+        }
+        
+        .vocab-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vocab-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #FF9800, #9C27B0);
+            opacity: 0.8;
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .vocab-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .vocab-icon {
+            font-size: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .vocab-header h5 {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .vocab-definition {
+            margin-bottom: 1.25rem;
+        }
+        
+        .vocab-definition p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        
+        .vocab-example {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            border-left: 4px solid var(--color-accent, #f39c12);
+        }
+        
+        .example-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .example-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .example-text {
+            color: #495057;
+            font-weight: 500;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .vocabulary-grid-enhanced {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .vocab-card {
+                padding: 1.25rem;
+            }
+            
+            .vocab-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .vocab-icon {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Enhanced Concept Comparison Styling */
+        .concept-comparison-enhanced {
+            margin: 6rem 0;
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 28px;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
+            clear: both;
+            width: 100%;
+            max-width: none;
+            min-height: 2000px;
+            overflow: visible;
+        }
+        
+        .comparison-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+        
+        .comparison-intro p {
+            font-size: 1.1rem;
+            color: #495057;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .concept-cards-container {
+            display: block;
+            margin: 6rem 0;
+            width: 100%;
+            max-width: none;
+            position: relative;
+            min-height: 1600px;
+            padding: 4rem 0;
+            overflow: visible;
+        }
+        
+        .concept-card {
+            background: #ffffff !important;
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 6rem;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            clear: both;
+            display: block;
+            min-height: 500px;
+            font-size: 1rem;
+            overflow: visible;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .distance-card {
+            border-color: #28a745;
+        }
+        
+        .displacement-card {
+            border-color: #007bff;
+        }
+        
+        .concept-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .concept-header h4 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .concept-icon-large {
+            font-size: 2.5rem;
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .concept-title-group h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .concept-type-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .concept-type-badge.scalar {
+            background: #28a745;
+            color: white;
+        }
+        
+        .concept-type-badge.vector {
+            background: #007bff;
+            color: white;
+        }
+        
+        .concept-definition,
+        .concept-characteristics,
+        .concept-example {
+            margin-bottom: 2.5rem;
+            margin-top: 2.5rem;
+            clear: both;
+            padding-top: 1rem;
+            position: relative;
+            z-index: 15;
+            width: 100%;
+        }
+        
+        .concept-definition h5,
+        .concept-characteristics h5,
+        .concept-example h5 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2c3e50 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: transparent !important;
+            text-shadow: none !important;
+        }
+        
+        .concept-definition p {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.5;
+            text-shadow: none;
+        }
+        
+        .concept-characteristics ul {
+            margin: 0;
+            padding-left: 2rem;
+        }
+        
+        .concept-characteristics li {
+            margin-bottom: 0.5rem;
+            color: #6c757d;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .example-visual {
+            background: #ffffff !important;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+            border: 2px solid #e9ecef;
+            position: relative;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            width: 100%;
+            min-height: 200px;
+        }
+        
+        .path-illustration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+            position: relative;
+            z-index: 25;
+            background: transparent !important;
+            width: 100%;
+        }
+        
+        .base-marker {
+            background: #ffffff !important;
+            color: #2c3e50 !important;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2);
+            position: relative;
+            z-index: 30;
+            display: inline-block;
+        }
+        
+        .arrow,
+        .diagonal-arrow {
+            font-size: 1.5rem;
+            color: #007bff !important;
+            font-weight: bold;
+            margin: 0 0.5rem;
+            position: relative;
+            z-index: 35;
+            display: inline-block;
+        }
+        
+        .calculation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #ffffff !important;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            margin-top: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 25;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+            width: 100%;
+            min-height: 80px;
+        }
+        
+        .calc-step {
+            color: #2c3e50 !important;
+            font-size: 1rem;
+            background: transparent !important;
+        }
+        
+        .result {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 3px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .vs-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        
+        .vs-circle {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .comparison-summary {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-left: 4px solid #ffc107;
+            margin-top: 3rem;
+            clear: both;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .summary-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .summary-content h5 {
+            margin: 0 0 0.5rem 0;
+            color: #856404;
+            font-weight: 700;
+        }
+        
+        .summary-content p {
+            margin: 0;
+            color: #856404;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .concept-card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .concept-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .comparison-summary {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Skip Navigation Links -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#day-1" class="skip-link">Skip to Day 1</a>
+    <a href="#activities" class="skip-link">Skip to activities</a>
+    
     <div class="container">
-        <main class="main-content">
+        <main class="main-content" id="main-content">
             <header class="week-header">
                 <h1 class="week-title">Week 1: Introduction to the Physics of Motion</h1>
                 <p class="week-description">
                     This week, we'll lay the foundation for our journey into the physics of baseball by exploring the fundamental concepts of motion.
                 </p>
                 <div class="objectives-overview">
-                    <h3>Learning Objectives</h3>
-                    <ul>
-                        <li>Define and differentiate between distance, displacement, speed, velocity, and acceleration.</li>
-                        <li>Apply the concepts of motion to describe the movement of a baseball.</li>
-                        <li>Use video analysis to qualitatively analyze motion.</li>
+                    <h3>🎯 Learning Objectives</h3>
+                    <p class="objectives-intro">By the end of this week, you will be able to:</p>
+                    <ul class="objectives-list">
+                        <li>
+                            <span class="objective-icon">📏</span>
+                            <div class="objective-content">
+                                <strong>Master Motion Fundamentals:</strong> Define and differentiate between distance, displacement, speed, velocity, and acceleration in clear, practical terms.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="objective-icon">⚾</span>
+                            <div class="objective-content">
+                                <strong>Apply Physics to Baseball:</strong> Analyze real baseball scenarios using motion concepts to describe pitching, hitting, and base-running movements.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="objective-icon">🎬</span>
+                            <div class="objective-content">
+                                <strong>Conduct Video Analysis:</strong> Use video footage to qualitatively analyze motion patterns and identify key physics principles in action.
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </header>
+
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html" class="breadcrumb-link">
+                            <span class="breadcrumb-icon">🏠</span>
+                            <span class="breadcrumb-text">Course Home</span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-separator" aria-hidden="true">›</li>
+                    <li class="breadcrumb-item">
+                        <span class="breadcrumb-text current">Week 1: Introduction to Motion</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Week Progress Indicator -->
+            <section class="week-progress-container" aria-labelledby="progress-title">
+                <div class="progress-header">
+                    <h3 class="progress-title" id="progress-title">Your Progress</h3>
+                    <span class="progress-percentage" id="week-progress-text" aria-live="polite">0% Complete</span>
+                </div>
+                <div class="progress-bar-container" role="progressbar" aria-labelledby="progress-title" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-describedby="week-progress-text">
+                    <div class="progress-bar" id="week-progress-bar" style="width: 0%"></div>
+                </div>
+                <nav class="day-progress-indicators" aria-label="Week 1 Daily Progress">
+                    <div class="day-indicator" data-day="1" role="button" tabindex="0" aria-label="Day 1: What is Motion? - Not started" aria-describedby="day-1-desc">
+                        <span class="day-number" aria-hidden="true">1</span>
+                        <span class="day-label" id="day-1-desc">What is Motion?</span>
+                        <div class="day-status" id="day-1-status" aria-hidden="true">○</div>
+                        <span class="sr-only">Not started</span>
+                    </div>
+                    <div class="day-indicator" data-day="2" role="button" tabindex="0" aria-label="Day 2: Distance & Displacement - Not started" aria-describedby="day-2-desc">
+                        <span class="day-number" aria-hidden="true">2</span>
+                        <span class="day-label" id="day-2-desc">Distance & Displacement</span>
+                        <div class="day-status" id="day-2-status" aria-hidden="true">○</div>
+                        <span class="sr-only">Not started</span>
+                    </div>
+                    <div class="day-indicator" data-day="3" role="button" tabindex="0" aria-label="Day 3: Speed & Velocity - Not started" aria-describedby="day-3-desc">
+                        <span class="day-number" aria-hidden="true">3</span>
+                        <span class="day-label" id="day-3-desc">Speed & Velocity</span>
+                        <div class="day-status" id="day-3-status" aria-hidden="true">○</div>
+                        <span class="sr-only">Not started</span>
+                    </div>
+                    <div class="day-indicator" data-day="4" role="button" tabindex="0" aria-label="Day 4: Advanced Analysis - Not started" aria-describedby="day-4-desc">
+                        <span class="day-number" aria-hidden="true">4</span>
+                        <span class="day-label" id="day-4-desc">Advanced Analysis</span>
+                        <div class="day-status" id="day-4-status" aria-hidden="true">○</div>
+                        <span class="sr-only">Not started</span>
+                    </div>
+                    <div class="day-indicator" data-day="5" role="button" tabindex="0" aria-label="Day 5: Assessment - Not started" aria-describedby="day-5-desc">
+                        <span class="day-number" aria-hidden="true">5</span>
+                        <span class="day-label" id="day-5-desc">Assessment</span>
+                        <div class="day-status" id="day-5-status" aria-hidden="true">○</div>
+                        <span class="sr-only">Not started</span>
+                    </div>
+                </nav>
+            </section>
 
             <!-- Day 1: What is Motion? Setting the Stage -->
             <section class="day-section" id="day-1">
@@ -38,39 +1399,172 @@
                 </div>
                 
                 <div class="day-content">
+                    <!-- Foundational Concepts Section -->
+                    <div class="concept-showcase">
+                        <h3>🔑 What is Motion?</h3>
+                        <div class="concept-definition">
+                            <p><strong>Motion</strong> is the change in position of an object with respect to time and relative to a reference frame.</p>
+                            <div class="key-insight">
+                                <span class="insight-icon">💡</span>
+                                <p><em>Key Insight: Motion is always relative! A baseball may be moving at 95 mph relative to home plate, but stationary relative to the pitcher's hand during the wind-up.</em></p>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>🎯 Key Topics</h3>
                     <div class="topics-grid">
                         <div class="topic-card">
-                            <span class="topic-icon">🎯</span>
+                            <span class="topic-icon">📍</span>
                             <div class="topic-info">
-                                <h4>Defining Motion</h4>
-                                <p>Everyday vs. physics perspectives on movement</p>
+                                <h4>Reference Frames</h4>
+                                <p>Understanding motion depends on your point of view - stadium vs. dugout vs. ball perspective</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">📐</span>
                             <div class="topic-info">
-                                <h4>Kinematics Basics</h4>
-                                <p>Study of motion without considering forces</p>
+                                <h4>Kinematics Introduction</h4>
+                                <p>Study of motion without considering what causes it - position, velocity, acceleration</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">⚾</span>
                             <div class="topic-info">
-                                <h4>Baseball Terminology</h4>
-                                <p>Pitcher's mound, home plate, pitch speed</p>
+                                <h4>Baseball Physics Setup</h4>
+                                <p>Key measurements: 60'6" pitcher's mound, 90' bases, typical pitch speeds 70-105 mph</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">🔄</span>
                             <div class="topic-info">
-                                <h4>Types of Motion</h4>
-                                <p>Linear, rotational, and projectile motion in pitching</p>
+                                <h4>Motion Types in Baseball</h4>
+                                <p>Linear (ball flight), rotational (bat swing), projectile (home run), oscillating (pitcher's rhythm)</p>
                             </div>
                         </div>
                     </div>
+
+                    <h3 id="activities">🏃‍♂️ Activities</h3>
                     
-                    <h3>🏃‍♂️ Activities</h3>
+                    <!-- Optional vocabulary section moved after activities -->
+                    <div class="vocabulary-toggle-section">
+                        <button class="vocabulary-toggle-btn" onclick="toggleVocabulary()"
+                                aria-expanded="false"
+                                aria-controls="vocabulary-content"
+                                aria-describedby="vocab-desc">
+                            <span class="vocab-toggle-text">📚 Need physics vocabulary help?</span>
+                            <span class="vocab-toggle-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div id="vocab-desc" class="sr-only">Click to expand physics vocabulary definitions and examples</div>
+                        
+                        <div id="vocabulary-content" class="vocabulary-section-collapsible" style="display: none;" aria-hidden="true">
+                            <h4>📚 Essential Physics Terms</h4>
+                            <div class="vocabulary-grid-enhanced" role="list">
+                                <div class="vocab-card" role="listitem">
+                                    <div class="vocab-header">
+                                        <div class="vocab-icon">📍</div>
+                                        <h5>Position</h5>
+                                    </div>
+                                    <div class="vocab-definition">
+                                        <p>Where an object is located relative to a reference point</p>
+                                    </div>
+                                    <div class="vocab-example">
+                                        <div class="example-label">Baseball Example:</div>
+                                        <div class="example-content">
+                                            <span class="example-icon">⚾</span>
+                                            <span class="example-text">Ball is 18.44m from home plate</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vocab-card" role="listitem">
+                                    <div class="vocab-header">
+                                        <div class="vocab-icon">🎯</div>
+                                        <h5>Reference Frame</h5>
+                                    </div>
+                                    <div class="vocab-definition">
+                                        <p>The coordinate system used to describe motion</p>
+                                    </div>
+                                    <div class="vocab-example">
+                                        <div class="example-label">Baseball Examples:</div>
+                                        <div class="example-content">
+                                            <span class="example-icon">📍</span>
+                                            <span class="example-text">Stadium, pitcher's mound, or moving car</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vocab-card" role="listitem">
+                                    <div class="vocab-header">
+                                        <div class="vocab-icon">📊</div>
+                                        <h5>Kinematics</h5>
+                                    </div>
+                                    <div class="vocab-definition">
+                                        <p>Branch of physics describing motion without considering causes</p>
+                                    </div>
+                                    <div class="vocab-example">
+                                        <div class="example-label">Focus Areas:</div>
+                                        <div class="example-content">
+                                            <span class="example-icon">📐</span>
+                                            <span class="example-text">How fast, how far, which direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vocab-card" role="listitem">
+                                    <div class="vocab-header">
+                                        <div class="vocab-icon">⚡</div>
+                                        <h5>Dynamics</h5>
+                                    </div>
+                                    <div class="vocab-definition">
+                                        <p>Branch of physics explaining why objects move (forces)</p>
+                                    </div>
+                                    <div class="vocab-example">
+                                        <div class="example-label">Force Examples:</div>
+                                        <div class="example-content">
+                                            <span class="example-icon">💪</span>
+                                            <span class="example-text">Pitcher's arm force, gravity, air resistance</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                    function toggleVocabulary() {
+                        const vocabContent = document.getElementById('vocabulary-content');
+                        const toggleIcon = document.querySelector('.vocab-toggle-icon');
+                        const toggleText = document.querySelector('.vocab-toggle-text');
+                        const toggleBtn = document.querySelector('.vocabulary-toggle-btn');
+                        
+                        if (vocabContent.style.display === 'none') {
+                            vocabContent.style.display = 'block';
+                            vocabContent.setAttribute('aria-hidden', 'false');
+                            toggleBtn.setAttribute('aria-expanded', 'true');
+                            toggleIcon.textContent = '▲';
+                            toggleText.textContent = '📚 Hide vocabulary help';
+                        } else {
+                            vocabContent.style.display = 'none';
+                            vocabContent.setAttribute('aria-hidden', 'true');
+                            toggleBtn.setAttribute('aria-expanded', 'false');
+                            toggleIcon.textContent = '▼';
+                            toggleText.textContent = '📚 Need physics vocabulary help?';
+                        }
+                    }
+                    
+                    // Add keyboard support for vocabulary toggle
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const vocabToggleBtn = document.querySelector('.vocabulary-toggle-btn');
+                        if (vocabToggleBtn) {
+                            vocabToggleBtn.addEventListener('keydown', function(e) {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    toggleVocabulary();
+                                }
+                            });
+                        }
+                    });
+                    </script>
                     <div class="activities-timeline">
                         <div class="activity-item">
                             <div class="activity-icon">💭</div>
@@ -82,8 +1576,107 @@
                         <div class="activity-item">
                             <div class="activity-icon">🎬</div>
                             <div class="activity-content">
-                                <h4>Pitch Phase Analysis (20 min)</h4>
-                                <p>Break down pitching motion: wind-up → stride → arm action → release → follow-through. Identify motion types in each phase.</p>
+                                <h4>🎬 Pitch Motion Observation</h4>
+                                <div class="activity-meta">
+                                    <span class="activity-duration">⏱️ 20 minutes</span>
+                                    <span class="activity-type">👥 Class Activity</span>
+                                </div>
+                                
+                                <div class="activity-description">
+                                    <div class="activity-goal">
+                                        <div class="goal-header">
+                                            <span class="goal-icon">🎯</span>
+                                            <h5>Learning Goal</h5>
+                                        </div>
+                                        <p>Watch pitching motion and identify different types of movement happening at the same time.</p>
+                                    </div>
+                                    
+                                    <div class="activity-workflow">
+                                        <h5 class="workflow-title">📹 Step-by-Step Process</h5>
+                                        <div class="workflow-steps">
+                                            <div class="workflow-step">
+                                                <div class="step-number">1</div>
+                                                <div class="step-content">
+                                                    <h6>Watch Together</h6>
+                                                    <p>View slow-motion pitching video as a class</p>
+                                                </div>
+                                            </div>
+                                            <div class="workflow-step">
+                                                <div class="step-number">2</div>
+                                                <div class="step-content">
+                                                    <h6>Share Observations</h6>
+                                                    <p>Discuss what movements you notice</p>
+                                                </div>
+                                            </div>
+                                            <div class="workflow-step">
+                                                <div class="step-number">3</div>
+                                                <div class="step-content">
+                                                    <h6>Categorize Motion</h6>
+                                                    <p>Identify which parts move straight vs. spin/rotate</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="observation-guide">
+                                        <h5 class="guide-title">🎯 Motion Spotting Guide</h5>
+                                        <div class="motion-types-grid">
+                                            <div class="motion-type-card spinning">
+                                                <div class="motion-icon-large">🔄</div>
+                                                <h6>Spinning Motions</h6>
+                                                <div class="motion-examples">
+                                                    <span class="example-tag">Arm circles</span>
+                                                    <span class="example-tag">Body turns</span>
+                                                    <span class="example-tag">Ball spin</span>
+                                                </div>
+                                            </div>
+                                            <div class="motion-type-card linear">
+                                                <div class="motion-icon-large">➡️</div>
+                                                <h6>Straight-Line Motions</h6>
+                                                <div class="motion-examples">
+                                                    <span class="example-tag">Forward step</span>
+                                                    <span class="example-tag">Ball flight</span>
+                                                    <span class="example-tag">Arm extension</span>
+                                                </div>
+                                            </div>
+                                            <div class="motion-type-card combined">
+                                                <div class="motion-icon-large">🤹</div>
+                                                <h6>Combined Motions</h6>
+                                                <div class="motion-examples">
+                                                    <span class="example-tag">Multiple movements</span>
+                                                    <span class="example-tag">Simultaneous actions</span>
+                                                    <span class="example-tag">Complex patterns</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discussion-section">
+                                        <h5 class="discussion-title">💭 Class Discussion Questions</h5>
+                                        <div class="discussion-questions-grid">
+                                            <div class="question-card">
+                                                <div class="question-icon">👀</div>
+                                                <p>What's the most obvious movement you see?</p>
+                                            </div>
+                                            <div class="question-card">
+                                                <div class="question-icon">🔍</div>
+                                                <p>Can you spot any spinning or rotating parts?</p>
+                                            </div>
+                                            <div class="question-card">
+                                                <div class="question-icon">🔢</div>
+                                                <p>How many different movements happen at once?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="preview-section">
+                                        <div class="preview-icon">💡</div>
+                                        <div class="preview-content">
+                                            <h6>Coming Up This Week</h6>
+                                            <p>We'll learn the physics terms for these different motion types and discover how to measure them!</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="activity-item">
@@ -97,7 +1690,94 @@
                             <div class="activity-icon">🎓</div>
                             <div class="activity-content">
                                 <h4>Course Introduction (5 min)</h4>
-                                <p>Overview of unique physics-through-baseball approach and expectations.</p>
+                                <div class="course-intro-content">
+                                    <div class="intro-overview">
+                                        <p><strong>Welcome to Physics of Baseball!</strong> This course uses America's pastime to explore fundamental physics principles in action.</p>
+                                    </div>
+
+                                    <div class="key-approach">
+                                        <p>🎯 <strong>What makes this course unique:</strong> Every physics concept connects directly to real baseball scenarios using video analysis, MLB data, and hands-on problem solving.</p>
+                                    </div>
+
+                                    <div class="this-week-focus">
+                                        <h5>⚾ This Week's Journey:</h5>
+                                        <p>We'll start with the fundamentals of motion - understanding how things move in baseball, from fastballs to base running.</p>
+                                    </div>
+
+                                    <div class="opening-question">
+                                        <h5>🤔 Opening Question:</h5>
+                                        <p><em>"What physics concepts do you think are most important in baseball? We'll revisit this at the end of the course!"</em></p>
+                                    </div>
+                                    
+                                    <div class="course-details-toggle">
+                                        <button class="toggle-details-btn" onclick="toggleCourseDetails()" 
+                                                aria-expanded="false" 
+                                                aria-controls="course-details"
+                                                aria-describedby="course-details-desc">
+                                            <span class="toggle-text">📚 Want to see the full course overview?</span>
+                                            <span class="toggle-icon" aria-hidden="true">▼</span>
+                                        </button>
+                                        <div id="course-details-desc" class="sr-only">Click to expand detailed course structure and expectations</div>
+                                        
+                                        <div id="course-details" class="course-details-content" style="display: none;" aria-hidden="true">
+                                            <div class="course-structure">
+                                                <h6>12-Week Course Journey:</h6>
+                                                <div class="week-preview">
+                                                    <p><strong>Weeks 1-3:</strong> Motion & Kinematics (pitching, base running)</p>
+                                                    <p><strong>Weeks 4-6:</strong> Forces & Dynamics (batting, fielding)</p>
+                                                    <p><strong>Weeks 7-9:</strong> Energy & Momentum (collisions, home runs)</p>
+                                                    <p><strong>Weeks 10-12:</strong> Advanced Topics (spin, aerodynamics, statistics)</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="expectations-summary">
+                                                <h6>What to Expect:</h6>
+                                                <ul>
+                                                    <li><strong>Interactive Learning:</strong> Video analysis, simulations, and hands-on activities</li>
+                                                    <li><strong>Real Data:</strong> Work with actual MLB statistics and measurements</li>
+                                                    <li><strong>Problem Solving:</strong> Apply physics to analyze real game situations</li>
+                                                    <li><strong>Collaboration:</strong> Discuss and explore physics concepts with classmates</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                function toggleCourseDetails() {
+                                    const details = document.getElementById('course-details');
+                                    const toggleIcon = document.querySelector('.toggle-icon');
+                                    const toggleText = document.querySelector('.toggle-text');
+                                    const toggleBtn = document.querySelector('.toggle-details-btn');
+                                    
+                                    if (details.style.display === 'none') {
+                                        details.style.display = 'block';
+                                        details.setAttribute('aria-hidden', 'false');
+                                        toggleBtn.setAttribute('aria-expanded', 'true');
+                                        toggleIcon.textContent = '▲';
+                                        toggleText.textContent = '📚 Hide course overview';
+                                    } else {
+                                        details.style.display = 'none';
+                                        details.setAttribute('aria-hidden', 'true');
+                                        toggleBtn.setAttribute('aria-expanded', 'false');
+                                        toggleIcon.textContent = '▼';
+                                        toggleText.textContent = '📚 Want to see the full course overview?';
+                                    }
+                                }
+                                
+                                // Add keyboard support for course details toggle
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const courseToggleBtn = document.querySelector('.toggle-details-btn');
+                                    if (courseToggleBtn) {
+                                        courseToggleBtn.addEventListener('keydown', function(e) {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                e.preventDefault();
+                                                toggleCourseDetails();
+                                            }
+                                        });
+                                    }
+                                });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -142,16 +1822,103 @@
                     
                     <div class="concept-showcase">
                         <h3>🔑 Key Concept: Distance vs Displacement</h3>
-                        <div class="concept-comparison">
-                            <div class="concept-item">
-                                <h4>Distance (Scalar)</h4>
-                                <p><strong>Total path length</strong></p>
-                                <p><em>Example: Runner: 1st → 2nd → 3rd = 180 ft</em></p>
+                        <div class="concept-comparison-enhanced">
+                            <div class="comparison-intro">
+                                <p>Understanding the difference between these two concepts is fundamental to analyzing baseball motion:</p>
                             </div>
-                            <div class="concept-item">
-                                <h4>Displacement (Vector)</h4>
-                                <p><strong>Change in position with direction</strong></p>
-                                <p><em>Example: Runner: 1st → 3rd = 127 ft at 45°</em></p>
+                            
+                            <div class="concept-cards-container">
+                                <div class="concept-card distance-card">
+                                    <div class="concept-header">
+                                        <div class="concept-icon-large">📏</div>
+                                        <div class="concept-title-group">
+                                            <h4>Distance</h4>
+                                            <span class="concept-type-badge scalar">Scalar</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-definition">
+                                        <h5>Definition:</h5>
+                                        <p>Total path length traveled</p>
+                                    </div>
+                                    
+                                    <div class="concept-characteristics">
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>Always positive</li>
+                                            <li>Adds up all movement</li>
+                                            <li>No direction information</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-example">
+                                        <h5>Baseball Example:</h5>
+                                        <div class="example-visual">
+                                            <div class="path-illustration">
+                                                <span class="base-marker">1st</span>
+                                                <span class="arrow">→</span>
+                                                <span class="base-marker">2nd</span>
+                                                <span class="arrow">→</span>
+                                                <span class="base-marker">3rd</span>
+                                            </div>
+                                            <div class="calculation">
+                                                <span class="calc-step">90 ft + 90 ft = </span>
+                                                <span class="result">180 ft</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vs-separator">
+                                    <div class="vs-circle">VS</div>
+                                </div>
+
+                                <div class="concept-card displacement-card">
+                                    <div class="concept-header">
+                                        <div class="concept-icon-large">🎯</div>
+                                        <div class="concept-title-group">
+                                            <h4>Displacement</h4>
+                                            <span class="concept-type-badge vector">Vector</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-definition">
+                                        <h5>Definition:</h5>
+                                        <p>Change in position with direction</p>
+                                    </div>
+                                    
+                                    <div class="concept-characteristics">
+                                        <h5>Key Features:</h5>
+                                        <ul>
+                                            <li>Can be positive or negative</li>
+                                            <li>Straight-line measurement</li>
+                                            <li>Includes direction</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-example">
+                                        <h5>Baseball Example:</h5>
+                                        <div class="example-visual">
+                                            <div class="path-illustration">
+                                                <span class="base-marker">1st</span>
+                                                <span class="diagonal-arrow">↗</span>
+                                                <span class="base-marker">3rd</span>
+                                            </div>
+                                            <div class="calculation">
+                                                <span class="calc-step">Straight line = </span>
+                                                <span class="result">127 ft at 45°</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-summary">
+                            <div class="summary-icon">💡</div>
+                            <div class="summary-content">
+                                <h5>Key Takeaway:</h5>
+                                <p>Distance tells us <em>how much ground was covered</em>, while displacement tells us <em>where you ended up relative to where you started</em>.</p>
                             </div>
                         </div>
                     </div>
@@ -182,10 +1949,15 @@
                     </div>
 
                     <!-- Interactive Baseball Diamond Calculator -->
-                    <div class="interactive-section">
-                        <h3>⚾ Interactive Baseball Diamond</h3>
-                        <div class="baseball-diamond-container" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(255, 167, 38, 0.1)); border: 1px solid rgba(33, 150, 243, 0.2); border-radius: 1rem; padding: 2rem; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                            <svg class="baseball-diamond" viewBox="0 0 400 400" width="400" height="400">
+                    <div class="interactive-section baseball-diamond-section">
+                        <div class="section-header">
+                            <h3>⚾ Interactive Baseball Diamond</h3>
+                            <p class="section-description">Explore distance vs displacement concepts using baseball scenarios</p>
+                        </div>
+                        
+                        <div class="diamond-layout">
+                            <div class="diamond-visual">
+                                <svg class="baseball-diamond" viewBox="0 0 400 400">
                                 <!-- Gradient definitions -->
                                 <defs>
                                     <radialGradient id="fieldGradient" cx="50%" cy="50%" r="70%">
@@ -256,36 +2028,69 @@
                                 <!-- Distance lines -->
                                 <line id="distance-line" stroke="#4ECDC4" stroke-width="2" opacity="0"/>
                                 <line id="displacement-line" stroke="#45B7D1" stroke-width="3" stroke-dasharray="5,5" opacity="0"/>
-                            </svg>
+                                </svg>
+                            </div>
                             
-                            <div class="diamond-controls" style="text-align: center; margin-top: 2rem;">
-                                <h4 style="margin-bottom: 1.5rem; color: #1976d2; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">📊 Baseball Distance vs Displacement Calculator</h4>
-                                <div class="control-group">
-                                    <label>Scenario:</label>
-                                    <select id="base-scenario">
-                                        <option value="single">Single to 1st Base</option>
-                                        <option value="double">Double to 2nd Base</option>
-                                        <option value="triple">Triple to 3rd Base</option>
-                                        <option value="homerun">Home Run</option>
-                                        <option value="steal">Steal 2nd Base</option>
-                                        <option value="custom">Custom Path</option>
-                                    </select>
+                            <div class="diamond-controls">
+                                <div class="controls-header">
+                                    <h4>📊 Controls & Results</h4>
                                 </div>
-                                <div class="results-display">
-                                    <div class="result-item">
-                                        <span class="label">Distance (total path):</span>
-                                        <span id="total-distance" class="value">90 ft</span>
+                                
+                                <div class="control-panel">
+                                    <div class="scenario-selector">
+                                        <label for="base-scenario" class="control-label">
+                                            Choose Baseball Scenario:
+                                            <span class="control-hint">Select a base-running scenario to analyze</span>
+                                        </label>
+                                        <select id="base-scenario" 
+                                                aria-describedby="scenario-help"
+                                                class="scenario-select">
+                                            <option value="single">⚾ Single to 1st Base</option>
+                                            <option value="double">⚾⚾ Double to 2nd Base</option>
+                                            <option value="triple">⚾⚾⚾ Triple to 3rd Base</option>
+                                            <option value="homerun">🏟️ Home Run</option>
+                                            <option value="steal">🏃‍♂️ Steal 2nd Base</option>
+                                            <option value="custom">🎯 Custom Path</option>
+                                        </select>
+                                        <div id="scenario-help" class="control-help">
+                                            Choose a scenario to see distance vs displacement analysis
+                                        </div>
                                     </div>
-                                    <div class="result-item">
-                                        <span class="label">Displacement (straight line):</span>
-                                        <span id="displacement" class="value">90 ft at 0°</span>
+                                    
+                                    <button id="animate-runner" class="animate-btn">
+                                        <span class="btn-icon">🏃‍♂️</span>
+                                        <span class="btn-text">Animate Runner</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="results-grid">
+                                    <div class="result-card distance-card">
+                                        <div class="result-icon">📏</div>
+                                        <div class="result-content">
+                                            <span class="result-label">Distance</span>
+                                            <span class="result-description">Total path traveled</span>
+                                            <span id="total-distance" class="result-value">90 ft</span>
+                                        </div>
                                     </div>
-                                    <div class="result-item">
-                                        <span class="label">Difference:</span>
-                                        <span id="difference" class="value">0 ft</span>
+                                    
+                                    <div class="result-card displacement-card">
+                                        <div class="result-icon">📐</div>
+                                        <div class="result-content">
+                                            <span class="result-label">Displacement</span>
+                                            <span class="result-description">Straight line with direction</span>
+                                            <span id="displacement" class="result-value">90 ft at 0°</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="result-card difference-card">
+                                        <div class="result-icon">🔢</div>
+                                        <div class="result-content">
+                                            <span class="result-label">Difference</span>
+                                            <span class="result-description">Distance - Displacement</span>
+                                            <span id="difference" class="result-value">0 ft</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <button id="animate-runner" onclick="console.log('Inline onclick triggered'); animateRunner();" style="background: linear-gradient(135deg, #1976d2, #4caf50); border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-size: 1.125rem; font-weight: 600; cursor: pointer; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: all 0.25s ease;">Animate Runner 🏃‍♂️</button>
                             </div>
                         </div>
                     </div>
@@ -293,6 +2098,8 @@
                     <!-- Motion Types Gallery -->
                     <div class="motion-gallery">
                         <h3>🎭 Types of Motion in Baseball</h3>
+                        <p class="gallery-intro">Understanding these four fundamental motion types will help you analyze any baseball play.</p>
+                        
                         <div class="motion-grid">
                             <div class="motion-card">
                                 <div class="motion-image-placeholder linear-motion">
@@ -303,10 +2110,21 @@
                                 </div>
                                 <div class="motion-info">
                                     <h4>Linear Motion</h4>
-                                    <p>Motion in a straight line, such as a fastball traveling from pitcher to catcher</p>
-                                    <div class="motion-examples">Examples: Fastball delivery, base running</div>
+                                    <div class="motion-definition">
+                                        <p><strong>Definition:</strong> Motion in a straight line from one point to another</p>
+                                        <p><em>Key Feature:</em> Constant direction of movement</p>
+                                    </div>
+                                    <div class="motion-examples">
+                                        <strong>Baseball Examples:</strong>
+                                        <ul>
+                                            <li>🎯 Fastball from pitcher to catcher</li>
+                                            <li>🏃‍♂️ Runner sprinting to first base</li>
+                                            <li>⚾ Line drive hit to outfield</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="motion-card">
                                 <div class="motion-image-placeholder rotational-motion">
                                     <div class="motion-icon">🔄</div>
@@ -316,10 +2134,21 @@
                                 </div>
                                 <div class="motion-info">
                                     <h4>Rotational Motion</h4>
-                                    <p>Motion around an axis, such as a pitcher's arm rotation during windup</p>
-                                    <div class="motion-examples">Examples: Pitcher windup, ball spin</div>
+                                    <div class="motion-definition">
+                                        <p><strong>Definition:</strong> Motion around a fixed axis or center point</p>
+                                        <p><em>Key Feature:</em> Circular or spinning movement</p>
+                                    </div>
+                                    <div class="motion-examples">
+                                        <strong>Baseball Examples:</strong>
+                                        <ul>
+                                            <li>🤾‍♂️ Pitcher's arm during windup</li>
+                                            <li>⚾ Ball spinning after release</li>
+                                            <li>🏏 Batter's swing motion</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="motion-card">
                                 <div class="motion-image-placeholder projectile-motion">
                                     <div class="motion-icon">📈</div>
@@ -329,10 +2158,21 @@
                                 </div>
                                 <div class="motion-info">
                                     <h4>Projectile Motion</h4>
-                                    <p>Curved motion under gravity's influence, such as the arc of a fly ball</p>
-                                    <div class="motion-examples">Examples: Fly balls, pop-ups</div>
+                                    <div class="motion-definition">
+                                        <p><strong>Definition:</strong> Curved motion under gravity's influence</p>
+                                        <p><em>Key Feature:</em> Parabolic trajectory path</p>
+                                    </div>
+                                    <div class="motion-examples">
+                                        <strong>Baseball Examples:</strong>
+                                        <ul>
+                                            <li>🏟️ Home run ball flight</li>
+                                            <li>🎈 Pop fly to infield</li>
+                                            <li>🎯 Outfielder's throw to home</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="motion-card">
                                 <div class="motion-image-placeholder combined-motion">
                                     <div class="motion-icon">🌀</div>
@@ -342,10 +2182,25 @@
                                 </div>
                                 <div class="motion-info">
                                     <h4>Combined Motion</h4>
-                                    <p>Motion involving both linear and rotational components simultaneously</p>
-                                    <div class="motion-examples">Examples: Curveball, slider</div>
+                                    <div class="motion-definition">
+                                        <p><strong>Definition:</strong> Multiple motion types happening simultaneously</p>
+                                        <p><em>Key Feature:</em> Complex movement patterns</p>
+                                    </div>
+                                    <div class="motion-examples">
+                                        <strong>Baseball Examples:</strong>
+                                        <ul>
+                                            <li>⚾ Curveball (projectile + spin)</li>
+                                            <li>🏏 Slider pitch movement</li>
+                                            <li>🎯 Knuckleball trajectory</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <div class="motion-summary">
+                            <h4>🔍 Analysis Tip:</h4>
+                            <p>Most baseball actions involve <strong>combined motion</strong>. For example, a curveball has both projectile motion (gravity acting on the ball) and rotational motion (spin affecting the ball's path).</p>
                         </div>
                     </div>
                 </div>
@@ -405,14 +2260,43 @@
                     
                     <h3>🧮 Interactive Physics Calculations</h3>
                     <div class="physics-calculators">
-                        <div class="calculator-section">
-                            <h4>Velocity Calculator</h4>
+                        <div class="calculator-section" role="application" aria-labelledby="calc-title">
+                            <h4 id="calc-title">Velocity Calculator</h4>
                             <div class="calculator-inputs">
-                                <label>Distance (m): <input type="number" id="distance" value="18.44" step="0.01"></label>
-                                <label>Time (s): <input type="number" id="time" value="0.4" step="0.01"></label>
-                                <div class="calculator-result">
-                                    <p>Velocity: <span id="velocity-result">46.1</span> m/s</p>
-                                    <p>Velocity: <span id="velocity-mph">103.1</span> mph</p>
+                                <div class="input-group">
+                                    <label for="distance" class="input-label">
+                                        Distance (meters):
+                                        <span class="input-hint">Distance from pitcher's mound to home plate</span>
+                                    </label>
+                                    <input type="number" 
+                                           id="distance" 
+                                           value="18.44" 
+                                           step="0.01" 
+                                           min="0"
+                                           aria-describedby="distance-help"
+                                           class="calculator-input">
+                                    <div id="distance-help" class="input-help">Enter distance in meters (e.g., 18.44)</div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="time" class="input-label">
+                                        Time (seconds):
+                                        <span class="input-hint">Time for ball to travel the distance</span>
+                                    </label>
+                                    <input type="number" 
+                                           id="time" 
+                                           value="0.4" 
+                                           step="0.01" 
+                                           min="0"
+                                           aria-describedby="time-help"
+                                           class="calculator-input">
+                                    <div id="time-help" class="input-help">Enter time in seconds (e.g., 0.4)</div>
+                                </div>
+                                
+                                <div class="calculator-result" aria-live="polite" aria-atomic="true">
+                                    <h5>Results:</h5>
+                                    <p>Velocity: <span id="velocity-result" class="result-value">46.1</span> m/s</p>
+                                    <p>Velocity: <span id="velocity-mph" class="result-value">103.1</span> mph</p>
                                 </div>
                             </div>
                         </div>
@@ -497,7 +2381,7 @@
                     </div>
 
                     <!-- Key Concepts with Enhanced Visual Design -->
-                    <h3>🧠 Advanced Analysis Methods</h3>
+                    <h3>📊 Mathematical Tools & Formulas</h3>
                     <div class="advanced-topics-grid">
                         <div class="advanced-topic-card kinematics-card">
                             <div class="topic-header">
@@ -734,27 +2618,100 @@
                         </div>
                     </div>
                     
+                    <!-- Problem-Solving Workshop -->
+                    <div class="problem-solving-section">
+                        <h3>🧮 Problem-Solving Workshop</h3>
+                        <div class="example-problems">
+                            <div class="problem-card featured-problem">
+                                <h4>🏆 Challenge Problem: The Perfect Stolen Base</h4>
+                                <div class="problem-setup">
+                                    <p><strong>Scenario:</strong> A runner attempts to steal second base. The pitch takes 0.4 seconds to reach home plate, and the catcher's throw takes 1.8 seconds to reach second base.</p>
+                                    <div class="given-data">
+                                        <h5>Given:</h5>
+                                        <ul>
+                                            <li>Distance from 1st to 2nd base: 90 feet (27.43 m)</li>
+                                            <li>Runner's head start: 12 feet (3.66 m) lead-off</li>
+                                            <li>Reaction time: 0.2 seconds after pitch release</li>
+                                        </ul>
+                                    </div>
+                                    <div class="problem-questions">
+                                        <h5>Calculate:</h5>
+                                        <ol>
+                                            <li>Effective distance runner must cover: <strong>___ meters</strong></li>
+                                            <li>Total time available: <strong>___ seconds</strong></li>
+                                            <li>Required average speed: <strong>___ m/s</strong> and <strong>___ mph</strong></li>
+                                            <li>Is this realistic for a professional player?</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>🏃‍♂️ Activities</h3>
                     <div class="activities-timeline">
                         <div class="activity-item">
                             <div class="activity-icon">🧮</div>
                             <div class="activity-content">
-                                <h4>Baseball Problem Solving (25 min)</h4>
-                                <p>Solve multi-step problems involving distance, displacement, speed, and velocity in baseball contexts.</p>
+                                <h4>Problem-Solving Workshop (25 min)</h4>
+                                <p>Work through the challenge problem above in teams. Show all work and explain physics reasoning for each step.</p>
+                                <div class="activity-deliverable">
+                                    <strong>Deliverable:</strong> Complete solutions with physics explanations
+                                </div>
                             </div>
                         </div>
                         <div class="activity-item">
                             <div class="activity-icon">🎬</div>
                             <div class="activity-content">
-                                <h4>Game Footage Analysis (20 min)</h4>
-                                <p>Analyze real game footage to identify and measure different types of motion.</p>
+                                <h4>Video Analysis Lab (20 min)</h4>
+                                <p>Apply motion analysis to provided game footage. Identify motion types, define reference frames, and calculate relevant quantities using the 4-step framework.</p>
+                                <div class="activity-deliverable">
+                                    <strong>Deliverable:</strong> Analysis report with measurements and calculations
+                                </div>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon">🎯</div>
+                            <div class="activity-icon">📋</div>
                             <div class="activity-content">
-                                <h4>Week Wrap-Up (5 min)</h4>
-                                <p>Summarize key concepts learned and preview next week's topics.</p>
+                                <h4>Week Assessment & Preview (5 min)</h4>
+                                <p>Complete self-assessment using the rubric below and preview Week 2: Forces and Newton's Laws in baseball.</p>
+                                <div class="activity-deliverable">
+                                    <strong>Deliverable:</strong> Self-assessment and questions for next week
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assessment Rubric -->
+                    <div class="assessment-section">
+                        <h3>📊 Week 1 Assessment Criteria</h3>
+                        <div class="rubric-grid">
+                            <div class="rubric-category">
+                                <h4>Concept Understanding</h4>
+                                <ul>
+                                    <li>✅ Distinguishes distance from displacement</li>
+                                    <li>✅ Explains speed vs. velocity with direction</li>
+                                    <li>✅ Identifies appropriate reference frames</li>
+                                    <li>✅ Uses physics vocabulary correctly</li>
+                                </ul>
+                            </div>
+                            <div class="rubric-category">
+                                <h4>Problem Solving</h4>
+                                <ul>
+                                    <li>✅ Shows systematic approach to multi-step problems</li>
+                                    <li>✅ Uses appropriate units and conversions</li>
+                                    <li>✅ Checks answers for reasonableness</li>
+                                    <li>✅ Explains reasoning clearly</li>
+                                </ul>
+                            </div>
+                            <div class="rubric-category">
+                                <h4>Real-World Application</h4>
+                                <ul>
+                                    <li>✅ Connects physics concepts to baseball scenarios</li>
+                                    <li>✅ Analyzes video evidence effectively</li>
+                                    <li>✅ Makes realistic predictions</li>
+                                    <li>✅ Communicates findings clearly</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1065,7 +3022,7 @@
     <!-- JavaScript for Interactive Features -->
     <script type="module">
         import { EnhancedQuizSystem } from '../js/enhanced-assessment.js';
-        import InteractiveLearningSystem from '../js/interactive-learning.js';
+        import InteractiveLearningSystem from '../js/interactive-learning.js?v=20250104';
 
         document.addEventListener('DOMContentLoaded', async function() {
             // Initialize enhanced assessment system if containers exist
@@ -1082,8 +3039,8 @@
             // Initialize practice problems if container exists
             const practiceContainer = document.getElementById('practice-problems');
             if (practiceContainer) {
-                const practiceProblems = new PracticeProblems('practice-problems');
-                practiceProblems.createPracticeSet('week1');
+                console.log('Practice problems container found but PracticeProblems class not available');
+                // Note: PracticeProblems would need to be imported if needed
             }
         });
 
@@ -1366,5 +3323,7 @@
             initializeDiamond();
         }
     </script>
+
+    <!-- Progress tracking disabled for Week 1 to maintain clean design -->
 </body>
 </html>
