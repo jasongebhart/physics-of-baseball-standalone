@@ -265,38 +265,122 @@ export class VelocityCalculator {
         }
         this.init();
     }
-    
+
     init() {
         if (!this.container) return;
-        
+
+        this.container.className = 'velocity-calculator';
         this.container.innerHTML = `
-            <h3>🏃‍♂️ Velocity Calculator</h3>
-            <div class="input-group">
-                <label for="distance">Distance (m):</label>
-                <input type="number" id="distance" value="90" min="1">
+            <h4>🧮 Velocity Calculator</h4>
+            <div class="calculator-inputs">
+                <div class="input-group">
+                    <label for="distance">
+                        Distance (meters):
+                        <small>Distance from pitcher's mound to home plate</small>
+                    </label>
+                    <input type="number" id="distance" value="18.44" min="0.1" step="0.01"
+                           placeholder="Enter distance in meters (e.g., 18.44)">
+                    <small class="input-hint">Enter distance in meters (e.g., 18.44)</small>
+                </div>
+                <div class="input-group">
+                    <label for="time">
+                        Time (seconds):
+                        <small>Time for ball to travel the distance</small>
+                    </label>
+                    <input type="number" id="time" value="0.4" min="0.01" step="0.01"
+                           placeholder="Enter time in seconds (e.g., 0.4)">
+                    <small class="input-hint">Enter time in seconds (e.g., 0.4)</small>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="time">Time (s):</label>
-                <input type="number" id="time" value="3" min="0.1" step="0.1">
+            <div class="calculator-results">
+                <h5>Results:</h5>
+                <p>Velocity: <span class="result-value" id="velocity-ms">46.1</span> m/s</p>
+                <p>Velocity: <span class="result-value" id="velocity-mph">103.1</span> mph</p>
             </div>
-            <div class="result">
-                <strong>Average Velocity: <span id="velocity-result">30</span> m/s</strong>
+            <div class="calculation-breakdown">
+                <details>
+                    <summary>Show calculation steps</summary>
+                    <div class="formula">
+                        <p><strong>Formula:</strong> v = d ÷ t</p>
+                        <p id="calculation-step">v = 18.44 m ÷ 0.4 s = 46.1 m/s</p>
+                        <p><small>To convert to mph: multiply by 2.237</small></p>
+                    </div>
+                </details>
             </div>
         `;
-        
+
         const distanceInput = this.container.querySelector('#distance');
         const timeInput = this.container.querySelector('#time');
-        const result = this.container.querySelector('#velocity-result');
-        
+        const resultMs = this.container.querySelector('#velocity-ms');
+        const resultMph = this.container.querySelector('#velocity-mph');
+        const calculationStep = this.container.querySelector('#calculation-step');
+
         const update = () => {
             const distance = parseFloat(distanceInput.value) || 0;
-            const time = parseFloat(timeInput.value) || 1;
-            const velocity = roundToDecimal(distance / time);
-            result.textContent = velocity;
+            const time = parseFloat(timeInput.value) || 0.1;
+
+            if (time === 0) {
+                resultMs.textContent = '∞';
+                resultMph.textContent = '∞';
+                calculationStep.textContent = 'Cannot divide by zero';
+                return;
+            }
+
+            const velocityMs = roundToDecimal(distance / time, 1);
+            const velocityMph = roundToDecimal(velocityMs * 2.237, 1);
+
+            resultMs.textContent = velocityMs;
+            resultMph.textContent = velocityMph;
+            calculationStep.textContent = `v = ${distance} m ÷ ${time} s = ${velocityMs} m/s`;
+
+            // Add visual feedback based on velocity range
+            this.addVisualFeedback(velocityMph);
         };
-        
-        distanceInput.addEventListener('input', update);
-        timeInput.addEventListener('input', update);
+
+        const validateInput = (input) => {
+            const value = parseFloat(input.value);
+            if (isNaN(value) || value <= 0) {
+                input.style.borderColor = '#ef4444';
+                input.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.2)';
+            } else {
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
+            }
+        };
+
+        distanceInput.addEventListener('input', () => {
+            validateInput(distanceInput);
+            update();
+        });
+
+        timeInput.addEventListener('input', () => {
+            validateInput(timeInput);
+            update();
+        });
+
+        // Add focus effects
+        [distanceInput, timeInput].forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('focused');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('focused');
+            });
+        });
+
         update();
+    }
+
+    addVisualFeedback(velocityMph) {
+        const results = this.container.querySelector('.calculator-results');
+        results.classList.remove('slow-pitch', 'fastball', 'very-fast');
+
+        if (velocityMph < 70) {
+            results.classList.add('slow-pitch');
+        } else if (velocityMph > 100) {
+            results.classList.add('very-fast');
+        } else {
+            results.classList.add('fastball');
+        }
     }
 }

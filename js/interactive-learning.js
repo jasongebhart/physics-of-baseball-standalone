@@ -602,15 +602,16 @@ export class InteractiveLearningSystem {
     }
 
     addInteractiveCalculators() {
-        const calculatorContainers = document.querySelectorAll('.calculator-section, .formula-hint');
-        
-        calculatorContainers.forEach((container, index) => {
-            if (container.classList.contains('interactive-calculator')) return;
-            
-            const calculator = this.createMiniCalculator(container, index);
-            container.appendChild(calculator);
-            container.classList.add('interactive-calculator');
-        });
+        // This feature has been refactored to be implemented directly in the HTML.
+        // const calculatorContainers = document.querySelectorAll('.calculator-section, .formula-hint');
+        // 
+        // calculatorContainers.forEach((container, index) => {
+        //     if (container.classList.contains('interactive-calculator')) return;
+        //     
+        //     const calculator = this.createMiniCalculator(container, index);
+        //     container.appendChild(calculator);
+        //     container.classList.add('interactive-calculator');
+        // });
     }
 
     createMiniCalculator(context, index) {

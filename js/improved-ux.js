@@ -132,10 +132,10 @@ class CourseUXManager {
     loadProgress() {
         try {
             const saved = localStorage.getItem('physics-baseball-progress');
-            return saved ? JSON.parse(saved) : { completedWeeks: [], currentWeek: 1 };
+            return saved ? JSON.parse(saved) : { completedWeeks: [], currentWeek: 13 };
         } catch (e) {
             console.warn('Could not load progress from localStorage:', e);
-            return { completedWeeks: [], currentWeek: 1 };
+            return { completedWeeks: [], currentWeek: 13 };
         }
     }
 
@@ -161,20 +161,20 @@ class CourseUXManager {
     }
 
     updateProgressDisplay() {
-        const progressBar = document.querySelector('.progress-fill');
-        const progressText = document.querySelector('.progress-text');
+        const progressBar = document.querySelector('#week-progress-bar');
+        const progressText = document.querySelector('#week-progress-text');
 
         if (progressBar && progressText) {
             const completed = this.courseProgress.completedWeeks.length;
             const percentage = (completed / 13) * 100;
 
             progressBar.style.width = `${percentage}%`;
-            progressText.textContent = `${completed} of 13 weeks completed`;
+            progressText.textContent = `${Math.round(percentage)}% Complete`;
 
             // Update progress bar ARIA attributes
             const progressElement = progressBar.closest('[role="progressbar"]');
             if (progressElement) {
-                progressElement.setAttribute('aria-valuenow', completed);
+                progressElement.setAttribute('aria-valuenow', percentage);
                 progressElement.setAttribute('aria-label', `Course completion progress: ${completed} of 13 weeks completed`);
             }
         }
@@ -187,7 +187,7 @@ class CourseUXManager {
             const weekNumber = parseInt(card.dataset.week);
             if (weekNumber) {
                 const isCompleted = this.courseProgress.completedWeeks.includes(weekNumber);
-                const isAvailable = weekNumber <= this.courseProgress.currentWeek;
+                const isAvailable = true; // All weeks are now available
 
                 // Remove existing state classes
                 card.classList.remove('week-card--completed', 'week-card--current', 'week-card--locked');

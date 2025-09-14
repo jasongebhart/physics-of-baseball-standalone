@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 1: Introduction to the Physics of Motion</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
-    <link rel="stylesheet" href="../css/main.css?v=3.0">
-    <link rel="stylesheet" href="../css/calculators.css">
+    <link rel="stylesheet" href="../css/main.css?v=3.7">
+    <link rel="stylesheet" href="../css/calculators.css?v=4.4">
     <style>
         /* Global Layout Fixes */
         * {
@@ -1320,7 +1320,7 @@
                     This week, we'll lay the foundation for our journey into the physics of baseball by exploring the fundamental concepts of motion.
                 </p>
                 <div class="objectives-overview">
-                    <h3>🎯 Learning Objectives</h3>
+                    <h3>🎓 Learning Objectives</h3>
                     <div class="objectives-container">
                         <div class="objective-card">
                             <div class="objective-icon-wrapper">📏</div>
@@ -1357,47 +1357,102 @@
                 </ol>
             </nav>
 
-            <!-- Week Progress Indicator -->
-            <section class="week-progress-container" aria-labelledby="progress-title">
-                <div class="progress-header">
-                    <h3 class="progress-title" id="progress-title">Your Progress</h3>
-                    <span class="progress-percentage" id="week-progress-text" aria-live="polite">0% Complete</span>
+
+            <!-- Week Learning Roadmap -->
+            <section class="week-roadmap-container" aria-labelledby="roadmap-title">
+                <div class="roadmap-header">
+                    <h3 class="roadmap-title" id="roadmap-title">📍 Week 1 Learning Roadmap</h3>
+                    <span class="roadmap-subtitle">Follow this journey through motion physics</span>
                 </div>
-                <div class="progress-bar-container" role="progressbar" aria-labelledby="progress-title" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-describedby="week-progress-text">
-                    <div class="progress-bar" id="week-progress-bar" style="width: 0%"></div>
+
+                <div class="learning-path">
+                    <div class="roadmap-step current" data-step="1">
+                        <div class="step-indicator">
+                            <span class="step-number">1</span>
+                            <span class="step-icon">🔑</span>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Foundation: What is Motion?</h4>
+                            <p class="step-description">Understand motion as relative change in position</p>
+                            <div class="step-concepts">
+                                <span class="concept-tag">Reference Frames</span>
+                                <span class="concept-tag">Position</span>
+                                <span class="concept-tag">Time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-indicator">
+                            <span class="step-number">2</span>
+                            <span class="step-icon">📏</span>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Measurement: Distance vs Displacement</h4>
+                            <p class="step-description">Learn the crucial difference between path length and straight-line distance</p>
+                            <div class="step-concepts">
+                                <span class="concept-tag">Scalar vs Vector</span>
+                                <span class="concept-tag">Path Length</span>
+                                <span class="concept-tag">Net Change</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-indicator">
+                            <span class="step-number">3</span>
+                            <span class="step-icon">⚡</span>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Rate: Speed vs Velocity</h4>
+                            <p class="step-description">Explore how rate of motion includes both magnitude and direction</p>
+                            <div class="step-concepts">
+                                <span class="concept-tag">Rate of Change</span>
+                                <span class="concept-tag">Direction Matters</span>
+                                <span class="concept-tag">Vectors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-indicator">
+                            <span class="step-number">4</span>
+                            <span class="step-icon">📊</span>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Analysis: Acceleration & Graphs</h4>
+                            <p class="step-description">Understand changing motion and interpret motion graphs</p>
+                            <div class="step-concepts">
+                                <span class="concept-tag">Changing Velocity</span>
+                                <span class="concept-tag">Motion Graphs</span>
+                                <span class="concept-tag">Slope Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-indicator">
+                            <span class="step-number">5</span>
+                            <span class="step-icon">🎯</span>
+                        </div>
+                        <div class="step-content">
+                            <h4 class="step-title">Synthesis: Apply & Assess</h4>
+                            <p class="step-description">Demonstrate understanding through baseball motion problems</p>
+                            <div class="step-concepts">
+                                <span class="concept-tag">Real Applications</span>
+                                <span class="concept-tag">Problem Solving</span>
+                                <span class="concept-tag">Assessment</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <nav class="day-progress-indicators" aria-label="Week 1 Daily Progress">
-                    <div class="day-indicator" data-day="1" role="button" tabindex="0" aria-label="Day 1: What is Motion? - Not started" aria-describedby="day-1-desc">
-                        <span class="day-number" aria-hidden="true">1</span>
-                        <span class="day-label" id="day-1-desc">What is Motion?</span>
-                        <div class="day-status" id="day-1-status" aria-hidden="true">○</div>
-                        <span class="sr-only">Not started</span>
+
+                <div class="roadmap-footer">
+                    <div class="learning-tip">
+                        <span class="tip-icon">💡</span>
+                        <span class="tip-text">Each step builds on the previous - take your time to understand each concept!</span>
                     </div>
-                    <div class="day-indicator" data-day="2" role="button" tabindex="0" aria-label="Day 2: Distance & Displacement - Not started" aria-describedby="day-2-desc">
-                        <span class="day-number" aria-hidden="true">2</span>
-                        <span class="day-label" id="day-2-desc">Distance & Displacement</span>
-                        <div class="day-status" id="day-2-status" aria-hidden="true">○</div>
-                        <span class="sr-only">Not started</span>
-                    </div>
-                    <div class="day-indicator" data-day="3" role="button" tabindex="0" aria-label="Day 3: Speed & Velocity - Not started" aria-describedby="day-3-desc">
-                        <span class="day-number" aria-hidden="true">3</span>
-                        <span class="day-label" id="day-3-desc">Speed & Velocity</span>
-                        <div class="day-status" id="day-3-status" aria-hidden="true">○</div>
-                        <span class="sr-only">Not started</span>
-                    </div>
-                    <div class="day-indicator" data-day="4" role="button" tabindex="0" aria-label="Day 4: Advanced Analysis - Not started" aria-describedby="day-4-desc">
-                        <span class="day-number" aria-hidden="true">4</span>
-                        <span class="day-label" id="day-4-desc">Advanced Analysis</span>
-                        <div class="day-status" id="day-4-status" aria-hidden="true">○</div>
-                        <span class="sr-only">Not started</span>
-                    </div>
-                    <div class="day-indicator" data-day="5" role="button" tabindex="0" aria-label="Day 5: Assessment - Not started" aria-describedby="day-5-desc">
-                        <span class="day-number" aria-hidden="true">5</span>
-                        <span class="day-label" id="day-5-desc">Assessment</span>
-                        <div class="day-status" id="day-5-status" aria-hidden="true">○</div>
-                        <span class="sr-only">Not started</span>
-                    </div>
-                </nav>
+                </div>
             </section>
 
             <!-- Day 1: What is Motion? Setting the Stage -->
@@ -1409,7 +1464,7 @@
                         <span class="complexity">Introductory</span>
                     </div>
                 </div>
-                
+
                 <div class="day-content">
                     <!-- Foundational Concepts Section -->
                     <div class="concept-showcase">
@@ -1578,7 +1633,8 @@
                     });
                     </script>
                     <div class="activities-timeline">
-                        <div class="activity-item llm-tutor-prompt">
+                        <div class="enhanced-activity-item ai-tutor-activity llm-tutor-prompt">
+                            <div class="activity-badge">AI Tutor</div>
                             <div class="activity-icon">💭</div>
                             <div class="activity-content">
                                 <h4>Motion Brainstorm (AI Assisted)</h4>
@@ -1696,7 +1752,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-item llm-tutor-prompt">
+                        <div class="enhanced-activity-item ai-tutor-activity llm-tutor-prompt">
+                            <div class="activity-badge">AI Tutor</div>
                             <div class="activity-icon">🚶</div>
                             <div class="activity-content">
                                 <h4>Motion Demonstration (15 min)</h4>
@@ -1706,100 +1763,6 @@
                                     <span class="icon">🤖</span>
                                     <span>Start AI Discussion</span>
                                 </a>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">🎓</div>
-                            <div class="activity-content">
-                                <h4>Course Introduction (5 min)</h4>
-                                <div class="course-intro-content">
-                                    <div class="intro-overview">
-                                        <p><strong>Welcome to Physics of Baseball!</strong> This course uses America's pastime to explore fundamental physics principles in action.</p>
-                                    </div>
-
-                                    <div class="key-approach">
-                                        <p>🎯 <strong>What makes this course unique:</strong> Every physics concept connects directly to real baseball scenarios using video analysis, MLB data, and hands-on problem solving.</p>
-                                    </div>
-
-                                    <div class="this-week-focus">
-                                        <h5>⚾ This Week's Journey:</h5>
-                                        <p>We'll start with the fundamentals of motion - understanding how things move in baseball, from fastballs to base running.</p>
-                                    </div>
-
-                                    <div class="opening-question">
-                                        <h5>🤔 Opening Question:</h5>
-                                        <p><em>"What physics concepts do you think are most important in baseball? We'll revisit this at the end of the course!"</em></p>
-                                    </div>
-                                    
-                                    <div class="course-details-toggle">
-                                        <button class="toggle-details-btn" onclick="toggleCourseDetails()" 
-                                                aria-expanded="false" 
-                                                aria-controls="course-details"
-                                                aria-describedby="course-details-desc">
-                                            <span class="toggle-text">📚 Want to see the full course overview?</span>
-                                            <span class="toggle-icon" aria-hidden="true">▼</span>
-                                        </button>
-                                        <div id="course-details-desc" class="sr-only">Click to expand detailed course structure and expectations</div>
-                                        
-                                        <div id="course-details" class="course-details-content" style="display: none;" aria-hidden="true">
-                                            <div class="course-structure">
-                                                <h6>12-Week Course Journey:</h6>
-                                                <div class="week-preview">
-                                                    <p><strong>Weeks 1-3:</strong> Motion & Kinematics (pitching, base running)</p>
-                                                    <p><strong>Weeks 4-6:</strong> Forces & Dynamics (batting, fielding)</p>
-                                                    <p><strong>Weeks 7-9:</strong> Energy & Momentum (collisions, home runs)</p>
-                                                    <p><strong>Weeks 10-12:</strong> Advanced Topics (spin, aerodynamics, statistics)</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="expectations-summary">
-                                                <h6>What to Expect:</h6>
-                                                <ul>
-                                                    <li><strong>Interactive Learning:</strong> Video analysis, simulations, and hands-on activities</li>
-                                                    <li><strong>Real Data:</strong> Work with actual MLB statistics and measurements</li>
-                                                    <li><strong>Problem Solving:</strong> Apply physics to analyze real game situations</li>
-                                                    <li><strong>Collaboration:</strong> Discuss and explore physics concepts with classmates</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                function toggleCourseDetails() {
-                                    const details = document.getElementById('course-details');
-                                    const toggleIcon = document.querySelector('.toggle-icon');
-                                    const toggleText = document.querySelector('.toggle-text');
-                                    const toggleBtn = document.querySelector('.toggle-details-btn');
-                                    
-                                    if (details.style.display === 'none') {
-                                        details.style.display = 'block';
-                                        details.setAttribute('aria-hidden', 'false');
-                                        toggleBtn.setAttribute('aria-expanded', 'true');
-                                        toggleIcon.textContent = '▲';
-                                        toggleText.textContent = '📚 Hide course overview';
-                                    } else {
-                                        details.style.display = 'none';
-                                        details.setAttribute('aria-hidden', 'true');
-                                        toggleBtn.setAttribute('aria-expanded', 'false');
-                                        toggleIcon.textContent = '▼';
-                                        toggleText.textContent = '📚 Want to see the full course overview?';
-                                    }
-                                }
-                                
-                                // Add keyboard support for course details toggle
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    const courseToggleBtn = document.querySelector('.toggle-details-btn');
-                                    if (courseToggleBtn) {
-                                        courseToggleBtn.addEventListener('keydown', function(e) {
-                                            if (e.key === 'Enter' || e.key === ' ') {
-                                                e.preventDefault();
-                                                toggleCourseDetails();
-                                            }
-                                        });
-                                    }
-                                });
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -1844,104 +1807,61 @@
                     
                     <div class="concept-showcase">
                         <h3>🔑 Key Concept: Distance vs Displacement</h3>
-                        <div class="concept-comparison-enhanced">
-                            <div class="comparison-intro">
-                                <p>Understanding the difference between these two concepts is fundamental to analyzing baseball motion:</p>
+                        <p class="concept-intro">Understanding these two concepts is fundamental to analyzing baseball motion:</p>
+
+                        <div class="distance-displacement-grid">
+                            <div class="concept-column distance-column">
+                                <div class="concept-header-simple">
+                                    <span class="concept-icon">📏</span>
+                                    <h4>Distance</h4>
+                                    <span class="type-badge scalar-badge">Scalar</span>
+                                </div>
+                                <div class="concept-body">
+                                    <p class="definition"><strong>Definition:</strong> Total path length traveled</p>
+                                    <div class="features">
+                                        <div class="feature">✓ Always positive</div>
+                                        <div class="feature">✓ Adds up all movement</div>
+                                        <div class="feature">✓ No direction needed</div>
+                                    </div>
+                                    <div class="baseball-example">
+                                        <div class="path-visual">
+                                            <span class="base">1st</span> → <span class="base">2nd</span> → <span class="base">3rd</span>
+                                        </div>
+                                        <div class="calculation-result">90 ft + 90 ft = <strong>180 ft</strong></div>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="concept-cards-container">
-                                <div class="concept-card distance-card">
-                                    <div class="concept-header">
-                                        <div class="concept-icon-large">📏</div>
-                                        <div class="concept-title-group">
-                                            <h4>Distance</h4>
-                                            <span class="concept-type-badge scalar">Scalar</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="concept-definition">
-                                        <h5>Definition:</h5>
-                                        <p>Total path length traveled</p>
-                                    </div>
-                                    
-                                    <div class="concept-characteristics">
-                                        <h5>Key Features:</h5>
-                                        <ul>
-                                            <li>Always positive</li>
-                                            <li>Adds up all movement</li>
-                                            <li>No direction information</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="concept-example">
-                                        <h5>Baseball Example:</h5>
-                                        <div class="example-visual">
-                                            <div class="path-illustration">
-                                                <span class="base-marker">1st</span>
-                                                <span class="arrow">→</span>
-                                                <span class="base-marker">2nd</span>
-                                                <span class="arrow">→</span>
-                                                <span class="base-marker">3rd</span>
-                                            </div>
-                                            <div class="calculation">
-                                                <span class="calc-step">90 ft + 90 ft = </span>
-                                                <span class="result">180 ft</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="vs-separator">
-                                    <div class="vs-circle">VS</div>
-                                </div>
+                            <div class="vs-divider">
+                                <span class="vs-text">VS</span>
+                            </div>
 
-                                <div class="concept-card displacement-card">
-                                    <div class="concept-header">
-                                        <div class="concept-icon-large">🎯</div>
-                                        <div class="concept-title-group">
-                                            <h4>Displacement</h4>
-                                            <span class="concept-type-badge vector">Vector</span>
+                            <div class="concept-column displacement-column">
+                                <div class="concept-header-simple">
+                                    <span class="concept-icon">🎯</span>
+                                    <h4>Displacement</h4>
+                                    <span class="type-badge vector-badge">Vector</span>
+                                </div>
+                                <div class="concept-body">
+                                    <p class="definition"><strong>Definition:</strong> Change in position with direction</p>
+                                    <div class="features">
+                                        <div class="feature">✓ Can be positive or negative</div>
+                                        <div class="feature">✓ Straight-line measurement</div>
+                                        <div class="feature">✓ Includes direction</div>
+                                    </div>
+                                    <div class="baseball-example">
+                                        <div class="path-visual">
+                                            <span class="base">1st</span> ↗ <span class="base">3rd</span>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="concept-definition">
-                                        <h5>Definition:</h5>
-                                        <p>Change in position with direction</p>
-                                    </div>
-                                    
-                                    <div class="concept-characteristics">
-                                        <h5>Key Features:</h5>
-                                        <ul>
-                                            <li>Can be positive or negative</li>
-                                            <li>Straight-line measurement</li>
-                                            <li>Includes direction</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="concept-example">
-                                        <h5>Baseball Example:</h5>
-                                        <div class="example-visual">
-                                            <div class="path-illustration">
-                                                <span class="base-marker">1st</span>
-                                                <span class="diagonal-arrow">↗</span>
-                                                <span class="base-marker">3rd</span>
-                                            </div>
-                                            <div class="calculation">
-                                                <span class="calc-step">Straight line = </span>
-                                                <span class="result">127 ft at 45°</span>
-                                            </div>
-                                        </div>
+                                        <div class="calculation-result">Straight line = <strong>127 ft at 45°</strong></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="comparison-summary">
-                            <div class="summary-icon">💡</div>
-                            <div class="summary-content">
-                                <h5>Key Takeaway:</h5>
-                                <p>Distance tells us <em>how much ground was covered</em>, while displacement tells us <em>where you ended up relative to where you started</em>.</p>
-                            </div>
+
+                        <div class="key-takeaway">
+                            <span class="takeaway-icon">💡</span>
+                            <p><strong>Key Takeaway:</strong> Distance tells us <em>how much ground was covered</em>, while displacement tells us <em>where you ended up relative to where you started</em>.</p>
                         </div>
                     </div>
                     
@@ -1970,153 +1890,547 @@
                         </div>
                     </div>
 
-                    <!-- Interactive Baseball Diamond Calculator -->
-                    <div class="interactive-section baseball-diamond-section">
-                        <div class="section-header">
-                            <h3>⚾ Interactive Baseball Diamond</h3>
-                            <p class="section-description">Explore distance vs displacement concepts using baseball scenarios</p>
-                        </div>
-                        
-                        <div class="diamond-layout">
-                            <div class="diamond-visual">
-                                <svg class="baseball-diamond" viewBox="0 0 400 400">
-                                <!-- Gradient definitions -->
-                                <defs>
-                                    <radialGradient id="fieldGradient" cx="50%" cy="50%" r="70%">
-                                        <stop offset="0%" style="stop-color:#a8e6cf;stop-opacity:0.8"/>
-                                        <stop offset="100%" style="stop-color:#88d8a3;stop-opacity:0.9"/>
-                                    </radialGradient>
-                                    <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"/>
-                                        <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1"/>
-                                    </linearGradient>
-                                    <radialGradient id="moundGradient" cx="50%" cy="30%" r="60%">
-                                        <stop offset="0%" style="stop-color:#cd853f;stop-opacity:1"/>
-                                        <stop offset="100%" style="stop-color:#8b4513;stop-opacity:1"/>
-                                    </radialGradient>
-                                </defs>
-                                
-                                <!-- Enhanced Diamond outline with shadow -->
-                                <polygon points="200,50 350,200 200,350 50,200" 
-                                         fill="url(#fieldGradient)" stroke="#6b8e23" stroke-width="4" 
-                                         filter="drop-shadow(2px 2px 4px rgba(0,0,0,0.3))"/>
-                                
-                                <!-- Base paths (90-foot baselines) -->
+                    <!-- Interactive Baseball Diamond -->
+                    <div class="baseball-diamond-section">
+                        <h3>⚾ Interactive Baseball Diamond</h3>
+                        <p class="section-intro">Click scenarios to see distance vs displacement calculations with visual paths</p>
+
+                        <!-- Diamond Visual Section -->
+                        <div class="diamond-visual-section">
+                            <svg class="baseball-diamond-svg" viewBox="0 0 400 400">
+                                <!-- Field background -->
+                                <polygon points="200,50 350,200 200,350 50,200"
+                                         fill="#a8e6cf" stroke="#6b8e23" stroke-width="3"/>
+
+                                <!-- Base paths -->
                                 <line x1="200" y1="350" x2="350" y2="200" stroke="#deb887" stroke-width="2" opacity="0.6"/>
                                 <line x1="350" y1="200" x2="200" y2="50" stroke="#deb887" stroke-width="2" opacity="0.6"/>
                                 <line x1="200" y1="50" x2="50" y2="200" stroke="#deb887" stroke-width="2" opacity="0.6"/>
                                 <line x1="50" y1="200" x2="200" y2="350" stroke="#deb887" stroke-width="2" opacity="0.6"/>
-                                
-                                <!-- Enhanced Bases -->
-                                <rect x="192" y="342" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+
+                                <!-- Bases -->
+                                <rect x="192" y="342" width="16" height="16" rx="2" fill="white"
                                       stroke="#333" stroke-width="2" transform="rotate(45 200 350)"/>
-                                <rect x="192" y="42" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                <rect x="192" y="42" width="16" height="16" rx="2" fill="white"
                                       stroke="#333" stroke-width="2" transform="rotate(45 200 50)"/>
-                                <rect x="42" y="192" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                <rect x="42" y="192" width="16" height="16" rx="2" fill="white"
                                       stroke="#333" stroke-width="2" transform="rotate(45 50 200)"/>
-                                <rect x="342" y="192" width="16" height="16" rx="2" fill="url(#baseGradient)" 
+                                <rect x="342" y="192" width="16" height="16" rx="2" fill="white"
                                       stroke="#333" stroke-width="2" transform="rotate(45 350 200)"/>
-                                
-                                <!-- Enhanced Pitcher's mound -->
-                                <circle cx="200" cy="200" r="12" fill="url(#moundGradient)" stroke="#654321" stroke-width="2"/>
-                                <circle cx="200" cy="200" r="8" fill="none" stroke="#654321" stroke-width="1" opacity="0.5"/>
+
+                                <!-- Pitcher's mound -->
+                                <circle cx="200" cy="200" r="12" fill="#cd853f" stroke="#654321" stroke-width="2"/>
+
                                 <!-- Base labels -->
-                                <text x="200" y="375" text-anchor="middle" font-size="12" fill="#000">Home</text>
-                                <text x="200" y="35" text-anchor="middle" font-size="12" fill="#000">2nd</text>
-                                <text x="30" y="205" text-anchor="middle" font-size="12" fill="#000">3rd</text>
-                                <text x="370" y="205" text-anchor="middle" font-size="12" fill="#000">1st</text>
-                                <text x="200" y="185" text-anchor="middle" font-size="10" fill="#000">Pitcher</text>
-                                <!-- Runner path (will be drawn by JavaScript) -->
-                                <path id="runner-path" stroke="#ff6b6b" stroke-width="4" fill="none" opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                
-                                <!-- Simple Visible Animated Runner -->
-                                <g id="animated-runner">
-                                    <!-- Large visible runner circle -->
-                                    <circle r="12" fill="#FF5722" stroke="#FFFFFF" stroke-width="3" opacity="0">
-                                        <animateMotion id="runner-motion" dur="4s" repeatCount="1" begin="indefinite" rotate="auto">
-                                            <mpath href="#runner-path"/>
-                                        </animateMotion>
-                                    </circle>
-                                    
-                                    <!-- Runner number -->
-                                    <text text-anchor="middle" dy="4" font-size="8" fill="white" font-weight="bold" opacity="0">
-                                        🏃
-                                        <animateMotion id="runner-emoji" dur="4s" repeatCount="1" begin="indefinite" rotate="auto">
-                                            <mpath href="#runner-path"/>
-                                        </animateMotion>
-                                    </text>
-                                </g>
-                                
-                                <!-- Distance lines -->
-                                <line id="distance-line" stroke="#4ECDC4" stroke-width="2" opacity="0"/>
-                                <line id="displacement-line" stroke="#45B7D1" stroke-width="3" stroke-dasharray="5,5" opacity="0"/>
-                                </svg>
+                                <text x="200" y="375" text-anchor="middle" font-size="14" fill="#000" font-weight="bold">Home</text>
+                                <text x="200" y="35" text-anchor="middle" font-size="14" fill="#000" font-weight="bold">2nd</text>
+                                <text x="25" y="205" text-anchor="middle" font-size="14" fill="#000" font-weight="bold">3rd</text>
+                                <text x="375" y="205" text-anchor="middle" font-size="14" fill="#000" font-weight="bold">1st</text>
+
+                                <!-- Distance path (will be drawn by JavaScript) -->
+                                <path id="distance-path" stroke="#FF6B6B" stroke-width="4" fill="none" opacity="0" stroke-linecap="round"/>
+
+                                <!-- Displacement path (will be drawn by JavaScript) -->
+                                <line id="displacement-path" stroke="#4ECDC4" stroke-width="3" stroke-dasharray="8,4" opacity="0" stroke-linecap="round"/>
+
+                                <!-- Runner animation -->
+                                <circle id="runner" cx="200" cy="350" r="8" fill="#FF5722" opacity="0" style="transition: all 0.5s ease;"></circle>
+                            </svg>
+                        </div>
+
+                        <!-- Controls Section -->
+                        <div class="diamond-controls-section">
+                            <h4>📊 Choose Your Scenario</h4>
+                            <div class="scenario-buttons">
+                                <button class="scenario-btn active" data-scenario="single" onclick="updateScenario('single')">
+                                    <span class="scenario-icon">⚾</span>
+                                    <div class="scenario-details">
+                                        <span class="scenario-name">Single</span>
+                                        <span class="scenario-desc">Home → 1st</span>
+                                    </div>
+                                </button>
+                                <button class="scenario-btn" data-scenario="double" onclick="updateScenario('double')">
+                                    <span class="scenario-icon">⚾⚾</span>
+                                    <div class="scenario-details">
+                                        <span class="scenario-name">Double</span>
+                                        <span class="scenario-desc">Home → 2nd</span>
+                                    </div>
+                                </button>
+                                <button class="scenario-btn" data-scenario="triple" onclick="updateScenario('triple')">
+                                    <span class="scenario-icon">⚾⚾⚾</span>
+                                    <div class="scenario-details">
+                                        <span class="scenario-name">Triple</span>
+                                        <span class="scenario-desc">Home → 3rd</span>
+                                    </div>
+                                </button>
+                                <button class="scenario-btn" data-scenario="homerun" onclick="updateScenario('homerun')">
+                                    <span class="scenario-icon">🏟️</span>
+                                    <div class="scenario-details">
+                                        <span class="scenario-name">Home Run</span>
+                                        <span class="scenario-desc">Full circle</span>
+                                    </div>
+                                </button>
                             </div>
-                            
-                            <div class="diamond-controls">
-                                <div class="controls-header">
-                                    <h4>📊 Controls & Results</h4>
+
+                            <button id="animate-runner" class="animate-btn" onclick="animateRunner()">
+                                <span class="btn-icon">🏃‍♂️</span>
+                                <span class="btn-text">Animate Runner</span>
+                            </button>
+                        </div>
+
+                        <!-- Results Section -->
+                        <div class="diamond-results-section">
+                            <h4>📈 Distance vs Displacement Results</h4>
+                            <div class="results-display">
+                                <div class="result-card distance-card">
+                                    <div class="result-header">
+                                        <span class="result-icon">📏</span>
+                                        <span class="result-title">Distance</span>
+                                    </div>
+                                    <div class="result-value" id="distance-result">90 ft</div>
+                                    <div class="result-explanation">Total path length</div>
                                 </div>
-                                
-                                <div class="control-panel">
-                                    <div class="scenario-selector">
-                                        <label for="base-scenario" class="control-label">
-                                            Choose Baseball Scenario:
-                                            <span class="control-hint">Select a base-running scenario to analyze</span>
-                                        </label>
-                                        <select id="base-scenario" 
-                                                aria-describedby="scenario-help"
-                                                class="scenario-select">
-                                            <option value="single">⚾ Single to 1st Base</option>
-                                            <option value="double">⚾⚾ Double to 2nd Base</option>
-                                            <option value="triple">⚾⚾⚾ Triple to 3rd Base</option>
-                                            <option value="homerun">🏟️ Home Run</option>
-                                            <option value="steal">🏃‍♂️ Steal 2nd Base</option>
-                                            <option value="custom">🎯 Custom Path</option>
-                                        </select>
-                                        <div id="scenario-help" class="control-help">
-                                            Choose a scenario to see distance vs displacement analysis
-                                        </div>
+
+                                <div class="result-card displacement-card">
+                                    <div class="result-header">
+                                        <span class="result-icon">🎯</span>
+                                        <span class="result-title">Displacement</span>
                                     </div>
-                                    
-                                    <button id="animate-runner" class="animate-btn">
-                                        <span class="btn-icon">🏃‍♂️</span>
-                                        <span class="btn-text">Animate Runner</span>
-                                    </button>
+                                    <div class="result-value" id="displacement-result">90 ft</div>
+                                    <div class="result-explanation">Straight-line distance</div>
                                 </div>
-                                
-                                <div class="results-grid">
-                                    <div class="result-card distance-card">
-                                        <div class="result-icon">📏</div>
-                                        <div class="result-content">
-                                            <span class="result-label">Distance</span>
-                                            <span class="result-description">Total path traveled</span>
-                                            <span id="total-distance" class="result-value">90 ft</span>
+                            </div>
+
+                            <div class="insight-box">
+                                <div class="insight-icon">💡</div>
+                                <div class="insight-content" id="scenario-insight">
+                                    Single to first base: Distance equals displacement because the path is straight.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Baseball diamond interactive functionality
+                        const scenarios = {
+                            single: {
+                                distancePath: "M 200 350 L 350 200",
+                                displacementPath: { x1: 200, y1: 350, x2: 350, y2: 200 },
+                                distance: "90 ft",
+                                displacement: "90 ft",
+                                insight: "Single to first base: Distance equals displacement (90 ft) because the path is straight."
+                            },
+                            double: {
+                                distancePath: "M 200 350 L 350 200 L 200 50",
+                                displacementPath: { x1: 200, y1: 350, x2: 200, y2: 50 },
+                                distance: "180 ft",
+                                displacement: "127.3 ft",
+                                insight: "Double to second base: Distance (180 ft) vs displacement (127.3 ft) - displacement is the diagonal across the diamond."
+                            },
+                            triple: {
+                                distancePath: "M 200 350 L 350 200 L 200 50 L 50 200",
+                                displacementPath: { x1: 200, y1: 350, x2: 50, y2: 200 },
+                                distance: "270 ft",
+                                displacement: "90 ft",
+                                insight: "Triple to third base: Distance (270 ft) vs displacement (90 ft) - displacement is straight across the diamond."
+                            },
+                            homerun: {
+                                distancePath: "M 200 350 L 350 200 L 200 50 L 50 200 L 200 350",
+                                displacementPath: { x1: 200, y1: 350, x2: 200, y2: 350 },
+                                distance: "360 ft",
+                                displacement: "0 ft",
+                                insight: "Home run: Distance is 360 ft, but displacement is 0 ft - you end where you started!"
+                            }
+                        };
+
+                        let currentScenario = 'single';
+
+                        function updateScenario(scenario) {
+                            console.log('Updating scenario to:', scenario);
+
+                            // Update active button
+                            document.querySelectorAll('.scenario-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            const activeBtn = document.querySelector(`[data-scenario="${scenario}"]`);
+                            if (activeBtn) {
+                                activeBtn.classList.add('active');
+                            }
+
+                            // Update paths
+                            const data = scenarios[scenario];
+                            const distancePath = document.getElementById('distance-path');
+                            const displacementPath = document.getElementById('displacement-path');
+                            const runner = document.getElementById('runner');
+
+                            if (distancePath && data.distancePath) {
+                                distancePath.setAttribute('d', data.distancePath);
+                                distancePath.style.opacity = '0.8';
+                                distancePath.style.strokeWidth = '4';
+                                console.log('Distance path updated:', data.distancePath);
+                            }
+
+                            if (displacementPath && data.displacementPath) {
+                                displacementPath.setAttribute('x1', data.displacementPath.x1);
+                                displacementPath.setAttribute('y1', data.displacementPath.y1);
+                                displacementPath.setAttribute('x2', data.displacementPath.x2);
+                                displacementPath.setAttribute('y2', data.displacementPath.y2);
+                                displacementPath.style.opacity = '0.8';
+                                displacementPath.style.strokeWidth = '3';
+                                console.log('Displacement path updated');
+                            }
+
+                            // Reset runner position to home plate
+                            if (runner) {
+                                runner.setAttribute('cx', '200');
+                                runner.setAttribute('cy', '350');
+                                runner.style.opacity = '0';
+                            }
+
+                            // Update results
+                            const distanceResult = document.getElementById('distance-result');
+                            const displacementResult = document.getElementById('displacement-result');
+                            const scenarioInsight = document.getElementById('scenario-insight');
+
+                            if (distanceResult) distanceResult.textContent = data.distance;
+                            if (displacementResult) displacementResult.textContent = data.displacement;
+                            if (scenarioInsight) scenarioInsight.textContent = data.insight;
+
+                            currentScenario = scenario;
+                            console.log('Scenario update completed');
+                        }
+
+                        function animateRunner() {
+                            const runner = document.getElementById('runner');
+                            const button = document.getElementById('animate-runner');
+                            const buttonText = button.querySelector('.btn-text');
+
+                            console.log('Starting runner animation for scenario:', currentScenario);
+
+                            if (!runner || !button || !buttonText) {
+                                console.error('Missing elements for animation');
+                                return;
+                            }
+
+                            // Get the scenario data
+                            const data = scenarios[currentScenario];
+                            if (!data) {
+                                console.error('No scenario data found');
+                                return;
+                            }
+
+                            // Update button state
+                            button.disabled = true;
+                            buttonText.textContent = 'Running...';
+                            button.style.opacity = '0.7';
+
+                            // Parse path to get coordinates
+                            const pathData = data.distancePath;
+                            const coordinates = extractCoordinatesFromPath(pathData);
+
+                            console.log('Animation coordinates:', coordinates);
+
+                            if (coordinates.length === 0) {
+                                console.error('No coordinates found');
+                                resetButton();
+                                return;
+                            }
+
+                            // Reset runner to home plate and make visible
+                            runner.setAttribute('cx', '200');
+                            runner.setAttribute('cy', '350');
+                            runner.style.opacity = '1';
+                            runner.setAttribute('opacity', '1');
+
+                            console.log('Runner visible at home plate, starting movement...');
+
+                            // Animate step by step with smooth movement
+                            let currentStep = 0;
+                            const totalSteps = coordinates.length;
+                            const stepDuration = Math.max(20, 4000 / totalSteps); // 4 seconds total, minimum 20ms per step
+
+                            console.log(`Starting smooth animation with ${totalSteps} steps, ${stepDuration}ms per step`);
+
+                            const animationInterval = setInterval(() => {
+                                if (currentStep < totalSteps) {
+                                    const coord = coordinates[currentStep];
+                                    runner.setAttribute('cx', Math.round(coord.x * 100) / 100);
+                                    runner.setAttribute('cy', Math.round(coord.y * 100) / 100);
+
+                                    // Log only every 10th step to reduce console spam
+                                    if (currentStep % 10 === 0) {
+                                        console.log(`Step ${currentStep + 1}/${totalSteps}: Moving to (${coord.x.toFixed(1)}, ${coord.y.toFixed(1)})`);
+                                    }
+                                    currentStep++;
+                                } else {
+                                    clearInterval(animationInterval);
+                                    console.log('Smooth animation completed');
+
+                                    // Hide runner and reset button after a brief pause
+                                    setTimeout(() => {
+                                        runner.style.opacity = '0';
+                                        runner.setAttribute('opacity', '0');
+                                        button.disabled = false;
+                                        buttonText.textContent = 'Animate Runner';
+                                        button.style.opacity = '1';
+                                        console.log('Runner hidden, button reset');
+                                    }, 800);
+                                }
+                            }, stepDuration);
+
+                            function resetButton() {
+                                button.disabled = false;
+                                buttonText.textContent = 'Animate Runner';
+                                button.style.opacity = '1';
+                            }
+                        }
+
+                        // Helper function to extract coordinates from SVG path and interpolate smooth movement
+                        function extractCoordinatesFromPath(pathData) {
+                            const coordinates = [];
+
+                            // Parse SVG path commands (M = move to, L = line to)
+                            const commands = pathData.match(/[ML]\s*[\d\s,\.]+/g);
+                            const keyPoints = [];
+
+                            if (commands) {
+                                commands.forEach(command => {
+                                    const coords = command.replace(/[ML]/, '').trim().split(/[\s,]+/);
+                                    for (let i = 0; i < coords.length; i += 2) {
+                                        const x = parseFloat(coords[i]);
+                                        const y = parseFloat(coords[i + 1]);
+                                        if (!isNaN(x) && !isNaN(y)) {
+                                            keyPoints.push({ x: x, y: y });
+                                        }
+                                    }
+                                });
+                            }
+
+                            // Interpolate between key points to create smooth path
+                            for (let i = 0; i < keyPoints.length - 1; i++) {
+                                const start = keyPoints[i];
+                                const end = keyPoints[i + 1];
+
+                                // Calculate number of interpolation steps based on distance
+                                const distance = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
+                                const steps = Math.max(10, Math.floor(distance / 8)); // More steps for longer distances
+
+                                // Add interpolated points
+                                for (let step = 0; step <= steps; step++) {
+                                    const t = step / steps;
+                                    const x = start.x + (end.x - start.x) * t;
+                                    const y = start.y + (end.y - start.y) * t;
+                                    coordinates.push({ x: x, y: y });
+                                }
+                            }
+
+                            return coordinates;
+                        }
+
+
+                        // Initialize with single scenario
+                        updateScenario('single');
+
+
+                        // Velocity Calculator Functionality
+                        let isUpdatingUnit = false; // Prevent recursion
+
+                        function calculateVelocity() {
+                            const distanceInput = document.getElementById('distance');
+                            const timeInput = document.getElementById('time');
+                            const distanceUnit = document.getElementById('distance-unit');
+                            const velocityResultMs = document.getElementById('velocity-result');
+                            const velocityResultFps = document.getElementById('velocity-fps');
+                            const velocityResultMph = document.getElementById('velocity-mph');
+
+                            if (!distanceInput || !timeInput || !distanceUnit || !velocityResultMs || !velocityResultFps || !velocityResultMph) {
+                                console.error('Missing calculator elements');
+                                return;
+                            }
+
+                            const distance = parseFloat(distanceInput.value) || 0;
+                            const time = parseFloat(timeInput.value) || 0.4; // Default to 0.4 if invalid
+                            const unit = distanceUnit.value;
+
+                            if (time === 0) {
+                                velocityResultMs.textContent = '∞';
+                                velocityResultFps.textContent = '∞';
+                                velocityResultMph.textContent = '∞';
+                                return;
+                            }
+
+                            // Convert distance to meters if needed
+                            let distanceInMeters = distance;
+                            if (unit === 'ft') {
+                                distanceInMeters = distance * 0.3048; // feet to meters
+                            }
+
+                            // Calculate velocity in m/s
+                            const velocityMs = distanceInMeters / time;
+
+                            // Calculate velocity in ft/s
+                            const velocityFps = velocityMs * 3.28084; // meters/sec to feet/sec
+
+                            // Calculate velocity in mph
+                            const velocityMph = velocityMs * 2.237;
+
+                            // Update display
+                            velocityResultMs.textContent = velocityMs.toFixed(1);
+                            velocityResultFps.textContent = velocityFps.toFixed(1);
+                            velocityResultMph.textContent = velocityMph.toFixed(1);
+                        }
+
+                        function handleUnitChange() {
+                            const distanceInput = document.getElementById('distance');
+                            const distanceUnit = document.getElementById('distance-unit');
+
+                            if (isUpdatingUnit) return; // Prevent recursion
+                            isUpdatingUnit = true;
+
+                            const currentDistance = parseFloat(distanceInput.value) || 0;
+                            const unit = distanceUnit.value;
+
+                            // Update placeholder and convert default values
+                            if (unit === 'ft') {
+                                distanceInput.placeholder = '60.5';
+                                // Convert meters to feet if it's the standard value
+                                if (Math.abs(currentDistance - 18.44) < 0.01) {
+                                    distanceInput.value = '60.5';
+                                }
+                            } else {
+                                distanceInput.placeholder = '18.44';
+                                // Convert feet to meters if it's the standard value
+                                if (Math.abs(currentDistance - 60.5) < 0.1) {
+                                    distanceInput.value = '18.44';
+                                }
+                            }
+
+                            isUpdatingUnit = false;
+                            calculateVelocity();
+                        }
+
+                        // Add event listeners for calculator
+                        // Use setTimeout to ensure DOM is ready
+                        setTimeout(() => {
+                            const distanceInput = document.getElementById('distance');
+                            const timeInput = document.getElementById('time');
+                            const distanceUnit = document.getElementById('distance-unit');
+
+                            console.log('Calculator elements:', { distanceInput, timeInput, distanceUnit });
+
+                            if (distanceInput && timeInput && distanceUnit) {
+                                distanceInput.addEventListener('input', calculateVelocity);
+                                timeInput.addEventListener('input', calculateVelocity);
+                                distanceUnit.addEventListener('change', handleUnitChange);
+
+                                // Initial calculation
+                                calculateVelocity();
+                                console.log('Calculator initialized successfully');
+                            } else {
+                                console.error('Calculator elements not found');
+                            }
+                        }, 100);
+                    </script>
+
+                    <!-- Mathematical Tools & Formulas -->
+                    <div class="mathematical-tools-section">
+                        <h3>🧮 Mathematical Tools & Formulas</h3>
+
+                        <div class="formulas-container">
+                            <div class="formula-category">
+                                <h4>📊 Kinematic Equations</h4>
+                                <p class="category-description">Apply these fundamental equations to analyze baseball trajectories and predict ball positions.</p>
+
+                                <div class="equations-grid">
+                                    <div class="equation-card">
+                                        <div class="equation-formula">
+                                            <span class="formula-text">v = u + at</span>
+                                        </div>
+                                        <div class="equation-description">
+                                            <strong>Velocity-Time Relationship</strong>
+                                            <p>Find final velocity when you know initial velocity, acceleration, and time</p>
+                                            <small><strong>Use when:</strong> You need to find how fast a ball is traveling after a specific time period</small>
+                                            <small><strong>Baseball example:</strong> A pitch accelerates from 0 to 45 m/s in 0.15 seconds</small>
                                         </div>
                                     </div>
-                                    
-                                    <div class="result-card displacement-card">
-                                        <div class="result-icon">📐</div>
-                                        <div class="result-content">
-                                            <span class="result-label">Displacement</span>
-                                            <span class="result-description">Straight line with direction</span>
-                                            <span id="displacement" class="result-value">90 ft at 0°</span>
+
+                                    <div class="equation-card">
+                                        <div class="equation-formula">
+                                            <span class="formula-text">s = ut + ½at²</span>
+                                        </div>
+                                        <div class="equation-description">
+                                            <strong>Displacement Equation</strong>
+                                            <p>Calculate distance traveled with constant acceleration</p>
+                                            <small><strong>Use when:</strong> You need to find how far an object moves during acceleration</small>
+                                            <small><strong>Baseball example:</strong> How far does a ball travel during its acceleration phase in the pitcher's hand</small>
                                         </div>
                                     </div>
-                                    
-                                    <div class="result-card difference-card">
-                                        <div class="result-icon">🔢</div>
-                                        <div class="result-content">
-                                            <span class="result-label">Difference</span>
-                                            <span class="result-description">Distance - Displacement</span>
-                                            <span id="difference" class="result-value">0 ft</span>
+
+                                    <div class="equation-card">
+                                        <div class="equation-formula">
+                                            <span class="formula-text">v² = u² + 2as</span>
+                                        </div>
+                                        <div class="equation-description">
+                                            <strong>Velocity-Displacement Relationship</strong>
+                                            <p>Find final velocity without knowing time</p>
+                                            <small><strong>Use when:</strong> Time is unknown but you know the distance and acceleration</small>
+                                            <small><strong>Baseball example:</strong> Find exit velocity when a ball travels 120 meters under gravity's deceleration</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="variable-legend">
+                                    <h5>🔤 Variable Key:</h5>
+                                    <div class="variables-grid">
+                                        <div class="variable-item">
+                                            <span class="variable-symbol">v</span>
+                                            <span class="variable-meaning">final velocity</span>
+                                        </div>
+                                        <div class="variable-item">
+                                            <span class="variable-symbol">u</span>
+                                            <span class="variable-meaning">initial velocity</span>
+                                        </div>
+                                        <div class="variable-item">
+                                            <span class="variable-symbol">a</span>
+                                            <span class="variable-meaning">acceleration</span>
+                                        </div>
+                                        <div class="variable-item">
+                                            <span class="variable-symbol">t</span>
+                                            <span class="variable-meaning">time</span>
+                                        </div>
+                                        <div class="variable-item">
+                                            <span class="variable-symbol">s</span>
+                                            <span class="variable-meaning">displacement</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="baseball-application">
+                                    <h5>⚾ Example: Predicting where a fly ball will land</h5>
+                                    <div class="example-content">
+                                        <p><strong>Given:</strong> A fly ball is hit with initial velocity u = 30 m/s upward, gravity a = -9.8 m/s²</p>
+                                        <div class="example-steps">
+                                            <div class="example-step">
+                                                <span class="step-label">Step 1:</span>
+                                                <span class="step-text">Find maximum height using v² = u² + 2as (at max height, v = 0)</span>
+                                            </div>
+                                            <div class="example-calculation">
+                                                <span class="calculation">0² = 30² + 2(-9.8)s → s = 900 ÷ 19.6 = <strong>45.9 m high</strong></span>
+                                            </div>
+                                            <div class="example-step">
+                                                <span class="step-label">Step 2:</span>
+                                                <span class="step-text">Find flight time using v = u + at</span>
+                                            </div>
+                                            <div class="example-calculation">
+                                                <span class="calculation">0 = 30 + (-9.8)t → t = 3.06 s up, total flight = <strong>6.12 seconds</strong></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Motion Types Gallery -->
                     <div class="motion-gallery">
                         <h3>🎭 Types of Motion in Baseball</h3>
@@ -2286,39 +2600,56 @@
                             <h4 id="calc-title">Velocity Calculator</h4>
                             <div class="calculator-inputs">
                                 <div class="input-group">
-                                    <label for="distance" class="input-label">
-                                        Distance (meters):
-                                        <span class="input-hint">Distance from pitcher's mound to home plate</span>
-                                    </label>
-                                    <input type="number" 
-                                           id="distance" 
-                                           value="18.44" 
-                                           step="0.01" 
-                                           min="0"
-                                           aria-describedby="distance-help"
-                                           class="calculator-input">
-                                    <div id="distance-help" class="input-help">Enter distance in meters (e.g., 18.44)</div>
+                                    <label for="distance" class="input-label">Distance:</label>
+                                    <div class="input-with-unit">
+                                        <input type="number"
+                                               id="distance"
+                                               value="18.44"
+                                               step="0.01"
+                                               min="0"
+                                               placeholder="18.44"
+                                               class="calculator-input">
+                                        <select id="distance-unit" class="unit-selector">
+                                            <option value="m">meters</option>
+                                            <option value="ft">feet</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 
                                 <div class="input-group">
-                                    <label for="time" class="input-label">
-                                        Time (seconds):
-                                        <span class="input-hint">Time for ball to travel the distance</span>
-                                    </label>
-                                    <input type="number" 
-                                           id="time" 
-                                           value="0.4" 
-                                           step="0.01" 
+                                    <label for="time" class="input-label">Time (seconds):</label>
+                                    <input type="number"
+                                           id="time"
+                                           value="0.4"
+                                           step="0.01"
                                            min="0"
-                                           aria-describedby="time-help"
+                                           placeholder="0.4"
                                            class="calculator-input">
-                                    <div id="time-help" class="input-help">Enter time in seconds (e.g., 0.4)</div>
                                 </div>
                                 
-                                <div class="calculator-result" aria-live="polite" aria-atomic="true">
+                                <div class="calculator-result" aria-live="polite">
                                     <h5>Results:</h5>
                                     <p>Velocity: <span id="velocity-result" class="result-value">46.1</span> m/s</p>
+                                    <p>Velocity: <span id="velocity-fps" class="result-value">151.2</span> ft/s</p>
                                     <p>Velocity: <span id="velocity-mph" class="result-value">103.1</span> mph</p>
+                                </div>
+                            </div>
+
+                            <div class="calculator-legend">
+                                <h5>📖 Field Guide</h5>
+                                <div class="legend-items">
+                                    <div class="legend-item">
+                                        <span class="legend-symbol">📏</span>
+                                        <strong>Distance:</strong> Pitcher's mound to home plate (18.44m / 60.5ft standard)
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-symbol">⚾</span>
+                                        <strong>Home to 2nd Base:</strong> Diagonal distance (38.79m / 127.3ft)
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-symbol">⏱️</span>
+                                        <strong>Time:</strong> How long the ball takes to travel the distance
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2333,6 +2664,66 @@
                                         <li><strong>Time</strong>: 0.4 seconds (typical fastball time)</li>
                                         <li><strong>Calculate</strong>: What's the velocity in m/s and mph?</li>
                                     </ul>
+                                    <div class="mini-calculator-native">
+                                        <h5><span class="icon">🧮</span> Quick Calculator</h5>
+                                        <div class="mini-calc-body">
+                                            <div class="mini-calc-inputs">
+                                                <input type="number" aria-label="First value" value="18.44">
+                                                <select aria-label="Operator">
+                                                    <option value="divide">÷</option>
+                                                    <option value="multiply">×</option>
+                                                    <option value="add">+</option>
+                                                    <option value="subtract">-</option>
+                                                </select>
+                                                <input type="number" aria-label="Second value" value="0.4">
+                                            </div>
+                                            <div class="mini-calc-result">
+                                                <span class="equals">=</span>
+                                                <span class="result-value">46.10</span>
+                                                <span class="unit">m/s</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="conversion-section">
+                                        <h5><span class="icon">🔄</span> Converting m/s to mph</h5>
+                                        <div class="conversion-steps">
+                                            <div class="conversion-step">
+                                                <span class="step-number">1</span>
+                                                <div class="step-content">
+                                                    <p><strong>Start with:</strong> 46.10 m/s</p>
+                                                </div>
+                                            </div>
+                                            <div class="conversion-step">
+                                                <span class="step-number">2</span>
+                                                <div class="step-content">
+                                                    <p><strong>Use conversion factor:</strong> 1 m/s = 2.237 mph</p>
+                                                    <div class="derivation-explanation">
+                                                        <p><strong>How we get 2.237:</strong></p>
+                                                        <p>• 1 meter = 3.28084 feet</p>
+                                                        <p>• 1 hour = 3600 seconds</p>
+                                                        <p>• 1 mile = 5,280 feet</p>
+                                                        <p>• So: 1 m/s = (3.28084 ft/s) × (3600 s/hr) ÷ (5280 ft/mile)</p>
+                                                        <p>• Calculate: 3.28084 × 3600 ÷ 5280 = 2.237 mph</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="conversion-step">
+                                                <span class="step-number">3</span>
+                                                <div class="step-content">
+                                                    <p><strong>Multiply:</strong> 46.10 × 2.237 = <strong>103.1 mph</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="conversion-result">
+                                            <span class="result-icon">🎯</span>
+                                            <p><strong>Final Answer:</strong> The fastball travels at <strong>46.10 m/s</strong> or <strong>103.1 mph</strong></p>
+                                        </div>
+                                        <div class="conversion-tip">
+                                            <span class="tip-icon">💡</span>
+                                            <p><strong>Quick tip:</strong> To convert m/s to mph, multiply by 2.237 (or approximately 2.24)</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="example-item">
                                     <h5>Base Stealing Analysis</h5>
@@ -2393,7 +2784,7 @@
                 <div class="day-content">
                     <!-- Enhanced Learning Objectives -->
                     <div class="objectives-overview advanced-objectives">
-                        <h3>🎯 Advanced Learning Objectives</h3>
+                        <h3>🎓 Advanced Learning Objectives</h3>
                         <ul>
                             <li>Master graphical analysis techniques for position-time and velocity-time graphs</li>
                             <li>Calculate derivatives and integrals from motion graphs to find velocity and displacement</li>
@@ -3115,117 +3506,6 @@
             console.log('Path set successfully, path length:', runnerPath.getTotalLength());
         }
 
-        // Make function globally available
-        window.animateRunner = function() {
-            console.log('Animate Runner button clicked!');
-            const runnerPath = document.getElementById('runner-path');
-            const animatedRunner = document.getElementById('animated-runner');
-            const animateButton = document.getElementById('animate-runner');
-            
-            console.log('Elements found:', {
-                runnerPath: !!runnerPath,
-                animatedRunner: !!animatedRunner,
-                animateButton: !!animateButton
-            });
-            
-            // Disable button during animation
-            animateButton.disabled = true;
-            animateButton.textContent = 'Running... 🏃‍♂️';
-            
-            // Make sure path has data before trying to animate
-            if (!runnerPath.getAttribute('d')) {
-                console.log('No path data found, setting default path');
-                runnerPath.setAttribute('d', baseScenarios.single.path);
-            }
-            
-            try {
-                const pathLength = runnerPath.getTotalLength();
-                
-                if (pathLength > 0) {
-                    console.log('Path length:', pathLength, 'Starting animations...');
-                    
-                    // Show the animated runner elements
-                    const runnerCircle = animatedRunner.querySelector('circle');
-                    const runnerText = animatedRunner.querySelector('text');
-                    
-                    if (runnerCircle) {
-                        runnerCircle.style.opacity = '1';
-                        runnerCircle.setAttribute('opacity', '1');
-                        console.log('Runner circle visibility set to 1');
-                    }
-                    
-                    if (runnerText) {
-                        runnerText.style.opacity = '1';
-                        runnerText.setAttribute('opacity', '1');
-                        console.log('Runner text visibility set to 1');
-                    }
-                    
-                    animatedRunner.style.opacity = '1';
-                    console.log('Runner group visibility set to 1');
-                    
-                    // Reset path animation
-                    runnerPath.style.strokeDasharray = pathLength;
-                    runnerPath.style.strokeDashoffset = pathLength;
-                    runnerPath.style.animation = 'none';
-                    console.log('Path animation reset');
-                    
-                    // Start path drawing animation (slower)
-                    setTimeout(() => {
-                        runnerPath.style.animation = 'dash 4s ease-in-out forwards';
-                        console.log('Path drawing animation started (4s duration)');
-                    }, 10);
-                    
-                    // Start runner motion animation
-                    const runnerMotions = document.querySelectorAll('[id^="runner-motion"], [id^="runner-emoji"]');
-                    console.log('Found runner motion elements:', runnerMotions.length);
-                    runnerMotions.forEach((motion, index) => {
-                        console.log('Starting motion element', index, motion.id);
-                        try {
-                            motion.beginElement();
-                        } catch (error) {
-                            console.error('Error starting animation for element', motion.id, error);
-                        }
-                    });
-                    
-                    // Show progress indicator
-                    animateButton.style.background = 'linear-gradient(135deg, #FF9800, #F44336)';
-                    
-                    // Re-enable button and hide runner after animation (4s + buffer)
-                    setTimeout(() => {
-                        animateButton.disabled = false;
-                        animateButton.textContent = 'Animate Runner 🏃‍♂️';
-                        animateButton.style.background = 'linear-gradient(135deg, #1976d2, #4caf50)';
-                        
-                        // Hide runner elements
-                        const runnerCircle = animatedRunner.querySelector('circle');
-                        const runnerText = animatedRunner.querySelector('text');
-                        
-                        if (runnerCircle) {
-                            runnerCircle.style.opacity = '0';
-                            runnerCircle.setAttribute('opacity', '0');
-                        }
-                        if (runnerText) {
-                            runnerText.style.opacity = '0';
-                            runnerText.setAttribute('opacity', '0');
-                        }
-                        
-                        animatedRunner.style.opacity = '0';
-                        console.log('Animation completed, runner hidden');
-                    }, 4500);
-                    
-                } else {
-                    console.log('Path length is 0, cannot animate');
-                    animateButton.disabled = false;
-                    animateButton.textContent = 'Animate Runner 🏃‍♂️';
-                }
-            } catch (error) {
-                console.error('Error animating runner:', error);
-                // Fallback - just show the path
-                runnerPath.style.opacity = '1';
-                animateButton.disabled = false;
-                animateButton.textContent = 'Animate Runner 🏃‍♂️';
-            }
-        }; // End of window.animateRunner
 
         // Interactive Motion Graph Function
         window.updateGraph = function() {
@@ -3313,26 +3593,6 @@
                 console.log('Base scenario event listener added');
             }
 
-            if (animateButton) {
-                animateButton.addEventListener('click', (e) => {
-                    console.log('Event listener: Animate button clicked!');
-                    e.preventDefault();
-                    window.animateRunner();
-                });
-                console.log('Animate button event listener added');
-                
-                // Also add hover effect to test if button is responsive
-                animateButton.addEventListener('mouseenter', () => {
-                    console.log('Button hover detected');
-                    animateButton.style.transform = 'translateY(-2px)';
-                });
-                
-                animateButton.addEventListener('mouseleave', () => {
-                    animateButton.style.transform = 'translateY(0)';
-                });
-            } else {
-                console.error('Animate button not found!');
-            }
             
             // Initialize with single base scenario
             updateBaseDiamond('single');
@@ -3417,49 +3677,6 @@ You can use phrases like: "That's a fascinating observation," "Let's think about
 
     // Function to open the modal
     function openTutorModal(event, promptId) {
-        event.preventDefault(); // Prevent the link from navigating
-        const promptTemplate = document.getElementById(promptId);
-        if (promptTemplate) {
-            const promptText = promptTemplate.innerHTML.trim();
-            modalPromptText.textContent = promptText;
-            modal.style.display = 'block';
-        }
-    }
-
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = 'none';
-        // Reset copy button text in case it was changed
-        copyBtn.textContent = 'Copy Prompt';
-    }
-
-    // Event listeners
-    if(closeModalBtn) {
-        closeModalBtn.onclick = closeModal;
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    }
-
-    if(copyBtn) {
-        copyBtn.onclick = function() {
-            navigator.clipboard.writeText(modalPromptText.textContent).then(() => {
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy Prompt';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                copyBtn.textContent = 'Copy Failed';
-            });
-        }
-    }
-    </script>
-</body>
-</html>promptId) {
         event.preventDefault(); // Prevent the link from navigating
         const promptTemplate = document.getElementById(promptId);
         if (promptTemplate) {
