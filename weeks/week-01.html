@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" href="../css/phase2-enhancements.css">
+    <link rel="stylesheet" href="../css/phase2-enhancements.css?v=1.1">
     <style>
         /* Global Layout Fixes */
         * {
@@ -1270,18 +1270,35 @@
         }
         
         @media (max-width: 768px) {
+            /* Fix for Distance vs Displacement comparison cards on mobile */
+            .concept-comparison-enhanced {
+                margin: 2rem 0;
+                padding: 2rem 1rem;
+                min-height: auto;
+                overflow: visible;
+            }
+
+            .concept-cards-container {
+                margin: 2rem 0;
+                min-height: auto;
+                padding: 1rem 0;
+                overflow: visible;
+            }
+
             .concept-card {
                 padding: 1.5rem;
                 margin-bottom: 1.5rem;
+                min-height: auto;
+                overflow: visible;
             }
-            
+
             .concept-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
                 gap: 0.5rem;
             }
-            
+
             .comparison-summary {
                 flex-direction: column;
                 text-align: center;
@@ -1305,27 +1322,23 @@
                 </p>
                 <div class="objectives-overview">
                     <h3>🎯 Learning Objectives</h3>
-                    <p class="objectives-intro">By the end of this week, you will be able to:</p>
-                    <ul class="objectives-list">
-                        <li>
-                            <span class="objective-icon">📏</span>
-                            <div class="objective-content">
-                                <strong>Master Motion Fundamentals:</strong> Define and differentiate between distance, displacement, speed, velocity, and acceleration in clear, practical terms.
-                            </div>
-                        </li>
-                        <li>
-                            <span class="objective-icon">⚾</span>
-                            <div class="objective-content">
-                                <strong>Apply Physics to Baseball:</strong> Analyze real baseball scenarios using motion concepts to describe pitching, hitting, and base-running movements.
-                            </div>
-                        </li>
-                        <li>
-                            <span class="objective-icon">🎬</span>
-                            <div class="objective-content">
-                                <strong>Conduct Video Analysis:</strong> Use video footage to qualitatively analyze motion patterns and identify key physics principles in action.
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="objectives-container">
+                        <div class="objective-card">
+                            <div class="objective-icon-wrapper">📏</div>
+                            <h4>Master Motion Fundamentals</h4>
+                            <p>Define and differentiate between key concepts like distance, displacement, speed, velocity, and acceleration.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-icon-wrapper">⚾</div>
+                            <h4>Apply Physics to Baseball</h4>
+                            <p>Analyze real baseball scenarios involving pitching, hitting, and base-running using the concepts of motion.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-icon-wrapper">🎬</div>
+                            <h4>Conduct Video Analysis</h4>
+                            <p>Use video footage to qualitatively analyze motion patterns and identify key physics principles in action.</p>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -1566,11 +1579,16 @@
                     });
                     </script>
                     <div class="activities-timeline">
-                        <div class="activity-item">
+                        <div class="activity-item llm-tutor-prompt">
                             <div class="activity-icon">💭</div>
                             <div class="activity-content">
-                                <h4>Motion Brainstorm (10 min)</h4>
-                                <p>What does it mean for something to move? Generate baseball motion examples as a class.</p>
+                                <h4>Motion Brainstorm (AI Assisted)</h4>
+                                <p>Let's begin our study of the physics of baseball. Use your AI tutor to explore the following questions.</p>
+                                <p><b>Prompt for your AI Tutor:</b> What does it mean for something to move? Generate baseball motion examples.</p>
+                                <a href="#" class="ai-tutor-button" onclick="openTutorModal(event, 'motion-brainstorm-prompt')">
+                                    <span class="icon">🤖</span>
+                                    <span>Start AI Discussion</span>
+                                </a>
                             </div>
                         </div>
                         <div class="activity-item">
@@ -1679,11 +1697,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-item">
+                        <div class="activity-item llm-tutor-prompt">
                             <div class="activity-icon">🚶</div>
                             <div class="activity-content">
                                 <h4>Motion Demonstration (15 min)</h4>
                                 <p>Student walks across room at constant pace. Class discusses: Are they in motion? Relative to what?</p>
+                                <p><b>Prompt for your AI Tutor:</b> Explain relative motion using the walking demonstration. How can the same person be both "moving" and "not moving" at the same time?</p>
+                                <a href="#" class="ai-tutor-button" onclick="openTutorModal(event, 'motion-demo-prompt')">
+                                    <span class="icon">🤖</span>
+                                    <span>Start AI Discussion</span>
+                                </a>
                             </div>
                         </div>
                         <div class="activity-item">
@@ -3325,5 +3348,159 @@
     </script>
 
     <!-- Progress tracking disabled for Week 1 to maintain clean design -->
+    <script type="text/template" id="motion-brainstorm-prompt">
+You are a physics teacher leading a classroom discussion. Your students are curious about the physics of baseball. Your goal is to guide them through the concept of motion.
+
+Begin the discussion by asking a fundamental question to the class. Then, respond to their answers by providing explanations and generating baseball-related examples. The discussion should be a back-and-forth conversation. Use bold for your persona's speech and italics for a student's question or comment.
+
+Teacher Persona:
+
+You can initiate the discussion with a question like: "Class, let's start with a simple but important question: what does it mean for something to move? What's the simplest way to describe motion?"
+
+You can use phrases like: "That's a great point," "Interesting thought, can you elaborate?" or "Let's connect that to baseball."
+
+Student Personas:
+
+Student A (The inquisitive one): Asks clarifying questions and tries to connect concepts.
+
+Student B (The practical one): Offers examples from everyday life or baseball.
+
+Student C (The skeptical one): Challenges ideas or asks for more specific details.
+
+Example of the simulated interaction:
+
+Teacher: "Let's start our study of the physics of baseball. What's the simplest way to describe motion? What does it mean for something to move?"
+
+Student A: "It's when its position changes, right?"
+
+Teacher: "Exactly! Motion is simply a change in position over time. Now, think about a baseball game. Can you give me an example of something moving?"
+
+Student B: "The ball after it's hit! It flies through the air."
+
+Teacher: "That's a perfect example. We'll be studying the factors that affect the ball's motion, like how the bat gives it a push and how air resistance slows it down. What about a less obvious example of motion on the field?"
+
+Student C: "What about the pitcher? They aren't moving through the whole field."
+
+Teacher: "That's a great observation. The pitcher is still moving, even if their motion is a bit different. Their arm moves from a high point to a low point, and their body rotates. All of that is motion. We can measure the velocity and acceleration of each of those parts of their body."
+    </script>
+
+    <script type="text/template" id="motion-demo-prompt">
+You are a physics teacher leading a classroom discussion. Your students are curious about the physics of baseball. Your goal is to guide them through the concept of relative motion using a walking demonstration.
+
+Begin the discussion by asking a fundamental question to the class. Then, respond to their answers by providing explanations and generating baseball-related examples. The discussion should be a back-and-forth conversation. Use bold for your persona's speech and italics for a student's question or comment.
+
+Teacher Persona:
+
+You can initiate the discussion with a question like: "Class, we just watched someone walk across the room at a constant pace. Here's an interesting question: were they moving or not moving? What do you think?"
+
+You can use phrases like: "That's a fascinating observation," "Let's think about this more carefully," or "How does this apply to baseball?"
+    </script>
+
+    <!-- AI Tutor Modal -->
+    <div id="aiTutorModal" class="ai-tutor-modal">
+        <div class="ai-tutor-modal-content">
+            <div class="ai-tutor-modal-header">
+                <h3>AI Tutor Prompt</h3>
+                <span class="ai-tutor-close-btn">&times;</span>
+            </div>
+            <p>Copy the prompt below and paste it into your AI tutor chat to begin the role-play session.</p>
+            <pre id="ai-tutor-prompt-text"></pre>
+            <button id="copy-prompt-btn" class="copy-button">Copy Prompt</button>
+        </div>
+    </div>
+
+    <script>
+    // Get modal elements
+    const modal = document.getElementById('aiTutorModal');
+    const modalPromptText = document.getElementById('ai-tutor-prompt-text');
+    const closeModalBtn = document.querySelector('.ai-tutor-close-btn');
+    const copyBtn = document.getElementById('copy-prompt-btn');
+
+    // Function to open the modal
+    function openTutorModal(event, promptId) {
+        event.preventDefault(); // Prevent the link from navigating
+        const promptTemplate = document.getElementById(promptId);
+        if (promptTemplate) {
+            const promptText = promptTemplate.innerHTML.trim();
+            modalPromptText.textContent = promptText;
+            modal.style.display = 'block';
+        }
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        // Reset copy button text in case it was changed
+        copyBtn.textContent = 'Copy Prompt';
+    }
+
+    // Event listeners
+    if(closeModalBtn) {
+        closeModalBtn.onclick = closeModal;
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    if(copyBtn) {
+        copyBtn.onclick = function() {
+            navigator.clipboard.writeText(modalPromptText.textContent).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Prompt';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                copyBtn.textContent = 'Copy Failed';
+            });
+        }
+    }
+    </script>
+</body>
+</html>promptId) {
+        event.preventDefault(); // Prevent the link from navigating
+        const promptTemplate = document.getElementById(promptId);
+        if (promptTemplate) {
+            const promptText = promptTemplate.innerHTML.trim();
+            modalPromptText.textContent = promptText;
+            modal.style.display = 'block';
+        }
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        // Reset copy button text in case it was changed
+        copyBtn.textContent = 'Copy Prompt';
+    }
+
+    // Event listeners
+    if(closeModalBtn) {
+        closeModalBtn.onclick = closeModal;
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    if(copyBtn) {
+        copyBtn.onclick = function() {
+            navigator.clipboard.writeText(modalPromptText.textContent).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Prompt';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                copyBtn.textContent = 'Copy Failed';
+            });
+        }
+    }
+    </script>
 </body>
 </html>
