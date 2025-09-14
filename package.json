@@ -13,10 +13,11 @@
     "test:headed:win": "set HEADED=true && playwright test tests/regression/",
     "test:debug": "playwright test --project=debug",
     "test:mobile": "playwright test --project=regression-mobile-chrome --project=regression-mobile-safari",
-    "test:ci": "cross-env CI=true playwright test tests/regression/",
+    "test:ci": "cross-env CI=true playwright test tests/regression/ --project=regression-chromium",
     "test:ci:win": "set CI=true && playwright test tests/regression/",
     "test:report": "playwright show-report",
     "test:install": "playwright install",
+    "test:simple": "playwright test tests/regression/homepage-navigation.spec.js --project=regression-chromium --max-failures=1",
     "test:original": "open tests/test-runner.html"
   },
   "keywords": [

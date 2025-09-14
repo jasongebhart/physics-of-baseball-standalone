@@ -1,0 +1,62 @@
+name: Simple Regression Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run Regression Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Node dependencies
+        run: |
+          npm install
+
+      - name: Install Playwright
+        run: |
+          npx playwright install --with-deps chromium
+
+      - name: Start server and run tests
+        run: |
+          echo "Starting server..."
+          python -m http.server 8080 &
+          SERVER_PID=$!
+
+          echo "Waiting for server to start..."
+          sleep 5
+
+          echo "Testing server response..."
+          curl -f http://localhost:8080 || (echo "Server not responding" && exit 1)
+
+          echo "Running regression tests..."
+          npx playwright test tests/regression/ --project=regression-chromium --max-failures=5
+
+          echo "Stopping server..."
+          kill $SERVER_PID || true
+        env:
+          CI: true
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 3
