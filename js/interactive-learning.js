@@ -9,6 +9,14 @@ export class InteractiveLearningSystem {
         this.tooltipVisible = null;
         this.conceptCards = new Map();
         this.progressTracker = this.loadProgressTracker();
+        this.currentEscapeListener = null;
+        this.isInitializing = true;
+
+        // Prevent auto-modal opening for 2 seconds after initialization
+        setTimeout(() => {
+            this.isInitializing = false;
+        }, 2000);
+
         this.init();
     }
 
@@ -288,7 +296,10 @@ export class InteractiveLearningSystem {
             term.addEventListener('blur', () => this.hideTooltip());
             term.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.showDetailedDefinition(term.dataset.term, term.dataset.definition);
+                // Only allow user-initiated clicks (not programmatic ones)
+                if (e.isTrusted !== false) {
+                    this.showDetailedDefinition(term.dataset.term, term.dataset.definition);
+                }
             });
         });
     }
@@ -341,14 +352,27 @@ export class InteractiveLearningSystem {
     }
 
     showDetailedDefinition(term, definition) {
+        // Prevent auto-modal opening during initialization
+        if (this.isInitializing) {
+            console.log('Blocked modal during initialization:', term);
+            return;
+        }
+
+        // Remove any existing modals first
+        const existingModals = document.querySelectorAll('.definition-modal');
+        existingModals.forEach(modal => modal.remove());
+
+        // Clean up any existing escape key listeners
+        document.removeEventListener('keydown', this.currentEscapeListener);
+
         const modal = document.createElement('div');
         modal.className = 'definition-modal';
         modal.innerHTML = `
-            <div class="modal-overlay" onclick="this.parentElement.remove()"></div>
+            <div class="modal-overlay"></div>
             <div class="modal-content">
                 <div class="modal-header">
                     <h3>${term}</h3>
-                    <button class="modal-close" onclick="this.closest('.definition-modal').remove()">×</button>
+                    <button class="modal-close" type="button">×</button>
                 </div>
                 <div class="modal-body">
                     <p><strong>Definition:</strong> ${definition}</p>
@@ -362,23 +386,39 @@ export class InteractiveLearningSystem {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn-primary" onclick="this.closest('.definition-modal').remove()">Got it!</button>
+                    <button class="btn-primary" type="button">Got it!</button>
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(modal);
-        
+
+        // Add event listeners with proper cleanup
+        const closeModal = () => {
+            modal.remove();
+            document.removeEventListener('keydown', this.currentEscapeListener);
+            this.currentEscapeListener = null;
+        };
+
+        // Close button
+        modal.querySelector('.modal-close').addEventListener('click', closeModal);
+
+        // Got it button
+        modal.querySelector('.btn-primary').addEventListener('click', closeModal);
+
+        // Overlay click
+        modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
+
+        // Escape key to close
+        this.currentEscapeListener = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        };
+        document.addEventListener('keydown', this.currentEscapeListener);
+
         // Focus management
         modal.querySelector('.modal-close').focus();
-        
-        // Escape key to close
-        document.addEventListener('keydown', function closeOnEscape(e) {
-            if (e.key === 'Escape') {
-                modal.remove();
-                document.removeEventListener('keydown', closeOnEscape);
-            }
-        });
     }
 
     getRelatedConcepts(term) {
