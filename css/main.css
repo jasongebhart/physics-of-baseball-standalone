@@ -7627,3 +7627,41 @@ body:not(.index-body) .container {
         text-align: center;
     }
 }
+
+/* Disable navigation tooltips and popups for clean navigation experience */
+.nav-sidebar .week-link,
+.nav-sidebar .week-link *,
+.week-nav .week-link,
+.week-nav .week-link * {
+    /* Remove any title attributes that create browser tooltips */
+    title: none !important;
+    /* Disable any pseudo-element tooltips */
+    position: relative;
+}
+
+.nav-sidebar .week-link::before,
+.nav-sidebar .week-link::after,
+.week-nav .week-link::before,
+.week-nav .week-link::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Ensure no hover tooltips appear on navigation */
+.nav-sidebar .week-link:hover::before,
+.nav-sidebar .week-link:hover::after,
+.week-nav .week-link:hover::before,
+.week-nav .week-link:hover::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+}
+
+/* Block any JavaScript-generated tooltips on navigation */
+.nav-sidebar [title],
+.week-nav [title],
+.nav-sidebar [data-tooltip],
+.week-nav [data-tooltip] {
+    title: none !important;
+    data-tooltip: none !important;
+}

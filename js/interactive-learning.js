@@ -51,6 +51,7 @@ export class InteractiveLearningSystem {
         this.initializeInteractiveElements();
         this.initializeProgressIndicators();
         this.setupKeyboardNavigation();
+        this.disableNavigationTooltips();
     }
 
     initializeExpandableSections() {
@@ -260,16 +261,20 @@ export class InteractiveLearningSystem {
 
     checkForPhysicsTerms(element, glossary) {
         if (element.dataset.tooltipProcessed) return;
-        
+
+        // Skip tooltip processing in navigation areas
+        const navigationContainer = element.closest('.nav-sidebar, .week-nav, [data-disable-tooltips="true"]');
+        if (navigationContainer) return;
+
         const text = element.textContent.toLowerCase();
-        
+
         for (const [term, definition] of Object.entries(glossary)) {
             if (text.includes(term.toLowerCase())) {
                 this.addTooltipToTerm(element, term, definition);
                 break; // Only add one tooltip per element
             }
         }
-        
+
         element.dataset.tooltipProcessed = 'true';
     }
 
@@ -466,6 +471,9 @@ export class InteractiveLearningSystem {
     }
 
     initializeConceptCards() {
+        // Concept cards disabled - clean design without duplicate key concepts sections
+        return;
+
         // Create concept cards for key physics principles
         this.createConceptCardsContainer();
         this.addConceptCards();
@@ -731,38 +739,14 @@ export class InteractiveLearningSystem {
             return;
         }
         
-        this.createOverallProgressBar();
         this.updateProgressIndicators();
     }
 
-    createOverallProgressBar() {
-        const progressBar = document.createElement('div');
-        progressBar.id = 'overall-progress-bar';
-        progressBar.className = 'overall-progress-bar';
-        progressBar.innerHTML = `
-            <div class="progress-header">
-                <span class="progress-label">Page Progress</span>
-                <span class="progress-percentage" id="overall-percentage">0%</span>
-            </div>
-            <div class="progress-bar-track">
-                <div class="progress-bar-fill" id="overall-progress-fill"></div>
-            </div>
-            <div class="progress-milestones">
-                <div class="milestone" data-milestone="25">25%</div>
-                <div class="milestone" data-milestone="50">50%</div>
-                <div class="milestone" data-milestone="75">75%</div>
-                <div class="milestone" data-milestone="100">100%</div>
-            </div>
-        `;
-        
-        // Insert at top of main content
-        const mainContent = document.querySelector('.main-content, main');
-        if (mainContent) {
-            mainContent.insertBefore(progressBar, mainContent.firstChild);
-        }
-    }
 
     updateProgressIndicators() {
+        // Progress indicators disabled - clean design without progress tracking
+        return;
+
         const totalSections = document.querySelectorAll('.expandable-section').length;
         const completedSections = Object.keys(this.progressTracker).filter(key => 
             this.progressTracker[key]?.completed
@@ -934,6 +918,30 @@ export class InteractiveLearningSystem {
         // - Shared notes and annotations
         // - Discussion threads
         console.log('Collaborative elements placeholder - not yet implemented');
+    }
+
+    disableNavigationTooltips() {
+        // Remove any title attributes and tooltips from navigation elements
+        const navigationLinks = document.querySelectorAll('.nav-sidebar .week-link, .week-nav .week-link, .nav-sidebar a, .week-nav a');
+
+        navigationLinks.forEach(link => {
+            // Remove title attribute that creates browser tooltips
+            link.removeAttribute('title');
+            // Remove any data-tooltip attributes
+            link.removeAttribute('data-tooltip');
+            // Remove title from child elements
+            const childElements = link.querySelectorAll('*');
+            childElements.forEach(child => {
+                child.removeAttribute('title');
+                child.removeAttribute('data-tooltip');
+            });
+        });
+
+        // Disable physics term tooltips on navigation elements
+        const navigationContainer = document.querySelector('.nav-sidebar');
+        if (navigationContainer) {
+            navigationContainer.setAttribute('data-disable-tooltips', 'true');
+        }
     }
 }
 
