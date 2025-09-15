@@ -140,16 +140,6 @@ export class InteractiveLearningSystem {
         readingTimeElement.innerHTML = `⏱️ Est. reading time: ${readingTime} min`;
         expandableContent.prepend(readingTimeElement);
 
-        // Add completion tracking
-        const completionTracker = document.createElement('div');
-        completionTracker.className = 'completion-tracker';
-        completionTracker.innerHTML = `
-            <button class="mark-complete-btn" data-section="${sectionId}">
-                ✓ Mark as Complete
-            </button>
-        `;
-        expandableContent.appendChild(completionTracker);
-
         expandableContainer.appendChild(expandableHeader);
         expandableContainer.appendChild(expandableContent);
 
@@ -170,15 +160,9 @@ export class InteractiveLearningSystem {
     setupExpandableListeners(container, sectionId) {
         const expandBtn = container.querySelector('.expand-btn');
         const content = container.querySelector('.expandable-content');
-        const completeBtn = container.querySelector('.mark-complete-btn');
 
         expandBtn.addEventListener('click', () => {
             this.toggleSection(sectionId);
-        });
-
-        completeBtn.addEventListener('click', () => {
-            this.markSectionComplete(sectionId);
-            this.trackCompletion(sectionId);
         });
 
         // Track reading progress
@@ -683,50 +667,13 @@ export class InteractiveLearningSystem {
     }
 
     addProgressCheckpoints() {
-        const majorSections = document.querySelectorAll('.day-section, .activity-item');
-        
-        majorSections.forEach((section, index) => {
-            if (section.querySelector('.progress-checkpoint')) return;
-            
-            const checkpoint = document.createElement('div');
-            checkpoint.className = 'progress-checkpoint';
-            checkpoint.innerHTML = `
-                <div class="checkpoint-indicator" data-checkpoint="${index}">
-                    <div class="checkpoint-icon">○</div>
-                    <div class="checkpoint-label">Section ${index + 1}</div>
-                </div>
-            `;
-            
-            section.appendChild(checkpoint);
-            
-            // Setup intersection observer for automatic progress tracking
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        this.markCheckpointReached(index);
-                    }
-                });
-            }, { threshold: 0.7 });
-            
-            observer.observe(section);
-        });
+        // Progress checkpoints disabled for clean interface design
+        return;
     }
 
     markCheckpointReached(index) {
-        const checkpoint = document.querySelector(`[data-checkpoint="${index}"]`);
-        if (checkpoint && !checkpoint.classList.contains('reached')) {
-            checkpoint.classList.add('reached');
-            checkpoint.querySelector('.checkpoint-icon').textContent = '✓';
-            
-            // Save progress
-            if (!this.progressTracker.checkpoints) {
-                this.progressTracker.checkpoints = [];
-            }
-            if (!this.progressTracker.checkpoints.includes(index)) {
-                this.progressTracker.checkpoints.push(index);
-                this.saveProgressTracker();
-            }
-        }
+        // Checkpoint tracking disabled for clean interface design
+        return;
     }
 
     initializeProgressIndicators() {
@@ -881,27 +828,8 @@ export class InteractiveLearningSystem {
     }
 
     markSectionComplete(sectionId) {
-        // Skip section completion for Week 1 to maintain clean design
-        const isWeek1 = document.title.includes('Week 1') || 
-                       document.querySelector('.week-title')?.textContent.includes('Week 1');
-        
-        if (isWeek1) {
-            return;
-        }
-        
-        const progressIndicator = document.getElementById(`progress-${sectionId}`);
-        const completeBtn = document.querySelector(`[data-section="${sectionId}"]`);
-        
-        if (progressIndicator) {
-            progressIndicator.textContent = '✓';
-            progressIndicator.classList.add('completed');
-        }
-        
-        if (completeBtn) {
-            completeBtn.textContent = '✓ Completed';
-            completeBtn.disabled = true;
-            completeBtn.classList.add('completed');
-        }
+        // Section completion tracking disabled for clean interface design
+        return;
     }
 
     estimateReadingTime(text) {

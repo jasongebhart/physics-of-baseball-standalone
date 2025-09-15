@@ -33,7 +33,17 @@
       "Bash(pip install:*)",
       "Bash(del nul)",
       "Bash(git pull:*)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "Bash(start http://localhost:8080/weeks/week-02.html)",
+      "Bash(timeout:*)",
+      "Bash(ping:*)",
+      "Bash(git branch:*)",
+      "Bash(start http://localhost:8080/weeks/week-03.html)",
+      "Bash(start http://localhost:8080/weeks/week-01.html)",
+      "Bash(start http://localhost:8080/weeks/week-04.html)",
+      "Bash(start http://localhost:8080/weeks/week-05.html)",
+      "Bash(start http://localhost:8080/weeks/week-06.html)",
+      "Bash(start http://localhost:8080/weeks/week-07.html)"
     ],
     "deny": [],
     "ask": []

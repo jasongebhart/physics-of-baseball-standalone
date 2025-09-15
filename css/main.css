@@ -7665,3 +7665,16 @@ body:not(.index-body) .container {
     title: none !important;
     data-tooltip: none !important;
 }
+
+/* Disable all completion and progress tracking components for clean interface */
+.completion-tracker,
+.mark-complete-btn,
+.mastery-btn,
+.progress-checkpoint,
+.checkpoint-indicator,
+.day-completion-tracker,
+.section-progress,
+.progress-indicator {
+    display: none !important;
+    visibility: hidden !important;
+}

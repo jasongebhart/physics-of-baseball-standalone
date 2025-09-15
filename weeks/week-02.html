@@ -3785,27 +3785,6 @@
             }
         }
 
-        /* Hide any legacy progress elements */
-        .week-progress-container,
-        .progress-indicator,
-        .reading-progress,
-        .page-progress,
-        .scroll-progress,
-        .completion-tracker,
-        .day-completion-tracker {
-            display: none !important;
-        }
-
-        /* Override any fixed progress bars */
-        div[class*="progress"]:not(.toc-roadmap):not(.enhanced-components-section):not(.independence-demonstration) {
-            display: none !important;
-        }
-
-        /* Ensure no top progress bars */
-        *[style*="position: fixed"][style*="top: 0"],
-        *[class*="progress"][style*="position: fixed"] {
-            display: none !important;
-        }
 
         /* Enhanced Vector Analysis Styles */
         .enhanced-vector-analysis {
@@ -5364,63 +5343,6 @@
             // Observe all sections
             sections.forEach(section => sectionObserver.observe(section));
 
-            // Roadmap progression tracking
-            function updateRoadmapProgress() {
-                const sections = [
-                    'objectives', 'day-1', 'day-2', 'day-3',
-                    'day-4', 'day-5', 'calculus-connections', 'assessment-section'
-                ];
-
-                const roadmapSteps = document.querySelectorAll('.roadmap-step');
-                const miniSteps = document.querySelectorAll('.mini-step');
-
-                let currentStepIndex = 0;
-                const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-                // Find the current section based on scroll position
-                for (let i = sections.length - 1; i >= 0; i--) {
-                    const section = document.getElementById(sections[i]);
-                    if (section && scrollPosition >= section.offsetTop) {
-                        currentStepIndex = i;
-                        break;
-                    }
-                }
-
-                // Update roadmap steps
-                roadmapSteps.forEach((step, index) => {
-                    step.classList.remove('current', 'completed');
-                    if (index < currentStepIndex) {
-                        step.classList.add('completed');
-                    } else if (index === currentStepIndex) {
-                        step.classList.add('current');
-                    }
-                });
-
-                // Update mini steps in TOC
-                miniSteps.forEach((step, index) => {
-                    step.classList.remove('current', 'completed');
-                    if (index < currentStepIndex) {
-                        step.classList.add('completed');
-                    } else if (index === currentStepIndex) {
-                        step.classList.add('current');
-                    }
-                });
-            }
-
-            // Throttled scroll listener for performance
-            let ticking = false;
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateRoadmapProgress);
-                    ticking = true;
-                    setTimeout(() => ticking = false, 16); // ~60fps
-                }
-            }
-
-            window.addEventListener('scroll', requestTick);
-
-            // Initial roadmap update
-            updateRoadmapProgress();
 
             // Add click handlers for mini roadmap steps
             const miniSteps = document.querySelectorAll('.mini-step');
