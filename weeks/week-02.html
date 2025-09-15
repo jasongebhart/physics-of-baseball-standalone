@@ -2216,34 +2216,6 @@
             font-weight: 600;
         }
 
-        .toc-progress {
-            padding: 16px 20px;
-            border-top: 1px solid var(--color-outline-variant, #f0f0f0);
-            background: var(--color-surface-elevated, #f8f9fa);
-        }
-
-        .progress-bar {
-            background: var(--color-outline-variant, #f0f0f0);
-            border-radius: 10px;
-            height: 6px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-
-        .progress-fill {
-            background: linear-gradient(90deg, var(--color-primary, #1976d2), var(--color-accent, #4caf50));
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        .progress-text {
-            font-size: 0.8rem;
-            color: var(--color-on-surface-muted, #666);
-            text-align: center;
-            display: block;
-        }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -2289,8 +2261,7 @@
         @media (prefers-reduced-motion: reduce) {
             .floating-toc,
             .toc-toggle,
-            .toc-link,
-            .progress-fill {
+            .toc-link {
                 transition: none;
             }
         }
@@ -3583,6 +3554,28 @@
                 border: 2px solid currentColor;
             }
         }
+
+        /* Hide any legacy progress elements */
+        .week-progress-container,
+        .progress-indicator,
+        .reading-progress,
+        .page-progress,
+        .scroll-progress,
+        .completion-tracker,
+        .day-completion-tracker {
+            display: none !important;
+        }
+
+        /* Override any fixed progress bars */
+        div[class*="progress"]:not(.toc-roadmap):not(.enhanced-components-section):not(.independence-demonstration) {
+            display: none !important;
+        }
+
+        /* Ensure no top progress bars */
+        *[style*="position: fixed"][style*="top: 0"],
+        *[class*="progress"][style*="position: fixed"] {
+            display: none !important;
+        }
     </style>
 
     <!-- Mobile Navigation Overlay -->
@@ -3919,7 +3912,6 @@
             const tocClose = document.getElementById('toc-close');
             const tocContent = document.getElementById('toc-content');
             const tocLinks = document.querySelectorAll('.toc-link');
-            const progressFill = document.getElementById('reading-progress');
 
             if (!floatingToc || !tocToggle || !tocClose) return;
 
