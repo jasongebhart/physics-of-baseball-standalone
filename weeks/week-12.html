@@ -779,9 +779,8 @@
                                         <li>Explain why seams actually help pitcher control</li>
                                         <li>Calculate the percentage increase in drag due to seams</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Drag force: F_D = ½ρv²C_DA</p>
                                         <p>Smooth ball: F_D = ½ × 1.2 × (40)² × 0.20 × 0.0042 = 8.1 N</p>
                                         <p>Seamed ball: F_D = ½ × 1.2 × (40)² × 0.35 × 0.0042 = 14.1 N</p>
@@ -800,9 +799,8 @@
                                         <li>Analyze how mound slope affects release angle</li>
                                         <li>Determine optimal release strategy using physics</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>PE = mgh = 0.145 × 9.81 × 0.254 = 0.361 J</p>
                                         <p>If converted to kinetic energy: ½mv² = 0.361 J</p>
                                         <p>v = √(2 × 0.361/0.145) = 2.23 m/s additional = 5.0 mph benefit</p>
@@ -822,9 +820,8 @@
                                         <li>Calculate percentage force reduction from glove</li>
                                         <li>Explain safety benefit using physics principles</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Impulse = mΔv = 0.145 × 42.5 = 6.16 kg⋅m/s (same for both)</p>
                                         <p>Bare hand: F = Impulse/Δt = 6.16/0.01 = 616 N</p>
                                         <p>Glove: F = 6.16/0.05 = 123 N</p>
@@ -843,9 +840,8 @@
                                         <li>Compare wood vs aluminum bat performance (aluminum: 0.8 kg, higher elasticity)</li>
                                         <li>Explain why sweet spot location matters</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Before collision: p_total = 0.9×30 - 0.145×40 = 21.2 kg⋅m/s</p>
                                         <p>Assuming coefficient of restitution e = 0.5 for wood:</p>
                                         <p>Final ball velocity ≈ 45 m/s (100.7 mph)</p>
@@ -858,16 +854,6 @@
                             </div>
                         </div>
                     `;
-                    
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

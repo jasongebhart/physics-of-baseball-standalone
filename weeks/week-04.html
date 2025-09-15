@@ -898,13 +898,12 @@
                                         <li>What force would be required to stop this ball in 0.05 seconds?</li>
                                         <li>How would the momentum change if the ball's velocity increased to 45 m/s?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: m = 0.145 kg, v = 42 m/s</p>
-                                        <p>1. p = mv = 0.145 × 42 = 6.09 kg⋅m/s</p>
-                                        <p>2. Using J = Δp: F = Δp/Δt = 6.09/0.05 = 121.8 N</p>
-                                        <p>3. New momentum: p = 0.145 × 45 = 6.53 kg⋅m/s (increase of 0.44 kg⋅m/s)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> m = 0.145 kg, v = 42 m/s</p>
+                                        <p><strong>1. Momentum:</strong> p = mv = 0.145 × 42 = 6.09 kg⋅m/s</p>
+                                        <p><strong>2. Stopping Force:</strong> Using J = Δp: F = Δp/Δt = 6.09/0.05 = 121.8 N</p>
+                                        <p><strong>3. New Momentum:</strong> p = 0.145 × 45 = 6.53 kg⋅m/s (increase of 0.44 kg⋅m/s)</p>
                                     </div>
                                 </div>
                                 
@@ -916,13 +915,12 @@
                                         <li>The final velocity of the 0.145 kg ball</li>
                                         <li>How the velocity would change if contact time doubled</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: F = 800 N, t = 0.008 s, m = 0.145 kg, v₀ = 0</p>
-                                        <p>1. J = F⋅t = 800 × 0.008 = 6.4 N⋅s</p>
-                                        <p>2. v = J/m = 6.4/0.145 = 44.1 m/s (98.7 mph)</p>
-                                        <p>3. If t = 0.016 s: J = 12.8 N⋅s, v = 88.3 m/s (velocity doubles)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> F = 800 N, t = 0.008 s, m = 0.145 kg, v₀ = 0</p>
+                                        <p><strong>1. Impulse:</strong> J = F⋅t = 800 × 0.008 = 6.4 N⋅s</p>
+                                        <p><strong>2. Final Velocity:</strong> v = J/m = 6.4/0.145 = 44.1 m/s (98.7 mph)</p>
+                                        <p><strong>3. Doubled Contact Time:</strong> If t = 0.016 s: J = 12.8 N⋅s, v = 88.3 m/s (velocity doubles)</p>
                                     </div>
                                 </div>
                                 
@@ -934,29 +932,18 @@
                                         <li>The momentum gained by the ball (assuming conservation)</li>
                                         <li>The ball's velocity if it has mass 0.145 kg</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: m_hand = 0.5 kg, v₁ = 8 m/s, v₂ = 6 m/s, m_ball = 0.145 kg</p>
-                                        <p>1. Δp_hand = 0.5 × (6 - 8) = -1.0 kg⋅m/s</p>
-                                        <p>2. By conservation: Δp_ball = +1.0 kg⋅m/s</p>
-                                        <p>3. v_ball = Δp_ball/m_ball = 1.0/0.145 = 6.9 m/s (15.4 mph)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> m_hand = 0.5 kg, v₁ = 8 m/s, v₂ = 6 m/s, m_ball = 0.145 kg</p>
+                                        <p><strong>1. Hand Momentum Change:</strong> Δp_hand = 0.5 × (6 - 8) = -1.0 kg⋅m/s</p>
+                                        <p><strong>2. Ball Momentum:</strong> By conservation: Δp_ball = +1.0 kg⋅m/s</p>
+                                        <p><strong>3. Ball Velocity:</strong> v_ball = Δp_ball/m_ball = 1.0/0.145 = 6.9 m/s (15.4 mph)</p>
                                         <p><em>Note: This simplified model doesn't account for all momentum sources in pitching.</em></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `;
-                    
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

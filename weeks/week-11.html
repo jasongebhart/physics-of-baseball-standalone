@@ -841,9 +841,8 @@
                                         <li>Evaluate the accuracy of the radar gun</li>
                                         <li>Identify if systematic or random error is present</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Mean = (89.8 + 90.2 + 89.9 + 90.0 + 90.1)/5 = 90.0 mph</p>
                                         <p>Standard deviation = 0.15 mph (high precision - low scatter)</p>
                                         <p>Error = |90.0 - 89.7| = 0.3 mph (systematic error present)</p>
@@ -861,9 +860,8 @@
                                         <li>Create a histogram of the data</li>
                                         <li>Calculate 95% confidence interval for the mean</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Mean = 89.5 mph, Median = 89.5 mph, Mode = 89, 90 mph</p>
                                         <p>Range = 92 - 87 = 5 mph</p>
                                         <p>Standard deviation ≈ 1.4 mph</p>
@@ -881,9 +879,8 @@
                                         <li>Calculate the uncertainty in mph</li>
                                         <li>Express the final result with proper uncertainty</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Conversion: 42.7 m/s × 2.237 mph/(m/s) = 95.5 mph</p>
                                         <p>Original has 3 significant figures, so result should too</p>
                                         <p>Uncertainty: 0.2 m/s × 2.237 = ±0.4 mph</p>
@@ -900,9 +897,8 @@
                                         <li>Determine if the relationship is statistically significant</li>
                                         <li>Discuss potential physical explanations</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Scatter plot shows an inverted U-shape relationship</p>
                                         <p>Linear correlation coefficient r ≈ -0.2 (weak negative)</p>
                                         <p>However, quadratic relationship is stronger (optimal angle around 155°)</p>
@@ -912,16 +908,6 @@
                             </div>
                         </div>
                     `;
-                    
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

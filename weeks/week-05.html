@@ -928,13 +928,12 @@
                                         <li>How much work was done to accelerate the ball from rest to this speed?</li>
                                         <li>If this work was done over a distance of 0.8 m, what average force was applied?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: m = 0.145 kg, v = 45 m/s, d = 0.8 m</p>
-                                        <p>1. KE = ½mv² = ½ × 0.145 × 45² = 146.8 J</p>
-                                        <p>2. Work = ΔKE = KE_final - KE_initial = 146.8 - 0 = 146.8 J</p>
-                                        <p>3. From W = F⋅d: F = W/d = 146.8/0.8 = 183.5 N</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> m = 0.145 kg, v = 45 m/s, d = 0.8 m</p>
+                                        <p><strong>1. Kinetic Energy:</strong> KE = ½mv² = ½ × 0.145 × 45² = <strong>146.8 J</strong></p>
+                                        <p><strong>2. Work Done:</strong> Work = ΔKE = KE_final - KE_initial = 146.8 - 0 = <strong>146.8 J</strong></p>
+                                        <p><strong>3. Average Force:</strong> From W = F⋅d: F = W/d = 146.8/0.8 = <strong>183.5 N</strong></p>
                                     </div>
                                 </div>
                                 
@@ -946,13 +945,12 @@
                                         <li>How this energy could contribute to pitch velocity if fully converted to kinetic energy</li>
                                         <li>The theoretical maximum contribution to ball velocity (ball mass = 0.145 kg)</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: m_pitcher = 80 kg, Δh = 0.3 m, g = 9.81 m/s², m_ball = 0.145 kg</p>
-                                        <p>1. ΔPE = mgΔh = 80 × 9.81 × 0.3 = 235.4 J</p>
-                                        <p>2. If all PE converts to KE: KE = 235.4 J</p>
-                                        <p>3. For ball: v = √(2KE/m) = √(2 × 235.4/0.145) = 57.0 m/s (127.5 mph)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> m_pitcher = 80 kg, Δh = 0.3 m, g = 9.81 m/s², m_ball = 0.145 kg</p>
+                                        <p><strong>1. Potential Energy Change:</strong> ΔPE = mgΔh = 80 × 9.81 × 0.3 = <strong>235.4 J</strong></p>
+                                        <p><strong>2. Energy Conversion:</strong> If all PE converts to KE: KE = <strong>235.4 J</strong></p>
+                                        <p><strong>3. Maximum Ball Velocity:</strong> v = √(2KE/m) = √(2 × 235.4/0.145) = <strong>57.0 m/s (127.5 mph)</strong></p>
                                         <p><em>Note: This is theoretical maximum; actual efficiency is much lower.</em></p>
                                     </div>
                                 </div>
@@ -965,28 +963,18 @@
                                         <li>The final velocity of the 0.145 kg ball</li>
                                         <li>The power delivered if this occurs over 0.15 seconds</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: W_net = 120 J, m = 0.145 kg, t = 0.15 s, v₀ = 0</p>
-                                        <p>1. By Work-Energy Theorem: W_net = ΔKE, so KE_final = 120 J</p>
-                                        <p>2. From KE = ½mv²: v = √(2KE/m) = √(2 × 120/0.145) = 40.7 m/s (91.1 mph)</p>
-                                        <p>3. Power = W/t = 120/0.15 = 800 W</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> W_net = 120 J, m = 0.145 kg, t = 0.15 s, v₀ = 0</p>
+                                        <p><strong>1. Work-Energy Theorem:</strong> W_net = ΔKE, so KE_final = <strong>120 J</strong></p>
+                                        <p><strong>2. Final Velocity:</strong> From KE = ½mv²: v = √(2KE/m) = √(2 × 120/0.145) = <strong>40.7 m/s (91.1 mph)</strong></p>
+                                        <p><strong>3. Power:</strong> Power = W/t = 120/0.15 = <strong>800 W</strong></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `;
                     
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

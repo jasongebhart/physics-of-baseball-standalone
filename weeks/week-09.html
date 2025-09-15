@@ -729,7 +729,6 @@
                                     <p><strong>Step 2:</strong> a = F_D/m = 1.47 N / 0.145 kg = 10.1 m/s²</p>
                                     <p><strong>Step 3:</strong> Using v = v₀ - at: 30 = 40 - 10.1t → t = 0.99 s</p>
                                 </div>
-                                <button class="btn btn-small show-solution">Show Solution</button>
                             </div>
 
                             <div class="problem-card">
@@ -746,7 +745,6 @@
                                     <p><strong>Step 2:</strong> Reduction = (1.0 - 0.864)/1.0 = 13.6%</p>
                                     <p><strong>Step 3:</strong> Reduced drag increases flight distance by approximately 6-8%</p>
                                 </div>
-                                <button class="btn btn-small show-solution">Show Solution</button>
                             </div>
 
                             <div class="problem-card">
@@ -766,7 +764,6 @@
                                     <p><strong>Tennis ball:</strong> v = √(2×0.057×9.81/1.225×0.55×0.0043) = 25.7 m/s</p>
                                     <p><strong>Wiffle ball:</strong> v = √(2×0.020×9.81/1.225×0.80×0.0043) = 15.7 m/s</p>
                                 </div>
-                                <button class="btn btn-small show-solution">Show Solution</button>
                             </div>
                         </div>
                         
@@ -960,19 +957,6 @@
                         </div>
                     `;
                     
-                    // Add solution toggle functionality
-                    practiceTab.querySelectorAll('.show-solution').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const solution = this.parentElement.querySelector('.problem-solution');
-                            if (solution.style.display === 'none') {
-                                solution.style.display = 'block';
-                                this.textContent = 'Hide Solution';
-                            } else {
-                                solution.style.display = 'none';
-                                this.textContent = 'Show Solution';
-                            }
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

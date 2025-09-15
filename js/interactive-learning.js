@@ -89,6 +89,9 @@ export class InteractiveLearningSystem {
     }
 
     makeExpandable(section, index) {
+        // Disable expandable sections - show all content directly
+        return;
+
         const header = section.querySelector('h3, h4, .activity-icon + .activity-content h4');
         if (!header) return;
 

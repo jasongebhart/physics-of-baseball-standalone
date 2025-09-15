@@ -937,13 +937,12 @@
                                         <li>The angular velocity in radians per second</li>
                                         <li>If the effective arm length is 0.65 m, what is the linear velocity at ball release?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: θ = 270°, t = 0.15 s, r = 0.65 m</p>
-                                        <p>1. ω = θ/t = 270°/0.15 s = 1800°/s</p>
-                                        <p>2. Converting to rad/s: ω = 1800° × (π/180°) = 31.4 rad/s</p>
-                                        <p>3. Linear velocity: v = ωr = 31.4 × 0.65 = 20.4 m/s (45.7 mph)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> θ = 270°, t = 0.15 s, r = 0.65 m</p>
+                                        <p><strong>1. Angular velocity:</strong> ω = θ/t = 270°/0.15 s = <strong>1800°/s</strong></p>
+                                        <p><strong>2. Convert to rad/s:</strong> ω = 1800° × (π/180°) = <strong>31.4 rad/s</strong></p>
+                                        <p><strong>3. Linear velocity:</strong> v = ωr = 31.4 × 0.65 = <strong>20.4 m/s (45.7 mph)</strong></p>
                                     </div>
                                 </div>
                                 
@@ -955,13 +954,12 @@
                                         <li>The centripetal force required to maintain this circular motion</li>
                                         <li>How would doubling the velocity affect the centripetal force?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: m = 0.145 kg, r = 0.6 m, v = 35 m/s</p>
-                                        <p>1. Centripetal acceleration: a_c = v²/r = 35²/0.6 = 2042 m/s²</p>
-                                        <p>2. Centripetal force: F_c = ma_c = 0.145 × 2042 = 296 N</p>
-                                        <p>3. If v doubles: F_c = m(2v)²/r = 4mv²/r = 4 × 296 = 1184 N (force quadruples!)</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> m = 0.145 kg, r = 0.6 m, v = 35 m/s</p>
+                                        <p><strong>1. Centripetal acceleration:</strong> a_c = v²/r = 35²/0.6 = <strong>2042 m/s²</strong></p>
+                                        <p><strong>2. Centripetal force:</strong> F_c = ma_c = 0.145 × 2042 = <strong>296 N</strong></p>
+                                        <p><strong>3. If velocity doubles:</strong> F_c = m(2v)²/r = 4mv²/r = 4 × 296 = <strong>1184 N (force quadruples!)</strong></p>
                                     </div>
                                 </div>
                                 
@@ -973,29 +971,19 @@
                                         <li>Which pitcher has the advantage and by what percentage?</li>
                                         <li>What angular velocity would Pitcher A need to match Pitcher B's ball speed?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: r_A = 0.55 m, r_B = 0.70 m, ω = 120 rad/s</p>
-                                        <p>1. v_A = ωr_A = 120 × 0.55 = 66 m/s (148 mph)</p>
-                                        <p>   v_B = ωr_B = 120 × 0.70 = 84 m/s (188 mph)</p>
-                                        <p>2. Pitcher B has advantage: (84-66)/66 × 100% = 27.3% faster</p>
-                                        <p>3. For equal speeds: ω_A = v_B/r_A = 84/0.55 = 153 rad/s</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> r_A = 0.55 m, r_B = 0.70 m, ω = 120 rad/s</p>
+                                        <p><strong>1. Ball speeds:</strong> v_A = ωr_A = 120 × 0.55 = <strong>66 m/s (148 mph)</strong><br>
+                                           v_B = ωr_B = 120 × 0.70 = <strong>84 m/s (188 mph)</strong></p>
+                                        <p><strong>2. Pitcher B advantage:</strong> (84-66)/66 × 100% = <strong>27.3% faster</strong></p>
+                                        <p><strong>3. Required angular velocity:</strong> ω_A = v_B/r_A = 84/0.55 = <strong>153 rad/s</strong></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `;
                     
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

@@ -660,9 +660,8 @@
                                         <li>Determine overall efficiency of the kinetic chain</li>
                                         <li>Predict ball velocity if 90% is transferred to ball (mass = 0.145 kg)</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Step 1: Energy at hips = 300 × 0.80 = 240 J</p>
                                         <p>Step 2: Energy at torso = 240 × 0.85 = 204 J</p>
                                         <p>Step 3: Energy at arm = 204 × 0.75 = 153 J</p>
@@ -680,9 +679,8 @@
                                         <li>Find the ball's final velocity</li>
                                         <li>Compare to a contact time of 0.08 seconds with same impulse</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>Impulse = F × Δt = 600 N × 0.12 s = 72 N·s</p>
                                         <p>Ball velocity = Impulse/mass = 72/(0.145) = 496.6 m/s = 111 mph</p>
                                         <p>For 0.08 s contact: F = 72/0.08 = 900 N (50% higher force needed)</p>
@@ -698,9 +696,8 @@
                                         <li>Find linear velocity of shoulder (0.4 m from rotation axis)</li>
                                         <li>Determine energy stored in rotational motion</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
                                         <p>ω = 720°/s × (π/180) = 12.57 rad/s</p>
                                         <p>L = Iω = 0.8 × 12.57 = 10.1 kg·m²/s</p>
                                         <p>v = rω = 0.4 × 12.57 = 5.03 m/s</p>
@@ -710,16 +707,6 @@
                             </div>
                         </div>
                     `;
-                    
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

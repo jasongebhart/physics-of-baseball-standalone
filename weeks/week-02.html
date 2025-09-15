@@ -847,31 +847,19 @@
                                         <li>Maximum height reached</li>
                                         <li>Horizontal range</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: v₀ = 35 m/s, θ = 45°, h₀ = 1.2 m</p>
-                                        <p>v₀ₓ = 35 cos(45°) = 24.7 m/s</p>
-                                        <p>v₀ᵧ = 35 sin(45°) = 24.7 m/s</p>
-                                        <p>Time of flight: t = (v₀ᵧ + √(v₀ᵧ² + 2gh₀))/g = 5.17 s</p>
-                                        <p>Max height: h = h₀ + v₀ᵧ²/(2g) = 32.3 m</p>
-                                        <p>Range: R = v₀ₓ × t = 127.7 m</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> v₀ = 35 m/s, θ = 45°, h₀ = 1.2 m</p>
+                                        <p><strong>1. Velocity Components:</strong> v₀ₓ = 35 cos(45°) = 24.7 m/s, v₀ᵧ = 35 sin(45°) = 24.7 m/s</p>
+                                        <p><strong>2. Time of Flight:</strong> t = (v₀ᵧ + √(v₀ᵧ² + 2gh₀))/g = 5.17 s</p>
+                                        <p><strong>3. Maximum Height:</strong> h = h₀ + v₀ᵧ²/(2g) = 32.3 m</p>
+                                        <p><strong>4. Range:</strong> R = v₀ₓ × t = 127.7 m</p>
                                     </div>
                                 </div>
                                 <!-- More problems would be added here -->
                             </div>
                         </div>
                     `;
-                    
-                    // Add solution toggle functionality
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

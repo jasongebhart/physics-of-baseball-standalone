@@ -761,19 +761,6 @@
                             </div>
                         `;
                         
-                        // Add solution toggle functionality
-                        practiceTab.querySelectorAll('.show-solution, .toggle-solution').forEach(button => {
-                            button.addEventListener('click', function() {
-                                const solution = this.parentElement.querySelector('.solution, .problem-solution');
-                                if (solution.style.display === 'none' || !solution.style.display) {
-                                    solution.style.display = 'block';
-                                    this.textContent = 'Hide Solution';
-                                } else {
-                                    solution.style.display = 'none';
-                                    this.textContent = 'Show Solution';
-                                }
-                            });
-                        });
                     }
                     document.querySelector('[data-tab="practice"]').click();
                 });

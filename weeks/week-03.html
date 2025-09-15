@@ -867,38 +867,27 @@
                                         <li>If this force is applied for 0.1 seconds, what velocity does the ball reach?</li>
                                         <li>How does this relate to Newton's Second Law?</li>
                                     </ol>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Given: F = 150 N, m = 0.145 kg, t = 0.1 s</p>
-                                        <p>1. Using F = ma: a = F/m = 150/0.145 = 1,034 m/s²</p>
-                                        <p>2. Using v = at: v = 1,034 × 0.1 = 103.4 m/s (≈ 231 mph)</p>
-                                        <p>3. This demonstrates F = ma directly - larger force creates larger acceleration</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Given:</strong> F = 150 N, m = 0.145 kg, t = 0.1 s</p>
+                                        <p><strong>1. Acceleration:</strong> Using F = ma: a = F/m = 150/0.145 = 1,034 m/s²</p>
+                                        <p><strong>2. Velocity:</strong> Using v = at: v = 1,034 × 0.1 = 103.4 m/s (≈ 231 mph)</p>
+                                        <p><strong>3. Newton's Second Law:</strong> This demonstrates F = ma directly - larger force creates larger acceleration</p>
                                     </div>
                                 </div>
                                 <div class="problem-card">
                                     <h4>Problem 2: Action-Reaction Pairs</h4>
                                     <p>When a pitcher pushes off the mound with 800 N of force, analyze the action-reaction pair according to Newton's Third Law.</p>
-                                    <button class="btn btn-small toggle-solution">Show Solution</button>
-                                    <div class="solution" style="display: none;">
-                                        <p><strong>Solution:</strong></p>
-                                        <p>Action: Pitcher pushes on mound with 800 N backward</p>
-                                        <p>Reaction: Mound pushes on pitcher with 800 N forward</p>
-                                        <p>These forces are equal in magnitude, opposite in direction, and act on different objects</p>
+                                    <div class="solution-box">
+                                        <p><strong>💡 Solution:</strong></p>
+                                        <p><strong>Action:</strong> Pitcher pushes on mound with 800 N backward</p>
+                                        <p><strong>Reaction:</strong> Mound pushes on pitcher with 800 N forward</p>
+                                        <p><strong>Key Point:</strong> These forces are equal in magnitude, opposite in direction, and act on different objects</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `;
-                    
-                    document.querySelectorAll('.toggle-solution').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const solution = this.nextElementSibling;
-                            const isVisible = solution.style.display !== 'none';
-                            solution.style.display = isVisible ? 'none' : 'block';
-                            this.textContent = isVisible ? 'Show Solution' : 'Hide Solution';
-                        });
-                    });
                     
                     document.querySelector('[data-tab="practice"]').click();
                 });

@@ -1513,17 +1513,8 @@
                     <h3 id="activities">🏃‍♂️ Activities</h3>
                     
                     <!-- Optional vocabulary section moved after activities -->
-                    <div class="vocabulary-toggle-section">
-                        <button class="vocabulary-toggle-btn" onclick="toggleVocabulary()"
-                                aria-expanded="false"
-                                aria-controls="vocabulary-content"
-                                aria-describedby="vocab-desc">
-                            <span class="vocab-toggle-text">📚 Need physics vocabulary help?</span>
-                            <span class="vocab-toggle-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div id="vocab-desc" class="sr-only">Click to expand physics vocabulary definitions and examples</div>
-                        
-                        <div id="vocabulary-content" class="vocabulary-section-collapsible" style="display: none;" aria-hidden="true">
+                    <div class="vocabulary-section">
+                        <div class="vocabulary-content">
                             <h4>📚 Essential Physics Terms</h4>
                             <div class="vocabulary-grid-enhanced" role="list">
                                 <div class="vocab-card" role="listitem">
@@ -1597,41 +1588,6 @@
                         </div>
                     </div>
 
-                    <script>
-                    function toggleVocabulary() {
-                        const vocabContent = document.getElementById('vocabulary-content');
-                        const toggleIcon = document.querySelector('.vocab-toggle-icon');
-                        const toggleText = document.querySelector('.vocab-toggle-text');
-                        const toggleBtn = document.querySelector('.vocabulary-toggle-btn');
-                        
-                        if (vocabContent.style.display === 'none') {
-                            vocabContent.style.display = 'block';
-                            vocabContent.setAttribute('aria-hidden', 'false');
-                            toggleBtn.setAttribute('aria-expanded', 'true');
-                            toggleIcon.textContent = '▲';
-                            toggleText.textContent = '📚 Hide vocabulary help';
-                        } else {
-                            vocabContent.style.display = 'none';
-                            vocabContent.setAttribute('aria-hidden', 'true');
-                            toggleBtn.setAttribute('aria-expanded', 'false');
-                            toggleIcon.textContent = '▼';
-                            toggleText.textContent = '📚 Need physics vocabulary help?';
-                        }
-                    }
-                    
-                    // Add keyboard support for vocabulary toggle
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const vocabToggleBtn = document.querySelector('.vocabulary-toggle-btn');
-                        if (vocabToggleBtn) {
-                            vocabToggleBtn.addEventListener('keydown', function(e) {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    e.preventDefault();
-                                    toggleVocabulary();
-                                }
-                            });
-                        }
-                    });
-                    </script>
                     <div class="activities-timeline">
                         <div class="enhanced-activity-item ai-tutor-activity llm-tutor-prompt">
                             <div class="activity-badge">AI Tutor</div>
