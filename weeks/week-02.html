@@ -339,25 +339,171 @@
                         </div>
                     </div>
                     
-                    <div class="concept-showcase">
-                        <h3>🔑 Motion Components Analysis</h3>
-                        <div class="concept-comparison">
-                            <div class="concept-item">
-                                <h4>Horizontal Motion</h4>
-                                <p><strong>Acceleration:</strong> a<sub>x</sub> = 0 (no horizontal forces)</p>
-                                <p><strong>Velocity:</strong> v<sub>x</sub> = constant throughout flight</p>
-                                <p><strong>Position:</strong> x = x<sub>0</sub> + v<sub>x0</sub>t</p>
-                                <div class="physics-insight">
-                                    <p><strong>🔬 Physics Insight:</strong> The horizontal velocity remains constant because gravity acts only vertically. This is Newton's First Law in action - an object in motion stays in motion unless acted upon by an unbalanced force.</p>
+                    <div class="concept-showcase enhanced-components-section">
+                        <h3>🎯 Interactive Motion Components Analysis</h3>
+                        <p class="section-description">Explore how projectile motion breaks down into independent horizontal and vertical components</p>
+
+                        <!-- Interactive Component Visualizer -->
+                        <div class="component-visualizer">
+                            <div class="visualizer-header">
+                                <h4>📊 Live Component Breakdown</h4>
+                                <div class="visualizer-controls">
+                                    <button class="viz-btn active" data-mode="components">Components</button>
+                                    <button class="viz-btn" data-mode="forces">Forces</button>
+                                    <button class="viz-btn" data-mode="motion">Motion</button>
                                 </div>
                             </div>
-                            <div class="concept-item">
-                                <h4>Vertical Motion</h4>
-                                <p><strong>Acceleration:</strong> a<sub>y</sub> = -g = -9.8 m/s² (downward)</p>
-                                <p><strong>Velocity:</strong> v<sub>y</sub> = v<sub>y0</sub> - gt</p>
-                                <p><strong>Position:</strong> y = y<sub>0</sub> + v<sub>y0</sub>t - ½gt²</p>
-                                <div class="physics-insight">
-                                    <p><strong>🔬 Physics Insight:</strong> Gravity creates uniform acceleration downward. The quadratic term (-½gt²) shows position changes quadratically with time, creating the characteristic parabolic trajectory.</p>
+
+                            <!-- Visual Canvas Area -->
+                            <div class="component-canvas">
+                                <div class="baseball-trajectory-demo">
+                                    <div class="trajectory-grid">
+                                        <!-- Animated baseball -->
+                                        <div class="animated-baseball" id="demo-ball">⚾</div>
+
+                                        <!-- Component vectors -->
+                                        <div class="vector-display">
+                                            <div class="horizontal-vector" id="h-vector">
+                                                <div class="vector-arrow horizontal-arrow"></div>
+                                                <div class="vector-label">vₓ = constant</div>
+                                            </div>
+                                            <div class="vertical-vector" id="v-vector">
+                                                <div class="vector-arrow vertical-arrow"></div>
+                                                <div class="vector-label">vᵧ = vᵧ₀ - gt</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Grid overlay -->
+                                        <div class="demo-grid"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Control panel -->
+                                <div class="demo-controls">
+                                    <div class="demo-control-group">
+                                        <label>Animation Speed</label>
+                                        <input type="range" id="speed-control" min="0.5" max="3" value="1" step="0.1">
+                                        <span id="speed-display">1.0x</span>
+                                    </div>
+                                    <div class="demo-control-group">
+                                        <button id="play-pause-btn" class="demo-btn">⏸️ Pause</button>
+                                        <button id="reset-btn" class="demo-btn">🔄 Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Component Comparison -->
+                        <div class="enhanced-concept-comparison">
+                            <div class="component-card horizontal-card">
+                                <div class="card-header">
+                                    <span class="component-icon">↔️</span>
+                                    <h4>Horizontal Motion</h4>
+                                    <div class="motion-indicator horizontal-indicator"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="motion-properties">
+                                        <div class="property-item">
+                                            <span class="property-label">Acceleration:</span>
+                                            <span class="property-value highlighted">aₓ = 0</span>
+                                            <span class="property-note">No horizontal forces</span>
+                                        </div>
+                                        <div class="property-item">
+                                            <span class="property-label">Velocity:</span>
+                                            <span class="property-value">vₓ = constant</span>
+                                            <span class="property-note">Unchanged throughout flight</span>
+                                        </div>
+                                        <div class="property-item">
+                                            <span class="property-label">Position:</span>
+                                            <span class="property-value">x = x₀ + vₓ₀t</span>
+                                            <span class="property-note">Linear relationship</span>
+                                        </div>
+                                    </div>
+                                    <div class="physics-insight">
+                                        <div class="insight-header">
+                                            <span class="insight-icon">🔬</span>
+                                            <strong>Physics Insight</strong>
+                                        </div>
+                                        <p>Horizontal velocity remains constant because gravity acts only vertically. This demonstrates Newton's First Law - an object in motion stays in motion unless acted upon by an unbalanced force.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-card vertical-card">
+                                <div class="card-header">
+                                    <span class="component-icon">📉</span>
+                                    <h4>Vertical Motion</h4>
+                                    <div class="motion-indicator vertical-indicator"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="motion-properties">
+                                        <div class="property-item">
+                                            <span class="property-label">Acceleration:</span>
+                                            <span class="property-value highlighted">aᵧ = -9.8 m/s²</span>
+                                            <span class="property-note">Constant downward</span>
+                                        </div>
+                                        <div class="property-item">
+                                            <span class="property-label">Velocity:</span>
+                                            <span class="property-value">vᵧ = vᵧ₀ - gt</span>
+                                            <span class="property-note">Changes linearly with time</span>
+                                        </div>
+                                        <div class="property-item">
+                                            <span class="property-label">Position:</span>
+                                            <span class="property-value">y = y₀ + vᵧ₀t - ½gt²</span>
+                                            <span class="property-note">Quadratic relationship</span>
+                                        </div>
+                                    </div>
+                                    <div class="physics-insight">
+                                        <div class="insight-header">
+                                            <span class="insight-icon">🔬</span>
+                                            <strong>Physics Insight</strong>
+                                        </div>
+                                        <p>Gravity creates uniform downward acceleration. The quadratic term (-½gt²) creates the characteristic parabolic trajectory shape.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independence Principle Demonstration -->
+                        <div class="independence-demonstration">
+                            <h4>🎭 The Independence Principle</h4>
+                            <div class="independence-visual">
+                                <div class="independence-cards">
+                                    <div class="independence-card">
+                                        <h5>🏃 Horizontal Motion</h5>
+                                        <div class="motion-graph horizontal-graph">
+                                            <div class="graph-line straight-line"></div>
+                                            <div class="graph-labels">
+                                                <span class="x-label">Time</span>
+                                                <span class="y-label">Position</span>
+                                            </div>
+                                        </div>
+                                        <p>Linear: moves at constant rate</p>
+                                    </div>
+                                    <div class="plus-symbol">➕</div>
+                                    <div class="independence-card">
+                                        <h5>📉 Vertical Motion</h5>
+                                        <div class="motion-graph vertical-graph">
+                                            <div class="graph-line curved-line"></div>
+                                            <div class="graph-labels">
+                                                <span class="x-label">Time</span>
+                                                <span class="y-label">Position</span>
+                                            </div>
+                                        </div>
+                                        <p>Quadratic: accelerated by gravity</p>
+                                    </div>
+                                    <div class="equals-symbol">=</div>
+                                    <div class="independence-card result-card">
+                                        <h5>🎯 Combined Motion</h5>
+                                        <div class="motion-graph combined-graph">
+                                            <div class="graph-line parabolic-line"></div>
+                                            <div class="graph-labels">
+                                                <span class="x-label">Horizontal</span>
+                                                <span class="y-label">Vertical</span>
+                                            </div>
+                                        </div>
+                                        <p>Parabolic trajectory</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2953,6 +3099,490 @@
                 outline: 2px solid currentColor;
             }
         }
+
+        /* Enhanced Motion Components Analysis Styles */
+        .enhanced-components-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: var(--radius-xl, 1rem);
+            padding: var(--space-2xl, 2.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+            border: 2px solid var(--color-primary, #1976d2);
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: var(--font-size-lg, 1.125rem);
+            color: var(--color-on-surface-variant, #555);
+            margin: 0 0 var(--space-xl, 2.618rem) 0;
+            font-style: italic;
+        }
+
+        /* Component Visualizer */
+        .component-visualizer {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-lg, 1.618rem);
+            margin-bottom: var(--space-xl, 2.618rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        .visualizer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg, 1.618rem);
+            flex-wrap: wrap;
+            gap: var(--space-md, 1rem);
+        }
+
+        .visualizer-header h4 {
+            margin: 0;
+            color: var(--color-primary, #1976d2);
+            font-weight: 600;
+        }
+
+        .visualizer-controls {
+            display: flex;
+            gap: var(--space-sm, 0.5rem);
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: 4px;
+        }
+
+        .viz-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: var(--radius-sm, 0.375rem);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: var(--color-on-surface-muted, #666);
+        }
+
+        .viz-btn.active {
+            background: var(--color-primary, #1976d2);
+            color: white;
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+        }
+
+        .viz-btn:hover:not(.active) {
+            background: var(--color-surface-container, #f5f5f5);
+            color: var(--color-on-surface, #333);
+        }
+
+        /* Component Canvas */
+        .component-canvas {
+            background: linear-gradient(135deg, #e8f4fd 0%, #f0f9ff 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-lg, 1.618rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .baseball-trajectory-demo {
+            position: relative;
+            height: 300px;
+            margin-bottom: var(--space-lg, 1.618rem);
+        }
+
+        .trajectory-grid {
+            position: relative;
+            height: 100%;
+            background:
+                linear-gradient(90deg, rgba(25, 118, 210, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(25, 118, 210, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            border-radius: var(--radius-sm, 0.375rem);
+            overflow: hidden;
+        }
+
+        .animated-baseball {
+            position: absolute;
+            font-size: 1.5rem;
+            transition: all 0.1s linear;
+            z-index: 10;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            left: 20px;
+            top: 80%;
+        }
+
+        .vector-display {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .horizontal-vector, .vertical-vector {
+            position: absolute;
+            display: flex;
+            align-items: center;
+        }
+
+        .vector-arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .horizontal-arrow {
+            border-left: 20px solid var(--color-primary, #1976d2);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .vertical-arrow {
+            border-bottom: 20px solid var(--color-accent, #4caf50);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+        }
+
+        .vector-label {
+            margin-left: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm, 0.375rem);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        /* Demo Controls */
+        .demo-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-lg, 1.618rem);
+            flex-wrap: wrap;
+        }
+
+        .demo-control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm, 0.5rem);
+        }
+
+        .demo-control-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-on-surface, #333);
+        }
+
+        .demo-control-group input[type="range"] {
+            width: 120px;
+        }
+
+        .demo-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--color-outline, #e0e0e0);
+            background: var(--color-surface, white);
+            border-radius: var(--radius-sm, 0.375rem);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .demo-btn:hover {
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-color: var(--color-primary, #1976d2);
+        }
+
+        /* Enhanced Component Comparison */
+        .enhanced-concept-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-lg, 1.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+        }
+
+        .component-card {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            overflow: hidden;
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .horizontal-card {
+            border-top: 4px solid var(--color-primary, #1976d2);
+        }
+
+        .vertical-card {
+            border-top: 4px solid var(--color-accent, #4caf50);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--color-surface-elevated, #f8f9fa), var(--color-surface, white));
+            padding: var(--space-lg, 1.618rem);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md, 1rem);
+        }
+
+        .component-icon {
+            font-size: var(--font-size-2xl, 1.5rem);
+        }
+
+        .card-header h4 {
+            margin: 0;
+            flex: 1;
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+        }
+
+        .motion-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .horizontal-indicator {
+            background: var(--color-primary, #1976d2);
+        }
+
+        .vertical-indicator {
+            background: var(--color-accent, #4caf50);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .card-content {
+            padding: var(--space-lg, 1.618rem);
+        }
+
+        .motion-properties {
+            margin-bottom: var(--space-lg, 1.618rem);
+        }
+
+        .property-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-sm, 0.5rem);
+            align-items: baseline;
+            padding: var(--space-sm, 0.5rem) 0;
+            border-bottom: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .property-item:last-child {
+            border-bottom: none;
+        }
+
+        .property-label {
+            font-weight: 600;
+            color: var(--color-on-surface-variant, #555);
+            white-space: nowrap;
+        }
+
+        .property-value {
+            font-family: var(--font-family-mono, monospace);
+            background: var(--color-surface-elevated, #f8f9fa);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm, 0.375rem);
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+        }
+
+        .property-value.highlighted {
+            background: var(--color-primary, #1976d2);
+            color: white;
+        }
+
+        .property-note {
+            font-size: 0.8rem;
+            color: var(--color-on-surface-muted, #666);
+            font-style: italic;
+        }
+
+        .physics-insight {
+            background: linear-gradient(135deg, #e8f4fd 0%, #f0f9ff 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-md, 1rem);
+            border-left: 4px solid var(--color-primary, #1976d2);
+        }
+
+        .insight-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm, 0.5rem);
+            margin-bottom: var(--space-sm, 0.5rem);
+            color: var(--color-primary, #1976d2);
+        }
+
+        .insight-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Independence Demonstration */
+        .independence-demonstration {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-xl, 2.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+            border: 2px solid var(--color-outline-variant, #f0f0f0);
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+        }
+
+        .independence-demonstration h4 {
+            text-align: center;
+            color: var(--color-primary, #1976d2);
+            margin-bottom: var(--space-lg, 1.618rem);
+        }
+
+        .independence-cards {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg, 1.618rem);
+            flex-wrap: wrap;
+        }
+
+        .independence-card {
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-lg, 1.618rem);
+            text-align: center;
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-color: var(--color-secondary, #ffa726);
+        }
+
+        .independence-card h5 {
+            margin: 0 0 var(--space-md, 1rem) 0;
+            color: var(--color-on-surface, #333);
+            font-weight: 600;
+        }
+
+        .motion-graph {
+            width: 100%;
+            height: 80px;
+            background: var(--color-surface, white);
+            border-radius: var(--radius-sm, 0.375rem);
+            margin: var(--space-md, 1rem) 0;
+            position: relative;
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            overflow: hidden;
+        }
+
+        .graph-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .straight-line {
+            background: var(--color-primary, #1976d2);
+            transform: translateY(-50%) rotate(-5deg);
+        }
+
+        .curved-line {
+            background: var(--color-accent, #4caf50);
+            border-radius: 50px 50px 0 0;
+            height: 30px;
+            transform: translateY(-80%);
+        }
+
+        .parabolic-line {
+            background: var(--color-secondary, #ffa726);
+            border-radius: 0 100px 100px 0;
+            height: 40px;
+            transform: translateY(-90%);
+        }
+
+        .graph-labels {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            font-size: 0.7rem;
+            color: var(--color-on-surface-muted, #666);
+        }
+
+        .plus-symbol, .equals-symbol {
+            font-size: var(--font-size-2xl, 1.5rem);
+            font-weight: bold;
+            color: var(--color-primary, #1976d2);
+            align-self: center;
+        }
+
+        /* Mobile responsiveness for components */
+        @media (max-width: 768px) {
+            .enhanced-components-section {
+                padding: var(--space-lg, 1.618rem);
+                margin: var(--space-lg, 1.618rem) 0;
+            }
+
+            .visualizer-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .enhanced-concept-comparison {
+                grid-template-columns: 1fr;
+                gap: var(--space-md, 1rem);
+            }
+
+            .independence-cards {
+                flex-direction: column;
+                gap: var(--space-md, 1rem);
+            }
+
+            .plus-symbol, .equals-symbol {
+                transform: rotate(90deg);
+            }
+
+            .demo-controls {
+                flex-direction: column;
+                gap: var(--space-md, 1rem);
+            }
+
+            .baseball-trajectory-demo {
+                height: 200px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .component-card,
+            .motion-indicator,
+            .animated-baseball {
+                transition: none;
+                animation: none;
+            }
+        }
+
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            .component-card,
+            .independence-card,
+            .motion-graph {
+                border: 2px solid currentColor;
+            }
+        }
     </style>
 
     <!-- Mobile Navigation Overlay -->
@@ -3007,6 +3637,176 @@
                     toggleNav();
                 }
             });
+        });
+
+        // Enhanced Motion Components Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoball = document.getElementById('demo-ball');
+            const speedControl = document.getElementById('speed-control');
+            const speedDisplay = document.getElementById('speed-display');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const vizBtns = document.querySelectorAll('.viz-btn');
+            const hVector = document.getElementById('h-vector');
+            const vVector = document.getElementById('v-vector');
+
+            if (!demoball) return; // Exit if elements not found
+
+            let animationId;
+            let isPlaying = true;
+            let startTime = Date.now();
+            let animationSpeed = 1;
+            let currentMode = 'components';
+
+            // Animation parameters
+            const trajectory = {
+                startX: 20,
+                startY: 80, // percentage from top
+                initialVx: 0.15, // pixels per ms
+                initialVy: -0.08, // pixels per ms (negative = upward)
+                gravity: 0.00008, // pixels per ms²
+                duration: 4000 // ms
+            };
+
+            function updateSpeedDisplay() {
+                const speed = parseFloat(speedControl.value);
+                speedDisplay.textContent = speed.toFixed(1) + 'x';
+                animationSpeed = speed;
+            }
+
+            function calculatePosition(t) {
+                const x = trajectory.startX + trajectory.initialVx * t;
+                const y = trajectory.startY + trajectory.initialVy * t + 0.5 * trajectory.gravity * t * t;
+                return { x, y };
+            }
+
+            function updateVectors(t) {
+                if (currentMode !== 'components') return;
+
+                const currentVy = trajectory.initialVy + trajectory.gravity * t;
+                const pos = calculatePosition(t);
+
+                // Update horizontal vector
+                if (hVector) {
+                    hVector.style.left = (pos.x + 30) + 'px';
+                    hVector.style.top = (pos.y) + '%';
+                    hVector.style.opacity = '1';
+                }
+
+                // Update vertical vector
+                if (vVector) {
+                    vVector.style.left = pos.x + 'px';
+                    vVector.style.top = (pos.y - 5) + '%';
+                    vVector.style.opacity = '1';
+
+                    // Change arrow direction based on velocity
+                    const arrow = vVector.querySelector('.vertical-arrow');
+                    if (arrow) {
+                        if (currentVy < 0) {
+                            // Upward motion
+                            arrow.style.borderBottom = '20px solid var(--color-accent, #4caf50)';
+                            arrow.style.borderTop = 'none';
+                        } else {
+                            // Downward motion
+                            arrow.style.borderTop = '20px solid var(--color-accent, #4caf50)';
+                            arrow.style.borderBottom = 'none';
+                        }
+                    }
+                }
+            }
+
+            function hideVectors() {
+                if (hVector) hVector.style.opacity = '0';
+                if (vVector) vVector.style.opacity = '0';
+            }
+
+            function animate() {
+                if (!isPlaying) return;
+
+                const elapsed = (Date.now() - startTime) * animationSpeed;
+                const t = elapsed % trajectory.duration;
+                const pos = calculatePosition(t);
+
+                // Update baseball position
+                demoball.style.left = Math.min(pos.x, 90) + '%';
+                demoball.style.top = Math.max(Math.min(pos.y, 95), 5) + '%';
+
+                // Update vectors based on mode
+                if (currentMode === 'components') {
+                    updateVectors(t);
+                } else {
+                    hideVectors();
+                }
+
+                // Continue animation
+                animationId = requestAnimationFrame(animate);
+            }
+
+            function toggleAnimation() {
+                if (isPlaying) {
+                    isPlaying = false;
+                    playPauseBtn.textContent = '▶️ Play';
+                    cancelAnimationFrame(animationId);
+                } else {
+                    isPlaying = true;
+                    playPauseBtn.textContent = '⏸️ Pause';
+                    animate();
+                }
+            }
+
+            function resetAnimation() {
+                startTime = Date.now();
+                demoball.style.left = trajectory.startX + '%';
+                demoball.style.top = trajectory.startY + '%';
+                if (currentMode === 'components') {
+                    updateVectors(0);
+                }
+            }
+
+            function switchMode(mode) {
+                currentMode = mode;
+
+                // Update button states
+                vizBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-mode') === mode) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                // Handle different visualization modes
+                switch(mode) {
+                    case 'components':
+                        if (hVector) hVector.style.display = 'flex';
+                        if (vVector) vVector.style.display = 'flex';
+                        break;
+                    case 'forces':
+                        hideVectors();
+                        // Could add force vectors here
+                        break;
+                    case 'motion':
+                        hideVectors();
+                        // Could add motion trails here
+                        break;
+                }
+            }
+
+            // Event listeners
+            speedControl.addEventListener('input', updateSpeedDisplay);
+            playPauseBtn.addEventListener('click', toggleAnimation);
+            resetBtn.addEventListener('click', resetAnimation);
+
+            vizBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const mode = this.getAttribute('data-mode');
+                    switchMode(mode);
+                });
+            });
+
+            // Initialize
+            updateSpeedDisplay();
+            resetAnimation();
+            animate();
         });
 
         // Progressive Disclosure Functionality
