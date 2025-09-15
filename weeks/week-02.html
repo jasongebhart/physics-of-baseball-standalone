@@ -147,21 +147,87 @@
                                 <p><strong>Acceleration:</strong> a<sub>x</sub> = 0 (no horizontal forces)</p>
                                 <p><strong>Velocity:</strong> v<sub>x</sub> = constant throughout flight</p>
                                 <p><strong>Position:</strong> x = x<sub>0</sub> + v<sub>x0</sub>t</p>
+                                <div class="physics-insight">
+                                    <p><strong>🔬 Physics Insight:</strong> The horizontal velocity remains constant because gravity acts only vertically. This is Newton's First Law in action - an object in motion stays in motion unless acted upon by an unbalanced force.</p>
+                                </div>
                             </div>
                             <div class="concept-item">
                                 <h4>Vertical Motion</h4>
                                 <p><strong>Acceleration:</strong> a<sub>y</sub> = -g = -9.8 m/s² (downward)</p>
                                 <p><strong>Velocity:</strong> v<sub>y</sub> = v<sub>y0</sub> - gt</p>
                                 <p><strong>Position:</strong> y = y<sub>0</sub> + v<sub>y0</sub>t - ½gt²</p>
+                                <div class="physics-insight">
+                                    <p><strong>🔬 Physics Insight:</strong> Gravity creates uniform acceleration downward. The quadratic term (-½gt²) shows position changes quadratically with time, creating the characteristic parabolic trajectory.</p>
+                                </div>
                             </div>
                         </div>
-                        
+
+                        <div class="deeper-physics">
+                            <h4>🎯 Vector Analysis in Baseball Context</h4>
+                            <div class="vector-breakdown">
+                                <div class="vector-component">
+                                    <h5>Initial Velocity Vector Decomposition</h5>
+                                    <p><strong>Magnitude:</strong> |v⃗₀| = √(v₀ₓ² + v₀ᵧ²)</p>
+                                    <p><strong>Components:</strong> v₀ₓ = |v⃗₀|cos(θ), v₀ᵧ = |v⃗₀|sin(θ)</p>
+                                    <p><strong>Baseball Application:</strong> A 95 mph fastball (42.5 m/s) thrown at -6° has v₀ₓ = 42.3 m/s and v₀ᵧ = -4.4 m/s</p>
+                                </div>
+                                <div class="vector-component">
+                                    <h5>Velocity Evolution During Flight</h5>
+                                    <p><strong>Horizontal:</strong> v⃗ₓ(t) = v₀ₓ î (constant vector)</p>
+                                    <p><strong>Vertical:</strong> v⃗ᵧ(t) = (v₀ᵧ - gt) ĵ (changing magnitude)</p>
+                                    <p><strong>Resultant:</strong> v⃗(t) = v₀ₓ î + (v₀ᵧ - gt) ĵ</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <h4>Key Trajectory Formulas</h4>
-                        <ul>
-                            <li><strong>Time of Flight:</strong> t = 2v<sub>y0</sub>/g (for same launch/landing height)</li>
-                            <li><strong>Maximum Height:</strong> h<sub>max</sub> = v<sub>y0</sub>²/(2g)</li>
-                            <li><strong>Range:</strong> R = v<sub>0</sub>²sin(2θ)/g (Maximum at θ = 45°)</li>
-                        </ul>
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h5>Time of Flight</h5>
+                                <p><strong>Same Height:</strong> t = 2v<sub>y0</sub>/g</p>
+                                <p><strong>Different Heights:</strong> t = (v<sub>y0</sub> + √(v<sub>y0</sub>² + 2gh₀))/g</p>
+                                <p class="formula-note">Quadratic formula solution for y = 0</p>
+                            </div>
+                            <div class="formula-card">
+                                <h5>Maximum Height</h5>
+                                <p><strong>Formula:</strong> h<sub>max</sub> = h₀ + v<sub>y0</sub>²/(2g)</p>
+                                <p><strong>Time to Peak:</strong> t<sub>peak</sub> = v<sub>y0</sub>/g</p>
+                                <p class="formula-note">Energy conservation: KE → PE conversion</p>
+                            </div>
+                            <div class="formula-card">
+                                <h5>Range</h5>
+                                <p><strong>Level Ground:</strong> R = v₀²sin(2θ)/g</p>
+                                <p><strong>Elevated Launch:</strong> R = (v₀²/g)[sin(2θ) + √(sin²(2θ) + 2gh₀/v₀²)]</p>
+                                <p class="formula-note">Maximum at θ = 45° for level ground</p>
+                            </div>
+                        </div>
+
+                        <div class="real-world-factors">
+                            <h4>⚡ Real-World Considerations</h4>
+                            <div class="factor-grid">
+                                <div class="factor-item">
+                                    <span class="factor-icon">🌬️</span>
+                                    <div class="factor-content">
+                                        <h5>Air Resistance</h5>
+                                        <p>Reduces horizontal velocity and creates drag force proportional to v². Major league baseballs experience ~15% range reduction due to air resistance.</p>
+                                    </div>
+                                </div>
+                                <div class="factor-item">
+                                    <span class="factor-icon">🌀</span>
+                                    <div class="factor-content">
+                                        <h5>Magnus Force</h5>
+                                        <p>Spinning baseballs create pressure differences causing curve balls, sliders, and knuckleballs to deviate from parabolic paths.</p>
+                                    </div>
+                                </div>
+                                <div class="factor-item">
+                                    <span class="factor-icon">🌡️</span>
+                                    <div class="factor-content">
+                                        <h5>Environmental Effects</h5>
+                                        <p>Temperature, humidity, and altitude affect air density. Denver's thin air increases home run distance by ~5-7%.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <h3>🚀 Activities</h3>
@@ -235,6 +301,9 @@
                                 <div class="step-content">
                                     <h4>Setup Equipment (15 min)</h4>
                                     <p>Position iPhone for slow-motion capture (240 fps). Set up radar gun and distance markers.</p>
+                                    <div class="technical-details">
+                                        <p><strong>Technical Setup:</strong> Camera perpendicular to motion plane, reference objects for scale, lighting for clear ball visibility. Radar gun positioned behind pitcher for accurate speed readings.</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
@@ -243,6 +312,9 @@
                                 <div class="step-content">
                                     <h4>Data Collection (20 min)</h4>
                                     <p>Record multiple pitches, capturing both radar speed and video trajectory data.</p>
+                                    <div class="technical-details">
+                                        <p><strong>Data Points:</strong> Initial velocity (radar), release angle (protractor/video), release height (measuring tape), ball position every 0.1s (video analysis). Minimum 5 throws per angle for statistical significance.</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
@@ -251,6 +323,33 @@
                                 <div class="step-content">
                                     <h4>Analysis (15 min)</h4>
                                     <p>Extract position data from video and compare with theoretical trajectory calculations.</p>
+                                    <div class="technical-details">
+                                        <p><strong>Analysis Methods:</strong> Frame-by-frame position tracking, coordinate system calibration using reference objects, statistical analysis of multiple trials, percentage error calculations between theory and experiment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experimental-considerations">
+                            <h4>🎯 Sources of Experimental Error</h4>
+                            <div class="error-analysis">
+                                <div class="error-source">
+                                    <h5>Measurement Uncertainties</h5>
+                                    <ul>
+                                        <li><strong>Video Resolution:</strong> ±2-3 cm position uncertainty per frame</li>
+                                        <li><strong>Radar Gun Accuracy:</strong> ±1 mph typical uncertainty</li>
+                                        <li><strong>Angle Measurement:</strong> ±2° protractor reading uncertainty</li>
+                                        <li><strong>Human Timing:</strong> ±0.05s reaction time variations</li>
+                                    </ul>
+                                </div>
+                                <div class="error-source">
+                                    <h5>Physical Factors Not in Simple Model</h5>
+                                    <ul>
+                                        <li><strong>Air Resistance:</strong> Quadratic drag force F = ½ρAv²C<sub>d</sub></li>
+                                        <li><strong>Ball Spin:</strong> Magnus force creating curve ball effects</li>
+                                        <li><strong>Wind Effects:</strong> Horizontal air movement affecting trajectory</li>
+                                        <li><strong>Ball Deformation:</strong> Compression during release affecting initial conditions</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -299,28 +398,81 @@
                             <span class="topic-icon">🧮</span>
                             <div class="topic-info">
                                 <h4>Component Calculation</h4>
-                                <p>Calculate horizontal and vertical velocity components from trajectory data.</p>
+                                <p>Calculate horizontal and vertical velocity components from trajectory data using vector trigonometry and kinematic analysis.</p>
+                                <div class="topic-depth">
+                                    <p><strong>Advanced Methods:</strong> Inverse trajectory analysis, least-squares fitting to experimental data, and uncertainty propagation in calculations.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">📐</span>
                             <div class="topic-info">
                                 <h4>Launch Angle Determination</h4>
-                                <p>Determine actual launch angles from video analysis.</p>
+                                <p>Determine actual launch angles from video analysis using geometric methods and trajectory fitting.</p>
+                                <div class="topic-depth">
+                                    <p><strong>Precision Techniques:</strong> Multi-frame analysis, coordinate transformation, and correction for camera perspective effects.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">⚖️</span>
                             <div class="topic-info">
                                 <h4>Theory vs Experiment</h4>
-                                <p>Compare theoretical predictions with real measurements.</p>
+                                <p>Compare theoretical predictions with real measurements using statistical analysis and error quantification.</p>
+                                <div class="topic-depth">
+                                    <p><strong>Statistical Methods:</strong> Chi-squared goodness of fit, confidence intervals, and systematic vs random error identification.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">⚾</span>
                             <div class="topic-info">
                                 <h4>Baseball Strategy</h4>
-                                <p>Apply findings to pitching mechanics and game situations.</p>
+                                <p>Apply findings to pitching mechanics and game situations using physics-based optimization.</p>
+                                <div class="topic-depth">
+                                    <p><strong>Strategic Applications:</strong> Strike zone targeting algorithms, pitch sequencing based on trajectory analysis, and biomechanical optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-physics-section">
+                        <h3>🔬 Advanced Physics Concepts</h3>
+                        <div class="physics-concepts">
+                            <div class="physics-concept">
+                                <h4>⚡ Energy Conservation in Projectile Motion</h4>
+                                <div class="concept-explanation">
+                                    <p><strong>Total Mechanical Energy:</strong> E = KE + PE = ½mv² + mgh</p>
+                                    <p><strong>At Launch:</strong> E₀ = ½mv₀² + mgh₀</p>
+                                    <p><strong>At Any Point:</strong> E(t) = ½m[v₀ₓ² + (v₀ᵧ - gt)²] + mg[h₀ + v₀ᵧt - ½gt²]</p>
+                                    <div class="baseball-insight">
+                                        <p><strong>⚾ Baseball Application:</strong> At the peak of trajectory, all vertical kinetic energy converts to potential energy. This explains why v_y = 0 at maximum height, while horizontal kinetic energy remains constant.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="physics-concept">
+                                <h4>🎯 Momentum Conservation and Impulse</h4>
+                                <div class="concept-explanation">
+                                    <p><strong>Momentum Vector:</strong> p⃗ = mv⃗ = m(v₀ₓ î + (v₀ᵧ - gt) ĵ)</p>
+                                    <p><strong>Impulse from Gravity:</strong> J⃗ = ∫F⃗dt = mg⃗t (only vertical component)</p>
+                                    <p><strong>Change in Momentum:</strong> Δp⃗ = p⃗(t) - p⃗₀ = -mgt ĵ</p>
+                                    <div class="baseball-insight">
+                                        <p><strong>⚾ Baseball Application:</strong> Gravity continuously changes the ball's momentum in the vertical direction. The horizontal momentum component remains constant because no horizontal forces act on the ball.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="physics-concept">
+                                <h4>📊 Force Analysis and Acceleration</h4>
+                                <div class="concept-explanation">
+                                    <p><strong>Net Force:</strong> F⃗_net = mg⃗ = -mg ĵ (weight only)</p>
+                                    <p><strong>Newton's Second Law:</strong> F⃗_net = ma⃗ → a⃗ = g⃗ = -g ĵ</p>
+                                    <p><strong>Force Components:</strong> F_x = 0, F_y = -mg</p>
+                                    <div class="baseball-insight">
+                                        <p><strong>⚾ Baseball Application:</strong> The constant downward force of gravity creates uniform acceleration, which is why trajectory equations are quadratic in time. This is fundamental to all projectile motion in baseball.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -356,8 +508,51 @@
                                     <strong>Range:</strong> <span id="range-result">--</span>
                                 </div>
                             </div>
+
+                            <!-- Enhanced Trajectory Visualization -->
+                            <div class="trajectory-visualization">
+                                <h4>📊 Live Trajectory Plot</h4>
+                                <canvas id="trajectory-canvas" width="600" height="300"></canvas>
+                                <div class="canvas-legend">
+                                    <span class="legend-item">
+                                        <span class="legend-color blue"></span> Current Trajectory
+                                    </span>
+                                    <span class="legend-item">
+                                        <span class="legend-color green"></span> Optimal 45° (reference)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Advanced Calculator Features -->
+                            <div class="advanced-features">
+                                <h4>🎯 Advanced Analysis</h4>
+                                <div class="advanced-results">
+                                    <div class="result-grid">
+                                        <div class="result-card">
+                                            <strong>Velocity Components</strong>
+                                            <div>Horizontal: <span id="vx-result">--</span></div>
+                                            <div>Vertical: <span id="vy-result">--</span></div>
+                                        </div>
+                                        <div class="result-card">
+                                            <strong>At Peak Height</strong>
+                                            <div>Time: <span id="peak-time-result">--</span></div>
+                                            <div>Height: <span id="peak-height-result">--</span></div>
+                                        </div>
+                                        <div class="result-card">
+                                            <strong>Impact Analysis</strong>
+                                            <div>Impact Speed: <span id="impact-speed-result">--</span></div>
+                                            <div>Impact Angle: <span id="impact-angle-result">--</span></div>
+                                        </div>
+                                        <div class="result-card">
+                                            <strong>Efficiency</strong>
+                                            <div>Range vs 45°: <span id="efficiency-result">--</span></div>
+                                            <div>Hang Time: <span id="hang-time-result">--</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
+
                         <h4>🎬 Try These Experiments:</h4>
                         <ul>
                             <li>Adjust the <strong>launch angle</strong> from 15° to 45° and observe the effect on range</li>
@@ -444,6 +639,14 @@
                                 <div class="step-content">
                                     <h4>Scenario Selection (15 min)</h4>
                                     <p>Choose specific game situations requiring different pitch trajectories</p>
+                                    <div class="scenario-examples">
+                                        <ul>
+                                            <li><strong>Strike 3 Scenario:</strong> Need to hit bottom of strike zone (knee-high)</li>
+                                            <li><strong>Pick-off Attempt:</strong> Optimize throw trajectory to second base</li>
+                                            <li><strong>Home Run Analysis:</strong> Determine if hit ball clears 12-foot fence at 330 feet</li>
+                                            <li><strong>Intentional Walk:</strong> Calculate safe trajectory outside strike zone</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
@@ -452,6 +655,15 @@
                                 <div class="step-content">
                                     <h4>Trajectory Calculations (20 min)</h4>
                                     <p>Apply equations to determine optimal release parameters</p>
+                                    <div class="calculation-framework">
+                                        <p><strong>Required Calculations:</strong></p>
+                                        <ul>
+                                            <li>Initial velocity components: v₀ₓ = v₀cos(θ), v₀ᵧ = v₀sin(θ)</li>
+                                            <li>Time to target: Solve quadratic y(t) = h₀ + v₀ᵧt - ½gt² = y_target</li>
+                                            <li>Horizontal distance: x = v₀ₓ × t_target</li>
+                                            <li>Error analysis: Sensitivity to angle/speed variations</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
@@ -460,6 +672,41 @@
                                 <div class="step-content">
                                     <h4>Strategic Analysis (15 min)</h4>
                                     <p>Connect physics calculations to pitching strategy and effectiveness</p>
+                                    <div class="strategic-connections">
+                                        <p><strong>Physics-Strategy Links:</strong></p>
+                                        <ul>
+                                            <li><strong>Release Point Consistency:</strong> Small angle variations (±1°) change strike zone location by ±3-4 inches</li>
+                                            <li><strong>Velocity-Location Trade-off:</strong> Faster pitches require steeper angles for same strike zone target</li>
+                                            <li><strong>Timing Windows:</strong> Catchers have ~0.4s window based on optimal trajectory time</li>
+                                            <li><strong>Biomechanical Efficiency:</strong> Natural arm slot angles vs. required trajectory angles</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="synthesis-challenges">
+                            <h4>🏆 Advanced Challenge Problems</h4>
+                            <div class="challenge-grid">
+                                <div class="challenge-card">
+                                    <h5>🎯 Perfect Strike Challenge</h5>
+                                    <p><strong>Scenario:</strong> 95 mph fastball from 6'2" pitcher must hit center of strike zone (knee to chest, 17" wide)</p>
+                                    <p><strong>Challenge:</strong> Calculate allowable release angle range for consistent strikes. Consider that 1° error = ~6" miss at plate.</p>
+                                    <p><strong>Physics Focus:</strong> Error propagation, tolerance analysis, geometric constraints</p>
+                                </div>
+
+                                <div class="challenge-card">
+                                    <h5>🏃 Steal Prevention Analysis</h5>
+                                    <p><strong>Scenario:</strong> Catcher must throw to second base (127 feet) to beat runner (3.5s to steal)</p>
+                                    <p><strong>Challenge:</strong> Optimize throw trajectory for minimum time while clearing pitcher's mound (10" high obstacle at 60'6")</p>
+                                    <p><strong>Physics Focus:</strong> Constrained optimization, trajectory clearance calculations</p>
+                                </div>
+
+                                <div class="challenge-card">
+                                    <h5>💨 Wind Effect Investigation</h5>
+                                    <p><strong>Scenario:</strong> 15 mph wind affects both horizontal and vertical ball motion</p>
+                                    <p><strong>Challenge:</strong> Modify projectile equations to include constant wind acceleration. Calculate trajectory changes.</p>
+                                    <p><strong>Physics Focus:</strong> Vector addition of accelerations, modified kinematic equations</p>
                                 </div>
                             </div>
                         </div>
@@ -488,6 +735,243 @@
                                 <p>Connect projectile motion concepts and preview forces in Week 3.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculus Connections in Projectile Motion -->
+            <section class="calculus-connections-section">
+                <h2>🧮 Calculus in Projectile Motion</h2>
+                <p class="section-intro">Calculus reveals the deep mathematical structure behind projectile motion. Understanding derivatives and integrals in this context unlocks precise analysis of baseball trajectories and optimal pitching strategies.</p>
+
+                <div class="calculus-concepts-grid">
+                    <!-- Derivatives in Projectile Motion -->
+                    <div class="calculus-concept-card derivatives-card">
+                        <div class="concept-header">
+                            <span class="concept-icon">📈</span>
+                            <h3>Derivatives: Trajectory Analysis</h3>
+                        </div>
+
+                        <div class="concept-explanation">
+                            <p class="concept-intro">Derivatives reveal how position changes create velocity, and how velocity changes create acceleration in projectile motion.</p>
+
+                            <div class="mathematical-detail">
+                                <h4>Position Functions for Projectile Motion:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">x(t) = v₀ₓ·t + x₀</div>
+                                    <div class="equation">y(t) = v₀ᵧ·t - ½gt² + y₀</div>
+                                </div>
+
+                                <h4>Velocity Through Derivatives:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">vₓ(t) = dx/dt = v₀ₓ (constant)</div>
+                                    <div class="equation">vᵧ(t) = dy/dt = v₀ᵧ - gt</div>
+                                </div>
+
+                                <h4>Acceleration Through Second Derivatives:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">aₓ(t) = d²x/dt² = 0</div>
+                                    <div class="equation">aᵧ(t) = d²y/dt² = -g</div>
+                                </div>
+                            </div>
+
+                            <div class="baseball-application">
+                                <h4>⚾ Baseball Application:</h4>
+                                <p>When a pitcher releases a fastball at 95 mph (42.5 m/s) at 6° below horizontal from 6 feet high:</p>
+                                <ul>
+                                    <li><strong>Initial velocity components:</strong> vₓ = 42.3 m/s, vᵧ = -4.4 m/s</li>
+                                    <li><strong>Position functions:</strong> x(t) = 42.3t, y(t) = 1.83 - 4.4t - 4.9t²</li>
+                                    <li><strong>Velocity evolution:</strong> vᵧ(t) = -4.4 - 9.8t (continuously decreasing)</li>
+                                    <li><strong>At home plate (t ≈ 0.46s):</strong> Ball drops to y ≈ 0.91m (strike zone)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrals in Projectile Motion -->
+                    <div class="calculus-concept-card integrals-card">
+                        <div class="concept-header">
+                            <span class="concept-icon">📊</span>
+                            <h3>Integrals: Reconstructing Motion</h3>
+                        </div>
+
+                        <div class="concept-explanation">
+                            <p class="concept-intro">Integrals allow us to work backwards from acceleration to find velocity and position, essential for trajectory prediction.</p>
+
+                            <div class="mathematical-detail">
+                                <h4>From Constant Acceleration to Motion:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">a(t) = -g ĵ (gravity only)</div>
+                                </div>
+
+                                <h4>Integrate Once for Velocity:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">v(t) = ∫ a(t) dt = -gt ĵ + v₀</div>
+                                    <div class="equation">v(t) = v₀ₓ î + (v₀ᵧ - gt) ĵ</div>
+                                </div>
+
+                                <h4>Integrate Again for Position:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">r(t) = ∫ v(t) dt = v₀ₓt î + (v₀ᵧt - ½gt²) ĵ + r₀</div>
+                                </div>
+                            </div>
+
+                            <div class="baseball-application">
+                                <h4>⚾ Baseball Application:</h4>
+                                <p>Finding optimal launch angle for maximum range:</p>
+                                <ul>
+                                    <li><strong>Range formula (from integration):</strong> R = (v₀²sin(2θ))/g</li>
+                                    <li><strong>Maximum at θ = 45°:</strong> sin(2θ) = sin(90°) = 1</li>
+                                    <li><strong>For 100 mph (44.7 m/s) hit:</strong> R_max = (44.7)²/9.8 ≈ 204m</li>
+                                    <li><strong>Real factor:</strong> Air resistance reduces this significantly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculus Chain for Projectile Motion -->
+                <div class="calculus-chain-container">
+                    <h3>🎯 The Calculus Chain of Projectile Motion</h3>
+                    <div class="calculus-chain">
+                        <div class="chain-step">
+                            <div class="step-content">
+                                <span class="variable">Position r(t)</span>
+                                <span class="units">meters</span>
+                                <span class="example">Ball location in space</span>
+                            </div>
+                        </div>
+                        <div class="chain-arrow">
+                            <span class="arrow-symbol">→</span>
+                            <span class="operation">derivative</span>
+                        </div>
+                        <div class="chain-step">
+                            <div class="step-content">
+                                <span class="variable">Velocity v(t)</span>
+                                <span class="units">m/s</span>
+                                <span class="example">How fast position changes</span>
+                            </div>
+                        </div>
+                        <div class="chain-arrow">
+                            <span class="arrow-symbol">→</span>
+                            <span class="operation">derivative</span>
+                        </div>
+                        <div class="chain-step">
+                            <div class="step-content">
+                                <span class="variable">Acceleration a(t)</span>
+                                <span class="units">m/s²</span>
+                                <span class="example">Gravity's effect: -9.8 m/s²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reverse-chain">
+                        <h4>Working Backwards (Integration):</h4>
+                        <div class="calculus-chain">
+                            <div class="chain-step">
+                                <div class="step-content">
+                                    <span class="variable">Acceleration a(t)</span>
+                                    <span class="units">m/s²</span>
+                                    <span class="example">Known: gravity = -g</span>
+                                </div>
+                            </div>
+                            <div class="chain-arrow">
+                                <span class="arrow-symbol">→</span>
+                                <span class="operation">integrate</span>
+                            </div>
+                            <div class="chain-step">
+                                <div class="step-content">
+                                    <span class="variable">Velocity v(t)</span>
+                                    <span class="units">m/s</span>
+                                    <span class="example">Find speed at any time</span>
+                                </div>
+                            </div>
+                            <div class="chain-arrow">
+                                <span class="arrow-symbol">→</span>
+                                <span class="operation">integrate</span>
+                            </div>
+                            <div class="chain-step">
+                                <div class="step-content">
+                                    <span class="variable">Position r(t)</span>
+                                    <span class="units">meters</span>
+                                    <span class="example">Predict ball location</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Applications -->
+                <div class="advanced-applications">
+                    <h3>🏆 Advanced Calculus Applications</h3>
+
+                    <div class="application-grid">
+                        <div class="application-card">
+                            <h4>📈 Optimization Problems</h4>
+                            <p><strong>Find maximum range:</strong></p>
+                            <div class="equation-block">
+                                <div class="equation">dR/dθ = (2v₀²cos(2θ))/g = 0</div>
+                                <div class="equation">cos(2θ) = 0 → θ = 45°</div>
+                            </div>
+                            <p>Calculus proves mathematically that 45° gives maximum range in vacuum.</p>
+                        </div>
+
+                        <div class="application-card">
+                            <h4>⚡ Instantaneous Analysis</h4>
+                            <p><strong>Ball velocity at any moment:</strong></p>
+                            <div class="equation-block">
+                                <div class="equation">|v(t)| = √(v₀ₓ² + (v₀ᵧ - gt)²)</div>
+                            </div>
+                            <p>Critical for understanding impact forces and energy transfer.</p>
+                        </div>
+
+                        <div class="application-card">
+                            <h4>🎯 Trajectory Curvature</h4>
+                            <p><strong>Path sharpness:</strong></p>
+                            <div class="equation-block">
+                                <div class="equation">κ = |d²y/dx²| / [1 + (dy/dx)²]^(3/2)</div>
+                            </div>
+                            <p>Describes how sharply the ball's path curves due to gravity.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="calculus-summary">
+                    <h3>🎭 Why Calculus Matters for Baseball</h3>
+                    <div class="summary-grid">
+                        <div class="summary-point">
+                            <span class="point-icon">⚡</span>
+                            <div class="point-content">
+                                <h4>Precision Prediction</h4>
+                                <p>Calculus gives exact equations for ball location at any future time, not just approximations.</p>
+                            </div>
+                        </div>
+                        <div class="summary-point">
+                            <span class="point-icon">🏆</span>
+                            <div class="point-content">
+                                <h4>Optimization</h4>
+                                <p>Find the mathematically perfect launch angle, release point, or trajectory for any game situation.</p>
+                            </div>
+                        </div>
+                        <div class="summary-point">
+                            <span class="point-icon">🔬</span>
+                            <div class="point-content">
+                                <h4>Understanding Change</h4>
+                                <p>See exactly how gravity affects velocity over time, enabling strategic timing decisions.</p>
+                            </div>
+                        </div>
+                        <div class="summary-point">
+                            <span class="point-icon">⚾</span>
+                            <div class="point-content">
+                                <h4>Real Applications</h4>
+                                <p>Modern baseball analytics use these calculus principles for pitch design and hitting optimization.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="closing-thought">
+                        <p>Calculus isn't just abstract mathematics - it's the precise language that describes how every baseball moves through space. Every pitch, hit, and catch follows these fundamental relationships between position, velocity, and acceleration that calculus makes mathematically exact.</p>
                     </div>
                 </div>
             </section>
@@ -963,26 +1447,166 @@
                 const angleRad = parseFloat(angleSlider.value) * Math.PI / 180;
                 const h0 = parseFloat(heightSlider.value);
                 const g = 9.81;
-                
+
                 const v0x = v0 * Math.cos(angleRad);
                 const v0y = v0 * Math.sin(angleRad);
-                
+
                 // Time of flight using quadratic formula
                 const a = -0.5 * g;
                 const b = v0y;
                 const c = h0;
                 const discriminant = b * b - 4 * a * c;
                 const timeOfFlight = (-b - Math.sqrt(discriminant)) / (2 * a);
-                
-                // Maximum height
+
+                // Maximum height and time to peak
                 const maxHeight = h0 + (v0y * v0y) / (2 * g);
-                
+                const timeToPeak = v0y / g;
+
                 // Range
                 const range = v0x * timeOfFlight;
-                
+
+                // Impact analysis
+                const impactVelocityY = v0y - g * timeOfFlight;
+                const impactSpeed = Math.sqrt(v0x * v0x + impactVelocityY * impactVelocityY);
+                const impactAngle = Math.atan2(-Math.abs(impactVelocityY), v0x) * 180 / Math.PI;
+
+                // Efficiency compared to 45° optimal
+                const optimalRange = (v0 * v0) / g; // Range at 45° from ground level
+                const efficiency = (range / optimalRange) * 100;
+
+                // Basic results
                 if (timeResult) timeResult.textContent = timeOfFlight.toFixed(2) + ' s';
                 if (heightResult) heightResult.textContent = maxHeight.toFixed(2) + ' m';
                 if (rangeResult) rangeResult.textContent = range.toFixed(2) + ' m';
+
+                // Advanced results
+                const vxResult = document.getElementById('vx-result');
+                const vyResult = document.getElementById('vy-result');
+                const peakTimeResult = document.getElementById('peak-time-result');
+                const peakHeightResult = document.getElementById('peak-height-result');
+                const impactSpeedResult = document.getElementById('impact-speed-result');
+                const impactAngleResult = document.getElementById('impact-angle-result');
+                const efficiencyResult = document.getElementById('efficiency-result');
+                const hangTimeResult = document.getElementById('hang-time-result');
+
+                if (vxResult) vxResult.textContent = v0x.toFixed(2) + ' m/s';
+                if (vyResult) vyResult.textContent = v0y.toFixed(2) + ' m/s';
+                if (peakTimeResult) peakTimeResult.textContent = timeToPeak.toFixed(2) + ' s';
+                if (peakHeightResult) peakHeightResult.textContent = maxHeight.toFixed(2) + ' m';
+                if (impactSpeedResult) impactSpeedResult.textContent = impactSpeed.toFixed(2) + ' m/s';
+                if (impactAngleResult) impactAngleResult.textContent = impactAngle.toFixed(1) + '°';
+                if (efficiencyResult) efficiencyResult.textContent = efficiency.toFixed(1) + '%';
+                if (hangTimeResult) hangTimeResult.textContent = timeOfFlight.toFixed(2) + ' s';
+
+                // Draw trajectory on canvas
+                drawTrajectory(v0, angleRad, h0, timeOfFlight, range, maxHeight);
+            }
+
+            function drawTrajectory(v0, angleRad, h0, timeOfFlight, range, maxHeight) {
+                const canvas = document.getElementById('trajectory-canvas');
+                if (!canvas) return;
+
+                const ctx = canvas.getContext('2d');
+                const width = canvas.width;
+                const height = canvas.height;
+
+                // Clear canvas
+                ctx.clearRect(0, 0, width, height);
+
+                // Set up coordinate system (flip Y axis for physics)
+                const maxRange = Math.max(range * 1.2, 50);
+                const maxHeightDisplay = Math.max(maxHeight * 1.2, 10);
+
+                const scaleX = width / maxRange;
+                const scaleY = height / maxHeightDisplay;
+
+                // Draw grid
+                ctx.strokeStyle = '#e0e0e0';
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= 10; i++) {
+                    const x = (i / 10) * width;
+                    const y = (i / 10) * height;
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, height);
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+
+                // Draw reference 45° trajectory (green)
+                ctx.strokeStyle = '#4CAF50';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                const ref45Angle = Math.PI / 4;
+                const ref45vx = v0 * Math.cos(ref45Angle);
+                const ref45vy = v0 * Math.sin(ref45Angle);
+                const ref45TimeOfFlight = 2 * ref45vy / 9.81; // From ground level
+
+                for (let t = 0; t <= ref45TimeOfFlight; t += ref45TimeOfFlight / 100) {
+                    const x = ref45vx * t;
+                    const y = ref45vy * t - 0.5 * 9.81 * t * t;
+                    if (y >= 0) {
+                        const canvasX = x * scaleX;
+                        const canvasY = height - y * scaleY;
+                        if (t === 0) {
+                            ctx.moveTo(canvasX, canvasY);
+                        } else {
+                            ctx.lineTo(canvasX, canvasY);
+                        }
+                    }
+                }
+                ctx.stroke();
+
+                // Draw current trajectory (blue)
+                ctx.strokeStyle = '#2196F3';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+
+                const v0x = v0 * Math.cos(angleRad);
+                const v0y = v0 * Math.sin(angleRad);
+
+                for (let t = 0; t <= timeOfFlight; t += timeOfFlight / 100) {
+                    const x = v0x * t;
+                    const y = h0 + v0y * t - 0.5 * 9.81 * t * t;
+                    if (y >= 0) {
+                        const canvasX = x * scaleX;
+                        const canvasY = height - y * scaleY;
+                        if (t === 0) {
+                            ctx.moveTo(canvasX, canvasY);
+                        } else {
+                            ctx.lineTo(canvasX, canvasY);
+                        }
+                    }
+                }
+                ctx.stroke();
+
+                // Mark launch point
+                ctx.fillStyle = '#FF4444';
+                ctx.beginPath();
+                ctx.arc(0, height - h0 * scaleY, 5, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Mark impact point
+                ctx.fillStyle = '#FF4444';
+                ctx.beginPath();
+                ctx.arc(range * scaleX, height, 5, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Mark peak
+                const peakTime = v0y / 9.81;
+                const peakX = v0x * peakTime;
+                ctx.fillStyle = '#FFA500';
+                ctx.beginPath();
+                ctx.arc(peakX * scaleX, height - maxHeight * scaleY, 4, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Add labels
+                ctx.fillStyle = '#333';
+                ctx.font = '12px Arial';
+                ctx.fillText('Launch', 5, height - h0 * scaleY - 10);
+                ctx.fillText('Impact', range * scaleX - 20, height - 5);
+                ctx.fillText('Peak', peakX * scaleX - 15, height - maxHeight * scaleY - 10);
             }
             
             // Event listeners
