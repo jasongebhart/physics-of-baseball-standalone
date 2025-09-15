@@ -7,6 +7,256 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
+    <style>
+        /* Enhanced Week 6 Circular Motion Styling */
+        .enhanced-circular-analyzer {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .analyzer-intro {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .circular-calculator-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #fed7aa;
+        }
+
+        .calculator-controls-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-section {
+            background: #fffbeb;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #fde68a;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+
+        .control-section input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+
+        .control-section input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f59e0b;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .control-section input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4);
+        }
+
+        .velocity-indicators,
+        .radius-indicators,
+        .mass-indicators,
+        .time-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .velocity-mark,
+        .radius-mark,
+        .mass-mark,
+        .time-mark {
+            font-size: 0.75rem;
+            color: #6b7280;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+        }
+
+        .calculations-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background: #fef3c7;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #f59e0b;
+        }
+
+        .calc-result {
+            text-align: center;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .calc-label {
+            display: block;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .calc-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .linear-velocity-value {
+            color: #dc2626;
+        }
+
+        .centripetal-force-value {
+            color: #16a34a;
+        }
+
+        .acceleration-value {
+            color: #7c3aed;
+        }
+
+        .circular-diagram-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #fed7aa;
+        }
+
+        .circular-diagram svg {
+            width: 100%;
+            height: auto;
+            max-width: 450px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .center-label,
+        .ball-label,
+        .radius-label,
+        .angular-label {
+            font-size: 11px;
+            fill: #374151;
+            font-weight: 600;
+        }
+
+        .vector-label {
+            font-size: 11px;
+            fill: #dc2626;
+            font-weight: 600;
+        }
+
+        .vector-label-small {
+            font-size: 10px;
+            fill: #16a34a;
+            font-weight: 500;
+        }
+
+        .angular-value {
+            font-size: 12px;
+            fill: #7c3aed;
+            font-weight: 700;
+        }
+
+        .scale-text {
+            font-size: 10px;
+            fill: #6b7280;
+        }
+
+        .relationship-demo-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #fed7aa;
+        }
+
+        .relationship-display {
+            text-align: center;
+        }
+
+        .relationship-equation {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .equation-part {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .linear-relationship {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .force-relationship {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        .relationship-explanation {
+            color: #6b7280;
+            font-style: italic;
+            line-height: 1.6;
+            margin-top: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .calculator-controls-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .calculations-display {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .enhanced-circular-analyzer {
+                padding: 16px;
+                margin: 16px 0;
+            }
+
+            .circular-diagram svg {
+                height: 200px;
+            }
+
+            .relationship-equation {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,6 +274,172 @@
                     This week, we'll explore rotational mechanics in pitching, examining how angular motion contributes to velocity generation and the kinetic chain sequence.
                 </p>
             </header>
+
+            <section id="objectives" class="day-section">
+                <h2>🎯 Learning Objectives</h2>
+                <div class="objectives-container">
+                    <ul class="objectives-list">
+                        <li class="objective-item">
+                            <span class="objective-icon">🔄</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Define angular displacement, velocity, and acceleration in rotational motion</span>
+                                <span class="objective-difficulty basic">Basic</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">⚡</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Calculate centripetal force and acceleration for circular motion scenarios</span>
+                                <span class="objective-difficulty intermediate">Intermediate</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🌀</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Analyze the relationship between linear and angular motion in pitching</span>
+                                <span class="objective-difficulty intermediate">Intermediate</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">⚾</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Apply rotational mechanics to understand spin effects on baseball trajectory</span>
+                                <span class="objective-difficulty advanced">Advanced</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🎯</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Optimize angular motion patterns to maximize pitch effectiveness</span>
+                                <span class="objective-difficulty expert">Expert</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Week Learning Roadmap -->
+            <section class="week-roadmap-container" aria-labelledby="roadmap-title">
+                <div class="roadmap-header">
+                    <h2 id="roadmap-title">🛤️ Week 6 Learning Journey: Mastering Circular Motion</h2>
+                    <p class="roadmap-subtitle">Explore rotational mechanics and discover how angular motion creates velocity and spin effects in baseball</p>
+                </div>
+
+                <div class="roadmap-content">
+                    <div class="roadmap-steps">
+                        <div class="roadmap-step" data-step="1">
+                            <div class="step-marker">
+                                <span class="step-number">1</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🔄 Angular Motion Basics</h3>
+                                <p class="step-description">Master angular displacement (θ), velocity (ω = Δθ/Δt), and acceleration (α = Δω/Δt) concepts</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">θ = s/r</span>
+                                    <span class="skill-tag">ω = Δθ/Δt</span>
+                                    <span class="skill-tag">α = Δω/Δt</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="2">
+                            <div class="step-marker">
+                                <span class="step-number">2</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">⚡ Centripetal Force</h3>
+                                <p class="step-description">Understand centripetal acceleration (ac = v²/r) and the forces that create circular motion</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">ac = v²/r</span>
+                                    <span class="skill-tag">Fc = mac</span>
+                                    <span class="skill-tag">Circular Motion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="3">
+                            <div class="step-marker">
+                                <span class="step-number">3</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🌀 Linear-Angular Connection</h3>
+                                <p class="step-description">Connect linear and angular motion through relationships: v = rω, a = rα</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">v = rω</span>
+                                    <span class="skill-tag">a = rα</span>
+                                    <span class="skill-tag">Motion Conversion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="4">
+                            <div class="step-marker">
+                                <span class="step-number">4</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">⚾ Baseball Spin Mechanics</h3>
+                                <p class="step-description">Analyze how rotational motion creates spin effects: Magnus force, curveballs, and sliders</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Magnus Force</span>
+                                    <span class="skill-tag">Spin Rate</span>
+                                    <span class="skill-tag">Ball Movement</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="5">
+                            <div class="step-marker">
+                                <span class="step-number">5</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🎪 Pitching Kinematics</h3>
+                                <p class="step-description">Study the kinetic chain sequence and how body segment rotations contribute to velocity</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Kinetic Chain</span>
+                                    <span class="skill-tag">Sequential Rotation</span>
+                                    <span class="skill-tag">Velocity Generation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="6">
+                            <div class="step-marker">
+                                <span class="step-number">6</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🔬 Rotational Analysis Lab</h3>
+                                <p class="step-description">Measure and analyze angular motions in real pitching using high-speed video and motion capture</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Motion Analysis</span>
+                                    <span class="skill-tag">Data Collection</span>
+                                    <span class="skill-tag">Angular Measurements</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="7">
+                            <div class="step-marker">
+                                <span class="step-number">7</span>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🎯 Performance Optimization</h3>
+                                <p class="step-description">Use rotational mechanics principles to optimize pitching technique and maximize spin effectiveness</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Technique Analysis</span>
+                                    <span class="skill-tag">Spin Optimization</span>
+                                    <span class="skill-tag">Performance Metrics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -124,21 +540,143 @@
                     </div>
                 </div>
 
-                <div class="interactive-calculator" id="rotational-calculator">
-                    <h3>Rotational Mechanics Calculator</h3>
-                    <div class="calculator-container">
-                        <div class="calculator-section">
-                            <h4>Angular Velocity Calculator</h4>
-                            <div class="input-group">
-                                <label for="angular-displacement">Angular Displacement (degrees):</label>
-                                <input type="number" id="angular-displacement" value="180" step="1" min="0">
+                <!-- Enhanced Interactive Circular Motion Analysis System -->
+                <div class="enhanced-circular-analyzer">
+                    <h4>🎯 Interactive Circular Motion Analysis System</h4>
+                    <p class="analyzer-intro">Explore rotational mechanics with real-time calculations and visual circular motion diagrams</p>
+
+                    <!-- Circular Motion Calculator Controls -->
+                    <div class="circular-calculator-panel">
+                        <h5>⚙️ Circular Motion Parameters</h5>
+                        <div class="calculator-controls-grid">
+                            <div class="control-section">
+                                <label class="control-label">Angular Velocity (°/s): <span id="angular-velocity-display">1800</span></label>
+                                <input type="range" id="angular-velocity-input" min="500" max="10000" value="1800" step="100">
+                                <div class="velocity-indicators">
+                                    <span class="velocity-mark" data-velocity="1000">Slow</span>
+                                    <span class="velocity-mark" data-velocity="5000">Fast</span>
+                                    <span class="velocity-mark" data-velocity="9000">Elite</span>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="time-duration">Time Duration (seconds):</label>
-                                <input type="number" id="time-duration" value="0.1" step="0.001" min="0.001">
+                            <div class="control-section">
+                                <label class="control-label">Radius (m): <span id="radius-display">0.6</span></label>
+                                <input type="range" id="radius-input" min="0.3" max="1.0" value="0.6" step="0.01">
+                                <div class="radius-indicators">
+                                    <span class="radius-mark" data-radius="0.4">Short Arm</span>
+                                    <span class="radius-mark" data-radius="0.6">Average</span>
+                                    <span class="radius-mark" data-radius="0.8">Long Arm</span>
+                                </div>
                             </div>
-                            <div class="result">
-                                <strong>Angular Velocity: <span id="angular-velocity-result">1800</span> °/s</strong>
+                            <div class="control-section">
+                                <label class="control-label">Mass (kg): <span id="circular-mass-display">0.145</span></label>
+                                <input type="range" id="circular-mass-input" min="0.05" max="0.5" value="0.145" step="0.005">
+                                <div class="mass-indicators">
+                                    <span class="mass-mark" data-mass="0.145">Baseball</span>
+                                    <span class="mass-mark" data-mass="0.25">Cricket</span>
+                                    <span class="mass-mark" data-mass="0.4">Heavy Ball</span>
+                                </div>
+                            </div>
+                            <div class="control-section">
+                                <label class="control-label">Time Period (s): <span id="time-period-display">0.1</span></label>
+                                <input type="range" id="time-period-input" min="0.05" max="0.5" value="0.1" step="0.01">
+                                <div class="time-indicators">
+                                    <span class="time-mark" data-time="0.08">Quick</span>
+                                    <span class="time-mark" data-time="0.15">Moderate</span>
+                                    <span class="time-mark" data-time="0.3">Slow</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Calculations Display -->
+                        <div class="calculations-display">
+                            <div class="calc-result">
+                                <span class="calc-label">Linear Velocity (v = rω):</span>
+                                <span class="calc-value linear-velocity-value" id="linear-velocity-result">18.8 m/s</span>
+                            </div>
+                            <div class="calc-result">
+                                <span class="calc-label">Centripetal Force (Fc = mv²/r):</span>
+                                <span class="calc-value centripetal-force-value" id="centripetal-force-result">8.5 N</span>
+                            </div>
+                            <div class="calc-result">
+                                <span class="calc-label">Centripetal Acceleration:</span>
+                                <span class="calc-value acceleration-value" id="centripetal-acceleration-result">58.9 m/s²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Circular Motion Diagram -->
+                    <div class="circular-diagram-container">
+                        <h5>📊 Circular Motion Visualization</h5>
+                        <div class="circular-diagram" id="circular-diagram">
+                            <svg width="450" height="300" viewBox="0 0 450 300">
+                                <!-- Background -->
+                                <rect width="100%" height="100%" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+                                <!-- Grid -->
+                                <defs>
+                                    <pattern id="circularGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e5e7eb" stroke-width="0.5"/>
+                                    </pattern>
+                                    <radialGradient id="ballGradient" cx="0.3" cy="0.3" r="0.7">
+                                        <stop offset="0%" style="stop-color:#fbbf24"/>
+                                        <stop offset="100%" style="stop-color:#f59e0b"/>
+                                    </radialGradient>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#circularGrid)"/>
+
+                                <!-- Circular Path -->
+                                <circle id="circular-path" cx="225" cy="150" r="80" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                <!-- Center Point -->
+                                <circle cx="225" cy="150" r="3" fill="#374151"/>
+                                <text x="225" y="140" text-anchor="middle" class="center-label">Center</text>
+
+                                <!-- Baseball object -->
+                                <circle id="rotating-ball" cx="305" cy="150" r="12" fill="url(#ballGradient)" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="305" y="155" text-anchor="middle" class="ball-label">⚾</text>
+
+                                <!-- Radius line -->
+                                <line id="radius-line" x1="225" y1="150" x2="305" y2="150" stroke="#3b82f6" stroke-width="3"/>
+                                <text x="265" y="140" text-anchor="middle" class="radius-label">r = 0.6m</text>
+
+                                <!-- Velocity vector -->
+                                <defs>
+                                    <marker id="circular-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+                                    </marker>
+                                </defs>
+                                <line id="velocity-vector" x1="305" y1="150" x2="305" y2="100" stroke="#dc2626" stroke-width="4" marker-end="url(#circular-arrowhead)"/>
+                                <text id="velocity-vector-label" x="315" y="125" class="vector-label">v = 18.8 m/s</text>
+
+                                <!-- Centripetal force vector -->
+                                <line id="force-vector" x1="305" y1="150" x2="270" y2="150" stroke="#16a34a" stroke-width="4" marker-end="url(#circular-arrowhead)"/>
+                                <text id="force-vector-label" x="285" y="170" class="vector-label-small">Fc = 8.5 N</text>
+
+                                <!-- Angular velocity indicator -->
+                                <path id="angular-indicator" d="M 245 150 A 20 20 0 0 1 265 130" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#circular-arrowhead)"/>
+                                <text x="255" y="135" text-anchor="middle" class="angular-label">ω</text>
+                                <text id="angular-velocity-label" x="225" y="220" text-anchor="middle" class="angular-value">1800°/s</text>
+
+                                <!-- Scale indicator -->
+                                <text x="20" y="280" class="scale-text">Real-time Circular Motion Analysis</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Linear-Angular Relationship Display -->
+                    <div class="relationship-demo-container">
+                        <h5>🔗 Linear-Angular Relationships</h5>
+                        <div class="relationship-display">
+                            <div class="relationship-equation">
+                                <span class="equation-part">v = rω → </span>
+                                <span class="equation-value linear-relationship" id="v-equation-display">18.8 = 0.6 × 31.4</span>
+                            </div>
+                            <div class="relationship-equation">
+                                <span class="equation-part">Fc = mv²/r → </span>
+                                <span class="equation-value force-relationship" id="fc-equation-display">8.5 = 0.145 × 18.8² / 0.6</span>
+                            </div>
+                            <div class="relationship-explanation">
+                                <p>Linear velocity increases with both angular velocity (ω) and radius (r). Longer arms generate higher pitch speeds for the same angular velocity!</p>
                             </div>
                         </div>
                     </div>
@@ -1063,9 +1601,147 @@
         });
     </script>
     <script>
-        // Week 6 Circular Motion Calculator JavaScript
+        // Week 6 Enhanced Circular Motion Calculator JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // Angular Velocity Calculator
+            // Enhanced Circular Motion Analyzer Elements
+            const angularVelocityInput = document.getElementById('angular-velocity-input');
+            const radiusInput = document.getElementById('radius-input');
+            const circularMassInput = document.getElementById('circular-mass-input');
+            const timePeriodInput = document.getElementById('time-period-input');
+
+            const angularVelocityDisplay = document.getElementById('angular-velocity-display');
+            const radiusDisplay = document.getElementById('radius-display');
+            const circularMassDisplay = document.getElementById('circular-mass-display');
+            const timePeriodDisplay = document.getElementById('time-period-display');
+
+            const linearVelocityResult = document.getElementById('linear-velocity-result');
+            const centripetalForceResult = document.getElementById('centripetal-force-result');
+            const centripetalAccelerationResult = document.getElementById('centripetal-acceleration-result');
+
+            // SVG Elements for visual diagram
+            const circularPath = document.getElementById('circular-path');
+            const rotatingBall = document.getElementById('rotating-ball');
+            const radiusLine = document.getElementById('radius-line');
+            const radiusLabel = document.querySelector('.radius-label');
+            const velocityVector = document.getElementById('velocity-vector');
+            const velocityVectorLabel = document.getElementById('velocity-vector-label');
+            const forceVector = document.getElementById('force-vector');
+            const forceVectorLabel = document.getElementById('force-vector-label');
+            const angularVelocityLabel = document.getElementById('angular-velocity-label');
+
+            // Linear-Angular Relationship Elements
+            const vEquationDisplay = document.getElementById('v-equation-display');
+            const fcEquationDisplay = document.getElementById('fc-equation-display');
+
+            function updateCircularMotionAnalyzer() {
+                if (!angularVelocityInput || !radiusInput || !circularMassInput || !timePeriodInput) return;
+
+                const angularVelocityDeg = parseFloat(angularVelocityInput.value); // degrees per second
+                const radius = parseFloat(radiusInput.value);
+                const mass = parseFloat(circularMassInput.value);
+                const timePeriod = parseFloat(timePeriodInput.value);
+
+                // Update displays
+                angularVelocityDisplay.textContent = angularVelocityDeg.toFixed(0);
+                radiusDisplay.textContent = radius.toFixed(2);
+                circularMassDisplay.textContent = mass.toFixed(3);
+                timePeriodDisplay.textContent = timePeriod.toFixed(2);
+
+                // Convert angular velocity to rad/s for calculations
+                const angularVelocityRad = angularVelocityDeg * (Math.PI / 180);
+
+                // Calculate values
+                const linearVelocity = radius * angularVelocityRad; // v = rω
+                const centripetalAcceleration = linearVelocity * linearVelocity / radius; // ac = v²/r
+                const centripetalForce = mass * centripetalAcceleration; // Fc = mac
+
+                // Update result displays
+                linearVelocityResult.textContent = linearVelocity.toFixed(1) + ' m/s';
+                centripetalForceResult.textContent = centripetalForce.toFixed(1) + ' N';
+                centripetalAccelerationResult.textContent = centripetalAcceleration.toFixed(1) + ' m/s²';
+
+                // Update visual diagram
+                updateCircularDiagram(radius, linearVelocity, centripetalForce, angularVelocityDeg);
+
+                // Update relationship equations
+                updateRelationshipEquations(linearVelocity, radius, angularVelocityRad, centripetalForce, mass);
+            }
+
+            function updateCircularDiagram(radius, linearVelocity, centripetalForce, angularVelocityDeg) {
+                if (!circularPath || !rotatingBall || !radiusLine) return;
+
+                // Update circular path radius (scale for visualization)
+                const visualRadius = 60 + (radius - 0.3) * 40; // Scale radius between 60-100 px
+                circularPath.setAttribute('r', visualRadius);
+
+                // Update ball position on circle
+                const ballX = 225 + visualRadius;
+                const ballY = 150;
+                rotatingBall.setAttribute('cx', ballX);
+                rotatingBall.setAttribute('cy', ballY);
+
+                // Update radius line
+                radiusLine.setAttribute('x2', ballX);
+                radiusLine.setAttribute('y2', ballY);
+
+                // Update radius label
+                if (radiusLabel) {
+                    radiusLabel.textContent = `r = ${radius.toFixed(2)}m`;
+                    radiusLabel.setAttribute('x', (225 + ballX) / 2);
+                }
+
+                // Update velocity vector (tangent to circle, length based on velocity)
+                const velocityLength = Math.min(linearVelocity * 2, 60); // Scale velocity vector
+                const velocityEndY = ballY - velocityLength;
+                velocityVector.setAttribute('x1', ballX);
+                velocityVector.setAttribute('y1', ballY);
+                velocityVector.setAttribute('x2', ballX);
+                velocityVector.setAttribute('y2', velocityEndY);
+
+                // Update velocity label
+                if (velocityVectorLabel) {
+                    velocityVectorLabel.textContent = `v = ${linearVelocity.toFixed(1)} m/s`;
+                    velocityVectorLabel.setAttribute('x', ballX + 10);
+                    velocityVectorLabel.setAttribute('y', (ballY + velocityEndY) / 2);
+                }
+
+                // Update centripetal force vector (toward center, length based on force)
+                const forceLength = Math.min(centripetalForce * 2, 40); // Scale force vector
+                const forceEndX = ballX - forceLength;
+                forceVector.setAttribute('x1', ballX);
+                forceVector.setAttribute('y1', ballY);
+                forceVector.setAttribute('x2', forceEndX);
+                forceVector.setAttribute('y2', ballY);
+
+                // Update force label
+                if (forceVectorLabel) {
+                    forceVectorLabel.textContent = `Fc = ${centripetalForce.toFixed(1)} N`;
+                    forceVectorLabel.setAttribute('x', (ballX + forceEndX) / 2);
+                }
+
+                // Update angular velocity label
+                if (angularVelocityLabel) {
+                    angularVelocityLabel.textContent = `${angularVelocityDeg.toFixed(0)}°/s`;
+                }
+            }
+
+            function updateRelationshipEquations(linearVelocity, radius, angularVelocityRad, centripetalForce, mass) {
+                if (vEquationDisplay && fcEquationDisplay) {
+                    const omegaDisplay = angularVelocityRad.toFixed(1);
+                    const vSquared = (linearVelocity * linearVelocity).toFixed(1);
+
+                    vEquationDisplay.textContent = `${linearVelocity.toFixed(1)} = ${radius.toFixed(2)} × ${omegaDisplay}`;
+                    fcEquationDisplay.textContent = `${centripetalForce.toFixed(1)} = ${mass.toFixed(3)} × ${vSquared} / ${radius.toFixed(2)}`;
+                }
+            }
+
+            // Event listeners for real-time updates
+            if (angularVelocityInput) angularVelocityInput.addEventListener('input', updateCircularMotionAnalyzer);
+            if (radiusInput) radiusInput.addEventListener('input', updateCircularMotionAnalyzer);
+            if (circularMassInput) circularMassInput.addEventListener('input', updateCircularMotionAnalyzer);
+            if (timePeriodInput) timePeriodInput.addEventListener('input', updateCircularMotionAnalyzer);
+
+            // Legacy calculator support (for any remaining basic calculators)
             const angularDisplacement = document.getElementById('angular-displacement');
             const timeDuration = document.getElementById('time-duration');
             const angularVelocityResult = document.getElementById('angular-velocity-result');
@@ -1084,57 +1760,11 @@
                 timeDuration.addEventListener('input', calculateAngularVelocity);
             }
 
-            // Linear-Angular Velocity Calculator
-            const omegaInput = document.getElementById('omega-input');
-            const radiusInput = document.getElementById('radius-input');
-            const linearVelocityResult = document.getElementById('linear-velocity-result');
-            const linearVelocityMph = document.getElementById('linear-velocity-mph');
+            // Initialize enhanced calculator
+            updateCircularMotionAnalyzer();
 
-            function calculateLinearVelocity() {
-                if (omegaInput && radiusInput && linearVelocityResult) {
-                    const omega = parseFloat(omegaInput.value) || 0;
-                    const radius = parseFloat(radiusInput.value) || 0;
-                    const linearVel = omega * radius;
-                    const linearVelMph = linearVel * 2.237; // Convert m/s to mph
-                    
-                    linearVelocityResult.textContent = linearVel.toFixed(1);
-                    if (linearVelocityMph) {
-                        linearVelocityMph.textContent = linearVelMph.toFixed(0);
-                    }
-                }
-            }
-
-            if (omegaInput && radiusInput) {
-                omegaInput.addEventListener('input', calculateLinearVelocity);
-                radiusInput.addEventListener('input', calculateLinearVelocity);
-            }
-
-            // Centripetal Force Calculator
-            const cfMass = document.getElementById('cf-mass');
-            const cfVelocity = document.getElementById('cf-velocity');
-            const cfRadius = document.getElementById('cf-radius');
-            const cfResult = document.getElementById('cf-result');
-
-            function calculateCentripetalForce() {
-                if (cfMass && cfVelocity && cfRadius && cfResult) {
-                    const mass = parseFloat(cfMass.value) || 0;
-                    const velocity = parseFloat(cfVelocity.value) || 0;
-                    const radius = parseFloat(cfRadius.value) || 0.01;
-                    const force = (mass * velocity * velocity) / radius;
-                    cfResult.textContent = force.toFixed(0);
-                }
-            }
-
-            if (cfMass && cfVelocity && cfRadius) {
-                cfMass.addEventListener('input', calculateCentripetalForce);
-                cfVelocity.addEventListener('input', calculateCentripetalForce);
-                cfRadius.addEventListener('input', calculateCentripetalForce);
-            }
-
-            // Initialize calculations
+            // Initialize legacy calculators
             calculateAngularVelocity();
-            calculateLinearVelocity();
-            calculateCentripetalForce();
         });
     </script>
     
