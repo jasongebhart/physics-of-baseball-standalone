@@ -23,6 +23,46 @@
                 <p class="week-description">Explore the physics of objects in flight, analyzing how baseballs follow predictable paths through space and time.</p>
             </header>
 
+            <!-- Floating Table of Contents -->
+            <div class="floating-toc" id="floating-toc" aria-label="Table of Contents">
+                <button class="toc-toggle" id="toc-toggle" aria-label="Toggle Table of Contents" aria-expanded="false">
+                    <span class="toc-icon">📋</span>
+                    <span class="toc-text">Contents</span>
+                </button>
+                <nav class="toc-content" id="toc-content">
+                    <div class="toc-header">
+                        <h3>Week 2 Contents</h3>
+                        <button class="toc-close" id="toc-close" aria-label="Close Table of Contents">&times;</button>
+                    </div>
+                    <ul class="toc-list">
+                        <li><a href="#objectives" class="toc-link">🎯 Learning Objectives</a></li>
+                        <li class="toc-section">
+                            <span class="toc-section-title">📚 Daily Lessons</span>
+                            <ul class="toc-subsection">
+                                <li><a href="#day-1" class="toc-link">Day 1: Introduction</a></li>
+                                <li><a href="#day-2" class="toc-link">Day 2: Components</a></li>
+                                <li><a href="#day-3" class="toc-link">Day 3: Laboratory</a></li>
+                                <li><a href="#day-4" class="toc-link">Day 4: Advanced Analysis</a></li>
+                                <li><a href="#day-5" class="toc-link">Day 5: Applications</a></li>
+                            </ul>
+                        </li>
+                        <li class="toc-section">
+                            <span class="toc-section-title">🧮 Advanced Topics</span>
+                            <ul class="toc-subsection">
+                                <li><a href="#calculus-connections" class="toc-link">Calculus Connections</a></li>
+                                <li><a href="#assessment-section" class="toc-link">Assessment</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="toc-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="reading-progress"></div>
+                        </div>
+                        <span class="progress-text">Reading Progress</span>
+                    </div>
+                </nav>
+            </div>
+
             <section id="objectives" class="day-section">
                 <h2>🎯 Learning Objectives</h2>
                 <ul>
@@ -481,21 +521,51 @@
                         <h3>🎯 Interactive Projectile Motion Calculator</h3>
                         <p>Use this interactive calculator to explore how different launch parameters affect baseball trajectory:</p>
                         
-                        <div class="calculator-container">
+                        <div class="calculator-container enhanced-calculator">
+                            <div class="calculator-header">
+                                <h4>🎯 Interactive Baseball Trajectory Calculator</h4>
+                                <div class="calculator-info">
+                                    <span class="info-icon" title="Adjust parameters to see real-time trajectory changes">ℹ️</span>
+                                    <span class="live-indicator">🟢 Live Updates</span>
+                                </div>
+                            </div>
                             <div class="calculator-controls">
-                                <div class="control-group">
+                                <div class="control-group" data-tooltip="Typical baseball speeds: Fastball 85-105 mph (38-47 m/s), Changeup 70-85 mph (31-38 m/s)">
                                     <label>Initial Velocity: <span id="velocity-display">30 m/s</span></label>
-                                    <input type="range" id="velocity-slider" min="20" max="50" value="30" step="1">
+                                    <input type="range" id="velocity-slider" min="20" max="50" value="30" step="1" aria-describedby="velocity-help">
+                                    <div class="control-indicators">
+                                        <span class="indicator-mark" data-value="31">Changeup</span>
+                                        <span class="indicator-mark" data-value="42">Fastball</span>
+                                    </div>
+                                    <div id="velocity-help" class="control-help">Adjust ball speed (20-50 m/s range covers most baseball scenarios)</div>
                                 </div>
-                                <div class="control-group">
+                                <div class="control-group" data-tooltip="Optimal angle for maximum range is 45°, but real pitches are typically -10° to +15°">
                                     <label>Launch Angle: <span id="angle-display">25°</span></label>
-                                    <input type="range" id="angle-slider" min="15" max="45" value="25" step="1">
+                                    <input type="range" id="angle-slider" min="15" max="45" value="25" step="1" aria-describedby="angle-help">
+                                    <div class="control-indicators">
+                                        <span class="indicator-mark" data-value="22">Line Drive</span>
+                                        <span class="indicator-mark" data-value="35">Pop Fly</span>
+                                    </div>
+                                    <div id="angle-help" class="control-help">Release angle affects trajectory shape and landing distance</div>
                                 </div>
-                                <div class="control-group">
+                                <div class="control-group" data-tooltip="Average pitcher height: 6'2\" (1.88m). Range covers youth to professional levels">
                                     <label>Release Height: <span id="height-display">1.8 m</span></label>
-                                    <input type="range" id="height-slider" min="1.0" max="2.5" value="1.8" step="0.1">
+                                    <input type="range" id="height-slider" min="1.0" max="2.5" value="1.8" step="0.1" aria-describedby="height-help">
+                                    <div class="control-indicators">
+                                        <span class="indicator-mark" data-value="1.5">Youth</span>
+                                        <span class="indicator-mark" data-value="1.88">Average</span>
+                                        <span class="indicator-mark" data-value="2.1">Tall</span>
+                                    </div>
+                                    <div id="height-help" class="control-help">Higher release points can increase effective range</div>
                                 </div>
-                                <button id="calculate-btn" class="calculate-button">Calculate Trajectory</button>
+                                <div class="calculation-mode">
+                                    <label class="calculation-mode-label">
+                                        <input type="checkbox" id="auto-calculate" checked>
+                                        <span class="checkmark"></span>
+                                        Auto-calculate on change
+                                    </label>
+                                    <button id="calculate-btn" class="calculate-button">🔄 Recalculate</button>
+                                </div>
                             </div>
                             <div class="calculator-results">
                                 <div class="result-item">
@@ -740,53 +810,96 @@
             </section>
 
             <!-- Calculus Connections in Projectile Motion -->
-            <section class="calculus-connections-section">
+            <section class="calculus-connections-section" id="calculus-connections">
                 <h2>🧮 Calculus in Projectile Motion</h2>
                 <p class="section-intro">Calculus reveals the deep mathematical structure behind projectile motion. Understanding derivatives and integrals in this context unlocks precise analysis of baseball trajectories and optimal pitching strategies.</p>
 
-                <div class="calculus-concepts-grid">
-                    <!-- Derivatives in Projectile Motion -->
-                    <div class="calculus-concept-card derivatives-card">
-                        <div class="concept-header">
-                            <span class="concept-icon">📈</span>
-                            <h3>Derivatives: Trajectory Analysis</h3>
-                        </div>
+                <div class="content-difficulty-selector">
+                    <div class="difficulty-tabs">
+                        <button class="difficulty-tab active" data-level="basic" aria-label="Basic level content">
+                            <span class="tab-icon">📚</span>
+                            <span class="tab-text">Basic</span>
+                        </button>
+                        <button class="difficulty-tab" data-level="intermediate" aria-label="Intermediate level content">
+                            <span class="tab-icon">🎯</span>
+                            <span class="tab-text">Intermediate</span>
+                        </button>
+                        <button class="difficulty-tab" data-level="advanced" aria-label="Advanced level content">
+                            <span class="tab-icon">🏆</span>
+                            <span class="tab-text">Advanced</span>
+                        </button>
+                    </div>
+                </div>
 
-                        <div class="concept-explanation">
-                            <p class="concept-intro">Derivatives reveal how position changes create velocity, and how velocity changes create acceleration in projectile motion.</p>
-
-                            <div class="mathematical-detail">
-                                <h4>Position Functions for Projectile Motion:</h4>
-                                <div class="equation-block">
-                                    <div class="equation">x(t) = v₀ₓ·t + x₀</div>
-                                    <div class="equation">y(t) = v₀ᵧ·t - ½gt² + y₀</div>
-                                </div>
-
-                                <h4>Velocity Through Derivatives:</h4>
-                                <div class="equation-block">
-                                    <div class="equation">vₓ(t) = dx/dt = v₀ₓ (constant)</div>
-                                    <div class="equation">vᵧ(t) = dy/dt = v₀ᵧ - gt</div>
-                                </div>
-
-                                <h4>Acceleration Through Second Derivatives:</h4>
-                                <div class="equation-block">
-                                    <div class="equation">aₓ(t) = d²x/dt² = 0</div>
-                                    <div class="equation">aᵧ(t) = d²y/dt² = -g</div>
+                <div class="difficulty-content basic-content active" data-level="basic">
+                    <div class="calculus-basics">
+                        <h3>🎯 Calculus Basics for Projectile Motion</h3>
+                        <div class="basic-concept-grid">
+                            <div class="basic-concept-card">
+                                <h4>📈 What is a Derivative?</h4>
+                                <p>A derivative tells us the <strong>rate of change</strong>. In baseball:</p>
+                                <ul>
+                                    <li>Position → Velocity (how fast location changes)</li>
+                                    <li>Velocity → Acceleration (how fast speed changes)</li>
+                                </ul>
+                                <div class="example-box">
+                                    <p><strong>Example:</strong> If a ball's height is y = 10 - 5t², then velocity is dy/dt = -10t</p>
+                                    <p>At t = 1 second, the ball is falling at -10 m/s</p>
                                 </div>
                             </div>
-
-                            <div class="baseball-application">
-                                <h4>⚾ Baseball Application:</h4>
-                                <p>When a pitcher releases a fastball at 95 mph (42.5 m/s) at 6° below horizontal from 6 feet high:</p>
+                            <div class="basic-concept-card">
+                                <h4>📊 What is an Integral?</h4>
+                                <p>An integral tells us the <strong>total accumulation</strong>. In baseball:</p>
                                 <ul>
-                                    <li><strong>Initial velocity components:</strong> vₓ = 42.3 m/s, vᵧ = -4.4 m/s</li>
-                                    <li><strong>Position functions:</strong> x(t) = 42.3t, y(t) = 1.83 - 4.4t - 4.9t²</li>
-                                    <li><strong>Velocity evolution:</strong> vᵧ(t) = -4.4 - 9.8t (continuously decreasing)</li>
-                                    <li><strong>At home plate (t ≈ 0.46s):</strong> Ball drops to y ≈ 0.91m (strike zone)</li>
+                                    <li>Acceleration → Velocity (total speed change)</li>
+                                    <li>Velocity → Position (total distance traveled)</li>
                                 </ul>
+                                <div class="example-box">
+                                    <p><strong>Example:</strong> If acceleration is a = -10 m/s², then after 2 seconds:</p>
+                                    <p>Velocity change = ∫(-10)dt = -10t = -20 m/s</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="difficulty-content intermediate-content" data-level="intermediate">
+                    <div class="calculus-concepts-grid">
+                        <!-- Derivatives in Projectile Motion -->
+                        <div class="calculus-concept-card derivatives-card">
+                            <div class="concept-header">
+                                <span class="concept-icon">📈</span>
+                                <h3>Derivatives: Trajectory Analysis</h3>
+                            </div>
+
+                            <div class="concept-explanation">
+                                <p class="concept-intro">Derivatives reveal how position changes create velocity, and how velocity changes create acceleration in projectile motion.</p>
+
+                                <div class="mathematical-detail">
+                                    <h4>Position Functions for Projectile Motion:</h4>
+                                    <div class="equation-block">
+                                        <div class="equation">x(t) = v₀ₓ·t + x₀</div>
+                                        <div class="equation">y(t) = v₀ᵧ·t - ½gt² + y₀</div>
+                                    </div>
+
+                                    <h4>Velocity Through Derivatives:</h4>
+                                    <div class="equation-block">
+                                        <div class="equation">vₓ(t) = dx/dt = v₀ₓ (constant)</div>
+                                        <div class="equation">vᵧ(t) = dy/dt = v₀ᵧ - gt</div>
+                                    </div>
+                                </div>
+
+                                <div class="baseball-application">
+                                    <h4>⚾ Baseball Application:</h4>
+                                    <p>When a pitcher releases a fastball at 95 mph (42.5 m/s) at 6° below horizontal from 6 feet high:</p>
+                                    <ul>
+                                        <li><strong>Initial velocity components:</strong> vₓ = 42.3 m/s, vᵧ = -4.4 m/s</li>
+                                        <li><strong>Position functions:</strong> x(t) = 42.3t, y(t) = 1.83 - 4.4t - 4.9t²</li>
+                                        <li><strong>Velocity evolution:</strong> vᵧ(t) = -4.4 - 9.8t (continuously decreasing)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
                     <!-- Integrals in Projectile Motion -->
                     <div class="calculus-concept-card integrals-card">
@@ -827,8 +940,31 @@
                                 </ul>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="difficulty-content advanced-content" data-level="advanced">
+                    <!-- Advanced Calculus Content -->
+                    <div class="calculus-concepts-grid">
+                        <!-- All Previous Content Plus Advanced -->
+                        <div class="calculus-concept-card advanced-derivatives">
+                            <div class="concept-header">
+                                <span class="concept-icon">📈</span>
+                                <h3>Advanced Derivative Applications</h3>
+                            </div>
+                            <div class="concept-explanation">
+                                <h4>Acceleration Through Second Derivatives:</h4>
+                                <div class="equation-block">
+                                    <div class="equation">aₓ(t) = d²x/dt² = 0</div>
+                                    <div class="equation">aᵧ(t) = d²y/dt² = -g</div>
+                                </div>
+                                <div class="advanced-note">
+                                    <p><strong>🔬 Advanced Insight:</strong> The second derivative reveals that horizontal acceleration is zero (no forces), while vertical acceleration is constant (gravity only).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <!-- Calculus Chain for Projectile Motion -->
                 <div class="calculus-chain-container">
@@ -901,9 +1037,9 @@
                     </div>
                 </div>
 
-                <!-- Advanced Applications -->
-                <div class="advanced-applications">
-                    <h3>🏆 Advanced Calculus Applications</h3>
+                    <!-- Advanced Applications -->
+                    <div class="advanced-applications">
+                        <h3>🏆 Advanced Calculus Applications</h3>
 
                     <div class="application-grid">
                         <div class="application-card">
@@ -970,14 +1106,15 @@
                         </div>
                     </div>
 
-                    <div class="closing-thought">
-                        <p>Calculus isn't just abstract mathematics - it's the precise language that describes how every baseball moves through space. Every pitch, hit, and catch follows these fundamental relationships between position, velocity, and acceleration that calculus makes mathematically exact.</p>
+                        <div class="closing-thought">
+                            <p>Calculus isn't just abstract mathematics - it's the precise language that describes how every baseball moves through space. Every pitch, hit, and catch follows these fundamental relationships between position, velocity, and acceleration that calculus makes mathematically exact.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Assessment Section -->
-            <section class="assessment-section">
+            <section class="assessment-section" id="assessment-section">
                 <h2>📝 Week 2 Assessment</h2>
                 
                 <div class="assessment-tabs">
@@ -1620,7 +1757,743 @@
             calculateTrajectory();
         });
     </script>
-    
+
+    <style>
+        /* Floating Table of Contents Styles */
+        .floating-toc {
+            position: fixed;
+            top: 50%;
+            right: -280px;
+            transform: translateY(-50%);
+            width: 300px;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            font-family: var(--font-family-system, system-ui);
+        }
+
+        .floating-toc.open {
+            right: 0;
+        }
+
+        .toc-toggle {
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--color-primary, #1976d2);
+            color: white;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            padding: 12px 8px;
+            cursor: pointer;
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-height: 80px;
+            justify-content: center;
+        }
+
+        .toc-toggle:hover {
+            background: var(--color-primary-hover, #1565c0);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .toc-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .toc-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .toc-content {
+            background: var(--color-surface, white);
+            border-radius: 12px 0 0 12px;
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+            border: 1px solid var(--color-outline, #e0e0e0);
+            border-right: none;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--color-outline-variant, #f0f0f0);
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: 12px 0 0 0;
+        }
+
+        .toc-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--color-on-surface, #333);
+            font-weight: 600;
+        }
+
+        .toc-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-on-surface-muted, #666);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-close:hover {
+            background: var(--color-outline-variant, #f0f0f0);
+            color: var(--color-on-surface, #333);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 16px 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-section {
+            margin-bottom: 16px;
+        }
+
+        .toc-section-title {
+            display: block;
+            padding: 8px 20px;
+            font-weight: 600;
+            color: var(--color-on-surface-variant, #555);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .toc-subsection {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 8px 20px 8px 36px;
+            color: var(--color-on-surface, #333);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.9rem;
+        }
+
+        .toc-link:hover {
+            background: var(--color-surface-container, #f5f5f5);
+            border-left-color: var(--color-primary, #1976d2);
+            color: var(--color-primary, #1976d2);
+        }
+
+        .toc-link.active {
+            background: var(--color-primary, #1976d2);
+            color: white;
+            border-left-color: var(--color-primary, #1976d2);
+            font-weight: 600;
+        }
+
+        .toc-progress {
+            padding: 16px 20px;
+            border-top: 1px solid var(--color-outline-variant, #f0f0f0);
+            background: var(--color-surface-elevated, #f8f9fa);
+        }
+
+        .progress-bar {
+            background: var(--color-outline-variant, #f0f0f0);
+            border-radius: 10px;
+            height: 6px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--color-primary, #1976d2), var(--color-accent, #4caf50));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--color-on-surface-muted, #666);
+            text-align: center;
+            display: block;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .floating-toc {
+                right: -100vw;
+                width: 100vw;
+                top: 0;
+                transform: none;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+            .floating-toc.open {
+                right: 0;
+            }
+
+            .toc-toggle {
+                left: -60px;
+                padding: 16px 12px;
+                min-height: 100px;
+            }
+
+            .toc-content {
+                margin: 80px 20px 20px;
+                border-radius: 12px;
+                border: 1px solid var(--color-outline, #e0e0e0);
+                max-height: calc(100vh - 120px);
+            }
+
+            .toc-header {
+                border-radius: 12px 12px 0 0;
+            }
+        }
+
+        /* Hide TOC on very small screens */
+        @media (max-width: 480px) {
+            .floating-toc {
+                display: none;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .floating-toc,
+            .toc-toggle,
+            .toc-link,
+            .progress-fill {
+                transition: none;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .toc-toggle {
+                border: 2px solid currentColor;
+            }
+
+            .toc-content {
+                border: 2px solid currentColor;
+            }
+
+            .toc-link:hover,
+            .toc-link.active {
+                outline: 2px solid currentColor;
+            }
+        }
+
+        /* Progressive Disclosure Styles */
+        .content-difficulty-selector {
+            margin: 24px 0;
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: 16px;
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .difficulty-tabs {
+            display: flex;
+            background: var(--color-surface, white);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: 4px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .difficulty-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm, 0.375rem);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-family-system, system-ui);
+            font-weight: 500;
+            color: var(--color-on-surface-muted, #666);
+        }
+
+        .difficulty-tab.active {
+            background: var(--color-primary, #1976d2);
+            color: white;
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+            transform: translateY(-1px);
+        }
+
+        .difficulty-tab:hover:not(.active) {
+            background: var(--color-surface-container, #f5f5f5);
+            color: var(--color-on-surface, #333);
+        }
+
+        .tab-icon {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .tab-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .difficulty-content {
+            display: none;
+            margin-top: 24px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Basic Content Styles */
+        .calculus-basics {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: 24px;
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .basic-concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .basic-concept-card {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: 20px;
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .basic-concept-card h4 {
+            color: var(--color-primary, #1976d2);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .example-box {
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-left: 4px solid var(--color-accent, #4caf50);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 0 var(--radius-sm, 0.375rem) var(--radius-sm, 0.375rem) 0;
+        }
+
+        .example-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .example-box p:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        /* Advanced Content Enhancements */
+        .advanced-derivatives {
+            border: 2px solid var(--color-secondary, #ffa726);
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        }
+
+        .advanced-note {
+            background: var(--color-surface, white);
+            border: 1px solid var(--color-secondary, #ffa726);
+            border-radius: var(--radius-sm, 0.375rem);
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .advanced-note p {
+            margin: 0;
+            color: var(--color-on-surface, #333);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments for difficulty tabs */
+        @media (max-width: 600px) {
+            .difficulty-tabs {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .difficulty-tab {
+                justify-content: flex-start;
+                padding: 16px 20px;
+            }
+
+            .basic-concept-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* Animation for content transitions */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .difficulty-content.active {
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .difficulty-tab,
+            .difficulty-content {
+                transition: none;
+            }
+
+            .difficulty-content.active {
+                animation: none;
+            }
+        }
+
+        /* Focus styles for difficulty tabs */
+        .difficulty-tab:focus {
+            outline: 2px solid var(--color-primary, #1976d2);
+            outline-offset: 2px;
+        }
+
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            .difficulty-tab {
+                border: 1px solid currentColor;
+            }
+
+            .difficulty-tab.active {
+                outline: 2px solid currentColor;
+            }
+        }
+
+        /* Enhanced Calculator UI Styles */
+        .enhanced-calculator {
+            background: linear-gradient(135deg, #f8fffe 0%, #f0f9ff 100%);
+            border: 2px solid var(--color-primary, #1976d2);
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .calculator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .calculator-header h4 {
+            margin: 0;
+            color: var(--color-primary, #1976d2);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .calculator-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-icon {
+            font-size: 1.2rem;
+            cursor: help;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .info-icon:hover {
+            opacity: 1;
+        }
+
+        .live-indicator {
+            font-size: 0.8rem;
+            color: var(--color-accent, #4caf50);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .control-group {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: var(--color-surface, white);
+            border-radius: var(--radius-md, 0.5rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            transition: all 0.2s ease;
+        }
+
+        .control-group:hover {
+            border-color: var(--color-primary, #1976d2);
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
+        }
+
+        .control-group[data-tooltip]:hover::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm, 0.375rem);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .control-group[data-tooltip]:hover::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-on-surface, #333);
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--color-outline-variant, #f0f0f0);
+            outline: none;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-primary, #1976d2);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.4);
+        }
+
+        .control-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .indicator-mark {
+            font-size: 0.75rem;
+            color: var(--color-on-surface-muted, #666);
+            background: var(--color-surface-elevated, #f8f9fa);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm, 0.375rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .control-help {
+            font-size: 0.8rem;
+            color: var(--color-on-surface-muted, #666);
+            font-style: italic;
+            margin-top: 8px;
+            padding: 8px;
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: var(--radius-sm, 0.375rem);
+            border-left: 3px solid var(--color-primary, #1976d2);
+        }
+
+        .calculation-mode {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--color-surface-elevated, #f8f9fa);
+            border-radius: var(--radius-md, 0.5rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .calculation-mode-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .calculation-mode-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            background: var(--color-surface, white);
+            border: 2px solid var(--color-outline, #e0e0e0);
+            border-radius: var(--radius-sm, 0.375rem);
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .calculation-mode-label input[type="checkbox"]:checked + .checkmark {
+            background: var(--color-primary, #1976d2);
+            border-color: var(--color-primary, #1976d2);
+        }
+
+        .calculation-mode-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .calculate-button {
+            background: var(--color-primary, #1976d2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--radius-md, 0.5rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+        }
+
+        .calculate-button:hover {
+            background: var(--color-primary-hover, #1565c0);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        .calculate-button:active {
+            transform: translateY(0);
+        }
+
+        .calculate-button:disabled {
+            background: var(--color-outline, #e0e0e0);
+            color: var(--color-on-surface-muted, #666);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Mobile responsiveness for enhanced calculator */
+        @media (max-width: 768px) {
+            .calculator-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .calculation-mode {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .control-group[data-tooltip]:hover::before {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                transform: none;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .control-indicators {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .indicator-mark {
+                flex: 1;
+                text-align: center;
+                min-width: 60px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .control-group,
+            .calculate-button,
+            .control-group input[type="range"]::-webkit-slider-thumb {
+                transition: none;
+            }
+        }
+
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            .enhanced-calculator {
+                border: 3px solid currentColor;
+            }
+
+            .control-group:hover {
+                outline: 2px solid currentColor;
+            }
+        }
+    </style>
+
     <!-- Mobile Navigation Overlay -->
     <div class="nav-overlay" id="nav-overlay"></div>
     
@@ -1672,6 +2545,252 @@
                 if (e.target.matches('a') && window.innerWidth <= 768) {
                     toggleNav();
                 }
+            });
+        });
+
+        // Progressive Disclosure Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const difficultyTabs = document.querySelectorAll('.difficulty-tab');
+            const difficultyContents = document.querySelectorAll('.difficulty-content');
+
+            if (difficultyTabs.length === 0 || difficultyContents.length === 0) return;
+
+            function switchDifficulty(targetLevel) {
+                // Remove active class from all tabs and content
+                difficultyTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                });
+
+                difficultyContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                const activeTab = document.querySelector(`[data-level="${targetLevel}"]`);
+                const activeContent = document.querySelector(`[data-level="${targetLevel}"].difficulty-content`);
+
+                if (activeTab && activeContent) {
+                    activeTab.classList.add('active');
+                    activeTab.setAttribute('aria-selected', 'true');
+
+                    // Small delay for smooth transition
+                    setTimeout(() => {
+                        activeContent.classList.add('active');
+                    }, 50);
+
+                    // Analytics or tracking (if needed)
+                    console.log(`Switched to ${targetLevel} difficulty level`);
+
+                    // Store user preference
+                    try {
+                        localStorage.setItem('preferred-difficulty-level', targetLevel);
+                    } catch (e) {
+                        // Ignore localStorage errors
+                    }
+                }
+            }
+
+            // Add click listeners to difficulty tabs
+            difficultyTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const level = this.getAttribute('data-level');
+                    switchDifficulty(level);
+                });
+
+                // Keyboard navigation
+                tab.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const level = this.getAttribute('data-level');
+                        switchDifficulty(level);
+                    }
+                });
+            });
+
+            // Initialize with user's previous preference or default to basic
+            try {
+                const savedLevel = localStorage.getItem('preferred-difficulty-level') || 'basic';
+                switchDifficulty(savedLevel);
+            } catch (e) {
+                switchDifficulty('basic');
+            }
+
+            // Set up proper ARIA attributes
+            difficultyTabs.forEach((tab, index) => {
+                tab.setAttribute('role', 'tab');
+                tab.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+                tab.setAttribute('tabindex', index === 0 ? '0' : '-1');
+            });
+
+            // Arrow key navigation between tabs
+            let currentTabIndex = 0;
+            document.addEventListener('keydown', function(e) {
+                if (document.activeElement && document.activeElement.classList.contains('difficulty-tab')) {
+                    let newIndex = currentTabIndex;
+
+                    if (e.key === 'ArrowLeft' && currentTabIndex > 0) {
+                        newIndex = currentTabIndex - 1;
+                    } else if (e.key === 'ArrowRight' && currentTabIndex < difficultyTabs.length - 1) {
+                        newIndex = currentTabIndex + 1;
+                    }
+
+                    if (newIndex !== currentTabIndex) {
+                        e.preventDefault();
+                        currentTabIndex = newIndex;
+
+                        // Update tabindex
+                        difficultyTabs.forEach((tab, i) => {
+                            tab.setAttribute('tabindex', i === currentTabIndex ? '0' : '-1');
+                        });
+
+                        // Focus new tab
+                        difficultyTabs[currentTabIndex].focus();
+                    }
+                }
+            });
+        });
+
+        // Floating Table of Contents Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingToc = document.getElementById('floating-toc');
+            const tocToggle = document.getElementById('toc-toggle');
+            const tocClose = document.getElementById('toc-close');
+            const tocContent = document.getElementById('toc-content');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const progressFill = document.getElementById('reading-progress');
+
+            if (!floatingToc || !tocToggle || !tocClose) return;
+
+            // Toggle TOC visibility
+            function toggleToc() {
+                const isOpen = floatingToc.classList.contains('open');
+                floatingToc.classList.toggle('open');
+                tocToggle.setAttribute('aria-expanded', !isOpen);
+
+                if (!isOpen) {
+                    // Focus management when opening
+                    setTimeout(() => {
+                        const firstLink = tocContent.querySelector('.toc-link');
+                        if (firstLink) firstLink.focus();
+                    }, 300);
+                }
+            }
+
+            function closeToc() {
+                floatingToc.classList.remove('open');
+                tocToggle.setAttribute('aria-expanded', 'false');
+                tocToggle.focus();
+            }
+
+            // Event listeners
+            tocToggle.addEventListener('click', toggleToc);
+            tocClose.addEventListener('click', closeToc);
+
+            // Close on link click
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Allow default behavior for navigation
+                    setTimeout(closeToc, 100);
+                });
+            });
+
+            // Close on outside click (mobile)
+            floatingToc.addEventListener('click', (e) => {
+                if (e.target === floatingToc) {
+                    closeToc();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && floatingToc.classList.contains('open')) {
+                    closeToc();
+                }
+            });
+
+            // Active section highlighting and reading progress
+            const sections = document.querySelectorAll('section[id]');
+            const sectionMap = new Map();
+
+            // Build section map
+            sections.forEach(section => {
+                const id = section.id;
+                const link = document.querySelector(`a[href="#${id}"].toc-link`);
+                if (link) {
+                    sectionMap.set(section, link);
+                }
+            });
+
+            // Intersection Observer for active section tracking
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const link = sectionMap.get(entry.target);
+                    if (link) {
+                        if (entry.isIntersecting) {
+                            // Remove active class from all links
+                            tocLinks.forEach(l => l.classList.remove('active'));
+                            // Add active class to current link
+                            link.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sections.forEach(section => sectionObserver.observe(section));
+
+            // Reading progress calculation
+            function updateReadingProgress() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+
+                if (progressFill) {
+                    progressFill.style.width = Math.min(100, Math.max(0, scrolled)) + '%';
+                }
+            }
+
+            // Throttled scroll listener for performance
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(updateReadingProgress);
+                    ticking = true;
+                    setTimeout(() => ticking = false, 16); // ~60fps
+                }
+            }
+
+            window.addEventListener('scroll', requestTick);
+
+            // Initial progress update
+            updateReadingProgress();
+
+            // Smooth scrolling enhancement for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Calculate offset for fixed headers
+                        const headerOffset = 80; // Adjust based on your header height
+                        const elementPosition = targetElement.offsetTop;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
