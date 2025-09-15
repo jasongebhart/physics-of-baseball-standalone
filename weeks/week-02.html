@@ -96,14 +96,52 @@
 
             <section id="objectives" class="day-section">
                 <h2>🎯 Learning Objectives</h2>
-                <ul>
-                    <li>Define projectile motion and identify the forces acting on projectiles</li>
-                    <li>Analyze horizontal and vertical components of projectile motion independently</li>
-                    <li>Apply kinematic equations to predict projectile trajectories</li>
-                    <li>Calculate time of flight, maximum height, and range for projectile motion</li>
-                    <li>Analyze the trajectory of pitched baseballs using projectile motion principles</li>
-                    <li>Use technology to measure and verify projectile motion predictions</li>
-                </ul>
+                <div class="objectives-container">
+                    <ul class="objectives-list">
+                        <li class="objective-item">
+                            <span class="objective-icon">🎯</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Define projectile motion and identify the forces acting on projectiles</span>
+                                <span class="objective-difficulty basic">Basic</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">📊</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Analyze horizontal and vertical components of projectile motion independently</span>
+                                <span class="objective-difficulty intermediate">Intermediate</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🧮</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Apply kinematic equations to predict projectile trajectories</span>
+                                <span class="objective-difficulty intermediate">Intermediate</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">⏱️</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Calculate time of flight, maximum height, and range for projectile motion</span>
+                                <span class="objective-difficulty advanced">Advanced</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">⚾</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Analyze the trajectory of pitched baseballs using projectile motion principles</span>
+                                <span class="objective-difficulty advanced">Advanced</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🔬</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Use technology to measure and verify projectile motion predictions</span>
+                                <span class="objective-difficulty expert">Expert</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </section>
 
             <!-- Week Learning Roadmap -->
@@ -508,20 +546,212 @@
                             </div>
                         </div>
 
-                        <div class="deeper-physics">
-                            <h4>🎯 Vector Analysis in Baseball Context</h4>
-                            <div class="vector-breakdown">
-                                <div class="vector-component">
-                                    <h5>Initial Velocity Vector Decomposition</h5>
-                                    <p><strong>Magnitude:</strong> |v⃗₀| = √(v₀ₓ² + v₀ᵧ²)</p>
-                                    <p><strong>Components:</strong> v₀ₓ = |v⃗₀|cos(θ), v₀ᵧ = |v⃗₀|sin(θ)</p>
-                                    <p><strong>Baseball Application:</strong> A 95 mph fastball (42.5 m/s) thrown at -6° has v₀ₓ = 42.3 m/s and v₀ᵧ = -4.4 m/s</p>
+                        <!-- Enhanced Vector Analysis Section -->
+                        <div class="enhanced-vector-analysis">
+                            <h4>🎯 Interactive Vector Analysis in Baseball Context</h4>
+                            <p class="vector-intro">Explore how velocity vectors decompose and evolve throughout a baseball's flight path</p>
+
+                            <!-- Vector Visualization Interface -->
+                            <div class="vector-visualization-container">
+                                <div class="vector-controls-panel">
+                                    <h5>⚙️ Vector Parameters</h5>
+                                    <div class="vector-control-group">
+                                        <label>Initial Speed: <span id="vector-speed-display">95 mph</span></label>
+                                        <input type="range" id="vector-speed" min="60" max="110" value="95" step="1">
+                                        <div class="speed-indicators">
+                                            <span class="speed-mark" data-speed="70">Changeup</span>
+                                            <span class="speed-mark" data-speed="85">Slider</span>
+                                            <span class="speed-mark" data-speed="95">Fastball</span>
+                                        </div>
+                                    </div>
+                                    <div class="vector-control-group">
+                                        <label>Launch Angle: <span id="vector-angle-display">-6°</span></label>
+                                        <input type="range" id="vector-angle" min="-15" max="15" value="-6" step="1">
+                                        <div class="angle-indicators">
+                                            <span class="angle-mark" data-angle="-10">Sinker</span>
+                                            <span class="angle-mark" data-angle="0">Level</span>
+                                            <span class="angle-mark" data-angle="10">Rising</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="vector-component">
-                                    <h5>Velocity Evolution During Flight</h5>
-                                    <p><strong>Horizontal:</strong> v⃗ₓ(t) = v₀ₓ î (constant vector)</p>
-                                    <p><strong>Vertical:</strong> v⃗ᵧ(t) = (v₀ᵧ - gt) ĵ (changing magnitude)</p>
-                                    <p><strong>Resultant:</strong> v⃗(t) = v₀ₓ î + (v₀ᵧ - gt) ĵ</p>
+
+                                <!-- Interactive Vector Diagram -->
+                                <div class="vector-diagram-container">
+                                    <div class="vector-diagram" id="vector-diagram">
+                                        <svg width="400" height="300" viewBox="0 0 400 300">
+                                            <!-- Grid background -->
+                                            <defs>
+                                                <pattern id="vectorGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e7ff" stroke-width="1"/>
+                                                </pattern>
+                                            </defs>
+                                            <rect width="100%" height="100%" fill="url(#vectorGrid)"/>
+
+                                            <!-- Coordinate axes -->
+                                            <g class="axes">
+                                                <line x1="50" y1="250" x2="350" y2="250" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                <line x1="50" y1="250" x2="50" y2="50" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                <text x="360" y="255" class="axis-label">x</text>
+                                                <text x="45" y="40" class="axis-label">y</text>
+                                                <text x="40" y="265" class="axis-label">0</text>
+                                            </g>
+
+                                            <!-- Arrow markers -->
+                                            <defs>
+                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+                                                </marker>
+                                                <marker id="vector-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#1976d2"/>
+                                                </marker>
+                                                <marker id="component-arrow-x" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+                                                </marker>
+                                                <marker id="component-arrow-y" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+                                                </marker>
+                                            </defs>
+
+                                            <!-- Velocity vectors -->
+                                            <g class="velocity-vectors">
+                                                <!-- Resultant vector -->
+                                                <line id="resultant-vector" x1="50" y1="250" x2="200" y2="200" stroke="#1976d2" stroke-width="4" marker-end="url(#vector-arrow)"/>
+
+                                                <!-- Horizontal component -->
+                                                <line id="horizontal-component" x1="50" y1="250" x2="190" y2="250" stroke="#ef4444" stroke-width="3" marker-end="url(#component-arrow-x)" stroke-dasharray="5,5"/>
+
+                                                <!-- Vertical component -->
+                                                <line id="vertical-component" x1="190" y1="250" x2="190" y2="200" stroke="#22c55e" stroke-width="3" marker-end="url(#component-arrow-y)" stroke-dasharray="5,5"/>
+
+                                                <!-- Angle arc -->
+                                                <path id="angle-arc" d="M 80 250 A 30 30 0 0 0 85 240" stroke="#fbbf24" stroke-width="2" fill="none"/>
+                                                <text id="angle-label" x="95" y="245" class="vector-label" fill="#fbbf24">θ</text>
+                                            </g>
+
+                                            <!-- Vector labels -->
+                                            <g class="vector-labels">
+                                                <text id="resultant-label" x="125" y="220" class="vector-label main-vector">v⃗₀</text>
+                                                <text id="horizontal-label" x="120" y="265" class="vector-label component-x">vₓ</text>
+                                                <text id="vertical-label" x="200" y="225" class="vector-label component-y">vᵧ</text>
+                                            </g>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Live calculations display -->
+                                    <div class="vector-calculations">
+                                        <h5>📊 Live Calculations</h5>
+                                        <div class="calc-grid">
+                                            <div class="calc-item">
+                                                <span class="calc-label">Magnitude:</span>
+                                                <span class="calc-value" id="magnitude-calc">42.5 m/s</span>
+                                            </div>
+                                            <div class="calc-item">
+                                                <span class="calc-label">Horizontal:</span>
+                                                <span class="calc-value component-x" id="horizontal-calc">42.3 m/s</span>
+                                            </div>
+                                            <div class="calc-item">
+                                                <span class="calc-label">Vertical:</span>
+                                                <span class="calc-value component-y" id="vertical-calc">-4.4 m/s</span>
+                                            </div>
+                                            <div class="calc-item">
+                                                <span class="calc-label">Angle:</span>
+                                                <span class="calc-value" id="angle-calc">-6°</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Vector Evolution Timeline -->
+                            <div class="vector-evolution-section">
+                                <h5>⏱️ Vector Evolution During Flight</h5>
+                                <div class="evolution-timeline">
+                                    <div class="timeline-controls">
+                                        <label>Flight Time: <span id="time-display">0.0s</span></label>
+                                        <input type="range" id="time-slider" min="0" max="100" value="0" step="1">
+                                        <button id="play-evolution" class="evolution-btn">▶️ Play</button>
+                                        <button id="reset-evolution" class="evolution-btn">🔄 Reset</button>
+                                    </div>
+
+                                    <div class="evolution-cards">
+                                        <div class="evolution-card horizontal-evolution">
+                                            <h6>↔️ Horizontal Component</h6>
+                                            <div class="evolution-equation">vₓ(t) = <span id="vx-constant">42.3</span> m/s</div>
+                                            <div class="evolution-description">Remains constant throughout flight</div>
+                                            <div class="evolution-visual">
+                                                <div class="constant-line"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="evolution-card vertical-evolution">
+                                            <h6>📉 Vertical Component</h6>
+                                            <div class="evolution-equation">vᵧ(t) = <span id="vy-initial">-4.4</span> - 9.8t</div>
+                                            <div class="evolution-description">Changes linearly with gravity</div>
+                                            <div class="evolution-visual">
+                                                <div class="linear-line" id="vertical-line"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="evolution-card resultant-evolution">
+                                            <h6>🎯 Resultant Magnitude</h6>
+                                            <div class="evolution-equation">|v⃗(t)| = √(vₓ² + vᵧ(t)²)</div>
+                                            <div class="evolution-description">Minimum at trajectory peak</div>
+                                            <div class="evolution-visual">
+                                                <div class="curved-line" id="resultant-line"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Baseball Context Applications -->
+                            <div class="baseball-applications">
+                                <h5>⚾ Real Baseball Applications</h5>
+                                <div class="application-scenarios">
+                                    <div class="scenario-card">
+                                        <div class="scenario-header">
+                                            <span class="scenario-icon">🔥</span>
+                                            <h6>Fastball Analysis</h6>
+                                        </div>
+                                        <div class="scenario-content">
+                                            <p><strong>Typical Values:</strong> 90-105 mph, -5° to -10° angle</p>
+                                            <p><strong>Vector Strategy:</strong> Maximize horizontal component for speed, minimize vertical drop</p>
+                                            <div class="scenario-calculation">
+                                                <span>100 mph at -8°:</span>
+                                                <span>vₓ = 44.4 m/s, vᵧ = -6.2 m/s</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="scenario-card">
+                                        <div class="scenario-header">
+                                            <span class="scenario-icon">📈</span>
+                                            <h6>Curveball Physics</h6>
+                                        </div>
+                                        <div class="scenario-content">
+                                            <p><strong>Typical Values:</strong> 70-85 mph, -15° to -25° angle</p>
+                                            <p><strong>Vector Strategy:</strong> Larger vertical component creates dramatic drop</p>
+                                            <div class="scenario-calculation">
+                                                <span>75 mph at -20°:</span>
+                                                <span>vₓ = 31.5 m/s, vᵧ = -11.5 m/s</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="scenario-card">
+                                        <div class="scenario-header">
+                                            <span class="scenario-icon">🏠</span>
+                                            <h6>Home Run Launch</h6>
+                                        </div>
+                                        <div class="scenario-content">
+                                            <p><strong>Typical Values:</strong> 95-110 mph, 25° to 35° angle</p>
+                                            <p><strong>Vector Strategy:</strong> Balance horizontal distance with vertical height</p>
+                                            <div class="scenario-calculation">
+                                                <span>105 mph at 28°:</span>
+                                                <span>vₓ = 41.4 m/s, vᵧ = 22.0 m/s</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3576,6 +3806,848 @@
         *[class*="progress"][style*="position: fixed"] {
             display: none !important;
         }
+
+        /* Enhanced Vector Analysis Styles */
+        .enhanced-vector-analysis {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: var(--radius-xl, 1rem);
+            padding: var(--space-2xl, 2.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+            border: 2px solid var(--color-secondary, #ffa726);
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .vector-intro {
+            text-align: center;
+            font-size: var(--font-size-lg, 1.125rem);
+            color: var(--color-on-surface-variant, #555);
+            margin: 0 0 var(--space-xl, 2.618rem) 0;
+            font-style: italic;
+        }
+
+        /* Vector Visualization Container */
+        .vector-visualization-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl, 2.618rem);
+            margin-bottom: var(--space-xl, 2.618rem);
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-lg, 1.618rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        /* Vector Controls Panel */
+        .vector-controls-panel {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-lg, 1.618rem);
+            border: 1px solid var(--color-secondary, #ffa726);
+        }
+
+        .vector-controls-panel h5 {
+            margin: 0 0 var(--space-md, 1rem) 0;
+            color: var(--color-secondary, #ffa726);
+            font-weight: 600;
+        }
+
+        .vector-control-group {
+            margin-bottom: var(--space-lg, 1.618rem);
+        }
+
+        .vector-control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .vector-control-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-sm, 0.5rem);
+            color: var(--color-on-surface, #333);
+        }
+
+        .vector-control-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--color-outline-variant, #f0f0f0);
+            outline: none;
+            margin: var(--space-sm, 0.5rem) 0;
+            cursor: pointer;
+        }
+
+        .vector-control-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-secondary, #ffa726);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .vector-control-group input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 8px rgba(255, 167, 38, 0.4);
+        }
+
+        .speed-indicators, .angle-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-sm, 0.5rem);
+        }
+
+        .speed-mark, .angle-mark {
+            font-size: 0.75rem;
+            color: var(--color-on-surface-muted, #666);
+            background: var(--color-surface, white);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm, 0.375rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            font-weight: 500;
+        }
+
+        /* Vector Diagram */
+        .vector-diagram-container {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-lg, 1.618rem);
+            border: 1px solid var(--color-primary, #1976d2);
+        }
+
+        .vector-diagram {
+            text-align: center;
+            margin-bottom: var(--space-md, 1rem);
+        }
+
+        .vector-diagram svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm, 0.375rem);
+            background: var(--color-surface, white);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .axis-label {
+            font-size: 14px;
+            font-weight: 600;
+            fill: #64748b;
+        }
+
+        .vector-label {
+            font-size: 16px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        .vector-label.main-vector {
+            fill: #1976d2;
+        }
+
+        .vector-label.component-x {
+            fill: #ef4444;
+        }
+
+        .vector-label.component-y {
+            fill: #22c55e;
+        }
+
+        /* Vector Calculations */
+        .vector-calculations {
+            margin-top: var(--space-md, 1rem);
+        }
+
+        .vector-calculations h5 {
+            margin: 0 0 var(--space-md, 1rem) 0;
+            color: var(--color-primary, #1976d2);
+            font-weight: 600;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm, 0.5rem);
+        }
+
+        .calc-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-sm, 0.5rem);
+            background: var(--color-surface, white);
+            border-radius: var(--radius-sm, 0.375rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .calc-label {
+            font-weight: 600;
+            color: var(--color-on-surface-variant, #555);
+        }
+
+        .calc-value {
+            font-family: var(--font-family-mono, monospace);
+            font-weight: 700;
+            color: var(--color-on-surface, #333);
+        }
+
+        .calc-value.component-x {
+            color: #ef4444;
+        }
+
+        .calc-value.component-y {
+            color: #22c55e;
+        }
+
+        /* Vector Evolution Section */
+        .vector-evolution-section {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-xl, 2.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+            border: 2px solid var(--color-accent, #4caf50);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        .vector-evolution-section h5 {
+            text-align: center;
+            color: var(--color-accent, #4caf50);
+            margin-bottom: var(--space-lg, 1.618rem);
+            font-weight: 600;
+        }
+
+        .timeline-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md, 1rem);
+            margin-bottom: var(--space-xl, 2.618rem);
+            padding: var(--space-lg, 1.618rem);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            border: 1px solid var(--color-accent, #4caf50);
+            flex-wrap: wrap;
+        }
+
+        .timeline-controls label {
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+            white-space: nowrap;
+        }
+
+        .timeline-controls input[type="range"] {
+            flex: 1;
+            min-width: 200px;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--color-outline-variant, #f0f0f0);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .timeline-controls input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-accent, #4caf50);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .evolution-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--color-accent, #4caf50);
+            background: var(--color-surface, white);
+            border-radius: var(--radius-sm, 0.375rem);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .evolution-btn:hover {
+            background: var(--color-accent, #4caf50);
+            color: white;
+        }
+
+        /* Evolution Cards */
+        .evolution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg, 1.618rem);
+        }
+
+        .evolution-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            border-radius: var(--radius-md, 0.5rem);
+            padding: var(--space-lg, 1.618rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            transition: all 0.3s ease;
+        }
+
+        .evolution-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        .horizontal-evolution {
+            border-top: 4px solid #ef4444;
+        }
+
+        .vertical-evolution {
+            border-top: 4px solid #22c55e;
+        }
+
+        .resultant-evolution {
+            border-top: 4px solid #1976d2;
+        }
+
+        .evolution-card h6 {
+            margin: 0 0 var(--space-sm, 0.5rem) 0;
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+        }
+
+        .evolution-equation {
+            font-family: var(--font-family-mono, monospace);
+            background: var(--color-surface, white);
+            padding: var(--space-sm, 0.5rem);
+            border-radius: var(--radius-sm, 0.375rem);
+            margin: var(--space-sm, 0.5rem) 0;
+            font-weight: 600;
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .evolution-description {
+            font-size: 0.9rem;
+            color: var(--color-on-surface-variant, #555);
+            font-style: italic;
+            margin-bottom: var(--space-md, 1rem);
+        }
+
+        .evolution-visual {
+            height: 60px;
+            background: var(--color-surface, white);
+            border-radius: var(--radius-sm, 0.375rem);
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .constant-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #ef4444;
+            transform: translateY(-50%);
+        }
+
+        .linear-line {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            transform: skew(-20deg);
+        }
+
+        .curved-line {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            right: 10%;
+            bottom: 20%;
+            background: #1976d2;
+            border-radius: 50% 50% 0 50%;
+        }
+
+        /* Baseball Applications */
+        .baseball-applications {
+            background: linear-gradient(135deg, #fefbff 0%, #f3e8ff 100%);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-xl, 2.618rem);
+            margin: var(--space-xl, 2.618rem) 0;
+            border: 2px solid var(--color-tertiary, #9c27b0);
+            box-shadow: var(--shadow-elevation-2, 0 3px 6px rgba(0,0,0,0.15));
+        }
+
+        .baseball-applications h5 {
+            text-align: center;
+            color: var(--color-tertiary, #9c27b0);
+            margin-bottom: var(--space-lg, 1.618rem);
+            font-weight: 600;
+        }
+
+        .application-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg, 1.618rem);
+        }
+
+        .scenario-card {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-md, 0.5rem);
+            overflow: hidden;
+            box-shadow: var(--shadow-elevation-1, 0 1px 3px rgba(0,0,0,0.12));
+            border: 1px solid var(--color-outline-variant, #f0f0f0);
+            transition: all 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevation-3, 0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .scenario-header {
+            background: linear-gradient(135deg, var(--color-surface-elevated, #f8f9fa), var(--color-surface, white));
+            padding: var(--space-md, 1rem);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm, 0.5rem);
+            border-bottom: 1px solid var(--color-outline-variant, #f0f0f0);
+        }
+
+        .scenario-icon {
+            font-size: var(--font-size-xl, 1.25rem);
+        }
+
+        .scenario-header h6 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+        }
+
+        .scenario-content {
+            padding: var(--space-md, 1rem);
+        }
+
+        .scenario-content p {
+            margin: 0 0 var(--space-sm, 0.5rem) 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .scenario-calculation {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: var(--space-sm, 0.5rem);
+            border-radius: var(--radius-sm, 0.375rem);
+            margin-top: var(--space-sm, 0.5rem);
+            border-left: 4px solid var(--color-primary, #1976d2);
+            font-family: var(--font-family-mono, monospace);
+            font-size: 0.85rem;
+        }
+
+        .scenario-calculation span {
+            display: block;
+            margin: 2px 0;
+        }
+
+        .scenario-calculation span:first-child {
+            font-weight: 600;
+            color: var(--color-on-surface, #333);
+        }
+
+        .scenario-calculation span:last-child {
+            color: var(--color-primary, #1976d2);
+            font-weight: 700;
+        }
+
+        /* Mobile responsiveness for vector analysis */
+        @media (max-width: 768px) {
+            .enhanced-vector-analysis {
+                padding: var(--space-lg, 1.618rem);
+                margin: var(--space-lg, 1.618rem) 0;
+            }
+
+            .vector-visualization-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg, 1.618rem);
+            }
+
+            .timeline-controls {
+                flex-direction: column;
+                gap: var(--space-sm, 0.5rem);
+                align-items: stretch;
+            }
+
+            .timeline-controls input[type="range"] {
+                min-width: auto;
+            }
+
+            .evolution-cards {
+                grid-template-columns: 1fr;
+                gap: var(--space-md, 1rem);
+            }
+
+            .application-scenarios {
+                grid-template-columns: 1fr;
+                gap: var(--space-md, 1rem);
+            }
+
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .evolution-card,
+            .scenario-card,
+            .vector-control-group input[type="range"]::-webkit-slider-thumb {
+                transition: none;
+            }
+        }
+
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            .evolution-card,
+            .scenario-card,
+            .vector-controls-panel {
+                border: 2px solid currentColor;
+            }
+        }
+
+        /* Key Trajectory Formulas Styling */
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg, 1.618rem);
+            margin: var(--space-xl, 2rem) 0;
+        }
+
+        .formula-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid var(--color-primary, #1976d2);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-lg, 1.618rem);
+            box-shadow: var(--shadow-elevation-2, 0 4px 8px rgba(25, 118, 210, 0.1));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formula-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary, #1976d2), var(--color-secondary, #ffa726));
+        }
+
+        .formula-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevation-3, 0 8px 16px rgba(25, 118, 210, 0.15));
+            border-color: var(--color-secondary, #ffa726);
+        }
+
+        .formula-card h5 {
+            color: var(--color-primary, #1976d2);
+            font-size: var(--font-size-lg, 1.125rem);
+            font-weight: 600;
+            margin: 0 0 var(--space-md, 1rem) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm, 0.5rem);
+        }
+
+        .formula-card h5::before {
+            content: '📐';
+            font-size: 1.2em;
+        }
+
+        .formula-card p {
+            margin: var(--space-sm, 0.5rem) 0;
+            line-height: 1.6;
+        }
+
+        .formula-card p strong {
+            color: var(--color-on-surface, #333);
+            font-weight: 600;
+        }
+
+        .formula-card sub {
+            font-size: 0.75em;
+            color: var(--color-primary, #1976d2);
+        }
+
+        .formula-note {
+            font-style: italic;
+            color: var(--color-on-surface-variant, #666) !important;
+            font-size: 0.9em;
+            margin-top: var(--space-md, 1rem) !important;
+            padding: var(--space-sm, 0.5rem);
+            background: rgba(25, 118, 210, 0.05);
+            border-radius: var(--radius-sm, 0.25rem);
+            border-left: 3px solid var(--color-primary, #1976d2);
+        }
+
+        /* Real-World Considerations Styling */
+        .real-world-factors {
+            margin: var(--space-2xl, 2.618rem) 0;
+            background: linear-gradient(135deg, #fefbef 0%, #fef3c7 100%);
+            border-radius: var(--radius-xl, 1rem);
+            padding: var(--space-xl, 2rem);
+            border: 2px solid var(--color-secondary, #ffa726);
+            box-shadow: var(--shadow-elevation-2, 0 4px 8px rgba(255, 167, 38, 0.1));
+        }
+
+        .real-world-factors h4 {
+            color: var(--color-secondary, #ffa726);
+            font-size: var(--font-size-xl, 1.25rem);
+            font-weight: 700;
+            margin: 0 0 var(--space-lg, 1.618rem) 0;
+            text-align: center;
+        }
+
+        .factor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg, 1.618rem);
+        }
+
+        .factor-item {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-lg, 1.618rem);
+            display: flex;
+            gap: var(--space-md, 1rem);
+            box-shadow: var(--shadow-elevation-1, 0 2px 4px rgba(0, 0, 0, 0.1));
+            border: 1px solid rgba(255, 167, 38, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .factor-item:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-elevation-2, 0 4px 8px rgba(255, 167, 38, 0.15));
+            border-color: var(--color-secondary, #ffa726);
+        }
+
+        .factor-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 0.25rem;
+        }
+
+        .factor-content h5 {
+            color: var(--color-on-surface, #333);
+            font-size: var(--font-size-md, 1rem);
+            font-weight: 600;
+            margin: 0 0 var(--space-sm, 0.5rem) 0;
+        }
+
+        .factor-content p {
+            color: var(--color-on-surface-variant, #666);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments for formulas */
+        @media (max-width: 768px) {
+            .formula-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md, 1rem);
+            }
+
+            .factor-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md, 1rem);
+            }
+
+            .formula-card {
+                padding: var(--space-md, 1rem);
+            }
+
+            .real-world-factors {
+                padding: var(--space-lg, 1.618rem);
+                margin: var(--space-lg, 1.618rem) 0;
+            }
+
+            .factor-item {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm, 0.5rem);
+            }
+
+            .factor-icon {
+                align-self: center;
+                padding-top: 0;
+            }
+        }
+
+        /* Enhanced Learning Objectives Styling */
+        .objectives-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: var(--radius-xl, 1rem);
+            padding: var(--space-xl, 2rem);
+            margin: var(--space-lg, 1.618rem) 0;
+            border: 2px solid var(--color-primary, #1976d2);
+            box-shadow: var(--shadow-elevation-2, 0 4px 8px rgba(25, 118, 210, 0.1));
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: var(--space-md, 1rem);
+        }
+
+        .objective-item {
+            background: var(--color-surface, white);
+            border-radius: var(--radius-lg, 0.75rem);
+            padding: var(--space-lg, 1.618rem);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md, 1rem);
+            box-shadow: var(--shadow-elevation-1, 0 2px 4px rgba(0, 0, 0, 0.1));
+            border: 1px solid rgba(25, 118, 210, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .objective-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary, #1976d2), var(--color-secondary, #ffa726));
+            border-radius: var(--radius-lg, 0.75rem) var(--radius-lg, 0.75rem) 0 0;
+        }
+
+        .objective-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevation-3, 0 8px 16px rgba(25, 118, 210, 0.15));
+            border-color: var(--color-primary, #1976d2);
+        }
+
+        .objective-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--color-primary, #1976d2), #1565c0);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .objective-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm, 0.5rem);
+        }
+
+        .objective-text {
+            color: var(--color-on-surface, #333);
+            font-size: var(--font-size-md, 1rem);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .objective-difficulty {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full, 9999px);
+            align-self: flex-start;
+            border: 1px solid;
+        }
+
+        .objective-difficulty.basic {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            border-color: #22c55e;
+        }
+
+        .objective-difficulty.intermediate {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            color: #92400e;
+            border-color: #f59e0b;
+        }
+
+        .objective-difficulty.advanced {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            color: #be185d;
+            border-color: #ec4899;
+        }
+
+        .objective-difficulty.expert {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            color: #6b21a8;
+            border-color: #a855f7;
+        }
+
+        /* Interactive objective completion feature */
+        .objective-item.completed {
+            opacity: 0.7;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        }
+
+        .objective-item.completed .objective-icon {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .objective-item.completed .objective-text {
+            text-decoration: line-through;
+            color: var(--color-on-surface-variant, #666);
+        }
+
+        /* Responsive design for objectives */
+        @media (max-width: 768px) {
+            .objectives-container {
+                padding: var(--space-lg, 1.618rem);
+                margin: var(--space-md, 1rem) 0;
+            }
+
+            .objective-item {
+                padding: var(--space-md, 1rem);
+                gap: var(--space-sm, 0.75rem);
+            }
+
+            .objective-icon {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+
+            .objective-text {
+                font-size: 0.9rem;
+            }
+
+            .objective-difficulty {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        /* Animation for objective completion */
+        @keyframes objectiveComplete {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .objective-item.just-completed {
+            animation: objectiveComplete 0.6s ease-in-out;
+        }
     </style>
 
     <!-- Mobile Navigation Overlay -->
@@ -3800,6 +4872,299 @@
             updateSpeedDisplay();
             resetAnimation();
             animate();
+        });
+
+        // Interactive Learning Objectives Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const objectiveItems = document.querySelectorAll('.objective-item');
+
+            objectiveItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const isCompleted = this.classList.contains('completed');
+
+                    if (isCompleted) {
+                        // Uncomplete the objective
+                        this.classList.remove('completed');
+                        this.setAttribute('aria-checked', 'false');
+                    } else {
+                        // Complete the objective with animation
+                        this.classList.add('just-completed');
+                        this.classList.add('completed');
+                        this.setAttribute('aria-checked', 'true');
+
+                        // Remove animation class after animation completes
+                        setTimeout(() => {
+                            this.classList.remove('just-completed');
+                        }, 600);
+                    }
+                });
+
+                // Add ARIA attributes for accessibility
+                item.setAttribute('role', 'checkbox');
+                item.setAttribute('aria-checked', 'false');
+                item.setAttribute('tabindex', '0');
+
+                // Add keyboard support
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+
+        // Enhanced Vector Analysis Interactive Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const vectorSpeedControl = document.getElementById('vector-speed');
+            const vectorAngleControl = document.getElementById('vector-angle');
+            const vectorSpeedDisplay = document.getElementById('vector-speed-display');
+            const vectorAngleDisplay = document.getElementById('vector-angle-display');
+            const timeSlider = document.getElementById('time-slider');
+            const timeDisplay = document.getElementById('time-display');
+            const playEvolutionBtn = document.getElementById('play-evolution');
+            const resetEvolutionBtn = document.getElementById('reset-evolution');
+
+            if (!vectorSpeedControl || !vectorAngleControl) return; // Exit if not found
+
+            let evolutionAnimationId;
+            let isEvolutionPlaying = false;
+
+            // Unit conversion function
+            function mphToMs(mph) {
+                return mph * 0.44704; // Convert mph to m/s
+            }
+
+            function msToMph(ms) {
+                return ms / 0.44704; // Convert m/s to mph
+            }
+
+            // Vector calculation functions
+            function calculateVectorComponents(speedMph, angleDeg) {
+                const speedMs = mphToMs(speedMph);
+                const angleRad = angleDeg * Math.PI / 180;
+
+                return {
+                    speedMs: speedMs,
+                    speedMph: speedMph,
+                    angle: angleDeg,
+                    vx: speedMs * Math.cos(angleRad),
+                    vy: speedMs * Math.sin(angleRad),
+                    magnitude: speedMs
+                };
+            }
+
+            function updateVectorDiagram(components) {
+                const scale = 3; // Scale factor for visualization
+                const originX = 50;
+                const originY = 250;
+
+                // Calculate scaled components
+                const scaledVx = components.vx * scale;
+                const scaledVy = -components.vy * scale; // Negative for SVG coordinate system
+
+                // Update resultant vector
+                const resultantVector = document.getElementById('resultant-vector');
+                if (resultantVector) {
+                    resultantVector.setAttribute('x2', originX + scaledVx);
+                    resultantVector.setAttribute('y2', originY + scaledVy);
+                }
+
+                // Update horizontal component
+                const horizontalComponent = document.getElementById('horizontal-component');
+                if (horizontalComponent) {
+                    horizontalComponent.setAttribute('x2', originX + scaledVx);
+                    horizontalComponent.setAttribute('y2', originY);
+                }
+
+                // Update vertical component
+                const verticalComponent = document.getElementById('vertical-component');
+                if (verticalComponent) {
+                    verticalComponent.setAttribute('x1', originX + scaledVx);
+                    verticalComponent.setAttribute('x2', originX + scaledVx);
+                    verticalComponent.setAttribute('y2', originY + scaledVy);
+                }
+
+                // Update angle arc
+                const angleArc = document.getElementById('angle-arc');
+                const angleLabel = document.getElementById('angle-label');
+                if (angleArc && angleLabel && components.angle !== 0) {
+                    const arcRadius = 30;
+                    const endAngle = components.angle * Math.PI / 180;
+                    const arcEndX = originX + arcRadius * Math.cos(endAngle);
+                    const arcEndY = originY - arcRadius * Math.sin(endAngle);
+
+                    const sweep = components.angle > 0 ? 1 : 0;
+                    const arcPath = `M ${originX + arcRadius} ${originY} A ${arcRadius} ${arcRadius} 0 0 ${sweep} ${arcEndX} ${arcEndY}`;
+                    angleArc.setAttribute('d', arcPath);
+
+                    // Position angle label
+                    angleLabel.setAttribute('x', originX + arcRadius * 1.3 * Math.cos(endAngle / 2));
+                    angleLabel.setAttribute('y', originY - arcRadius * 1.3 * Math.sin(endAngle / 2) + 5);
+                }
+
+                // Update vector labels positions
+                const resultantLabel = document.getElementById('resultant-label');
+                const horizontalLabel = document.getElementById('horizontal-label');
+                const verticalLabel = document.getElementById('vertical-label');
+
+                if (resultantLabel) {
+                    resultantLabel.setAttribute('x', originX + scaledVx / 2);
+                    resultantLabel.setAttribute('y', originY + scaledVy / 2 - 10);
+                }
+
+                if (horizontalLabel) {
+                    horizontalLabel.setAttribute('x', originX + scaledVx / 2);
+                    horizontalLabel.setAttribute('y', originY + 20);
+                }
+
+                if (verticalLabel) {
+                    verticalLabel.setAttribute('x', originX + scaledVx + 15);
+                    verticalLabel.setAttribute('y', originY + scaledVy / 2);
+                }
+            }
+
+            function updateCalculations(components) {
+                // Update live calculations
+                const magnitudeCalc = document.getElementById('magnitude-calc');
+                const horizontalCalc = document.getElementById('horizontal-calc');
+                const verticalCalc = document.getElementById('vertical-calc');
+                const angleCalc = document.getElementById('angle-calc');
+
+                if (magnitudeCalc) magnitudeCalc.textContent = `${components.speedMs.toFixed(1)} m/s`;
+                if (horizontalCalc) horizontalCalc.textContent = `${components.vx.toFixed(1)} m/s`;
+                if (verticalCalc) verticalCalc.textContent = `${components.vy.toFixed(1)} m/s`;
+                if (angleCalc) angleCalc.textContent = `${components.angle}°`;
+
+                // Update evolution equations
+                const vxConstant = document.getElementById('vx-constant');
+                const vyInitial = document.getElementById('vy-initial');
+
+                if (vxConstant) vxConstant.textContent = components.vx.toFixed(1);
+                if (vyInitial) vyInitial.textContent = components.vy.toFixed(1);
+            }
+
+            function updateControls() {
+                const speed = parseFloat(vectorSpeedControl.value);
+                const angle = parseFloat(vectorAngleControl.value);
+
+                vectorSpeedDisplay.textContent = `${speed} mph`;
+                vectorAngleDisplay.textContent = `${angle}°`;
+
+                const components = calculateVectorComponents(speed, angle);
+                updateVectorDiagram(components);
+                updateCalculations(components);
+            }
+
+            function updateEvolutionTimeline() {
+                const timePercent = parseFloat(timeSlider.value);
+                const maxFlightTime = 5; // seconds
+                const currentTime = (timePercent / 100) * maxFlightTime;
+
+                timeDisplay.textContent = `${currentTime.toFixed(1)}s`;
+
+                // Calculate current velocity components
+                const components = calculateVectorComponents(
+                    parseFloat(vectorSpeedControl.value),
+                    parseFloat(vectorAngleControl.value)
+                );
+
+                const currentVy = components.vy - 9.8 * currentTime;
+                const currentMagnitude = Math.sqrt(components.vx * components.vx + currentVy * currentVy);
+
+                // Update evolution visuals (simplified representations)
+                const verticalLine = document.getElementById('vertical-line');
+                const resultantLine = document.getElementById('resultant-line');
+
+                if (verticalLine) {
+                    const progress = timePercent;
+                    verticalLine.style.background = `linear-gradient(135deg, #22c55e ${progress}%, #16a34a ${progress}%)`;
+                }
+
+                if (resultantLine) {
+                    const normalizedMagnitude = Math.max(20, (currentMagnitude / components.magnitude) * 100);
+                    resultantLine.style.background = `#1976d2`;
+                    resultantLine.style.transform = `scaleY(${normalizedMagnitude / 100})`;
+                }
+            }
+
+            function playEvolution() {
+                if (isEvolutionPlaying) {
+                    isEvolutionPlaying = false;
+                    playEvolutionBtn.textContent = '▶️ Play';
+                    cancelAnimationFrame(evolutionAnimationId);
+                    return;
+                }
+
+                isEvolutionPlaying = true;
+                playEvolutionBtn.textContent = '⏸️ Pause';
+
+                const startTime = Date.now();
+                const duration = 5000; // 5 seconds
+
+                function animate() {
+                    if (!isEvolutionPlaying) return;
+
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min((elapsed / duration) * 100, 100);
+
+                    timeSlider.value = progress;
+                    updateEvolutionTimeline();
+
+                    if (progress < 100) {
+                        evolutionAnimationId = requestAnimationFrame(animate);
+                    } else {
+                        isEvolutionPlaying = false;
+                        playEvolutionBtn.textContent = '▶️ Play';
+                    }
+                }
+
+                animate();
+            }
+
+            function resetEvolution() {
+                isEvolutionPlaying = false;
+                playEvolutionBtn.textContent = '▶️ Play';
+                cancelAnimationFrame(evolutionAnimationId);
+                timeSlider.value = 0;
+                updateEvolutionTimeline();
+            }
+
+            // Event listeners
+            vectorSpeedControl.addEventListener('input', updateControls);
+            vectorAngleControl.addEventListener('input', updateControls);
+            timeSlider.addEventListener('input', updateEvolutionTimeline);
+
+            if (playEvolutionBtn) playEvolutionBtn.addEventListener('click', playEvolution);
+            if (resetEvolutionBtn) resetEvolutionBtn.addEventListener('click', resetEvolution);
+
+            // Initialize
+            updateControls();
+            updateEvolutionTimeline();
+
+            // Add hover effects for speed/angle indicators
+            const speedMarks = document.querySelectorAll('.speed-mark');
+            const angleMarks = document.querySelectorAll('.angle-mark');
+
+            speedMarks.forEach(mark => {
+                mark.addEventListener('click', function() {
+                    const speed = this.getAttribute('data-speed');
+                    if (speed) {
+                        vectorSpeedControl.value = speed;
+                        updateControls();
+                    }
+                });
+            });
+
+            angleMarks.forEach(mark => {
+                mark.addEventListener('click', function() {
+                    const angle = this.getAttribute('data-angle');
+                    if (angle) {
+                        vectorAngleControl.value = angle;
+                        updateControls();
+                    }
+                });
+            });
         });
 
         // Progressive Disclosure Functionality
