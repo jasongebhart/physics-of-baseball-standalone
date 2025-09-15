@@ -31,7 +31,9 @@
       "Bash(dir:*)",
       "Bash(find:*)",
       "Bash(pip install:*)",
-      "Bash(del nul)"
+      "Bash(del nul)",
+      "Bash(git pull:*)",
+      "Bash(gh run list:*)"
     ],
     "deny": [],
     "ask": []
