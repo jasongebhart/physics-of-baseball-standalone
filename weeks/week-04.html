@@ -7,6 +7,200 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
+    <style>
+        /* Enhanced Week 4 Momentum and Impulse Styling */
+        .enhanced-momentum-analyzer {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid #cbd5e0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .analyzer-intro {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .momentum-calculator-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .calculator-controls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .control-section {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+
+        .control-section input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            outline: none;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+
+        .control-section input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .control-section input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 8px rgba(59, 130, 246, 0.4);
+        }
+
+        .mass-indicators,
+        .velocity-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .mass-mark,
+        .velocity-mark {
+            font-size: 0.75rem;
+            color: #6b7280;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+        }
+
+        .calculations-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background: #f0f9ff;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #0ea5e9;
+        }
+
+        .calc-result {
+            text-align: center;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .calc-label {
+            display: block;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .calc-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .momentum-value {
+            color: #dc2626;
+        }
+
+        .velocity-value {
+            color: #059669;
+        }
+
+        .energy-value {
+            color: #7c3aed;
+        }
+
+        .momentum-diagram-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .momentum-diagram svg {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .object-label {
+            font-size: 14px;
+            fill: white;
+            font-weight: bold;
+        }
+
+        .vector-label {
+            font-size: 12px;
+            fill: #1976d2;
+            font-weight: 600;
+        }
+
+        .vector-label-small {
+            font-size: 10px;
+            fill: #2196f3;
+            font-weight: 500;
+        }
+
+        .scale-text,
+        .legend-text {
+            font-size: 10px;
+            fill: #6b7280;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .calculator-controls-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .calculations-display {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .enhanced-momentum-analyzer {
+                padding: 16px;
+                margin: 16px 0;
+            }
+
+            .momentum-diagram svg {
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,12 +221,161 @@
 
             <section id="objectives" class="day-section">
                 <h2>🎯 Learning Objectives</h2>
-                <ul>
-                    <li>Define and calculate momentum and impulse in physical systems</li>
-                    <li>Apply the impulse-momentum theorem to analyze pitching mechanics</li>
-                    <li>Explain how momentum is transferred through the kinetic chain during pitching</li>
-                    <li>Measure and analyze the relationship between impulse and pitch velocity</li>
-                </ul>
+                <div class="objectives-container">
+                    <ul class="objectives-list">
+                        <li class="objective-item">
+                            <span class="objective-icon">📐</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Define and calculate momentum and impulse in physical systems</span>
+                                <span class="objective-difficulty basic">Basic</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">⚡</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Apply the impulse-momentum theorem to analyze pitching mechanics</span>
+                                <span class="objective-difficulty advanced">Advanced</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🔗</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Explain how momentum is transferred through the kinetic chain during pitching</span>
+                                <span class="objective-difficulty intermediate">Intermediate</span>
+                            </div>
+                        </li>
+                        <li class="objective-item">
+                            <span class="objective-icon">🔬</span>
+                            <div class="objective-content">
+                                <span class="objective-text">Measure and analyze the relationship between impulse and pitch velocity</span>
+                                <span class="objective-difficulty expert">Expert</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Week Learning Roadmap -->
+            <section class="week-roadmap-container" aria-labelledby="roadmap-title">
+                <div class="roadmap-header">
+                    <h2 id="roadmap-title">🛤️ Week 4 Learning Journey: Mastering Momentum and Impulse</h2>
+                    <p class="roadmap-subtitle">Explore the physics of momentum transfer and discover how impulse determines pitch effectiveness</p>
+                </div>
+
+                <div class="roadmap-content">
+                    <div class="roadmap-steps">
+                        <div class="roadmap-step" data-step="1">
+                            <div class="step-marker">
+                                <span class="step-number">1</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">📐 Momentum Fundamentals</h3>
+                                <p class="step-description">Master the concept of momentum (p = mv) and understand its vector nature in baseball physics</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">p = mv</span>
+                                    <span class="skill-tag">Vector Quantity</span>
+                                    <span class="skill-tag">Conservation Laws</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="2">
+                            <div class="step-marker">
+                                <span class="step-number">2</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">⚡ Impulse Mechanics</h3>
+                                <p class="step-description">Understand impulse (J = FΔt) and how force applied over time changes momentum</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">J = FΔt</span>
+                                    <span class="skill-tag">Contact Time</span>
+                                    <span class="skill-tag">Force Application</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="3">
+                            <div class="step-marker">
+                                <span class="step-number">3</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🔄 Impulse-Momentum Theorem</h3>
+                                <p class="step-description">Connect impulse and momentum change through the fundamental theorem J = Δp</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">J = Δp</span>
+                                    <span class="skill-tag">Momentum Change</span>
+                                    <span class="skill-tag">Mathematical Proof</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="4">
+                            <div class="step-marker">
+                                <span class="step-number">4</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🔗 Kinetic Chain Transfer</h3>
+                                <p class="step-description">Analyze how momentum flows through the pitcher's body from legs to fingertips</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Body Mechanics</span>
+                                    <span class="skill-tag">Energy Transfer</span>
+                                    <span class="skill-tag">Sequential Motion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="5">
+                            <div class="step-marker">
+                                <span class="step-number">5</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">⚾ Baseball Applications</h3>
+                                <p class="step-description">Apply momentum and impulse principles to pitching, hitting, and catching scenarios</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Pitch Analysis</span>
+                                    <span class="skill-tag">Bat-Ball Collision</span>
+                                    <span class="skill-tag">Catching Techniques</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="6">
+                            <div class="step-marker">
+                                <span class="step-number">6</span>
+                                <div class="step-connector"></div>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🔬 Experimental Analysis</h3>
+                                <p class="step-description">Measure and analyze momentum and impulse in real baseball situations</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Data Collection</span>
+                                    <span class="skill-tag">Force Measurement</span>
+                                    <span class="skill-tag">Video Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-step" data-step="7">
+                            <div class="step-marker">
+                                <span class="step-number">7</span>
+                            </div>
+                            <div class="step-content">
+                                <h3 class="step-title">🎯 Performance Optimization</h3>
+                                <p class="step-description">Use momentum and impulse principles to optimize pitching performance and technique</p>
+                                <div class="step-skills">
+                                    <span class="skill-tag">Technique Analysis</span>
+                                    <span class="skill-tag">Performance Metrics</span>
+                                    <span class="skill-tag">Optimization Strategies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="day-section" id="day-1">
@@ -89,23 +432,89 @@
                         <strong>Pitch speed</strong> = 40 m/s (90 mph)<br>
                         <strong>Momentum</strong> = 0.145 × 40 = 5.8 kg⋅m/s</p>
                         
-                        <div class="calculator-container">
-                            <h4>⚾ Interactive Momentum Calculator</h4>
-                            <div class="calculator-controls">
-                                <div class="control-group">
-                                    <label>Mass (kg): <input type="number" id="momentum-mass" value="0.145" step="0.001" min="0"></label>
+                        <!-- Enhanced Interactive Momentum Analysis System -->
+                        <div class="enhanced-momentum-analyzer">
+                            <h4>🎯 Interactive Momentum Analysis System</h4>
+                            <p class="analyzer-intro">Explore momentum physics with real-time calculations and visual momentum diagrams</p>
+
+                            <!-- Momentum Calculator Controls -->
+                            <div class="momentum-calculator-panel">
+                                <h5>⚙️ Momentum Parameters</h5>
+                                <div class="calculator-controls-grid">
+                                    <div class="control-section">
+                                        <label class="control-label">Mass (kg): <span id="mass-display">0.145</span></label>
+                                        <input type="range" id="mass-input" min="0.05" max="2.0" value="0.145" step="0.005">
+                                        <div class="mass-indicators">
+                                            <span class="mass-mark" data-mass="0.145">Baseball</span>
+                                            <span class="mass-mark" data-mass="0.625">Softball</span>
+                                            <span class="mass-mark" data-mass="1.5">Shot Put</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-section">
+                                        <label class="control-label">Velocity (m/s): <span id="velocity-display">40</span></label>
+                                        <input type="range" id="velocity-input" min="5" max="60" value="40" step="1">
+                                        <div class="velocity-indicators">
+                                            <span class="velocity-mark" data-velocity="20">Slow Pitch</span>
+                                            <span class="velocity-mark" data-velocity="40">Fastball</span>
+                                            <span class="velocity-mark" data-velocity="55">Elite</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="control-group">
-                                    <label>Velocity (m/s): <input type="number" id="momentum-velocity" value="40" step="1" min="0"></label>
+
+                                <!-- Real-time Calculations Display -->
+                                <div class="calculations-display">
+                                    <div class="calc-result">
+                                        <span class="calc-label">Momentum (p = mv):</span>
+                                        <span class="calc-value momentum-value" id="momentum-result">5.8 kg⋅m/s</span>
+                                    </div>
+                                    <div class="calc-result">
+                                        <span class="calc-label">Velocity (mph):</span>
+                                        <span class="calc-value velocity-value" id="velocity-mph-result">89.5 mph</span>
+                                    </div>
+                                    <div class="calc-result">
+                                        <span class="calc-label">Kinetic Energy:</span>
+                                        <span class="calc-value energy-value" id="kinetic-energy-result">116 J</span>
+                                    </div>
                                 </div>
-                                <button id="calc-momentum-btn" class="calculate-button">Calculate Momentum</button>
                             </div>
-                            <div class="calculator-results">
-                                <div class="result-item">
-                                    <strong>Momentum:</strong> <span id="momentum-result">5.8 kg⋅m/s</span>
-                                </div>
-                                <div class="result-item">
-                                    <strong>Velocity (mph):</strong> <span id="velocity-mph">89.5 mph</span>
+
+                            <!-- Visual Momentum Diagram -->
+                            <div class="momentum-diagram-container">
+                                <h5>📊 Momentum Vector Visualization</h5>
+                                <div class="momentum-diagram" id="momentum-diagram">
+                                    <svg width="400" height="200" viewBox="0 0 400 200">
+                                        <!-- Background -->
+                                        <rect width="100%" height="100%" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+                                        <!-- Grid -->
+                                        <defs>
+                                            <pattern id="momentumGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e7eb" stroke-width="0.5"/>
+                                            </pattern>
+                                        </defs>
+                                        <rect width="100%" height="100%" fill="url(#momentumGrid)"/>
+
+                                        <!-- Baseball object -->
+                                        <circle id="momentum-ball" cx="100" cy="100" r="15" fill="#ff6b35" stroke="#e53e3e" stroke-width="2"/>
+                                        <text x="100" y="105" text-anchor="middle" class="object-label">⚾</text>
+
+                                        <!-- Momentum vector -->
+                                        <defs>
+                                            <marker id="momentum-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#1976d2"/>
+                                            </marker>
+                                        </defs>
+                                        <line id="momentum-vector" x1="115" y1="100" x2="250" y2="100" stroke="#1976d2" stroke-width="4" marker-end="url(#momentum-arrowhead)"/>
+                                        <text id="momentum-label" x="180" y="90" text-anchor="middle" class="vector-label">p = 5.8 kg⋅m/s</text>
+
+                                        <!-- Velocity vector (lighter) -->
+                                        <line id="velocity-vector" x1="115" y1="120" x2="200" y2="120" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#momentum-arrowhead)"/>
+                                        <text id="velocity-label" x="157" y="140" text-anchor="middle" class="vector-label-small">v = 40 m/s</text>
+
+                                        <!-- Scale indicator -->
+                                        <text x="20" y="30" class="scale-text">Scale: 1 unit = 1 kg⋅m/s</text>
+                                        <text x="20" y="180" class="legend-text">Blue solid = momentum, Blue dashed = velocity</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -1022,31 +1431,77 @@
         });
     </script>
     <script>
-        // Week 4 specific JS - Momentum and Impulse Calculators
+        // Week 4 Enhanced Momentum and Impulse Calculators
         document.addEventListener('DOMContentLoaded', function() {
-            // Momentum Calculator
-            const momentumMass = document.getElementById('momentum-mass');
-            const momentumVelocity = document.getElementById('momentum-velocity');
-            const calcMomentumBtn = document.getElementById('calc-momentum-btn');
+            // Enhanced Momentum Calculator Elements
+            const massInput = document.getElementById('mass-input');
+            const velocityInput = document.getElementById('velocity-input');
+            const massDisplay = document.getElementById('mass-display');
+            const velocityDisplay = document.getElementById('velocity-display');
             const momentumResult = document.getElementById('momentum-result');
-            const velocityMph = document.getElementById('velocity-mph');
-            
-            function calculateMomentum() {
-                const mass = parseFloat(momentumMass.value);
-                const velocity = parseFloat(momentumVelocity.value);
-                
-                if (isNaN(mass) || isNaN(velocity) || mass <= 0 || velocity < 0) {
-                    momentumResult.textContent = 'Invalid input';
-                    velocityMph.textContent = '--';
-                    return;
-                }
-                
+            const velocityMphResult = document.getElementById('velocity-mph-result');
+            const kineticEnergyResult = document.getElementById('kinetic-energy-result');
+
+            // SVG Elements for visual diagram
+            const momentumVector = document.getElementById('momentum-vector');
+            const velocityVector = document.getElementById('velocity-vector');
+            const momentumLabel = document.getElementById('momentum-label');
+            const velocityLabel = document.getElementById('velocity-label');
+
+            function updateMomentumCalculator() {
+                const mass = parseFloat(massInput.value);
+                const velocity = parseFloat(velocityInput.value);
+
+                // Update displays
+                massDisplay.textContent = mass.toFixed(3);
+                velocityDisplay.textContent = velocity.toFixed(0);
+
+                // Calculate values
                 const momentum = mass * velocity;
-                const velocityInMph = velocity * 2.237; // Convert m/s to mph
-                
+                const velocityMph = velocity * 2.237; // Convert m/s to mph
+                const kineticEnergy = 0.5 * mass * velocity * velocity; // KE = 1/2 mv²
+
+                // Update result displays
                 momentumResult.textContent = momentum.toFixed(2) + ' kg⋅m/s';
-                velocityMph.textContent = velocityInMph.toFixed(1) + ' mph';
+                velocityMphResult.textContent = velocityMph.toFixed(1) + ' mph';
+                kineticEnergyResult.textContent = kineticEnergy.toFixed(0) + ' J';
+
+                // Update visual diagram
+                updateMomentumDiagram(momentum, velocity);
             }
+
+            function updateMomentumDiagram(momentum, velocity) {
+                // Scale vectors based on values
+                const baseX = 115;
+                const baseY1 = 100; // momentum vector
+                const baseY2 = 120; // velocity vector
+
+                // Scale momentum vector (max length ~135 units for momentum up to 20)
+                const momentumLength = Math.min(momentum * 6.5, 135);
+                const momentumEndX = baseX + momentumLength;
+
+                // Scale velocity vector (max length ~85 units for velocity up to 60)
+                const velocityLength = Math.min(velocity * 1.4, 85);
+                const velocityEndX = baseX + velocityLength;
+
+                // Update vector lines
+                momentumVector.setAttribute('x2', momentumEndX);
+                velocityVector.setAttribute('x2', velocityEndX);
+
+                // Update labels
+                momentumLabel.textContent = `p = ${momentum.toFixed(1)} kg⋅m/s`;
+                momentumLabel.setAttribute('x', (baseX + momentumEndX) / 2);
+
+                velocityLabel.textContent = `v = ${velocity} m/s`;
+                velocityLabel.setAttribute('x', (baseX + velocityEndX) / 2);
+            }
+
+            // Event listeners for real-time updates
+            massInput.addEventListener('input', updateMomentumCalculator);
+            velocityInput.addEventListener('input', updateMomentumCalculator);
+
+            // Initial calculation
+            updateMomentumCalculator();
             
             // Impulse Calculator
             const impulseForce = document.getElementById('impulse-force');
@@ -1096,10 +1551,10 @@
                 requiredImpulse.textContent = deltaP.toFixed(2) + ' N⋅s';
             }
             
-            // Event listeners
-            calcMomentumBtn.addEventListener('click', calculateMomentum);
-            momentumMass.addEventListener('input', calculateMomentum);
-            momentumVelocity.addEventListener('input', calculateMomentum);
+            // Legacy calculator event listeners (for any remaining basic calculators)
+            if (calcMomentumBtn) calcMomentumBtn.addEventListener('click', calculateMomentum);
+            if (momentumMass) momentumMass.addEventListener('input', calculateMomentum);
+            if (momentumVelocity) momentumVelocity.addEventListener('input', calculateMomentum);
             
             calcImpulseBtn.addEventListener('click', calculateImpulse);
             impulseForce.addEventListener('input', calculateImpulse);
