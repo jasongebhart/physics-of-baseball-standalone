@@ -7,6 +7,642 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
+    <style>
+        /* Week 9 Specific Styling - Blue/Cyan Aerodynamics Theme */
+        :root {
+            --week9-primary: #2563eb;
+            --week9-secondary: #1d4ed8;
+            --week9-accent: #06b6d4;
+            --week9-light: #dbeafe;
+            --week9-dark: #1e3a8a;
+            --week9-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --week9-gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+        }
+
+        /* Week Header Styling */
+        .week-header {
+            background: var(--week9-gradient);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .week-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .week-description {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            background: var(--week9-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week9-light);
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--week9-gradient);
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+            border-color: var(--week9-primary);
+        }
+
+        .objective-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .objective-content h3 {
+            color: var(--week9-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .difficulty-badge.intermediate {
+            background: var(--week9-primary);
+            color: white;
+        }
+
+        .difficulty-badge.advanced {
+            background: var(--week9-secondary);
+            color: white;
+        }
+
+        .difficulty-badge.expert {
+            background: var(--week9-accent);
+            color: white;
+        }
+
+        .difficulty-badge.basic {
+            background: var(--week9-light);
+            color: var(--week9-dark);
+        }
+
+        /* Assessment Section Difficulty Badges Container */
+        .difficulty-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-badges .difficulty-badge {
+            position: static;
+            margin: 0;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--week9-light);
+            color: var(--week9-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+
+        /* Learning Roadmap Styling */
+        .learning-roadmap {
+            background: var(--week9-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week9-light);
+        }
+
+        .roadmap-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .roadmap-step {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+            border-left: 5px solid var(--week9-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .roadmap-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .step-number {
+            background: var(--week9-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--week9-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill {
+            background: var(--week9-light);
+            color: var(--week9-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+            display: inline-block;
+        }
+
+        .step-connection {
+            position: absolute;
+            bottom: -15px;
+            left: 35px;
+            width: 2px;
+            height: 30px;
+            background: var(--week9-primary);
+        }
+
+        .roadmap-step:last-child .step-connection {
+            display: none;
+        }
+
+        .roadmap-progress {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--week9-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--week9-gradient);
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Enhanced Calculator Styling */
+        .enhanced-calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            border: 2px solid var(--week9-light);
+        }
+
+        .aerodynamics-calculator-grid,
+        .environmental-calculator-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--week9-dark);
+        }
+
+        .physics-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .physics-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week9-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .physics-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week9-primary);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .slider-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .marker {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .calculation-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .result-card.primary {
+            border-color: var(--week9-primary);
+        }
+
+        .result-card.secondary {
+            border-color: var(--week9-secondary);
+        }
+
+        .result-card.tertiary {
+            border-color: var(--week9-accent);
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--week9-dark);
+        }
+
+        .result-sub {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .formula-display {
+            background: var(--week9-gradient-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 2px solid var(--week9-light);
+        }
+
+        .formula-equation {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--week9-dark);
+        }
+
+        .formula-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Environmental Presets */
+        .environment-grid,
+        .ballpark-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .environment-card,
+        .ballpark-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .environment-card:hover,
+        .ballpark-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--week9-primary);
+        }
+
+        .env-icon,
+        .ballpark-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .env-stats,
+        .ballpark-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .env-apply-btn,
+        .ballpark-apply-btn {
+            background: var(--week9-gradient);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .env-apply-btn:hover,
+        .ballpark-apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Ball Aerodynamics Analysis */
+        .ball-aerodynamics-container {
+            background: var(--week9-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ball-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ball-selector-btn {
+            background: white;
+            border: 2px solid var(--week9-primary);
+            border-radius: 15px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ball-selector-btn.active,
+        .ball-selector-btn:hover {
+            background: var(--week9-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .ball-info h5 {
+            margin: 0.5rem 0 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .flow-analysis-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .flow-svg {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .flow-analysis-panel {
+            padding: 1rem;
+        }
+
+        .ball-properties {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .property {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            background: var(--week9-gradient-subtle);
+            border-radius: 8px;
+        }
+
+        .property-label {
+            font-weight: bold;
+            color: var(--week9-dark);
+        }
+
+        .property-value {
+            color: var(--week9-primary);
+            font-weight: bold;
+        }
+
+        .physics-explanation {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--week9-gradient-subtle);
+            border-radius: 10px;
+            border-left: 4px solid var(--week9-primary);
+        }
+
+        .physics-explanation h6 {
+            color: var(--week9-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reynolds Analysis */
+        .reynolds-calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .reynolds-controls {
+            margin-bottom: 1.5rem;
+        }
+
+        .reynolds-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--week9-dark);
+        }
+
+        .reynolds-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .reynolds-display,
+        .flow-regime-indicator {
+            padding: 1rem;
+            background: var(--week9-gradient-subtle);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .reynolds-value,
+        .regime-value {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--week9-primary);
+            margin-top: 0.5rem;
+        }
+
+        /* Animation */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .aerodynamics-calculator-grid,
+            .environmental-calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-analysis-container {
+                grid-template-columns: 1fr;
+            }
+
+            .ball-selector-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .roadmap-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 0 1rem 0;
+            }
+
+            .step-connection {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,6 +660,226 @@
                     This week, we'll explore how air resistance and environmental conditions affect baseball flight, modifying the idealized projectile motion we studied earlier.
                 </p>
             </header>
+
+            <!-- Learning Objectives Section -->
+            <section class="learning-objectives">
+                <h2>🎯 Week 9 Learning Objectives</h2>
+                <p class="objectives-intro">Master the complex world of aerodynamics and discover how air resistance, environmental factors, and fluid dynamics shape every baseball's journey through the atmosphere.</p>
+
+                <div class="objectives-grid">
+                    <div class="objective-card" data-difficulty="intermediate">
+                        <div class="objective-icon">💨</div>
+                        <div class="objective-content">
+                            <h3>Fluid Dynamics Fundamentals</h3>
+                            <p>Understand how air behaves as a fluid around baseballs and master the drag force equation (F = ½ρv²C_DA).</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Drag Force</span>
+                                <span class="skill-tag">Reynolds Numbers</span>
+                                <span class="skill-tag">Flow Patterns</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">🌍</div>
+                        <div class="objective-content">
+                            <h3>Environmental Effects Analysis</h3>
+                            <p>Analyze how altitude, temperature, humidity, and wind conditions dramatically affect baseball flight characteristics.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Air Density</span>
+                                <span class="skill-tag">Altitude Effects</span>
+                                <span class="skill-tag">Weather Impact</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">⚾</div>
+                        <div class="objective-content">
+                            <h3>Ball Aerodynamics Comparison</h3>
+                            <p>Compare drag coefficients across different ball types and understand how surface texture affects turbulence and flight.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Drag Coefficients</span>
+                                <span class="skill-tag">Surface Analysis</span>
+                                <span class="skill-tag">Terminal Velocity</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="intermediate">
+                        <div class="objective-icon">🔬</div>
+                        <div class="objective-content">
+                            <h3>Experimental Measurement</h3>
+                            <p>Design and conduct experiments to measure air resistance effects using high-speed video and measurement tools.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Data Collection</span>
+                                <span class="skill-tag">Video Analysis</span>
+                                <span class="skill-tag">Error Analysis</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">🌪️</div>
+                        <div class="objective-content">
+                            <h3>Turbulence & Boundary Layers</h3>
+                            <p>Explore laminar vs. turbulent flow, boundary layer effects, and how surface roughness influences aerodynamic performance.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Turbulence</span>
+                                <span class="skill-tag">Boundary Layers</span>
+                                <span class="skill-tag">Flow Transition</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">🎯</div>
+                        <div class="objective-content">
+                            <h3>Strategic Applications</h3>
+                            <p>Apply aerodynamic principles to optimize game strategy, ballpark design, and performance in varying conditions.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Game Strategy</span>
+                                <span class="skill-tag">Performance Optimization</span>
+                                <span class="skill-tag">Environmental Adaptation</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Roadmap Section -->
+            <section class="learning-roadmap">
+                <h2>🗺️ Week 9: Aerodynamics Journey</h2>
+                <p class="roadmap-intro">Navigate through the complex world of fluid dynamics and environmental physics - from basic drag forces to advanced turbulence analysis and strategic applications.</p>
+
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>💨 Fluid Dynamics Foundations</h3>
+                            <p>Master the fundamental principles of how air behaves as a fluid around moving baseballs and understand drag force relationships.</p>
+                            <div class="step-skills">
+                                <span class="skill">Drag Equation</span>
+                                <span class="skill">Air Properties</span>
+                                <span class="skill">Flow Basics</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>🌍 Environmental Physics</h3>
+                            <p>Explore how altitude, temperature, humidity, and atmospheric pressure create dramatic changes in baseball flight characteristics.</p>
+                            <div class="step-skills">
+                                <span class="skill">Air Density Variations</span>
+                                <span class="skill">Coors Field Effect</span>
+                                <span class="skill">Weather Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>⚾ Ball Aerodynamics</h3>
+                            <p>Compare aerodynamic properties across different ball types and understand how surface texture affects drag coefficients.</p>
+                            <div class="step-skills">
+                                <span class="skill">Drag Coefficients</span>
+                                <span class="skill">Surface Effects</span>
+                                <span class="skill">Ball Comparison</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>🌪️ Turbulence & Flow Analysis</h3>
+                            <p>Investigate Reynolds numbers, boundary layer effects, and the transition from laminar to turbulent flow around baseballs.</p>
+                            <div class="step-skills">
+                                <span class="skill">Reynolds Numbers</span>
+                                <span class="skill">Boundary Layers</span>
+                                <span class="skill">Flow Visualization</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>🔬 Experimental Methods</h3>
+                            <p>Design and conduct sophisticated experiments to measure air resistance, validate theories, and analyze real-world aerodynamic effects.</p>
+                            <div class="step-skills">
+                                <span class="skill">High-Speed Analysis</span>
+                                <span class="skill">Data Collection</span>
+                                <span class="skill">Validation Studies</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>📊 Advanced Calculations</h3>
+                            <p>Master complex aerodynamic calculations including terminal velocity, drag optimization, and environmental correction factors.</p>
+                            <div class="step-skills">
+                                <span class="skill">Terminal Velocity</span>
+                                <span class="skill">Optimization</span>
+                                <span class="skill">Correction Factors</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="7">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3>🎯 Strategic Applications</h3>
+                            <p>Apply comprehensive aerodynamic knowledge to optimize game strategy, ballpark design, and performance in varying environmental conditions.</p>
+                            <div class="step-skills">
+                                <span class="skill">Game Strategy</span>
+                                <span class="skill">Environmental Adaptation</span>
+                                <span class="skill">Performance Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-progress">
+                    <div class="progress-header">
+                        <h3>🏆 Your Progress</h3>
+                        <div class="progress-stats">
+                            <span class="stat">
+                                <span class="stat-number" id="completed-steps">0</span>
+                                <span class="stat-label">Steps Completed</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="total-steps">7</span>
+                                <span class="stat-label">Total Steps</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="mastery-level">Beginner</span>
+                                <span class="stat-label">Mastery Level</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -62,35 +918,138 @@
                 </div>
 
                 <div class="interactive-physics">
-                    <h3>🧮 Interactive Physics Calculator: Drag Force</h3>
-                    <div class="calculator-grid">
-                        <div class="calculator-section">
-                            <h4>Input Parameters</h4>
-                            <div class="input-group">
-                                <label for="velocity-drag">Ball Velocity (m/s):</label>
-                                <input type="number" id="velocity-drag" value="30" min="0" max="50" step="0.1">
+                    <h3>🧮 Enhanced Aerodynamics Calculator</h3>
+                    <div class="aerodynamics-calculator-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>💨 Drag Force Analysis</h4>
+                            <p class="calculator-description">Calculate drag forces and aerodynamic effects with real-time parameter adjustment and visualization.</p>
+
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label for="velocity-slider">Ball Velocity: <span id="velocity-value">30.0</span> m/s (<span id="velocity-mph">67.1</span> mph)</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="velocity-slider" min="10" max="50" step="0.5" value="30" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="10">Slow</span>
+                                            <span class="marker" data-value="30">Average</span>
+                                            <span class="marker" data-value="50">Fast</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="density-slider">Air Density: <span id="density-value">1.225</span> kg/m³</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="density-slider" min="0.8" max="1.3" step="0.001" value="1.225" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0.8">High Altitude</span>
+                                            <span class="marker" data-value="1.225">Sea Level</span>
+                                            <span class="marker" data-value="1.3">Dense</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="drag-coeff-slider">Drag Coefficient: <span id="drag-coeff-value">0.35</span></label>
+                                    <div class="slider-container">
+                                        <input type="range" id="drag-coeff-slider" min="0.2" max="0.8" step="0.01" value="0.35" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0.2">Smooth</span>
+                                            <span class="marker" data-value="0.35">Baseball</span>
+                                            <span class="marker" data-value="0.8">Rough</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="air-density">Air Density (kg/m³):</label>
-                                <input type="number" id="air-density" value="1.225" min="0.8" max="1.3" step="0.001">
+
+                            <div class="calculation-results">
+                                <div class="result-card primary">
+                                    <div class="result-icon">💨</div>
+                                    <div class="result-content">
+                                        <h5>Drag Force</h5>
+                                        <div class="result-value">
+                                            <span id="drag-force-display">1.47</span> N
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card secondary">
+                                    <div class="result-icon">📉</div>
+                                    <div class="result-content">
+                                        <h5>Deceleration</h5>
+                                        <div class="result-value">
+                                            <span id="deceleration-display">10.1</span> m/s²
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card tertiary">
+                                    <div class="result-icon">🎯</div>
+                                    <div class="result-content">
+                                        <h5>Reynolds Number</h5>
+                                        <div class="result-value">
+                                            <span id="reynolds-display">1.56e5</span>
+                                        </div>
+                                        <div class="result-sub" id="flow-regime">Turbulent</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="drag-coeff">Drag Coefficient:</label>
-                                <input type="number" id="drag-coeff" value="0.35" min="0.2" max="0.8" step="0.01">
+
+                            <div class="formula-display">
+                                <h5>Drag Force Equation</h5>
+                                <div class="formula-equation">
+                                    F_D = ½ρv²C_DA = ½ × <span id="formula-values">1.225 × 30² × 0.35 × 0.00431</span> = <span id="formula-result">1.47</span> N
+                                </div>
+                                <div class="formula-legend">
+                                    <span>ρ = Air Density (kg/m³)</span>
+                                    <span>v = Velocity (m/s)</span>
+                                    <span>C_D = Drag Coefficient</span>
+                                    <span>A = Cross-sectional Area (m²)</span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="calculator-section">
-                            <h4>Results</h4>
-                            <div class="result-display">
-                                <div class="result-item">
-                                    <span class="result-label">Drag Force:</span>
-                                    <span id="drag-result" class="result-value">--</span>
-                                    <span class="result-unit">N</span>
+                            <h4>🌍 Environmental Presets</h4>
+                            <div class="environment-grid">
+                                <div class="environment-card" data-preset="sea-level">
+                                    <div class="env-icon">🌊</div>
+                                    <h5>Sea Level</h5>
+                                    <div class="env-stats">
+                                        <span>ρ = 1.225 kg/m³</span>
+                                        <span>Standard conditions</span>
+                                    </div>
+                                    <button class="env-apply-btn" data-density="1.225">Apply</button>
                                 </div>
-                                <div class="result-item">
-                                    <span class="result-label">Deceleration:</span>
-                                    <span id="decel-result" class="result-value">--</span>
-                                    <span class="result-unit">m/s²</span>
+
+                                <div class="environment-card" data-preset="coors-field">
+                                    <div class="env-icon">🏔️</div>
+                                    <h5>Coors Field</h5>
+                                    <div class="env-stats">
+                                        <span>ρ = 1.058 kg/m³</span>
+                                        <span>1,580m elevation</span>
+                                    </div>
+                                    <button class="env-apply-btn" data-density="1.058">Apply</button>
+                                </div>
+
+                                <div class="environment-card" data-preset="hot-humid">
+                                    <div class="env-icon">🌡️</div>
+                                    <h5>Hot & Humid</h5>
+                                    <div class="env-stats">
+                                        <span>ρ = 1.100 kg/m³</span>
+                                        <span>35°C, 80% humidity</span>
+                                    </div>
+                                    <button class="env-apply-btn" data-density="1.100">Apply</button>
+                                </div>
+
+                                <div class="environment-card" data-preset="cold-dense">
+                                    <div class="env-icon">❄️</div>
+                                    <h5>Cold & Dense</h5>
+                                    <div class="env-stats">
+                                        <span>ρ = 1.350 kg/m³</span>
+                                        <span>0°C, dry air</span>
+                                    </div>
+                                    <button class="env-apply-btn" data-density="1.350">Apply</button>
                                 </div>
                             </div>
                         </div>
@@ -193,31 +1152,143 @@
                 </div>
 
                 <div class="interactive-physics">
-                    <h3>🧮 Environmental Effects Calculator</h3>
-                    <div class="calculator-grid">
-                        <div class="calculator-section">
-                            <h4>Environmental Conditions</h4>
-                            <div class="input-group">
-                                <label for="altitude">Altitude (meters):</label>
-                                <input type="number" id="altitude" value="0" min="0" max="3000" step="10">
+                    <h3>🌍 Advanced Environmental Calculator</h3>
+                    <div class="environmental-calculator-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>🌤️ Environmental Parameters</h4>
+                            <p class="calculator-description">Analyze how environmental conditions affect air density and baseball flight characteristics.</p>
+
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label for="altitude-slider">Altitude: <span id="altitude-value">0</span> m (<span id="altitude-feet">0</span> ft)</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="altitude-slider" min="0" max="3000" step="50" value="0" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0">Sea Level</span>
+                                            <span class="marker" data-value="1580">Coors Field</span>
+                                            <span class="marker" data-value="3000">High Altitude</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="temperature-slider">Temperature: <span id="temperature-value">15</span>°C (<span id="temperature-fahrenheit">59</span>°F)</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="temperature-slider" min="-10" max="45" step="1" value="15" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="-10">Cold</span>
+                                            <span class="marker" data-value="15">Standard</span>
+                                            <span class="marker" data-value="45">Hot</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="humidity-slider">Relative Humidity: <span id="humidity-value">50</span>%</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="humidity-slider" min="0" max="100" step="5" value="50" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0">Dry</span>
+                                            <span class="marker" data-value="50">Moderate</span>
+                                            <span class="marker" data-value="100">Saturated</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="temperature">Temperature (°C):</label>
-                                <input type="number" id="temperature" value="15" min="-10" max="40" step="1">
+
+                            <div class="calculation-results">
+                                <div class="result-card primary">
+                                    <div class="result-icon">🌍</div>
+                                    <div class="result-content">
+                                        <h5>Air Density</h5>
+                                        <div class="result-value">
+                                            <span id="env-density-display">1.225</span> kg/m³
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card secondary">
+                                    <div class="result-icon">📊</div>
+                                    <div class="result-content">
+                                        <h5>Density Change</h5>
+                                        <div class="result-value">
+                                            <span id="env-density-change">0.0</span>%
+                                        </div>
+                                        <div class="result-sub">vs. sea level</div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card tertiary">
+                                    <div class="result-icon">⚾</div>
+                                    <div class="result-content">
+                                        <h5>Flight Distance</h5>
+                                        <div class="result-value">
+                                            <span id="flight-distance-change">+0.0</span>%
+                                        </div>
+                                        <div class="result-sub">vs. standard</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="formula-display">
+                                <h5>Air Density Equation</h5>
+                                <div class="formula-equation">
+                                    ρ = ρ₀ × (T₀/T) × (P/P₀) × (1 - 0.378 × e/P)
+                                </div>
+                                <div class="formula-legend">
+                                    <span>ρ₀ = Standard density (1.225 kg/m³)</span>
+                                    <span>T = Temperature (K)</span>
+                                    <span>P = Pressure (Pa)</span>
+                                    <span>e = Water vapor pressure (Pa)</span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="calculator-section">
-                            <h4>Air Density Results</h4>
-                            <div class="result-display">
-                                <div class="result-item">
-                                    <span class="result-label">Air Density:</span>
-                                    <span id="altitude-density-result" class="result-value">--</span>
-                                    <span class="result-unit">kg/m³</span>
+                            <h4>🏟️ Famous Ballpark Conditions</h4>
+                            <div class="ballpark-grid">
+                                <div class="ballpark-card" data-ballpark="fenway">
+                                    <div class="ballpark-icon">🟢</div>
+                                    <h5>Fenway Park</h5>
+                                    <div class="ballpark-stats">
+                                        <span>6m elevation</span>
+                                        <span>Marine climate</span>
+                                        <span>Dense air</span>
+                                    </div>
+                                    <button class="ballpark-apply-btn" data-alt="6" data-temp="15" data-humid="70">Apply</button>
                                 </div>
-                                <div class="result-item">
-                                    <span class="result-label">% Change:</span>
-                                    <span id="density-change" class="result-value">--</span>
-                                    <span class="result-unit">%</span>
+
+                                <div class="ballpark-card" data-ballpark="coors">
+                                    <div class="ballpark-icon">🏔️</div>
+                                    <h5>Coors Field</h5>
+                                    <div class="ballpark-stats">
+                                        <span>1,580m elevation</span>
+                                        <span>Mile-high city</span>
+                                        <span>Thin air</span>
+                                    </div>
+                                    <button class="ballpark-apply-btn" data-alt="1580" data-temp="20" data-humid="30">Apply</button>
+                                </div>
+
+                                <div class="ballpark-card" data-ballpark="tropicana">
+                                    <div class="ballpark-icon">🏖️</div>
+                                    <h5>Tropicana Field</h5>
+                                    <div class="ballpark-stats">
+                                        <span>6m elevation</span>
+                                        <span>Hot & humid</span>
+                                        <span>Dome controlled</span>
+                                    </div>
+                                    <button class="ballpark-apply-btn" data-alt="6" data-temp="24" data-humid="85">Apply</button>
+                                </div>
+
+                                <div class="ballpark-card" data-ballpark="desert">
+                                    <div class="ballpark-icon">🌵</div>
+                                    <h5>Chase Field</h5>
+                                    <div class="ballpark-stats">
+                                        <span>331m elevation</span>
+                                        <span>Hot & dry</span>
+                                        <span>Desert climate</span>
+                                    </div>
+                                    <button class="ballpark-apply-btn" data-alt="331" data-temp="35" data-humid="15">Apply</button>
                                 </div>
                             </div>
                         </div>
@@ -307,37 +1378,161 @@
                 </div>
 
                 <div class="concept-showcase">
-                    <h3>⚾ Drag Coefficient Comparison</h3>
-                    <div class="ball-comparison-grid">
-                        <div class="ball-type">
-                            <div class="ball-icon">🟢</div>
-                            <h4>Smooth Sphere</h4>
-                            <div class="drag-value">C<sub>D</sub> = 0.20</div>
-                            <div class="description">Theoretical minimum</div>
+                    <h3>⚾ Interactive Ball Aerodynamics Analysis</h3>
+                    <div class="ball-aerodynamics-container">
+                        <div class="ball-selector-section">
+                            <h4>🎯 Ball Type Selector</h4>
+                            <div class="ball-selector-grid">
+                                <button class="ball-selector-btn active" data-ball="smooth">
+                                    <div class="ball-icon">🟢</div>
+                                    <div class="ball-info">
+                                        <h5>Smooth Sphere</h5>
+                                        <span>C_D = 0.20</span>
+                                    </div>
+                                </button>
+                                <button class="ball-selector-btn" data-ball="baseball">
+                                    <div class="ball-icon">⚾</div>
+                                    <div class="ball-info">
+                                        <h5>MLB Baseball</h5>
+                                        <span>C_D = 0.35</span>
+                                    </div>
+                                </button>
+                                <button class="ball-selector-btn" data-ball="scuffed">
+                                    <div class="ball-icon">🧽</div>
+                                    <div class="ball-info">
+                                        <h5>Scuffed Ball</h5>
+                                        <span>C_D = 0.50</span>
+                                    </div>
+                                </button>
+                                <button class="ball-selector-btn" data-ball="tennis">
+                                    <div class="ball-icon">🎾</div>
+                                    <div class="ball-info">
+                                        <h5>Tennis Ball</h5>
+                                        <span>C_D = 0.55</span>
+                                    </div>
+                                </button>
+                                <button class="ball-selector-btn" data-ball="wiffle">
+                                    <div class="ball-icon">🥎</div>
+                                    <div class="ball-info">
+                                        <h5>Wiffle Ball</h5>
+                                        <span>C_D = 0.80</span>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
-                        <div class="ball-type">
-                            <div class="ball-icon">⚾</div>
-                            <h4>New MLB Ball</h4>
-                            <div class="drag-value">C<sub>D</sub> = 0.35</div>
-                            <div class="description">Regulation surface</div>
+
+                        <div class="flow-visualization-section">
+                            <h4>🌪️ Airflow Visualization</h4>
+                            <div class="flow-analysis-container">
+                                <div class="flow-diagram">
+                                    <svg viewBox="0 0 500 300" class="flow-svg">
+                                        <defs>
+                                            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0.8"/>
+                                                <stop offset="100%" style="stop-color:#63b3ed;stop-opacity:0.4"/>
+                                            </linearGradient>
+                                            <marker id="flowArrow" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+                                                <polygon points="0 0, 8 3, 0 6" fill="#2b6cb0"/>
+                                            </marker>
+                                        </defs>
+
+                                        <!-- Background -->
+                                        <rect width="100%" height="100%" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+                                        <!-- Ball -->
+                                        <circle id="flow-ball" cx="200" cy="150" r="30" fill="#ff6b35" stroke="#e53e3e" stroke-width="2"/>
+                                        <text id="ball-label" x="200" y="155" text-anchor="middle" class="ball-label">⚾</text>
+
+                                        <!-- Airflow lines -->
+                                        <g class="airflow-lines">
+                                            <!-- Top streamlines -->
+                                            <path id="streamline-1" d="M 50 100 Q 150 80 300 100 L 450 100" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+                                            <path id="streamline-2" d="M 50 120 Q 150 100 300 120 L 450 120" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+
+                                            <!-- Bottom streamlines -->
+                                            <path id="streamline-3" d="M 50 180 Q 150 200 300 180 L 450 180" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+                                            <path id="streamline-4" d="M 50 200 Q 150 220 300 200 L 450 200" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+
+                                            <!-- Middle streamlines -->
+                                            <path id="streamline-5" d="M 50 140 Q 100 140 170 150" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+                                            <path id="streamline-6" d="M 50 160 Q 100 160 170 150" stroke="#2b6cb0" stroke-width="2" fill="none" marker-end="url(#flowArrow)"/>
+                                        </g>
+
+                                        <!-- Wake region -->
+                                        <g id="wake-region" class="wake-region">
+                                            <ellipse cx="280" cy="150" rx="40" ry="25" fill="#ef4444" opacity="0.3"/>
+                                            <text x="280" y="155" text-anchor="middle" class="wake-label" font-size="12">Wake</text>
+                                        </g>
+
+                                        <!-- Pressure indicators -->
+                                        <g class="pressure-indicators">
+                                            <circle cx="130" cy="150" r="8" fill="#3182ce" opacity="0.7"/>
+                                            <text x="130" y="135" text-anchor="middle" class="pressure-label" font-size="10">High P</text>
+
+                                            <circle cx="280" cy="150" r="8" fill="#e53e3e" opacity="0.7"/>
+                                            <text x="280" y="135" text-anchor="middle" class="pressure-label" font-size="10">Low P</text>
+                                        </g>
+
+                                        <!-- Reynolds number display -->
+                                        <text x="400" y="30" class="reynolds-text" font-size="14" font-weight="bold">Re = <tspan id="reynolds-number">1.56e5</tspan></text>
+                                        <text x="400" y="45" class="flow-regime-text" font-size="12" id="flow-regime-display">Turbulent</text>
+                                    </svg>
+                                </div>
+
+                                <div class="flow-analysis-panel">
+                                    <div class="analysis-section">
+                                        <h5 id="current-ball-name">Smooth Sphere</h5>
+                                        <div class="ball-properties">
+                                            <div class="property">
+                                                <span class="property-label">Drag Coefficient:</span>
+                                                <span class="property-value" id="display-drag-coeff">0.20</span>
+                                            </div>
+                                            <div class="property">
+                                                <span class="property-label">Surface Type:</span>
+                                                <span class="property-value" id="display-surface-type">Smooth</span>
+                                            </div>
+                                            <div class="property">
+                                                <span class="property-label">Flow Type:</span>
+                                                <span class="property-value" id="display-flow-type">Laminar</span>
+                                            </div>
+                                            <div class="property">
+                                                <span class="property-label">Wake Size:</span>
+                                                <span class="property-value" id="display-wake-size">Large</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="physics-explanation">
+                                        <h6>Aerodynamic Analysis:</h6>
+                                        <p id="aerodynamic-explanation">
+                                            Smooth spheres experience large wake regions with early flow separation,
+                                            resulting in high drag despite the smooth surface.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ball-type">
-                            <div class="ball-icon">🧽</div>
-                            <h4>Scuffed Ball</h4>
-                            <div class="drag-value">C<sub>D</sub> = 0.50</div>
-                            <div class="description">Increased roughness</div>
-                        </div>
-                        <div class="ball-type">
-                            <div class="ball-icon">🎾</div>
-                            <h4>Tennis Ball</h4>
-                            <div class="drag-value">C<sub>D</sub> = 0.55</div>
-                            <div class="description">Fuzzy surface</div>
-                        </div>
-                        <div class="ball-type">
-                            <div class="ball-icon">🥎</div>
-                            <h4>Wiffle Ball</h4>
-                            <div class="drag-value">C<sub>D</sub> = 0.80</div>
-                            <div class="description">Perforated design</div>
+
+                        <div class="reynolds-analysis-section">
+                            <h4>📊 Reynolds Number Analysis</h4>
+                            <div class="reynolds-calculator">
+                                <div class="reynolds-controls">
+                                    <div class="reynolds-input">
+                                        <label>Velocity: <span id="reynolds-velocity">30</span> m/s</label>
+                                        <input type="range" id="reynolds-velocity-slider" min="5" max="50" value="30" step="1">
+                                    </div>
+                                </div>
+                                <div class="reynolds-results">
+                                    <div class="reynolds-display">
+                                        <span class="reynolds-label">Reynolds Number:</span>
+                                        <span class="reynolds-value" id="reynolds-result">1.56 × 10⁵</span>
+                                    </div>
+                                    <div class="flow-regime-indicator">
+                                        <span class="regime-label">Flow Regime:</span>
+                                        <span class="regime-value" id="flow-regime-indicator">Turbulent</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1039,57 +2234,275 @@
         });
     </script>
     <script>
-        // Week 9 specific JS
-        function calculateDragForce() {
-            const velocity = parseFloat(document.getElementById('velocity-drag').value); // m/s
-            const airDensity = parseFloat(document.getElementById('air-density').value); // kg/m³
-            const dragCoeff = parseFloat(document.getElementById('drag-coeff').value);
-            
-            if (velocity > 0 && airDensity > 0 && dragCoeff > 0) {
+        // Week 9 Enhanced Interactive Aerodynamics JS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Drag Force Calculator
+            const velocitySlider = document.getElementById('velocity-slider');
+            const densitySlider = document.getElementById('density-slider');
+            const dragCoeffSlider = document.getElementById('drag-coeff-slider');
+
+            // Environmental Calculator
+            const altitudeSlider = document.getElementById('altitude-slider');
+            const temperatureSlider = document.getElementById('temperature-slider');
+            const humiditySlider = document.getElementById('humidity-slider');
+
+            // Reynolds Number Calculator
+            const reynoldsVelocitySlider = document.getElementById('reynolds-velocity-slider');
+
+            // Value display elements
+            const velocityValue = document.getElementById('velocity-value');
+            const velocityMph = document.getElementById('velocity-mph');
+            const densityValue = document.getElementById('density-value');
+            const dragCoeffValue = document.getElementById('drag-coeff-value');
+
+            // Result display elements
+            const dragForceDisplay = document.getElementById('drag-force-display');
+            const decelerationDisplay = document.getElementById('deceleration-display');
+            const reynoldsDisplay = document.getElementById('reynolds-display');
+            const flowRegime = document.getElementById('flow-regime');
+
+            // Formula display elements
+            const formulaValues = document.getElementById('formula-values');
+            const formulaResult = document.getElementById('formula-result');
+
+            function updateDragCalculations() {
+                const velocity = parseFloat(velocitySlider?.value || 30); // m/s
+                const density = parseFloat(densitySlider?.value || 1.225); // kg/m³
+                const dragCoeff = parseFloat(dragCoeffSlider?.value || 0.35);
+
+                // Update display values
+                if (velocityValue) velocityValue.textContent = velocity.toFixed(1);
+                if (velocityMph) velocityMph.textContent = (velocity * 2.237).toFixed(1);
+                if (densityValue) densityValue.textContent = density.toFixed(3);
+                if (dragCoeffValue) dragCoeffValue.textContent = dragCoeff.toFixed(2);
+
+                // Calculate drag force
                 const area = Math.PI * Math.pow(0.037, 2); // m² (baseball radius ~3.7 cm)
-                const dragForce = 0.5 * airDensity * velocity * velocity * dragCoeff * area;
+                const dragForce = 0.5 * density * velocity * velocity * dragCoeff * area;
                 const mass = 0.145; // kg (baseball mass)
                 const deceleration = dragForce / mass;
-                
-                document.getElementById('drag-result').textContent = dragForce.toFixed(3);
-                document.getElementById('decel-result').textContent = deceleration.toFixed(2);
-            }
-        }
 
-        function calculateAltitudeEffect() {
-            const altitude = parseFloat(document.getElementById('altitude').value); // meters
-            const temperature = parseFloat(document.getElementById('temperature').value); // Celsius
-            
-            if (altitude >= 0 && temperature) {
-                // Barometric formula approximation
+                // Calculate Reynolds number
+                const diameter = 0.074; // m (baseball diameter)
+                const viscosity = 1.81e-5; // Pa·s (air viscosity at 15°C)
+                const reynoldsNumber = (density * velocity * diameter) / viscosity;
+
+                // Update result displays
+                if (dragForceDisplay) dragForceDisplay.textContent = dragForce.toFixed(2);
+                if (decelerationDisplay) decelerationDisplay.textContent = deceleration.toFixed(1);
+                if (reynoldsDisplay) reynoldsDisplay.textContent = reynoldsNumber.toExponential(2);
+
+                // Determine flow regime
+                let regime = 'Laminar';
+                if (reynoldsNumber > 2000) regime = 'Transitional';
+                if (reynoldsNumber > 100000) regime = 'Turbulent';
+                if (flowRegime) flowRegime.textContent = regime;
+
+                // Update formula display
+                if (formulaValues) formulaValues.textContent = `${density.toFixed(3)} × ${velocity}² × ${dragCoeff} × ${area.toFixed(5)}`;
+                if (formulaResult) formulaResult.textContent = dragForce.toFixed(2);
+            }
+
+            function updateEnvironmentalCalculations() {
+                const altitude = parseFloat(altitudeSlider?.value || 0); // meters
+                const temperature = parseFloat(temperatureSlider?.value || 15); // Celsius
+                const humidity = parseFloat(humiditySlider?.value || 50); // %
+
+                // Update display values
+                const altitudeValue = document.getElementById('altitude-value');
+                const altitudeFeet = document.getElementById('altitude-feet');
+                const temperatureValue = document.getElementById('temperature-value');
+                const temperatureFahrenheit = document.getElementById('temperature-fahrenheit');
+                const humidityValue = document.getElementById('humidity-value');
+
+                if (altitudeValue) altitudeValue.textContent = altitude;
+                if (altitudeFeet) altitudeFeet.textContent = Math.round(altitude * 3.28084);
+                if (temperatureValue) temperatureValue.textContent = temperature;
+                if (temperatureFahrenheit) temperatureFahrenheit.textContent = Math.round(temperature * 9/5 + 32);
+                if (humidityValue) humidityValue.textContent = humidity;
+
+                // Calculate air density with temperature, altitude, and humidity effects
                 const seaLevelDensity = 1.225; // kg/m³ at 15°C
                 const temperatureK = temperature + 273.15;
                 const standardTempK = 288.15; // 15°C in Kelvin
-                
-                // Temperature correction
-                let density = seaLevelDensity * (standardTempK / temperatureK);
-                
-                // Altitude correction (simplified)
-                density = density * Math.exp(-altitude / 8400); // 8400m is scale height
-                
-                const percentChange = ((density - seaLevelDensity) / seaLevelDensity) * 100;
-                
-                document.getElementById('altitude-density-result').textContent = density.toFixed(3);
-                document.getElementById('density-change').textContent = percentChange.toFixed(1);
-            }
-        }
 
-        // Auto-calculate when values change
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('velocity-drag').addEventListener('input', calculateDragForce);
-            document.getElementById('air-density').addEventListener('input', calculateDragForce);
-            document.getElementById('drag-coeff').addEventListener('input', calculateDragForce);
-            document.getElementById('altitude').addEventListener('input', calculateAltitudeEffect);
-            document.getElementById('temperature').addEventListener('input', calculateAltitudeEffect);
-            
-            // Calculate initial values
-            calculateDragForce();
-            calculateAltitudeEffect();
+                // Temperature effect
+                let density = seaLevelDensity * (standardTempK / temperatureK);
+
+                // Altitude effect (barometric formula approximation)
+                density = density * Math.exp(-altitude / 8400); // 8400m is scale height
+
+                // Humidity effect (simplified - humid air is less dense)
+                const humidityCorrection = 1 - (humidity / 100) * 0.01; // ~1% reduction at 100% humidity
+                density = density * humidityCorrection;
+
+                const percentChange = ((density - seaLevelDensity) / seaLevelDensity) * 100;
+                const flightDistanceChange = -percentChange * 0.6; // Approximate relationship
+
+                // Update environmental result displays
+                const envDensityDisplay = document.getElementById('env-density-display');
+                const envDensityChange = document.getElementById('env-density-change');
+                const flightDistanceChangeDisplay = document.getElementById('flight-distance-change');
+
+                if (envDensityDisplay) envDensityDisplay.textContent = density.toFixed(3);
+                if (envDensityChange) envDensityChange.textContent = percentChange.toFixed(1);
+                if (flightDistanceChangeDisplay) {
+                    const sign = flightDistanceChange >= 0 ? '+' : '';
+                    flightDistanceChangeDisplay.textContent = sign + flightDistanceChange.toFixed(1);
+                }
+            }
+
+            function updateReynoldsAnalysis() {
+                const velocity = parseFloat(reynoldsVelocitySlider?.value || 30);
+                const reynoldsVelocityDisplay = document.getElementById('reynolds-velocity');
+
+                if (reynoldsVelocityDisplay) reynoldsVelocityDisplay.textContent = velocity;
+
+                // Calculate Reynolds number
+                const diameter = 0.074; // m
+                const density = 1.225; // kg/m³
+                const viscosity = 1.81e-5; // Pa·s
+                const reynoldsNumber = (density * velocity * diameter) / viscosity;
+
+                // Update displays
+                const reynoldsResult = document.getElementById('reynolds-result');
+                const flowRegimeIndicator = document.getElementById('flow-regime-indicator');
+
+                if (reynoldsResult) reynoldsResult.textContent = reynoldsNumber.toExponential(2);
+
+                let regime = 'Laminar';
+                if (reynoldsNumber > 2000) regime = 'Transitional';
+                if (reynoldsNumber > 100000) regime = 'Turbulent';
+                if (flowRegimeIndicator) flowRegimeIndicator.textContent = regime;
+            }
+
+            // Add event listeners for drag calculator
+            if (velocitySlider) velocitySlider.addEventListener('input', updateDragCalculations);
+            if (densitySlider) densitySlider.addEventListener('input', updateDragCalculations);
+            if (dragCoeffSlider) dragCoeffSlider.addEventListener('input', updateDragCalculations);
+
+            // Add event listeners for environmental calculator
+            if (altitudeSlider) altitudeSlider.addEventListener('input', updateEnvironmentalCalculations);
+            if (temperatureSlider) temperatureSlider.addEventListener('input', updateEnvironmentalCalculations);
+            if (humiditySlider) humiditySlider.addEventListener('input', updateEnvironmentalCalculations);
+
+            // Add event listeners for Reynolds analysis
+            if (reynoldsVelocitySlider) reynoldsVelocitySlider.addEventListener('input', updateReynoldsAnalysis);
+
+            // Environmental preset buttons
+            document.querySelectorAll('.env-apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const density = this.getAttribute('data-density');
+                    if (densitySlider && density) {
+                        densitySlider.value = density;
+                        updateDragCalculations();
+                    }
+                });
+            });
+
+            // Ballpark preset buttons
+            document.querySelectorAll('.ballpark-apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const alt = this.getAttribute('data-alt');
+                    const temp = this.getAttribute('data-temp');
+                    const humid = this.getAttribute('data-humid');
+
+                    if (altitudeSlider && alt) altitudeSlider.value = alt;
+                    if (temperatureSlider && temp) temperatureSlider.value = temp;
+                    if (humiditySlider && humid) humiditySlider.value = humid;
+
+                    updateEnvironmentalCalculations();
+                });
+            });
+
+            // Ball aerodynamics analysis
+            const ballData = {
+                smooth: {
+                    name: 'Smooth Sphere',
+                    dragCoeff: '0.20',
+                    surfaceType: 'Smooth',
+                    flowType: 'Laminar separation',
+                    wakeSize: 'Large',
+                    explanation: 'Smooth spheres experience large wake regions with early flow separation, resulting in high drag despite the smooth surface.',
+                    ballIcon: '🟢'
+                },
+                baseball: {
+                    name: 'MLB Baseball',
+                    dragCoeff: '0.35',
+                    surfaceType: 'Textured seams',
+                    flowType: 'Turbulent',
+                    wakeSize: 'Medium',
+                    explanation: 'Baseball seams create surface roughness that triggers turbulent flow, reducing wake size and optimizing drag for flight characteristics.',
+                    ballIcon: '⚾'
+                },
+                scuffed: {
+                    name: 'Scuffed Ball',
+                    dragCoeff: '0.50',
+                    surfaceType: 'Rough/damaged',
+                    flowType: 'Highly turbulent',
+                    wakeSize: 'Small',
+                    explanation: 'Scuffed surfaces create excessive turbulence and increased friction, resulting in higher drag forces and reduced flight distance.',
+                    ballIcon: '🧽'
+                },
+                tennis: {
+                    name: 'Tennis Ball',
+                    dragCoeff: '0.55',
+                    surfaceType: 'Fuzzy felt',
+                    flowType: 'Turbulent',
+                    wakeSize: 'Small',
+                    explanation: 'Fuzzy felt surface creates significant turbulent boundary layer, resulting in high drag that affects ball trajectory and bounce characteristics.',
+                    ballIcon: '🎾'
+                },
+                wiffle: {
+                    name: 'Wiffle Ball',
+                    dragCoeff: '0.80',
+                    surfaceType: 'Perforated',
+                    flowType: 'Complex flow',
+                    wakeSize: 'Variable',
+                    explanation: 'Perforated design creates complex airflow patterns with high drag, designed specifically for limited flight distance in small spaces.',
+                    ballIcon: '🥎'
+                }
+            };
+
+            function updateBallAnalysis(ballType) {
+                const data = ballData[ballType];
+                if (data) {
+                    document.getElementById('current-ball-name').textContent = data.name;
+                    document.getElementById('display-drag-coeff').textContent = data.dragCoeff;
+                    document.getElementById('display-surface-type').textContent = data.surfaceType;
+                    document.getElementById('display-flow-type').textContent = data.flowType;
+                    document.getElementById('display-wake-size').textContent = data.wakeSize;
+                    document.getElementById('aerodynamic-explanation').textContent = data.explanation;
+                    document.getElementById('ball-label').textContent = data.ballIcon;
+
+                    // Update drag coefficient slider if it exists
+                    if (dragCoeffSlider) {
+                        dragCoeffSlider.value = parseFloat(data.dragCoeff);
+                        updateDragCalculations();
+                    }
+                }
+            }
+
+            // Ball selector buttons
+            document.querySelectorAll('.ball-selector-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.ball-selector-btn').forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Update analysis
+                    const ballType = this.getAttribute('data-ball');
+                    updateBallAnalysis(ballType);
+                });
+            });
+
+            // Initialize calculations
+            updateDragCalculations();
+            updateEnvironmentalCalculations();
+            updateReynoldsAnalysis();
+            updateBallAnalysis('smooth');
         });
     </script>
 
