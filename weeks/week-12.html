@@ -7,7 +7,167 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <style>
+        /* Week 12 Equipment Physics Theme - Purple/Violet */
+        :root {
+            --week12-primary: #8e44ad;
+            --week12-secondary: #9b59b6;
+            --week12-accent: #bb8fce;
+            --week12-light: #f4f1f8;
+            --week12-gradient: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+        }
+
+        .week-header {
+            background: var(--week12-gradient);
+            color: white;
+        }
+
+        .learning-objectives .section-title {
+            color: var(--week12-primary);
+            border-bottom: 3px solid var(--week12-accent);
+        }
+
+        .objective-card {
+            background: var(--week12-light);
+            border-left: 4px solid var(--week12-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.15);
+            border-left-color: var(--week12-primary);
+        }
+
+        .objective-card .objective-icon {
+            background: var(--week12-gradient);
+            color: white;
+        }
+
+        .learning-roadmap .section-title {
+            color: var(--week12-primary);
+            border-bottom: 3px solid var(--week12-accent);
+        }
+
+        .roadmap-step {
+            background: var(--week12-light);
+            border-left: 4px solid var(--week12-secondary);
+        }
+
+        .roadmap-step .step-number {
+            background: var(--week12-gradient);
+            color: white;
+        }
+
+        .roadmap-step .skill {
+            background: var(--week12-accent);
+            color: white;
+        }
+
+        .progress-fill {
+            background: var(--week12-gradient);
+        }
+
+        .enhanced-calculator {
+            background: var(--week12-light);
+            border: 2px solid var(--week12-accent);
+        }
+
+        .enhanced-calculator h4 {
+            color: var(--week12-primary);
+            background: linear-gradient(90deg, var(--week12-light) 0%, transparent 100%);
+        }
+
+        .physics-slider::-webkit-slider-thumb {
+            background: var(--week12-secondary);
+        }
+
+        .physics-slider::-moz-range-thumb {
+            background: var(--week12-secondary);
+        }
+
+        .result-value {
+            color: var(--week12-primary);
+            font-weight: 600;
+        }
+
+        .physics-input:focus {
+            border-color: var(--week12-secondary);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.1);
+        }
+
+        .calculator-grid {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(142, 68, 173, 0.1);
+        }
+
+        .input-section h5, .results-section h5, .visualization-section h5 {
+            color: var(--week12-primary);
+            border-bottom: 2px solid var(--week12-accent);
+        }
+
+        /* Equipment visualization styles */
+        .seam-svg, .mound-svg, .impact-svg {
+            border: 2px solid var(--week12-accent);
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* Activity timeline styling */
+        .activity-item {
+            border-left: 3px solid var(--week12-secondary);
+        }
+
+        .activity-item .activity-icon {
+            background: var(--week12-gradient);
+            color: white;
+        }
+
+        /* Topic cards styling */
+        .topic-card {
+            background: var(--week12-light);
+            border: 1px solid var(--week12-accent);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.15);
+        }
+
+        .topic-icon {
+            background: var(--week12-gradient);
+            color: white;
+        }
+
+        /* Day section styling */
+        .day-header {
+            background: linear-gradient(90deg, var(--week12-light) 0%, transparent 100%);
+            border-left: 5px solid var(--week12-secondary);
+        }
+
+        .day-title {
+            color: var(--week12-primary);
+        }
+
+        .complexity {
+            background: var(--week12-accent);
+            color: white;
+        }
+
+        /* Navigation and mobile responsive improvements */
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .seam-svg, .mound-svg, .impact-svg {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,6 +185,220 @@
                     This week explores the physics behind baseball pitching equipment, understanding how design and properties of baseballs, mounds, and gear influence performance and safety.
                 </p>
             </header>
+
+            <!-- Learning Objectives Section -->
+            <section class="learning-objectives">
+                <h2 class="section-title">🎯 Learning Objectives</h2>
+                <p class="objectives-intro">Master the physics and engineering principles behind baseball equipment design, safety, and performance optimization.</p>
+
+                <div class="objectives-grid">
+                    <div class="objective-card interactive" data-objective="equipment-design">
+                        <div class="objective-icon">⚾</div>
+                        <h3>Equipment Design Physics</h3>
+                        <p>Understand how aerodynamics, materials science, and engineering principles influence baseball equipment design and performance characteristics.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Seam aerodynamics and Magnus effect enhancement</li>
+                                <li>Material properties affecting performance and safety</li>
+                                <li>Engineering trade-offs in equipment optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="safety-analysis">
+                        <div class="objective-icon">🛡️</div>
+                        <h3>Safety Engineering Analysis</h3>
+                        <p>Analyze how protective equipment reduces injury risk through force distribution, energy absorption, and impact time extension principles.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Impact force reduction calculations (F = ma, FΔt = mΔv)</li>
+                                <li>Energy absorption and material compression analysis</li>
+                                <li>Pressure distribution and stress concentration prevention</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="mechanical-advantage">
+                        <div class="objective-icon">⛰️</div>
+                        <h3>Mechanical Advantage Systems</h3>
+                        <p>Calculate and optimize mechanical advantages provided by equipment design, including mound elevation and leverage principles.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Potential energy calculations (PE = mgh)</li>
+                                <li>Trajectory optimization and release angle benefits</li>
+                                <li>Kinetic chain enhancement through equipment design</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="material-science">
+                        <div class="objective-icon">🔬</div>
+                        <h3>Materials Science Applications</h3>
+                        <p>Investigate how material properties like elasticity, durability, and surface texture affect equipment performance and longevity.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Elastic properties and coefficient of restitution</li>
+                                <li>Surface texture effects on aerodynamics and grip</li>
+                                <li>Durability testing and material degradation analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="performance-optimization">
+                        <div class="objective-icon">📈</div>
+                        <h3>Performance Optimization</h3>
+                        <p>Apply physics principles to optimize equipment selection and usage for maximum performance while maintaining safety standards.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Equipment selection based on physics analysis</li>
+                                <li>Performance vs safety trade-off evaluation</li>
+                                <li>Regulatory compliance and standards analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="engineering-innovation">
+                        <div class="objective-icon">💡</div>
+                        <h3>Engineering Innovation</h3>
+                        <p>Design and evaluate innovative equipment solutions using fundamental physics principles and modern engineering approaches.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Innovation through physics-based design thinking</li>
+                                <li>Testing and validation of equipment modifications</li>
+                                <li>Future technology integration and development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Roadmap Section -->
+            <section class="learning-roadmap">
+                <h2 class="section-title">🗺️ Equipment Physics Learning Journey</h2>
+                <p class="roadmap-intro">Follow this comprehensive pathway to master the physics and engineering behind baseball equipment design and optimization.</p>
+
+                <div class="roadmap-container">
+                    <div class="roadmap-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>🧪 Fundamentals of Equipment Physics</h3>
+                            <p>Establish foundation in aerodynamics, materials science, and force analysis as applied to baseball equipment design and function.</p>
+                            <div class="step-skills">
+                                <span class="skill">Aerodynamic Principles</span>
+                                <span class="skill">Materials Properties</span>
+                                <span class="skill">Force Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>⚾ Baseball Design and Aerodynamics</h3>
+                            <p>Analyze how seam design, surface texture, and sphere aerodynamics create the Magnus effect and influence pitch movement characteristics.</p>
+                            <div class="step-skills">
+                                <span class="skill">Seam Aerodynamics</span>
+                                <span class="skill">Magnus Effect</span>
+                                <span class="skill">Surface Engineering</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>⛰️ Mechanical Advantage Analysis</h3>
+                            <p>Calculate energy benefits from mound elevation, analyze release angles, and optimize pitcher mechanics through equipment design.</p>
+                            <div class="step-skills">
+                                <span class="skill">Potential Energy</span>
+                                <span class="skill">Trajectory Analysis</span>
+                                <span class="skill">Mechanical Advantage</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>🛡️ Safety Engineering and Protection</h3>
+                            <p>Design and evaluate protective equipment using impact analysis, force distribution principles, and energy absorption calculations.</p>
+                            <div class="step-skills">
+                                <span class="skill">Impact Analysis</span>
+                                <span class="skill">Force Distribution</span>
+                                <span class="skill">Energy Absorption</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>🔬 Materials Science Integration</h3>
+                            <p>Investigate material properties, durability testing, and performance optimization through advanced materials engineering principles.</p>
+                            <div class="step-skills">
+                                <span class="skill">Material Testing</span>
+                                <span class="skill">Durability Analysis</span>
+                                <span class="skill">Performance Materials</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>📊 Performance Optimization</h3>
+                            <p>Apply comprehensive physics analysis to optimize equipment selection, usage techniques, and performance enhancement strategies.</p>
+                            <div class="step-skills">
+                                <span class="skill">Equipment Selection</span>
+                                <span class="skill">Performance Metrics</span>
+                                <span class="skill">Optimization Strategies</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="7">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3>💡 Innovation and Future Technology</h3>
+                            <p>Design innovative equipment solutions using cutting-edge physics principles, emerging materials, and advanced engineering methodologies.</p>
+                            <div class="step-skills">
+                                <span class="skill">Innovation Design</span>
+                                <span class="skill">Future Materials</span>
+                                <span class="skill">Technology Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-progress">
+                    <div class="progress-header">
+                        <h3>🏆 Your Progress</h3>
+                        <div class="progress-stats">
+                            <span class="stat">
+                                <span class="stat-number" id="completed-steps">0</span>
+                                <span class="stat-label">Steps Completed</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="total-steps">7</span>
+                                <span class="stat-label">Total Steps</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="mastery-level">Beginner</span>
+                                <span class="stat-label">Mastery Level</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -89,7 +463,113 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <h3>🧮 Interactive Seam Aerodynamics Calculator</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>⚾ Baseball Aerodynamics Analysis</h4>
+                            <div class="calculator-grid">
+                                <div class="input-section">
+                                    <h5>Ball Properties</h5>
+                                    <div class="input-group">
+                                        <label for="ball-type-select">Ball Surface Type:</label>
+                                        <select id="ball-type-select" class="physics-input">
+                                            <option value="official">Official Baseball (seamed)</option>
+                                            <option value="smooth">Smooth Ball</option>
+                                            <option value="tennis">Tennis Ball (fuzzy)</option>
+                                            <option value="golf">Golf Ball (dimpled)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="ball-velocity">Velocity: <span id="velocity-display">90</span> mph</label>
+                                        <input type="range" id="ball-velocity" min="40" max="110" value="90" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="spin-rate">Spin Rate: <span id="spin-display">2200</span> RPM</label>
+                                        <input type="range" id="spin-rate" min="1000" max="3500" value="2200" class="physics-slider">
+                                    </div>
+                                </div>
+
+                                <div class="results-section">
+                                    <h5>Aerodynamic Analysis</h5>
+                                    <div class="result-grid">
+                                        <div class="result-item">
+                                            <span class="result-label">Drag Coefficient (C_D):</span>
+                                            <span class="result-value" id="drag-coefficient">0.35</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Drag Force:</span>
+                                            <span class="result-value" id="drag-force">4.2</span> N
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Magnus Force:</span>
+                                            <span class="result-value" id="magnus-force">2.8</span> N
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Reynolds Number:</span>
+                                            <span class="result-value" id="reynolds-number">185,000</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Movement (lateral):</span>
+                                            <span class="result-value" id="lateral-movement">8.5</span> inches
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Movement (vertical):</span>
+                                            <span class="result-value" id="vertical-movement">12.3</span> inches
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="visualization-section">
+                                <h5>Seam Effect Visualization</h5>
+                                <div class="seam-visualization">
+                                    <svg width="400" height="200" viewBox="0 0 400 200" class="seam-svg">
+                                        <!-- Baseball representation -->
+                                        <circle cx="100" cy="100" r="40" fill="#f8f8f8" stroke="#333" stroke-width="2"/>
+                                        <!-- Seams -->
+                                        <path d="M 70 85 Q 100 70 130 85" stroke="#cc0000" stroke-width="3" fill="none" id="seam1"/>
+                                        <path d="M 70 115 Q 100 130 130 115" stroke="#cc0000" stroke-width="3" fill="none" id="seam2"/>
+
+                                        <!-- Airflow lines -->
+                                        <g id="airflow-lines">
+                                            <path d="M 20 80 Q 60 75 150 80" stroke="#4a90e2" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.7"/>
+                                            <path d="M 20 90 Q 65 85 150 90" stroke="#4a90e2" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.7"/>
+                                            <path d="M 20 100 Q 70 95 150 100" stroke="#4a90e2" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                                            <path d="M 20 110 Q 65 115 150 110" stroke="#4a90e2" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.7"/>
+                                            <path d="M 20 120 Q 60 125 150 120" stroke="#4a90e2" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.7"/>
+                                        </g>
+
+                                        <!-- Force vectors -->
+                                        <g id="force-vectors">
+                                            <line x1="100" y1="100" x2="100" y2="60" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowhead-red)"/>
+                                            <text x="105" y="55" font-size="12" fill="#e74c3c">Magnus</text>
+                                            <line x1="100" y1="100" x2="150" y2="100" stroke="#f39c12" stroke-width="3" marker-end="url(#arrowhead-orange)"/>
+                                            <text x="155" y="95" font-size="12" fill="#f39c12">Drag</text>
+                                        </g>
+
+                                        <!-- Ball trajectory -->
+                                        <path d="M 200 100 Q 280 60 360 80" stroke="#27ae60" stroke-width="3" fill="none" stroke-dasharray="5,5" id="trajectory"/>
+                                        <text x="280" y="45" font-size="12" fill="#27ae60">Trajectory</text>
+
+                                        <!-- Arrows for markers -->
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#4a90e2"/>
+                                            </marker>
+                                            <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+                                            </marker>
+                                            <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12"/>
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>🚀 Activities</h3>
                     <div class="activities-timeline">
                         <div class="activity-item">
@@ -161,14 +641,99 @@
                     
                     <h3>🧮 Interactive Mound Physics Calculator</h3>
                     <div class="physics-calculators">
-                        <div class="calculator-section">
-                            <h4>Mound Energy Calculator</h4>
-                            <div class="calculator-inputs">
-                                <label>Ball Mass (kg): <input type="number" id="ball-mass" value="0.145" step="0.001"></label>
-                                <label>Mound Height (inches): <input type="number" id="mound-height" value="10" step="0.5"></label>
-                                <div class="calculator-result">
-                                    <p>Potential Energy: <span id="pe-result">0.36</span> J</p>
-                                    <p>Velocity Benefit: <span id="velocity-benefit">1.8</span> mph (approx)</p>
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>⛰️ Comprehensive Mound Advantage Analysis</h4>
+                            <div class="calculator-grid">
+                                <div class="input-section">
+                                    <h5>Physical Parameters</h5>
+                                    <div class="input-group">
+                                        <label for="ball-mass">Ball Mass: <span id="mass-display">0.145</span> kg</label>
+                                        <input type="range" id="ball-mass" min="0.140" max="0.150" value="0.145" step="0.001" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="mound-height">Mound Height: <span id="height-display">10</span> inches</label>
+                                        <input type="range" id="mound-height" min="8" max="12" value="10" step="0.5" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="release-velocity">Release Velocity: <span id="release-vel-display">90</span> mph</label>
+                                        <input type="range" id="release-velocity" min="70" max="105" value="90" step="1" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="release-angle">Release Angle: <span id="angle-display">-5</span>°</label>
+                                        <input type="range" id="release-angle" min="-10" max="5" value="-5" step="1" class="physics-slider">
+                                    </div>
+                                </div>
+
+                                <div class="results-section">
+                                    <h5>Energy & Trajectory Analysis</h5>
+                                    <div class="result-grid">
+                                        <div class="result-item">
+                                            <span class="result-label">Potential Energy:</span>
+                                            <span class="result-value" id="pe-result">0.36</span> J
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Velocity Benefit:</span>
+                                            <span class="result-value" id="velocity-benefit">2.1</span> mph
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Release Height:</span>
+                                            <span class="result-value" id="release-height">8.2</span> ft
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Time to Plate:</span>
+                                            <span class="result-value" id="time-to-plate">0.42</span> s
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Strike Zone Advantage:</span>
+                                            <span class="result-value" id="strike-advantage">3.8</span> inches
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Downward Angle at Plate:</span>
+                                            <span class="result-value" id="plate-angle">-8.2</span>°
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="visualization-section">
+                                <h5>Mound Trajectory Visualization</h5>
+                                <div class="trajectory-visualization">
+                                    <svg width="500" height="250" viewBox="0 0 500 250" class="mound-svg">
+                                        <!-- Pitcher's mound -->
+                                        <ellipse cx="80" cy="180" rx="25" ry="8" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                        <rect x="55" y="172" width="50" height="16" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+
+                                        <!-- Home plate area -->
+                                        <polygon points="420,200 430,195 430,205" fill="#333" stroke="#000" stroke-width="1"/>
+                                        <rect x="415" y="190" width="20" height="20" fill="#f0f0f0" stroke="#333" stroke-width="1" opacity="0.3"/>
+
+                                        <!-- Pitcher figure -->
+                                        <circle cx="80" cy="165" r="5" fill="#2c3e50"/>
+                                        <line x1="80" y1="170" x2="80" y2="180" stroke="#2c3e50" stroke-width="3"/>
+
+                                        <!-- Trajectory path -->
+                                        <path d="M 80 165 Q 200 120 420 195" stroke="#e74c3c" stroke-width="3" fill="none" id="ball-trajectory"/>
+
+                                        <!-- Ground level -->
+                                        <line x1="0" y1="200" x2="500" y2="200" stroke="#228B22" stroke-width="4"/>
+
+                                        <!-- Distance markers -->
+                                        <line x1="80" y1="205" x2="80" y2="215" stroke="#333" stroke-width="1"/>
+                                        <line x1="420" y1="205" x2="420" y2="215" stroke="#333" stroke-width="1"/>
+                                        <text x="250" y="230" font-size="12" text-anchor="middle" fill="#333">60' 6"</text>
+
+                                        <!-- Height measurements -->
+                                        <line x1="45" y1="172" x2="45" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+                                        <text x="15" y="186" font-size="10" fill="#666">10"</text>
+
+                                        <!-- Release point indicator -->
+                                        <circle cx="80" cy="165" r="3" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+                                        <text x="85" y="155" font-size="10" fill="#f39c12">Release</text>
+
+                                        <!-- Strike zone indicator -->
+                                        <rect x="415" y="185" width="10" height="20" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="3,3"/>
+                                        <text x="440" y="195" font-size="10" fill="#3498db">Strike Zone</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -245,14 +810,124 @@
                     
                     <h3>🧮 Interactive Impact Force Calculator</h3>
                     <div class="physics-calculators">
-                        <div class="calculator-section">
-                            <h4>Glove Impact Calculator</h4>
-                            <div class="calculator-inputs">
-                                <label>Ball Velocity (mph): <input type="number" id="ball-velocity" value="90" step="1"></label>
-                                <label>Contact Time (s): <input type="number" id="contact-time" value="0.05" step="0.01"></label>
-                                <div class="calculator-result">
-                                    <p>Impact Force: <span id="impact-result">261</span> N</p>
-                                    <p>Force Reduction: <span id="force-reduction">80</span>% vs bare hand</p>
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>🧤 Comprehensive Glove Safety Analysis</h4>
+                            <div class="calculator-grid">
+                                <div class="input-section">
+                                    <h5>Impact Parameters</h5>
+                                    <div class="input-group">
+                                        <label for="glove-ball-velocity">Ball Velocity: <span id="glove-velocity-display">90</span> mph</label>
+                                        <input type="range" id="glove-ball-velocity" min="40" max="110" value="90" step="1" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="glove-contact-time">Contact Time: <span id="contact-time-display">0.05</span> s</label>
+                                        <input type="range" id="glove-contact-time" min="0.01" max="0.15" value="0.05" step="0.01" class="physics-slider">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="glove-type">Glove Type:</label>
+                                        <select id="glove-type" class="physics-input">
+                                            <option value="catcher">Catcher's Mitt (heavily padded)</option>
+                                            <option value="infield">Infield Glove (medium padding)</option>
+                                            <option value="outfield">Outfield Glove (light padding)</option>
+                                            <option value="bare">Bare Hand (no protection)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="catch-technique">Catch Technique:</label>
+                                        <select id="catch-technique" class="physics-input">
+                                            <option value="proper">Proper (give with ball)</option>
+                                            <option value="stiff">Stiff Reception</option>
+                                            <option value="optimal">Optimal (maximum give)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="results-section">
+                                    <h5>Impact Analysis</h5>
+                                    <div class="result-grid">
+                                        <div class="result-item">
+                                            <span class="result-label">Impact Force:</span>
+                                            <span class="result-value" id="impact-result">261</span> N
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Force (lbs):</span>
+                                            <span class="result-value" id="impact-lbs">59</span> lbs
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Contact Pressure:</span>
+                                            <span class="result-value" id="contact-pressure">18.5</span> psi
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Energy Absorbed:</span>
+                                            <span class="result-value" id="energy-absorbed">84</span> J
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">Safety Rating:</span>
+                                            <span class="result-value" id="safety-rating">Good</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="result-label">vs Bare Hand:</span>
+                                            <span class="result-value" id="force-reduction">-75%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="visualization-section">
+                                <h5>Impact Force Visualization</h5>
+                                <div class="impact-visualization">
+                                    <svg width="450" height="200" viewBox="0 0 450 200" class="impact-svg">
+                                        <!-- Background -->
+                                        <rect width="450" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+
+                                        <!-- Ball trajectory -->
+                                        <circle cx="50" cy="100" r="8" fill="#ffffff" stroke="#333" stroke-width="2"/>
+                                        <path d="M 58 100 L 150 100" stroke="#e74c3c" stroke-width="3" marker-end="url(#velocity-arrow)"/>
+                                        <text x="104" y="85" font-size="10" fill="#e74c3c">Ball Velocity</text>
+
+                                        <!-- Glove representation -->
+                                        <ellipse cx="180" cy="100" rx="30" ry="20" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                        <ellipse cx="180" cy="100" rx="25" ry="15" fill="#D2691E" stroke="#A0522D" stroke-width="1"/>
+
+                                        <!-- Hand inside glove -->
+                                        <ellipse cx="180" cy="105" rx="15" ry="8" fill="#FDBCB4" stroke="#F5A397" stroke-width="1"/>
+
+                                        <!-- Force vectors -->
+                                        <g id="force-indicators">
+                                            <line x1="180" y1="100" x2="180" y2="50" stroke="#f39c12" stroke-width="4" marker-end="url(#force-arrow)"/>
+                                            <text x="185" y="45" font-size="10" fill="#f39c12">Impact Force</text>
+
+                                            <line x1="180" y1="100" x2="230" y2="100" stroke="#27ae60" stroke-width="3" marker-end="url(#absorption-arrow)"/>
+                                            <text x="235" y="95" font-size="10" fill="#27ae60">Energy Absorption</text>
+                                        </g>
+
+                                        <!-- Contact area indicator -->
+                                        <circle cx="180" cy="100" r="35" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="3,3" opacity="0.6"/>
+                                        <text x="220" y="100" font-size="10" fill="#3498db">Contact Area</text>
+
+                                        <!-- Time indicator -->
+                                        <rect x="320" y="80" width="100" height="40" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+                                        <text x="325" y="95" font-size="10" fill="#2c3e50">Contact Time:</text>
+                                        <text x="325" y="110" font-size="12" fill="#e74c3c" id="time-indicator">0.05 s</text>
+
+                                        <!-- Safety indicator -->
+                                        <rect x="320" y="130" width="100" height="40" fill="#d5edda" stroke="#c3e6cb" stroke-width="1" rx="5"/>
+                                        <text x="325" y="145" font-size="10" fill="#155724">Safety Level:</text>
+                                        <text x="325" y="160" font-size="12" fill="#28a745" id="safety-indicator">GOOD</text>
+
+                                        <!-- Arrow markers -->
+                                        <defs>
+                                            <marker id="velocity-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+                                            </marker>
+                                            <marker id="force-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12"/>
+                                            </marker>
+                                            <marker id="absorption-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
+                                            </marker>
+                                        </defs>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -1038,15 +1713,211 @@
                 practiceProblems.createPracticeSet('week12');
             }
         });
+        // Week 12 Enhanced Calculator Functions
+        function calculateAerodynamics() {
+            const ballType = document.getElementById('ball-type-select')?.value || 'official';
+            const velocity = parseFloat(document.getElementById('ball-velocity')?.value || 90);
+            const spinRate = parseFloat(document.getElementById('spin-rate')?.value || 2200);
+
+            // Update displays
+            document.getElementById('velocity-display').textContent = velocity;
+            document.getElementById('spin-display').textContent = spinRate;
+
+            // Convert velocity to m/s
+            const velocityMs = velocity * 0.447;
+
+            // Ball properties
+            const ballRadius = 0.0366; // meters
+            const ballArea = Math.PI * ballRadius * ballRadius;
+            const airDensity = 1.225; // kg/m³
+
+            // Drag coefficients for different ball types
+            const dragCoefficients = {
+                'official': 0.35,
+                'smooth': 0.20,
+                'tennis': 0.55,
+                'golf': 0.25
+            };
+
+            const dragCoeff = dragCoefficients[ballType];
+
+            // Calculate forces
+            const dragForce = 0.5 * airDensity * velocityMs * velocityMs * dragCoeff * ballArea;
+            const reynoldsNumber = (airDensity * velocityMs * 2 * ballRadius) / (1.81e-5);
+
+            // Magnus force (simplified)
+            const spinRateRads = spinRate * 2 * Math.PI / 60;
+            const magnusForce = 0.5 * airDensity * velocityMs * spinRateRads * ballArea * 0.25;
+
+            // Movement calculations (simplified trajectory)
+            const timeToPlate = 18.44 / velocityMs; // 60.5 feet in meters
+            const lateralMovement = (magnusForce * timeToPlate * timeToPlate / 0.145) * 39.37; // Convert to inches
+            const verticalMovement = lateralMovement * 1.4; // Typical ratio
+
+            // Update results
+            document.getElementById('drag-coefficient').textContent = dragCoeff.toFixed(2);
+            document.getElementById('drag-force').textContent = dragForce.toFixed(1);
+            document.getElementById('magnus-force').textContent = magnusForce.toFixed(1);
+            document.getElementById('reynolds-number').textContent = Math.round(reynoldsNumber).toLocaleString();
+            document.getElementById('lateral-movement').textContent = lateralMovement.toFixed(1);
+            document.getElementById('vertical-movement').textContent = verticalMovement.toFixed(1);
+        }
+
+        function calculateMoundPhysics() {
+            const ballMass = parseFloat(document.getElementById('ball-mass')?.value || 0.145);
+            const moundHeight = parseFloat(document.getElementById('mound-height')?.value || 10);
+            const releaseVelocity = parseFloat(document.getElementById('release-velocity')?.value || 90);
+            const releaseAngle = parseFloat(document.getElementById('release-angle')?.value || -5);
+
+            // Update displays
+            document.getElementById('mass-display').textContent = ballMass.toFixed(3);
+            document.getElementById('height-display').textContent = moundHeight;
+            document.getElementById('release-vel-display').textContent = releaseVelocity;
+            document.getElementById('angle-display').textContent = releaseAngle;
+
+            // Convert units
+            const heightMeters = moundHeight * 0.0254; // inches to meters
+            const velocityMs = releaseVelocity * 0.447; // mph to m/s
+            const angleRad = releaseAngle * Math.PI / 180;
+
+            // Potential energy calculation
+            const potentialEnergy = ballMass * 9.81 * heightMeters;
+
+            // Velocity benefit from height
+            const velocityBenefit = Math.sqrt(2 * 9.81 * heightMeters) * 2.237; // Convert to mph
+
+            // Release height (mound + pitcher height)
+            const releaseHeight = heightMeters + 1.83; // 6 feet typical pitcher height
+            const releaseHeightFt = releaseHeight * 3.281;
+
+            // Time to plate calculation
+            const distance = 18.44; // meters to home plate
+            const timeToPlate = distance / velocityMs;
+
+            // Strike zone advantage
+            const strikeAdvantage = heightMeters * Math.tan(Math.abs(angleRad)) * 39.37; // inches
+
+            // Downward angle at plate
+            const plateAngle = Math.atan((releaseHeight - 0.9) / distance) * 180 / Math.PI; // 0.9m = strike zone center
+
+            // Update results
+            document.getElementById('pe-result').textContent = potentialEnergy.toFixed(2);
+            document.getElementById('velocity-benefit').textContent = velocityBenefit.toFixed(1);
+            document.getElementById('release-height').textContent = releaseHeightFt.toFixed(1);
+            document.getElementById('time-to-plate').textContent = timeToPlate.toFixed(2);
+            document.getElementById('strike-advantage').textContent = strikeAdvantage.toFixed(1);
+            document.getElementById('plate-angle').textContent = plateAngle.toFixed(1);
+        }
+
+        function calculateGloveImpact() {
+            const velocity = parseFloat(document.getElementById('glove-ball-velocity')?.value || 90);
+            const contactTime = parseFloat(document.getElementById('glove-contact-time')?.value || 0.05);
+            const gloveType = document.getElementById('glove-type')?.value || 'infield';
+            const technique = document.getElementById('catch-technique')?.value || 'proper';
+
+            // Update displays
+            document.getElementById('glove-velocity-display').textContent = velocity;
+            document.getElementById('contact-time-display').textContent = contactTime.toFixed(2);
+
+            // Ball properties
+            const ballMass = 0.145; // kg
+            const velocityMs = velocity * 0.447; // m/s
+
+            // Contact time modifiers based on glove type and technique
+            const gloveModifiers = {
+                'catcher': { contactTime: 1.8, area: 1.5, absorption: 0.85 },
+                'infield': { contactTime: 1.4, area: 1.2, absorption: 0.75 },
+                'outfield': { contactTime: 1.3, area: 1.1, absorption: 0.70 },
+                'bare': { contactTime: 0.8, area: 0.8, absorption: 0.20 }
+            };
+
+            const techniqueModifiers = {
+                'optimal': { contactTime: 1.3, absorption: 1.1 },
+                'proper': { contactTime: 1.0, absorption: 1.0 },
+                'stiff': { contactTime: 0.7, absorption: 0.8 }
+            };
+
+            const gloveData = gloveModifiers[gloveType];
+            const techData = techniqueModifiers[technique];
+
+            // Adjusted contact time and properties
+            const adjustedContactTime = contactTime * gloveData.contactTime * techData.contactTime;
+            const contactArea = 0.02 * gloveData.area; // square meters
+
+            // Impact force calculation (F = mΔv/Δt)
+            const impactForce = (ballMass * velocityMs) / adjustedContactTime;
+            const impactLbs = impactForce * 0.2248; // Convert to pounds
+
+            // Contact pressure
+            const contactPressure = impactForce / contactArea / 6895; // Convert to psi
+
+            // Energy calculations
+            const kineticEnergy = 0.5 * ballMass * velocityMs * velocityMs;
+            const energyAbsorbed = kineticEnergy * gloveData.absorption * techData.absorption;
+
+            // Safety rating
+            let safetyRating = 'Excellent';
+            if (impactForce > 400) safetyRating = 'Poor';
+            else if (impactForce > 300) safetyRating = 'Fair';
+            else if (impactForce > 200) safetyRating = 'Good';
+
+            // Force reduction vs bare hand
+            const bareHandForce = (ballMass * velocityMs) / (contactTime * 0.8);
+            const forceReduction = ((bareHandForce - impactForce) / bareHandForce * 100);
+
+            // Update results
+            document.getElementById('impact-result').textContent = Math.round(impactForce);
+            document.getElementById('impact-lbs').textContent = Math.round(impactLbs);
+            document.getElementById('contact-pressure').textContent = contactPressure.toFixed(1);
+            document.getElementById('energy-absorbed').textContent = Math.round(energyAbsorbed);
+            document.getElementById('safety-rating').textContent = safetyRating;
+            document.getElementById('force-reduction').textContent = `-${forceReduction.toFixed(0)}%`;
+
+            // Update SVG indicators
+            document.getElementById('time-indicator').textContent = adjustedContactTime.toFixed(3) + ' s';
+            document.getElementById('safety-indicator').textContent = safetyRating.toUpperCase();
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('ball-mass').addEventListener('input', calculateMoundEnergy);
-            document.getElementById('mound-height').addEventListener('input', calculateMoundEnergy);
-            document.getElementById('ball-velocity').addEventListener('input', calculateImpactForce);
-            document.getElementById('contact-time').addEventListener('input', calculateImpactForce);
-            
-            // Calculate initial values
-            calculateMoundEnergy();
-            calculateImpactForce();
+            // Aerodynamics calculator
+            const ballTypeSelect = document.getElementById('ball-type-select');
+            const ballVelocitySlider = document.getElementById('ball-velocity');
+            const spinRateSlider = document.getElementById('spin-rate');
+
+            if (ballTypeSelect && ballVelocitySlider && spinRateSlider) {
+                ballTypeSelect.addEventListener('change', calculateAerodynamics);
+                ballVelocitySlider.addEventListener('input', calculateAerodynamics);
+                spinRateSlider.addEventListener('input', calculateAerodynamics);
+                calculateAerodynamics();
+            }
+
+            // Mound physics calculator
+            const ballMassSlider = document.getElementById('ball-mass');
+            const moundHeightSlider = document.getElementById('mound-height');
+            const releaseVelocitySlider = document.getElementById('release-velocity');
+            const releaseAngleSlider = document.getElementById('release-angle');
+
+            if (ballMassSlider && moundHeightSlider && releaseVelocitySlider && releaseAngleSlider) {
+                ballMassSlider.addEventListener('input', calculateMoundPhysics);
+                moundHeightSlider.addEventListener('input', calculateMoundPhysics);
+                releaseVelocitySlider.addEventListener('input', calculateMoundPhysics);
+                releaseAngleSlider.addEventListener('input', calculateMoundPhysics);
+                calculateMoundPhysics();
+            }
+
+            // Glove impact calculator
+            const gloveVelocitySlider = document.getElementById('glove-ball-velocity');
+            const gloveContactTimeSlider = document.getElementById('glove-contact-time');
+            const gloveTypeSelect = document.getElementById('glove-type');
+            const catchTechniqueSelect = document.getElementById('catch-technique');
+
+            if (gloveVelocitySlider && gloveContactTimeSlider && gloveTypeSelect && catchTechniqueSelect) {
+                gloveVelocitySlider.addEventListener('input', calculateGloveImpact);
+                gloveContactTimeSlider.addEventListener('input', calculateGloveImpact);
+                gloveTypeSelect.addEventListener('change', calculateGloveImpact);
+                catchTechniqueSelect.addEventListener('change', calculateGloveImpact);
+                calculateGloveImpact();
+            }
         });
     </script>
     
