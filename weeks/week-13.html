@@ -7,7 +7,1246 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <style>
+        /* Week 13 Capstone Theme - Premium Gold/Bronze */
+        :root {
+            --week13-primary: #b8860b;
+            --week13-secondary: #daa520;
+            --week13-accent: #ffd700;
+            --week13-light: #fffdf0;
+            --week13-gradient: linear-gradient(135deg, #b8860b 0%, #daa520 50%, #ffd700 100%);
+            --week13-celebration: linear-gradient(45deg, #ffd700 0%, #ffed4e 25%, #ffd700 50%, #ffed4e 75%, #ffd700 100%);
+        }
+
+        .week-header {
+            background: var(--week13-gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .learning-objectives .section-title,
+        .learning-roadmap .section-title,
+        .physics-mastery-dashboard .section-title {
+            color: var(--week13-primary);
+            border-bottom: 3px solid var(--week13-accent);
+            position: relative;
+        }
+
+        .learning-objectives .section-title::after,
+        .learning-roadmap .section-title::after,
+        .physics-mastery-dashboard .section-title::after {
+            content: '🏆';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+
+        .objective-card, .mastery-card {
+            background: var(--week13-light);
+            border-left: 4px solid var(--week13-secondary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before, .mastery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .objective-card:hover::before, .mastery-card:hover::before {
+            left: 100%;
+        }
+
+        .objective-card:hover, .mastery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(184, 134, 11, 0.2);
+            border-left-color: var(--week13-accent);
+        }
+
+        .objective-card .objective-icon, .mastery-card .mastery-icon {
+            background: var(--week13-gradient);
+            color: white;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .roadmap-step {
+            background: var(--week13-light);
+            border-left: 4px solid var(--week13-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-step:hover {
+            background: linear-gradient(135deg, var(--week13-light) 0%, rgba(255, 215, 0, 0.1) 100%);
+        }
+
+        .roadmap-step .step-number {
+            background: var(--week13-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+        }
+
+        .roadmap-step .skill {
+            background: var(--week13-accent);
+            color: #333;
+            font-weight: 600;
+        }
+
+        .progress-fill, .level-fill, .overall-fill {
+            background: var(--week13-gradient);
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+
+        .enhanced-calculator {
+            background: var(--week13-light);
+            border: 2px solid var(--week13-accent);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
+        }
+
+        .enhanced-calculator h4 {
+            color: var(--week13-primary);
+            background: var(--week13-celebration);
+            background-size: 200% 100%;
+            animation: gradient-move 3s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        @keyframes gradient-move {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .physics-review-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--week13-accent);
+            background: var(--week13-light);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .review-tab {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            color: var(--week13-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .review-tab:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .review-tab.active {
+            background: var(--week13-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+        }
+
+        .equation-card {
+            background: white;
+            border: 1px solid var(--week13-accent);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .equation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--week13-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .equation-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .equation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
+        }
+
+        .equation-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: var(--week13-primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .scenario-card {
+            background: var(--week13-light);
+            border: 2px solid var(--week13-accent);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(184, 134, 11, 0.25);
+        }
+
+        .scenario-btn {
+            background: var(--week13-gradient);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .scenario-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(184, 134, 11, 0.4);
+        }
+
+        .physics-domain {
+            background: white;
+            border-left: 4px solid var(--week13-secondary);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .physics-domain:hover {
+            border-left-color: var(--week13-accent);
+            box-shadow: 0 6px 18px rgba(184, 134, 11, 0.15);
+        }
+
+        .physics-slider::-webkit-slider-thumb {
+            background: var(--week13-gradient);
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+        }
+
+        .physics-slider::-moz-range-thumb {
+            background: var(--week13-gradient);
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+        }
+
+        .result-value {
+            color: var(--week13-primary);
+            font-weight: 700;
+        }
+
+        /* Activity timeline styling */
+        .activity-item {
+            border-left: 3px solid var(--week13-secondary);
+        }
+
+        .activity-item .activity-icon {
+            background: var(--week13-gradient);
+            color: white;
+        }
+
+        /* Topic cards styling */
+        .topic-card {
+            background: var(--week13-light);
+            border: 1px solid var(--week13-accent);
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(184, 134, 11, 0.2);
+        }
+
+        .topic-icon {
+            background: var(--week13-gradient);
+            color: white;
+        }
+
+        /* Day section styling */
+        .day-header {
+            background: linear-gradient(90deg, var(--week13-light) 0%, transparent 100%);
+            border-left: 5px solid var(--week13-secondary);
+        }
+
+        .day-title {
+            color: var(--week13-primary);
+        }
+
+        .complexity {
+            background: var(--week13-accent);
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Mastery dashboard specific styles */
+        .mastery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .level-bar, .overall-bar {
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 12px;
+            position: relative;
+        }
+
+        .level-bar::after, .overall-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progress-shine 2s infinite;
+        }
+
+        @keyframes progress-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .overall-mastery {
+            background: var(--week13-light);
+            border: 2px solid var(--week13-accent);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overall-mastery::before {
+            content: '🎓';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            opacity: 0.2;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+            .physics-review-tabs {
+                flex-direction: column;
+            }
+
+            .review-tab {
+                padding: 15px;
+                border-bottom: 1px solid var(--week13-accent);
+            }
+
+            .equation-grid, .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mastery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Celebration effects */
+        .celebration-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .celebration-particle {
+            position: absolute;
+            background: var(--week13-accent);
+            border-radius: 50%;
+            animation: celebrate 3s ease-out forwards;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Advanced Physics Visualizations */
+        .physics-visualization {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
+            border: 2px solid var(--week13-accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trajectory-canvas {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .baseball-animation {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid #8B4513;
+            border-radius: 50%;
+            position: absolute;
+            animation: baseballFlight 4s ease-in-out infinite;
+        }
+
+        .baseball-animation::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 16px;
+            background: #8B4513;
+            transform: translate(-50%, -50%);
+        }
+
+        .baseball-animation::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 2px;
+            background: #8B4513;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes baseballFlight {
+            0% {
+                left: 5%;
+                bottom: 20%;
+                transform: rotate(0deg);
+            }
+            50% {
+                left: 50%;
+                bottom: 70%;
+                transform: rotate(720deg);
+            }
+            100% {
+                left: 95%;
+                bottom: 10%;
+                transform: rotate(1440deg);
+            }
+        }
+
+        .spin-visualization {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, white 60%, #8B4513 70%);
+            margin: 20px auto;
+            position: relative;
+            animation: spin 2s linear infinite;
+        }
+
+        .spin-visualization::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            width: 2px;
+            height: 60%;
+            background: #8B4513;
+            transform: translateX(-50%);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .force-vector {
+            position: absolute;
+            background: var(--week13-primary);
+            height: 3px;
+            border-radius: 2px;
+            transform-origin: left center;
+        }
+
+        .force-vector::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--week13-primary);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        .magnus-demo {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(184,134,11,0.3));
+            border-radius: 50%;
+            margin: 20px auto;
+            position: relative;
+            animation: magnusEffect 3s ease-in-out infinite;
+        }
+
+        @keyframes magnusEffect {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .energy-bar {
+            width: 100%;
+            height: 25px;
+            background: #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .energy-fill {
+            height: 100%;
+            background: var(--week13-gradient);
+            border-radius: 12px;
+            transition: width 1s ease;
+            position: relative;
+        }
+
+        .energy-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: energyFlow 2s linear infinite;
+        }
+
+        @keyframes energyFlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .physics-graph {
+            width: 100%;
+            height: 200px;
+            background: white;
+            border: 2px solid var(--week13-accent);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .graph-line {
+            position: absolute;
+            height: 2px;
+            background: var(--week13-primary);
+            animation: drawLine 3s ease-in-out infinite;
+            transform-origin: left center;
+        }
+
+        @keyframes drawLine {
+            0% { width: 0; opacity: 0; }
+            20% { opacity: 1; }
+            100% { width: 100%; }
+        }
+
+        .velocity-indicator {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: var(--week13-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            animation: velocityChange 4s ease-in-out infinite;
+        }
+
+        @keyframes velocityChange {
+            0%, 100% { transform: scale(1); background: var(--week13-accent); }
+            50% { transform: scale(1.2); background: var(--week13-primary); }
+        }
+
+        /* Interactive hover effects */
+        .physics-visualization:hover .baseball-animation {
+            animation-duration: 2s;
+        }
+
+        .physics-visualization:hover .spin-visualization {
+            animation-duration: 1s;
+        }
+
+        /* Scenario analysis enhanced styling */
+        .scenario-analysis-detail {
+            background: linear-gradient(135deg, var(--week13-light) 0%, white 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid var(--week13-secondary);
+        }
+
+        .analysis-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .analysis-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .analysis-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.2);
+        }
+
+        .analysis-section h7 {
+            color: var(--week13-primary);
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .analysis-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .analysis-section li {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        /* Progressive disclosure effects */
+        .expandable-content {
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .expandable-content.expanded {
+            max-height: 1000px;
+        }
+
+        .expand-button {
+            background: var(--week13-gradient);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .expand-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Real-time Analysis Tools Styling */
+        .simulator-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--week13-light);
+            border-radius: 8px;
+        }
+
+        .control-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-panel label {
+            font-weight: 600;
+            color: var(--week13-primary);
+            font-size: 0.9em;
+        }
+
+        .simulation-results {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(184, 134, 11, 0.1);
+        }
+
+        .result-metric {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .metric-label {
+            display: block;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--week13-primary);
+        }
+
+        /* Performance Tracker Styling */
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .performance-metric {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.1);
+            text-align: center;
+        }
+
+        .performance-metric h5 {
+            color: var(--week13-primary);
+            margin-bottom: 15px;
+        }
+
+        .metric-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 80px;
+            margin: 15px 0;
+        }
+
+        .chart-bar {
+            width: 12px;
+            background: var(--week13-gradient);
+            border-radius: 6px 6px 0 0;
+            transition: height 0.3s ease;
+        }
+
+        .metric-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            margin: 15px auto;
+        }
+
+        .circle-fill {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .circle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            font-size: 1.2em;
+            color: var(--week13-primary);
+        }
+
+        .efficiency-gauge {
+            width: 100%;
+            height: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            background: var(--week13-gradient);
+            border-radius: 8px;
+            transition: width 0.8s ease;
+        }
+
+        .metric-score {
+            font-weight: 600;
+            color: var(--week13-primary);
+            margin-top: 10px;
+        }
+
+        /* Comparative Analysis Styling */
+        .comparison-setup {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--week13-light);
+            border-radius: 12px;
+        }
+
+        .comparison-side {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(184, 134, 11, 0.1);
+        }
+
+        .comparison-side h5 {
+            color: var(--week13-primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .pitcher-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pitcher-controls label {
+            font-size: 0.9em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .vs-divider {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--week13-primary);
+            text-align: center;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
+        }
+
+        .comparison-results {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(184, 134, 11, 0.1);
+        }
+
+        .winner-banner {
+            background: var(--week13-gradient);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .detailed-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .comparison-metric {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .metric-a {
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--week13-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .metric-b {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Mobile responsiveness for new components */
+        @media (max-width: 768px) {
+            .simulator-controls,
+            .tracker-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-setup {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .vs-divider {
+                justify-self: center;
+            }
+
+            .simulation-results {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .detailed-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Physics Review Animations */
+        .equation-demo {
+            margin-top: 15px;
+            height: 120px;
+            border-top: 2px dashed var(--week13-accent);
+            padding-top: 15px;
+        }
+
+        .demo-canvas {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            background: linear-gradient(to bottom, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        /* Projectile Motion Animation */
+        .ball-path {
+            position: absolute;
+            top: 70%;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: repeating-linear-gradient(
+                to right,
+                var(--week13-accent) 0px,
+                var(--week13-accent) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+            transform-origin: left center;
+            transform: rotate(-15deg);
+            opacity: 0.6;
+        }
+
+        .animated-ball {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid #8B4513;
+            border-radius: 50%;
+            position: absolute;
+            animation: projectileMotion 3s ease-in-out infinite;
+        }
+
+        @keyframes projectileMotion {
+            0% {
+                left: 10%;
+                bottom: 30%;
+                transform: scale(1);
+            }
+            50% {
+                left: 50%;
+                bottom: 80%;
+                transform: scale(0.8);
+            }
+            100% {
+                left: 90%;
+                bottom: 20%;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Velocity Arrow Animation */
+        .velocity-arrow {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            width: 60%;
+            height: 4px;
+            background: var(--week13-primary);
+            border-radius: 2px;
+            transform-origin: left center;
+            animation: velocityPulse 2s ease-in-out infinite;
+        }
+
+        .velocity-arrow::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-left: 12px solid var(--week13-primary);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        @keyframes velocityPulse {
+            0%, 100% {
+                transform: scaleX(1) scaleY(1);
+                background: var(--week13-primary);
+            }
+            50% {
+                transform: scaleX(1.2) scaleY(1.5);
+                background: var(--week13-accent);
+            }
+        }
+
+        .speed-indicator {
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            background: var(--week13-accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            animation: speedFlash 2s ease-in-out infinite;
+        }
+
+        @keyframes speedFlash {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* Range Arc Animation */
+        .launch-angle {
+            position: absolute;
+            bottom: 20%;
+            left: 15%;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--week13-primary);
+            border-radius: 0 0 0 100%;
+            border-top: none;
+            border-right: none;
+            transform: rotate(45deg);
+            animation: angleAdjust 4s ease-in-out infinite;
+        }
+
+        @keyframes angleAdjust {
+            0%, 100% { transform: rotate(45deg) scale(1); }
+            33% { transform: rotate(30deg) scale(1.1); }
+            66% { transform: rotate(60deg) scale(0.9); }
+        }
+
+        .range-arc {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 80%;
+            height: 60px;
+            border: 3px dashed var(--week13-accent);
+            border-bottom: none;
+            border-radius: 50% 50% 0 0;
+            animation: arcGrow 4s ease-in-out infinite;
+        }
+
+        @keyframes arcGrow {
+            0% {
+                width: 60%;
+                height: 40px;
+                opacity: 0.5;
+            }
+            50% {
+                width: 85%;
+                height: 70px;
+                opacity: 1;
+            }
+            100% {
+                width: 75%;
+                height: 55px;
+                opacity: 0.7;
+            }
+        }
+
+        /* Forces Animation Styles */
+        .force-demo {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, #f8f9fa 0%, var(--week13-light) 100%);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .force-vectors {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .force-vector-demo {
+            position: absolute;
+            height: 3px;
+            background: var(--week13-primary);
+            border-radius: 2px;
+            transform-origin: left center;
+            animation: forceVector 3s ease-in-out infinite;
+        }
+
+        .force-vector-demo::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--week13-primary);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        @keyframes forceVector {
+            0%, 100% {
+                width: 40px;
+                opacity: 0.8;
+            }
+            50% {
+                width: 60px;
+                opacity: 1;
+            }
+        }
+
+        /* Hover Effects for Enhanced Interactivity */
+        .equation-card:hover .animated-ball {
+            animation-duration: 1.5s;
+        }
+
+        .equation-card:hover .velocity-arrow {
+            animation-duration: 1s;
+        }
+
+        .equation-card:hover .range-arc {
+            animation-duration: 2s;
+        }
+
+        .equation-card:hover .demo-canvas {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
+        }
+
+        /* Interactive Physics Concepts */
+        .concept-highlight {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            animation: conceptFlow 4s ease-in-out infinite;
+        }
+
+        @keyframes conceptFlow {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,6 +1264,317 @@
                     Capstone week where students demonstrate mastery by synthesizing all physics principles learned throughout the course in comprehensive final projects.
                 </p>
             </header>
+
+            <!-- Learning Objectives Section -->
+            <section class="learning-objectives">
+                <h2 class="section-title">🎯 Capstone Learning Objectives</h2>
+                <p class="objectives-intro">Demonstrate mastery of all physics principles through comprehensive project work, synthesis, and professional presentation of baseball physics knowledge.</p>
+
+                <div class="objectives-grid">
+                    <div class="objective-card interactive" data-objective="synthesis-mastery">
+                        <div class="objective-icon">🎓</div>
+                        <h3>Physics Synthesis Mastery</h3>
+                        <p>Integrate and synthesize all 12 weeks of physics concepts into coherent, professional-level analysis and application.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Connect kinematics, dynamics, energy, momentum, rotation, and aerodynamics</li>
+                                <li>Apply complex multi-physics analysis to real baseball scenarios</li>
+                                <li>Demonstrate deep conceptual understanding across all domains</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="research-excellence">
+                        <div class="objective-icon">🔬</div>
+                        <h3>Scientific Research Excellence</h3>
+                        <p>Execute professional-quality scientific research using proper methodology, data analysis, and evidence-based conclusions.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Design and implement rigorous experimental protocols</li>
+                                <li>Collect, analyze, and interpret quantitative data scientifically</li>
+                                <li>Draw valid conclusions supported by physics principles</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="innovation-design">
+                        <div class="objective-icon">💡</div>
+                        <h3>Innovation & Design Thinking</h3>
+                        <p>Apply physics principles to create innovative solutions, equipment designs, or analytical approaches to baseball challenges.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Identify real-world problems requiring physics-based solutions</li>
+                                <li>Design creative innovations grounded in scientific principles</li>
+                                <li>Evaluate feasibility and effectiveness of proposed solutions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="professional-communication">
+                        <div class="objective-icon">📢</div>
+                        <h3>Professional Communication</h3>
+                        <p>Present complex physics analysis clearly and persuasively to diverse audiences using appropriate scientific communication standards.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Create compelling visual presentations with scientific accuracy</li>
+                                <li>Write technical reports using proper scientific methodology</li>
+                                <li>Communicate complex concepts accessibly to various audiences</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="analytical-thinking">
+                        <div class="objective-icon">🧠</div>
+                        <h3>Advanced Analytical Thinking</h3>
+                        <p>Demonstrate sophisticated problem-solving skills by analyzing multivariable physics systems and drawing insights from complex data.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Analyze complex multi-physics interactions and dependencies</li>
+                                <li>Identify patterns and relationships in experimental data</li>
+                                <li>Develop mathematical models for baseball physics phenomena</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="objective-card interactive" data-objective="mastery-demonstration">
+                        <div class="objective-icon">🏆</div>
+                        <h3>Mastery Demonstration</h3>
+                        <p>Provide comprehensive evidence of physics mastery through portfolio work, peer collaboration, and expert-level project execution.</p>
+                        <div class="objective-details">
+                            <ul>
+                                <li>Compile comprehensive portfolio of physics achievements</li>
+                                <li>Mentor and collaborate effectively with peers</li>
+                                <li>Execute capstone project at professional/collegiate level</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Capstone Journey Roadmap -->
+            <section class="learning-roadmap">
+                <h2 class="section-title">🗺️ Capstone Excellence Journey</h2>
+                <p class="roadmap-intro">Navigate the final phase of your physics mastery journey through strategic project selection, comprehensive review, and outstanding execution.</p>
+
+                <div class="roadmap-container">
+                    <div class="roadmap-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>🎯 Strategic Project Selection</h3>
+                            <p>Choose the capstone project that best showcases your strengths: Professional Pitcher Analysis, Scientific Research Study, or Innovation Design Challenge.</p>
+                            <div class="step-skills">
+                                <span class="skill">Project Assessment</span>
+                                <span class="skill">Strategic Planning</span>
+                                <span class="skill">Resource Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>📚 Comprehensive Physics Review</h3>
+                            <p>Systematically review and integrate all physics principles from 12 weeks, identifying connections and building comprehensive conceptual framework.</p>
+                            <div class="step-skills">
+                                <span class="skill">Concept Integration</span>
+                                <span class="skill">Formula Mastery</span>
+                                <span class="skill">Application Synthesis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>🔬 Research & Development Phase</h3>
+                            <p>Execute systematic research using professional methodology, collecting high-quality data and applying rigorous analysis techniques.</p>
+                            <div class="step-skills">
+                                <span class="skill">Research Design</span>
+                                <span class="skill">Data Collection</span>
+                                <span class="skill">Statistical Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>🧮 Advanced Physics Application</h3>
+                            <p>Apply sophisticated multi-physics analysis, mathematical modeling, and computational approaches to generate meaningful insights.</p>
+                            <div class="step-skills">
+                                <span class="skill">Mathematical Modeling</span>
+                                <span class="skill">Computational Analysis</span>
+                                <span class="skill">Physics Integration</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>📊 Data Analysis & Interpretation</h3>
+                            <p>Transform raw data into compelling insights using advanced statistical methods, visualization techniques, and scientific interpretation.</p>
+                            <div class="step-skills">
+                                <span class="skill">Data Visualization</span>
+                                <span class="skill">Statistical Inference</span>
+                                <span class="skill">Scientific Interpretation</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>📝 Professional Documentation</h3>
+                            <p>Create comprehensive project documentation including technical reports, presentation materials, and portfolio compilation.</p>
+                            <div class="step-skills">
+                                <span class="skill">Technical Writing</span>
+                                <span class="skill">Visual Communication</span>
+                                <span class="skill">Portfolio Development</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="7">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3>🎓 Mastery Presentation & Assessment</h3>
+                            <p>Deliver professional presentation demonstrating complete mastery, defend findings, and showcase comprehensive physics understanding.</p>
+                            <div class="step-skills">
+                                <span class="skill">Public Speaking</span>
+                                <span class="skill">Defense Skills</span>
+                                <span class="skill">Mastery Demonstration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-progress">
+                    <div class="progress-header">
+                        <h3>🏆 Capstone Progress</h3>
+                        <div class="progress-stats">
+                            <span class="stat">
+                                <span class="stat-number" id="completed-steps">0</span>
+                                <span class="stat-label">Phases Completed</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="total-steps">7</span>
+                                <span class="stat-label">Total Phases</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="mastery-level">Developing</span>
+                                <span class="stat-label">Mastery Status</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Physics Mastery Dashboard -->
+            <section class="physics-mastery-dashboard">
+                <h2 class="section-title">📊 Physics Mastery Dashboard</h2>
+                <p class="dashboard-intro">Comprehensive overview of your 13-week physics journey, showing mastery levels across all major domains.</p>
+
+                <div class="mastery-grid">
+                    <div class="mastery-card" data-week="1-3">
+                        <div class="mastery-icon">📐</div>
+                        <h3>Foundation Physics</h3>
+                        <div class="mastery-content">
+                            <div class="week-coverage">Weeks 1-3</div>
+                            <div class="physics-topics">
+                                <span class="topic">Kinematics</span>
+                                <span class="topic">Forces</span>
+                                <span class="topic">Newton's Laws</span>
+                            </div>
+                            <div class="mastery-level">
+                                <div class="level-bar">
+                                    <div class="level-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="level-text">85% Mastery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mastery-card" data-week="4-5">
+                        <div class="mastery-icon">⚡</div>
+                        <h3>Energy & Momentum</h3>
+                        <div class="mastery-content">
+                            <div class="week-coverage">Weeks 4-5</div>
+                            <div class="physics-topics">
+                                <span class="topic">Work-Energy</span>
+                                <span class="topic">Momentum</span>
+                                <span class="topic">Collisions</span>
+                            </div>
+                            <div class="mastery-level">
+                                <div class="level-bar">
+                                    <div class="level-fill" style="width: 92%"></div>
+                                </div>
+                                <span class="level-text">92% Mastery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mastery-card" data-week="6-8">
+                        <div class="mastery-icon">🌀</div>
+                        <h3>Rotational Physics</h3>
+                        <div class="mastery-content">
+                            <div class="week-coverage">Weeks 6-8</div>
+                            <div class="physics-topics">
+                                <span class="topic">Angular Motion</span>
+                                <span class="topic">Torque</span>
+                                <span class="topic">Spin Effects</span>
+                            </div>
+                            <div class="mastery-level">
+                                <div class="level-bar">
+                                    <div class="level-fill" style="width: 88%"></div>
+                                </div>
+                                <span class="level-text">88% Mastery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mastery-card" data-week="9-12">
+                        <div class="mastery-icon">🚀</div>
+                        <h3>Advanced Applications</h3>
+                        <div class="mastery-content">
+                            <div class="week-coverage">Weeks 9-12</div>
+                            <div class="physics-topics">
+                                <span class="topic">Aerodynamics</span>
+                                <span class="topic">Data Analysis</span>
+                                <span class="topic">Equipment Physics</span>
+                            </div>
+                            <div class="mastery-level">
+                                <div class="level-bar">
+                                    <div class="level-fill" style="width: 76%"></div>
+                                </div>
+                                <span class="level-text">76% Mastery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overall-mastery">
+                    <h3>🎓 Overall Physics Mastery</h3>
+                    <div class="overall-stats">
+                        <div class="overall-bar">
+                            <div class="overall-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="overall-details">
+                            <span class="overall-percentage">85%</span>
+                            <span class="overall-status">Advanced Proficiency</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -204,7 +1754,271 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Advanced Physics Visualizations -->
+                    <div class="physics-visualization">
+                        <h4>🚀 Live Physics Demonstration</h4>
+                        <div class="trajectory-canvas">
+                            <div class="baseball-animation"></div>
+                            <div class="force-vector" style="top: 40%; left: 30%; width: 80px; transform: rotate(-15deg);"></div>
+                            <div class="force-vector" style="top: 60%; left: 40%; width: 60px; transform: rotate(45deg); background: #e74c3c;"></div>
+                            <div class="velocity-indicator" style="top: 20%; left: 10%;">95 mph</div>
+                        </div>
+                        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                            <div>
+                                <h5>Spin Physics</h5>
+                                <div class="spin-visualization"></div>
+                                <p style="text-align: center; font-size: 0.9em;">2400 RPM</p>
+                            </div>
+                            <div>
+                                <h5>Magnus Effect</h5>
+                                <div class="magnus-demo"></div>
+                                <p style="text-align: center; font-size: 0.9em;">Curveball Movement</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energy Transfer Visualization -->
+                    <div class="physics-visualization">
+                        <h4>⚡ Energy Transfer Analysis</h4>
+                        <div style="margin: 20px 0;">
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: 600; color: var(--week13-primary);">Kinetic Energy:</label>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" style="width: 78%;"></div>
+                                </div>
+                                <span style="font-size: 0.9em;">159 J</span>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: 600; color: var(--week13-primary);">Rotational Energy:</label>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" style="width: 45%;"></div>
+                                </div>
+                                <span style="font-size: 0.9em;">12.3 J</span>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: 600; color: var(--week13-primary);">Energy Loss (Drag):</label>
+                                <div class="energy-bar">
+                                    <div class="energy-fill" style="width: 25%; background: #e74c3c;"></div>
+                                </div>
+                                <span style="font-size: 0.9em;">23.8 J</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>🧮 Interactive Physics Mastery Review</h3>
+                    <div class="physics-calculators">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>🎓 Comprehensive Physics Integration Tool</h4>
+                            <div class="physics-review-tabs">
+                                <button class="review-tab active" data-tab="equations">📐 Equation Mastery</button>
+                                <button class="review-tab" data-tab="scenarios">⚾ Scenario Analysis</button>
+                                <button class="review-tab" data-tab="integration">🔬 Multi-Physics Integration</button>
+                            </div>
+
+                            <!-- Equation Mastery Tab -->
+                            <div class="review-content active" id="equations-tab">
+                                <div class="equation-categories">
+                                    <div class="equation-category" data-category="kinematics">
+                                        <h5>📐 Kinematics & Motion</h5>
+                                        <div class="equation-grid">
+                                            <div class="equation-card" data-animation="projectile">
+                                                <div class="equation-formula">y = v₀t + ½at²</div>
+                                                <div class="equation-description">Position with constant acceleration</div>
+                                                <div class="equation-application">Projectile motion, ball trajectories</div>
+                                                <div class="equation-demo">
+                                                    <div class="demo-canvas" id="projectile-demo">
+                                                        <div class="ball-path"></div>
+                                                        <div class="animated-ball"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="equation-card" data-animation="velocity">
+                                                <div class="equation-formula">v² = v₀² + 2aΔx</div>
+                                                <div class="equation-description">Velocity-displacement relationship</div>
+                                                <div class="equation-application">Exit velocity analysis, pitch speed changes</div>
+                                                <div class="equation-demo">
+                                                    <div class="demo-canvas" id="velocity-demo">
+                                                        <div class="velocity-arrow"></div>
+                                                        <div class="speed-indicator">95 mph</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="equation-card" data-animation="range">
+                                                <div class="equation-formula">R = v₀²sin(2θ)/g</div>
+                                                <div class="equation-description">Maximum projectile range</div>
+                                                <div class="equation-application">Optimal launch angles, home run distances</div>
+                                                <div class="equation-demo">
+                                                    <div class="demo-canvas" id="range-demo">
+                                                        <div class="launch-angle"></div>
+                                                        <div class="range-arc"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="equation-category" data-category="forces">
+                                        <h5>⚡ Forces & Energy</h5>
+                                        <div class="equation-grid">
+                                            <div class="equation-card">
+                                                <div class="equation-formula">ΣF = ma</div>
+                                                <div class="equation-description">Newton's second law</div>
+                                                <div class="equation-application">Force analysis, acceleration calculations</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">W = ΔKE = ½mv² - ½mv₀²</div>
+                                                <div class="equation-description">Work-energy theorem</div>
+                                                <div class="equation-application">Bat-ball collisions, energy transfer</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">J = FΔt = Δp</div>
+                                                <div class="equation-description">Impulse-momentum theorem</div>
+                                                <div class="equation-application">Impact analysis, collision duration</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="equation-category" data-category="rotation">
+                                        <h5>🌀 Rotational Mechanics</h5>
+                                        <div class="equation-grid">
+                                            <div class="equation-card">
+                                                <div class="equation-formula">v = ωr</div>
+                                                <div class="equation-description">Linear-angular velocity relationship</div>
+                                                <div class="equation-application">Spin rate calculations, surface velocity</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">τ = rF sin(θ)</div>
+                                                <div class="equation-description">Torque calculation</div>
+                                                <div class="equation-application">Pitching mechanics, bat swing analysis</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">F_magnus = S × ω × v</div>
+                                                <div class="equation-description">Magnus force</div>
+                                                <div class="equation-application">Pitch movement, ball trajectory curves</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="equation-category" data-category="advanced">
+                                        <h5>🚀 Advanced Applications</h5>
+                                        <div class="equation-grid">
+                                            <div class="equation-card">
+                                                <div class="equation-formula">F_drag = ½ρv²C_DA</div>
+                                                <div class="equation-description">Drag force equation</div>
+                                                <div class="equation-application">Air resistance, terminal velocity</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">PE = mgh</div>
+                                                <div class="equation-description">Gravitational potential energy</div>
+                                                <div class="equation-application">Mound advantage, height benefits</div>
+                                            </div>
+                                            <div class="equation-card">
+                                                <div class="equation-formula">Re = ρvL/μ</div>
+                                                <div class="equation-description">Reynolds number</div>
+                                                <div class="equation-application">Flow regime analysis, seam effects</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scenario Analysis Tab -->
+                            <div class="review-content" id="scenarios-tab">
+                                <div class="scenario-selector">
+                                    <h5>🎯 Complex Physics Scenarios</h5>
+                                    <div class="scenario-grid">
+                                        <div class="scenario-card" data-scenario="curveball">
+                                            <div class="scenario-icon">🌀</div>
+                                            <h6>Curveball Physics Analysis</h6>
+                                            <p>Analyze the complete physics of a curveball: spin, Magnus force, trajectory, and aerodynamics.</p>
+                                            <button class="scenario-btn">Analyze Scenario</button>
+                                        </div>
+                                        <div class="scenario-card" data-scenario="homerun">
+                                            <div class="scenario-icon">🚀</div>
+                                            <h6>Home Run Optimization</h6>
+                                            <p>Calculate optimal launch conditions for maximum distance using projectile motion and energy principles.</p>
+                                            <button class="scenario-btn">Analyze Scenario</button>
+                                        </div>
+                                        <div class="scenario-card" data-scenario="collision">
+                                            <div class="scenario-icon">💥</div>
+                                            <h6>Bat-Ball Collision</h6>
+                                            <p>Complete analysis of bat-ball collision using momentum, energy, and coefficient of restitution.</p>
+                                            <button class="scenario-btn">Analyze Scenario</button>
+                                        </div>
+                                        <div class="scenario-card" data-scenario="pitching">
+                                            <div class="scenario-icon">⚾</div>
+                                            <h6>Pitching Mechanics</h6>
+                                            <p>Comprehensive analysis of pitching motion using rotational mechanics and energy transfer.</p>
+                                            <button class="scenario-btn">Analyze Scenario</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scenario-analysis" id="scenario-display">
+                                    <p class="analysis-prompt">Select a scenario above to begin comprehensive physics analysis</p>
+                                </div>
+                            </div>
+
+                            <!-- Multi-Physics Integration Tab -->
+                            <div class="review-content" id="integration-tab">
+                                <div class="integration-challenge">
+                                    <h5>🔬 Physics Integration Challenge</h5>
+                                    <div class="challenge-setup">
+                                        <p>You are analyzing a professional pitcher's performance. Use ALL physics domains to provide comprehensive analysis:</p>
+                                        <div class="challenge-parameters">
+                                            <div class="parameter-group">
+                                                <label>Initial Velocity: <span id="challenge-velocity">95</span> mph</label>
+                                                <input type="range" id="velocity-slider" min="85" max="105" value="95" class="physics-slider">
+                                            </div>
+                                            <div class="parameter-group">
+                                                <label>Spin Rate: <span id="challenge-spin">2400</span> RPM</label>
+                                                <input type="range" id="spin-slider" min="1800" max="3000" value="2400" class="physics-slider">
+                                            </div>
+                                            <div class="parameter-group">
+                                                <label>Launch Angle: <span id="challenge-angle">-6</span>°</label>
+                                                <input type="range" id="angle-slider" min="-15" max="5" value="-6" class="physics-slider">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="integration-results">
+                                        <div class="physics-domain">
+                                            <h6>📐 Kinematics Analysis</h6>
+                                            <div class="domain-results">
+                                                <span>Flight Time: <span id="flight-time">0.42</span> s</span>
+                                                <span>Max Height: <span id="max-height">6.2</span> ft</span>
+                                                <span>Plate Velocity: <span id="plate-velocity">89.3</span> mph</span>
+                                            </div>
+                                        </div>
+                                        <div class="physics-domain">
+                                            <h6>⚡ Forces & Energy</h6>
+                                            <div class="domain-results">
+                                                <span>Kinetic Energy: <span id="kinetic-energy">84</span> J</span>
+                                                <span>Drag Force: <span id="drag-force">4.2</span> N</span>
+                                                <span>Energy Loss: <span id="energy-loss">12</span> J</span>
+                                            </div>
+                                        </div>
+                                        <div class="physics-domain">
+                                            <h6>🌀 Rotational Effects</h6>
+                                            <div class="domain-results">
+                                                <span>Magnus Force: <span id="magnus-force">2.8</span> N</span>
+                                                <span>Horizontal Break: <span id="horizontal-break">8.5</span> in</span>
+                                                <span>Vertical Break: <span id="vertical-break">-3.2</span> in</span>
+                                            </div>
+                                        </div>
+                                        <div class="physics-domain">
+                                            <h6>🚀 Advanced Analysis</h6>
+                                            <div class="domain-results">
+                                                <span>Reynolds Number: <span id="reynolds">185,000</span></span>
+                                                <span>Seam Effect: <span id="seam-effect">Significant</span></span>
+                                                <span>Overall Rating: <span id="overall-rating">Excellent</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>🚀 Activities</h3>
                     <div class="activities-timeline">
                         <div class="activity-item">
@@ -749,8 +2563,628 @@
         import InteractiveLearningSystem from '../js/interactive-learning.js';
         import { QuizSystem } from '../js/assessment.js';
 
+        // Week 13 Enhanced Interactive Systems
+        class Week13PhysicsIntegration {
+            constructor() {
+                this.initializeReviewTabs();
+                this.initializeScenarioAnalysis();
+                this.initializeMultiPhysicsIntegration();
+                this.initializeMasteryDashboard();
+                this.initializeRealTimeAnalysis();
+            }
+
+            initializeReviewTabs() {
+                // Physics Review Tabs functionality
+                const reviewTabs = document.querySelectorAll('.review-tab');
+                const reviewContents = document.querySelectorAll('.review-content');
+
+                reviewTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Remove active class from all tabs and content
+                        reviewTabs.forEach(t => t.classList.remove('active'));
+                        reviewContents.forEach(c => c.classList.remove('active'));
+
+                        // Add active class to clicked tab and corresponding content
+                        tab.classList.add('active');
+                        const targetTab = tab.getAttribute('data-tab');
+                        document.getElementById(`${targetTab}-tab`).classList.add('active');
+                    });
+                });
+            }
+
+            initializeScenarioAnalysis() {
+                const scenarioBtns = document.querySelectorAll('.scenario-btn');
+                const scenarioDisplay = document.getElementById('scenario-display');
+
+                scenarioBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const scenarioCard = e.target.closest('.scenario-card');
+                        const scenario = scenarioCard.getAttribute('data-scenario');
+                        this.displayScenarioAnalysis(scenario, scenarioDisplay);
+                    });
+                });
+            }
+
+            displayScenarioAnalysis(scenario, displayElement) {
+                const analyses = {
+                    curveball: {
+                        title: '🌀 Curveball Physics Analysis',
+                        content: `
+                            <div class="scenario-analysis-detail">
+                                <h6>Multi-Physics Integration</h6>
+                                <div class="analysis-sections">
+                                    <div class="analysis-section">
+                                        <h7>1. Rotational Mechanics</h7>
+                                        <ul>
+                                            <li>Spin Rate: 2,500 RPM typical for MLB curveball</li>
+                                            <li>Spin Axis: Nearly vertical (~12-6 o'clock orientation)</li>
+                                            <li>Angular Velocity: ω = 262 rad/s</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>2. Aerodynamic Forces</h7>
+                                        <ul>
+                                            <li>Magnus Force: F_m = S × ω × v ≈ 4.2 N downward</li>
+                                            <li>Drag Force: F_d = ½ρv²C_DA ≈ 3.8 N</li>
+                                            <li>Gravity: F_g = mg = 1.45 N downward</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>3. Trajectory Analysis</h7>
+                                        <ul>
+                                            <li>Vertical Break: 8-12 inches additional drop</li>
+                                            <li>Horizontal Break: 2-4 inches lateral movement</li>
+                                            <li>Late Break: Maximum deviation occurs in final 15 feet</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    homerun: {
+                        title: '🚀 Home Run Optimization Analysis',
+                        content: `
+                            <div class="scenario-analysis-detail">
+                                <h6>Launch Optimization Physics</h6>
+                                <div class="analysis-sections">
+                                    <div class="analysis-section">
+                                        <h7>1. Optimal Launch Conditions</h7>
+                                        <ul>
+                                            <li>Exit Velocity: 105+ mph (46.9+ m/s)</li>
+                                            <li>Launch Angle: 25-35° (28° optimal)</li>
+                                            <li>Backspin Rate: 2,200-2,600 RPM</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>2. Energy and Trajectory</h7>
+                                        <ul>
+                                            <li>Kinetic Energy: KE = ½mv² = 159 J at contact</li>
+                                            <li>Maximum Range: R = v²sin(2θ)/g ≈ 142m (theoretical)</li>
+                                            <li>Actual Range: ~120m (air resistance included)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>3. Environmental Factors</h7>
+                                        <ul>
+                                            <li>Altitude Effect: +5% distance per 1000ft elevation</li>
+                                            <li>Wind Assistance: +15% with 10mph tailwind</li>
+                                            <li>Temperature: +1% per 10°F above standard</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    collision: {
+                        title: '💥 Bat-Ball Collision Analysis',
+                        content: `
+                            <div class="scenario-analysis-detail">
+                                <h6>Impact Physics Analysis</h6>
+                                <div class="analysis-sections">
+                                    <div class="analysis-section">
+                                        <h7>1. Collision Dynamics</h7>
+                                        <ul>
+                                            <li>Contact Time: Δt = 0.0007 seconds (0.7 ms)</li>
+                                            <li>Coefficient of Restitution: e = 0.55 (wood bat)</li>
+                                            <li>Peak Force: F_max ≈ 8,000 N during impact</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>2. Momentum Conservation</h7>
+                                        <ul>
+                                            <li>Ball momentum before: p₁ = m₁v₁ = 0.145kg × 40m/s</li>
+                                            <li>Bat momentum before: p₂ = m₂v₂ = 0.9kg × 35m/s</li>
+                                            <li>Total momentum conserved: Σp_before = Σp_after</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>3. Energy Transfer</h7>
+                                        <ul>
+                                            <li>Ball KE before: 116 J, after: 159 J</li>
+                                            <li>Bat KE before: 551 J, after: 425 J</li>
+                                            <li>Energy transfer efficiency: 78% (wood bat)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    pitching: {
+                        title: '⚾ Pitching Mechanics Analysis',
+                        content: `
+                            <div class="scenario-analysis-detail">
+                                <h6>Biomechanical Physics Analysis</h6>
+                                <div class="analysis-sections">
+                                    <div class="analysis-section">
+                                        <h7>1. Kinetic Chain Energy Transfer</h7>
+                                        <ul>
+                                            <li>Ground reaction forces: 150-200% body weight</li>
+                                            <li>Hip rotation: 600-700°/s peak velocity</li>
+                                            <li>Shoulder rotation: 7,000-9,000°/s internal rotation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>2. Torque and Angular Momentum</h7>
+                                        <ul>
+                                            <li>Elbow valgus torque: 64-120 N⋅m</li>
+                                            <li>Shoulder distraction force: 400-650 N</li>
+                                            <li>Angular momentum transfer: legs → hips → torso → arm</li>
+                                        </ul>
+                                    </div>
+                                    <div class="analysis-section">
+                                        <h7>3. Release Optimization</h7>
+                                        <ul>
+                                            <li>Release height: 5.5-6.5 feet optimal</li>
+                                            <li>Release point consistency: ±2 inches for control</li>
+                                            <li>Extension: 6-7 feet toward home plate</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+                };
+
+                if (analyses[scenario]) {
+                    displayElement.innerHTML = `
+                        <div class="active-scenario">
+                            <h5>${analyses[scenario].title}</h5>
+                            ${analyses[scenario].content}
+                        </div>
+                    `;
+                }
+            }
+
+            initializeMultiPhysicsIntegration() {
+                const velocitySlider = document.getElementById('velocity-slider');
+                const spinSlider = document.getElementById('spin-slider');
+                const angleSlider = document.getElementById('angle-slider');
+
+                if (velocitySlider && spinSlider && angleSlider) {
+                    // Add event listeners for real-time calculations
+                    [velocitySlider, spinSlider, angleSlider].forEach(slider => {
+                        slider.addEventListener('input', () => {
+                            this.updateIntegratedPhysicsCalculations();
+                        });
+                    });
+
+                    // Initialize with default values
+                    this.updateIntegratedPhysicsCalculations();
+                }
+            }
+
+            updateIntegratedPhysicsCalculations() {
+                const velocity = parseFloat(document.getElementById('velocity-slider')?.value || 95);
+                const spinRate = parseFloat(document.getElementById('spin-slider')?.value || 2400);
+                const angle = parseFloat(document.getElementById('angle-slider')?.value || -6);
+
+                // Update display values
+                document.getElementById('challenge-velocity').textContent = velocity;
+                document.getElementById('challenge-spin').textContent = spinRate;
+                document.getElementById('challenge-angle').textContent = angle;
+
+                // Physics calculations
+                const velocityMs = velocity * 0.44704; // mph to m/s
+                const spinRad = (spinRate * 2 * Math.PI) / 60; // RPM to rad/s
+                const angleRad = (angle * Math.PI) / 180; // degrees to radians
+
+                // Kinematics calculations
+                const flightTime = (2 * velocityMs * Math.sin(Math.abs(angleRad))) / 9.81;
+                const maxHeight = Math.pow(velocityMs * Math.sin(Math.abs(angleRad)), 2) / (2 * 9.81) * 3.281; // convert to feet
+                const plateVelocity = velocity * 0.89; // approximate 11% speed loss
+
+                // Forces and Energy
+                const mass = 0.145; // kg
+                const kineticEnergy = 0.5 * mass * Math.pow(velocityMs, 2);
+                const dragForce = 0.5 * 1.225 * Math.pow(velocityMs, 2) * 0.35 * (Math.PI * Math.pow(0.037, 2));
+                const energyLoss = kineticEnergy * 0.15; // approximate 15% energy loss
+
+                // Magnus Force and movement
+                const magnusForce = 4.1e-4 * Math.pow(velocityMs, 2) * spinRad;
+                const horizontalBreak = (magnusForce * Math.pow(flightTime, 2) * 39.37) / (2 * mass); // inches
+                const verticalBreak = horizontalBreak * Math.sin(angleRad);
+
+                // Advanced analysis
+                const reynoldsNumber = (1.225 * velocityMs * 0.074) / (1.8e-5);
+                const seamEffect = reynoldsNumber > 180000 ? "Significant" : "Moderate";
+                const overallRating = velocity > 95 && spinRate > 2200 ? "Excellent" : velocity > 85 ? "Good" : "Average";
+
+                // Update display elements
+                this.updateDisplayElement('flight-time', flightTime.toFixed(2));
+                this.updateDisplayElement('max-height', maxHeight.toFixed(1));
+                this.updateDisplayElement('plate-velocity', plateVelocity.toFixed(1));
+                this.updateDisplayElement('kinetic-energy', Math.round(kineticEnergy));
+                this.updateDisplayElement('drag-force', dragForce.toFixed(1));
+                this.updateDisplayElement('energy-loss', Math.round(energyLoss));
+                this.updateDisplayElement('magnus-force', magnusForce.toFixed(1));
+                this.updateDisplayElement('horizontal-break', horizontalBreak.toFixed(1));
+                this.updateDisplayElement('vertical-break', verticalBreak.toFixed(1));
+                this.updateDisplayElement('reynolds', Math.round(reynoldsNumber).toLocaleString());
+                this.updateDisplayElement('seam-effect', seamEffect);
+                this.updateDisplayElement('overall-rating', overallRating);
+            }
+
+            updateDisplayElement(id, value) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value;
+                }
+            }
+
+            initializeMasteryDashboard() {
+                // Animate mastery progress bars on scroll
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const progressBars = entry.target.querySelectorAll('.level-fill, .overall-fill');
+                            progressBars.forEach(bar => {
+                                const width = bar.style.width;
+                                bar.style.width = '0%';
+                                setTimeout(() => {
+                                    bar.style.width = width;
+                                }, 100);
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                const masterySection = document.querySelector('.physics-mastery-dashboard');
+                if (masterySection) {
+                    observer.observe(masterySection);
+                }
+
+                // Interactive mastery cards
+                const masteryCards = document.querySelectorAll('.mastery-card');
+                masteryCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const week = card.getAttribute('data-week');
+                        this.showMasteryDetails(week);
+                    });
+                });
+            }
+
+            showMasteryDetails(week) {
+                const details = {
+                    '1-3': {
+                        title: 'Foundation Physics (Weeks 1-3)',
+                        concepts: ['Projectile Motion', 'Force Analysis', 'Newton\'s Laws'],
+                        applications: ['Ball trajectory calculations', 'Force diagrams', 'Acceleration analysis'],
+                        mastery: '85%'
+                    },
+                    '4-5': {
+                        title: 'Energy & Momentum (Weeks 4-5)',
+                        concepts: ['Work-Energy Theorem', 'Momentum Conservation', 'Collisions'],
+                        applications: ['Bat-ball collisions', 'Energy transfer', 'Impact analysis'],
+                        mastery: '92%'
+                    },
+                    '6-8': {
+                        title: 'Rotational Physics (Weeks 6-8)',
+                        concepts: ['Angular Motion', 'Torque', 'Magnus Effect'],
+                        applications: ['Pitch movement', 'Spin analysis', 'Rotational mechanics'],
+                        mastery: '88%'
+                    },
+                    '9-12': {
+                        title: 'Advanced Applications (Weeks 9-12)',
+                        concepts: ['Aerodynamics', 'Data Analysis', 'Equipment Physics'],
+                        applications: ['Flight optimization', 'Performance analysis', 'Equipment design'],
+                        mastery: '76%'
+                    }
+                };
+
+                const detail = details[week];
+                if (detail) {
+                    alert(`${detail.title}\n\nKey Concepts:\n• ${detail.concepts.join('\n• ')}\n\nApplications:\n• ${detail.applications.join('\n• ')}\n\nMastery Level: ${detail.mastery}`);
+                }
+            }
+
+            // Real-time Scenario Analysis Tools
+            initializeRealTimeAnalysis() {
+                this.createScenarioSimulator();
+                this.createPerformanceTracker();
+                this.createComparativeTool();
+            }
+
+            createScenarioSimulator() {
+                const simulatorContainer = document.createElement('div');
+                simulatorContainer.className = 'scenario-simulator';
+                simulatorContainer.innerHTML = `
+                    <div class="physics-visualization">
+                        <h4>🎯 Real-Time Scenario Simulator</h4>
+                        <div class="simulator-controls">
+                            <div class="control-panel">
+                                <label>Scenario Type:</label>
+                                <select id="scenario-type" class="physics-input">
+                                    <option value="fastball">Fastball</option>
+                                    <option value="curveball">Curveball</option>
+                                    <option value="slider">Slider</option>
+                                    <option value="homerun">Home Run</option>
+                                    <option value="grounder">Ground Ball</option>
+                                </select>
+                            </div>
+                            <div class="control-panel">
+                                <label>Velocity: <span id="sim-velocity">95</span> mph</label>
+                                <input type="range" id="sim-velocity-slider" min="70" max="110" value="95" class="physics-slider">
+                            </div>
+                            <div class="control-panel">
+                                <label>Spin Rate: <span id="sim-spin">2200</span> RPM</label>
+                                <input type="range" id="sim-spin-slider" min="1000" max="3500" value="2200" class="physics-slider">
+                            </div>
+                        </div>
+                        <div class="simulation-results" id="simulation-results">
+                            <div class="result-metric">
+                                <span class="metric-label">Flight Time:</span>
+                                <span class="metric-value" id="sim-flight-time">0.42s</span>
+                            </div>
+                            <div class="result-metric">
+                                <span class="metric-label">Movement:</span>
+                                <span class="metric-value" id="sim-movement">8.5" break</span>
+                            </div>
+                            <div class="result-metric">
+                                <span class="metric-label">Effectiveness:</span>
+                                <span class="metric-value" id="sim-effectiveness">High</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const reviewSection = document.querySelector('.physics-calculators');
+                if (reviewSection) {
+                    reviewSection.appendChild(simulatorContainer);
+                }
+
+                // Add event listeners for real-time updates
+                const scenarioSelect = document.getElementById('scenario-type');
+                const velocitySlider = document.getElementById('sim-velocity-slider');
+                const spinSlider = document.getElementById('sim-spin-slider');
+
+                [scenarioSelect, velocitySlider, spinSlider].forEach(control => {
+                    control?.addEventListener('input', () => {
+                        this.updateSimulation();
+                    });
+                });
+
+                // Initialize simulation
+                this.updateSimulation();
+            }
+
+            updateSimulation() {
+                const scenario = document.getElementById('scenario-type')?.value || 'fastball';
+                const velocity = parseFloat(document.getElementById('sim-velocity-slider')?.value || 95);
+                const spinRate = parseFloat(document.getElementById('sim-spin-slider')?.value || 2200);
+
+                // Update displays
+                document.getElementById('sim-velocity').textContent = velocity;
+                document.getElementById('sim-spin').textContent = spinRate;
+
+                // Calculate scenario-specific physics
+                const physics = this.calculateScenarioPhysics(scenario, velocity, spinRate);
+
+                // Update results
+                document.getElementById('sim-flight-time').textContent = physics.flightTime.toFixed(2) + 's';
+                document.getElementById('sim-movement').textContent = physics.movement.toFixed(1) + '" break';
+                document.getElementById('sim-effectiveness').textContent = physics.effectiveness;
+            }
+
+            calculateScenarioPhysics(scenario, velocity, spinRate) {
+                const baseFlightTime = 60.5 / velocity; // approximate flight time to plate
+                let movement, effectiveness;
+
+                switch (scenario) {
+                    case 'fastball':
+                        movement = spinRate * 0.002; // minimal movement
+                        effectiveness = velocity > 95 && spinRate > 2200 ? 'High' : velocity > 90 ? 'Medium' : 'Low';
+                        break;
+                    case 'curveball':
+                        movement = spinRate * 0.004; // high movement
+                        effectiveness = spinRate > 2400 && velocity > 75 ? 'High' : spinRate > 2000 ? 'Medium' : 'Low';
+                        break;
+                    case 'slider':
+                        movement = spinRate * 0.003; // moderate movement
+                        effectiveness = velocity > 85 && spinRate > 2000 ? 'High' : velocity > 80 ? 'Medium' : 'Low';
+                        break;
+                    case 'homerun':
+                        movement = 0; // no pitch movement
+                        effectiveness = velocity < 85 ? 'High Risk' : velocity < 92 ? 'Medium Risk' : 'Low Risk';
+                        break;
+                    case 'grounder':
+                        movement = spinRate * 0.001; // sink effect
+                        effectiveness = velocity > 88 && spinRate < 2000 ? 'High' : 'Medium';
+                        break;
+                    default:
+                        movement = 0;
+                        effectiveness = 'Unknown';
+                }
+
+                return {
+                    flightTime: baseFlightTime,
+                    movement: movement,
+                    effectiveness: effectiveness
+                };
+            }
+
+            createPerformanceTracker() {
+                const trackerContainer = document.createElement('div');
+                trackerContainer.className = 'performance-tracker';
+                trackerContainer.innerHTML = `
+                    <div class="physics-visualization">
+                        <h4>📊 Performance Analytics Tracker</h4>
+                        <div class="tracker-grid">
+                            <div class="performance-metric">
+                                <h5>Velocity Consistency</h5>
+                                <div class="metric-chart" id="velocity-chart">
+                                    <div class="chart-bar" style="height: 85%;"></div>
+                                    <div class="chart-bar" style="height: 92%;"></div>
+                                    <div class="chart-bar" style="height: 88%;"></div>
+                                    <div class="chart-bar" style="height: 95%;"></div>
+                                    <div class="chart-bar" style="height: 90%;"></div>
+                                </div>
+                                <div class="metric-score">Consistency: 90%</div>
+                            </div>
+                            <div class="performance-metric">
+                                <h5>Command & Control</h5>
+                                <div class="metric-circle" id="control-circle">
+                                    <div class="circle-fill" style="background: conic-gradient(var(--week13-primary) 0deg 252deg, #e9ecef 252deg 360deg);"></div>
+                                    <div class="circle-text">70%</div>
+                                </div>
+                            </div>
+                            <div class="performance-metric">
+                                <h5>Physics Efficiency</h5>
+                                <div class="efficiency-gauge">
+                                    <div class="gauge-fill" style="width: 82%;"></div>
+                                </div>
+                                <div class="metric-score">Efficiency: 82%</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const reviewSection = document.querySelector('.physics-calculators');
+                if (reviewSection) {
+                    reviewSection.appendChild(trackerContainer);
+                }
+            }
+
+            createComparativeTool() {
+                const compareContainer = document.createElement('div');
+                compareContainer.className = 'comparative-analyzer';
+                compareContainer.innerHTML = `
+                    <div class="physics-visualization">
+                        <h4>⚖️ Comparative Physics Analysis</h4>
+                        <div class="comparison-setup">
+                            <div class="comparison-side">
+                                <h5>Pitcher A</h5>
+                                <div class="pitcher-controls">
+                                    <label>Velocity: <span id="pitcher-a-vel">95</span> mph</label>
+                                    <input type="range" id="pitcher-a-velocity" min="70" max="110" value="95" class="physics-slider">
+                                    <label>Spin: <span id="pitcher-a-spin-display">2200</span> RPM</label>
+                                    <input type="range" id="pitcher-a-spin" min="1000" max="3500" value="2200" class="physics-slider">
+                                </div>
+                            </div>
+                            <div class="vs-divider">VS</div>
+                            <div class="comparison-side">
+                                <h5>Pitcher B</h5>
+                                <div class="pitcher-controls">
+                                    <label>Velocity: <span id="pitcher-b-vel">88</span> mph</label>
+                                    <input type="range" id="pitcher-b-velocity" min="70" max="110" value="88" class="physics-slider">
+                                    <label>Spin: <span id="pitcher-b-spin-display">2600</span> RPM</label>
+                                    <input type="range" id="pitcher-b-spin" min="1000" max="3500" value="2600" class="physics-slider">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-results" id="comparison-results">
+                            <div class="winner-banner" id="winner-banner">Pitcher A has advantage in velocity</div>
+                            <div class="detailed-comparison">
+                                <div class="comparison-metric">
+                                    <span>Kinetic Energy:</span>
+                                    <span class="metric-a" id="energy-a">159 J</span>
+                                    <span class="metric-b" id="energy-b">136 J</span>
+                                </div>
+                                <div class="comparison-metric">
+                                    <span>Magnus Force:</span>
+                                    <span class="metric-a" id="magnus-a">2.8 N</span>
+                                    <span class="metric-b" id="magnus-b">3.4 N</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const reviewSection = document.querySelector('.physics-calculators');
+                if (reviewSection) {
+                    reviewSection.appendChild(compareContainer);
+                }
+
+                // Add event listeners for comparison updates
+                ['pitcher-a-velocity', 'pitcher-a-spin', 'pitcher-b-velocity', 'pitcher-b-spin'].forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.addEventListener('input', () => {
+                            this.updateComparison();
+                        });
+                    }
+                });
+
+                // Initialize comparison
+                this.updateComparison();
+            }
+
+            updateComparison() {
+                const velA = parseFloat(document.getElementById('pitcher-a-velocity')?.value || 95);
+                const spinA = parseFloat(document.getElementById('pitcher-a-spin')?.value || 2200);
+                const velB = parseFloat(document.getElementById('pitcher-b-velocity')?.value || 88);
+                const spinB = parseFloat(document.getElementById('pitcher-b-spin')?.value || 2600);
+
+                // Update displays
+                document.getElementById('pitcher-a-vel').textContent = velA;
+                document.getElementById('pitcher-a-spin-display').textContent = spinA;
+                document.getElementById('pitcher-b-vel').textContent = velB;
+                document.getElementById('pitcher-b-spin-display').textContent = spinB;
+
+                // Calculate physics for both pitchers
+                const physicsA = this.calculatePitcherPhysics(velA, spinA);
+                const physicsB = this.calculatePitcherPhysics(velB, spinB);
+
+                // Update comparison results
+                document.getElementById('energy-a').textContent = Math.round(physicsA.kineticEnergy) + ' J';
+                document.getElementById('energy-b').textContent = Math.round(physicsB.kineticEnergy) + ' J';
+                document.getElementById('magnus-a').textContent = physicsA.magnusForce.toFixed(1) + ' N';
+                document.getElementById('magnus-b').textContent = physicsB.magnusForce.toFixed(1) + ' N';
+
+                // Determine winner
+                const winnerText = this.determineWinner(physicsA, physicsB, velA, velB, spinA, spinB);
+                document.getElementById('winner-banner').textContent = winnerText;
+            }
+
+            calculatePitcherPhysics(velocity, spinRate) {
+                const velocityMs = velocity * 0.44704;
+                const spinRad = (spinRate * 2 * Math.PI) / 60;
+                const mass = 0.145;
+
+                const kineticEnergy = 0.5 * mass * Math.pow(velocityMs, 2);
+                const magnusForce = 4.1e-4 * Math.pow(velocityMs, 2) * spinRad;
+
+                return { kineticEnergy, magnusForce };
+            }
+
+            determineWinner(physicsA, physicsB, velA, velB, spinA, spinB) {
+                const overallA = (velA / 100) * 0.4 + (spinA / 3000) * 0.3 + (physicsA.kineticEnergy / 200) * 0.3;
+                const overallB = (velB / 100) * 0.4 + (spinB / 3000) * 0.3 + (physicsB.kineticEnergy / 200) * 0.3;
+
+                if (overallA > overallB) {
+                    return 'Pitcher A has overall physics advantage';
+                } else if (overallB > overallA) {
+                    return 'Pitcher B has overall physics advantage';
+                } else {
+                    return 'Both pitchers are evenly matched';
+                }
+            }
+        }
+
         // Assessment button handlers
         document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize Week 13 enhanced systems
+            window.week13Physics = new Week13PhysicsIntegration();
+
             // Initialize enhanced assessment system if containers exist
             const quizContainer = document.getElementById('quiz-content');
             if (quizContainer) {
