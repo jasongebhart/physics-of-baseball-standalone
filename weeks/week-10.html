@@ -7,7 +7,575 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <style>
+        /* Week 10 Specific Styling - Red/Orange Mechanics Theme */
+        :root {
+            --week10-primary: #dc2626;
+            --week10-secondary: #b91c1c;
+            --week10-accent: #f97316;
+            --week10-light: #fecaca;
+            --week10-dark: #991b1b;
+            --week10-gradient: linear-gradient(135deg, #dc2626 0%, #f97316 100%);
+            --week10-gradient-subtle: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+        }
+
+        /* Week Header Styling */
+        .week-header {
+            background: var(--week10-gradient);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .week-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .week-description {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            background: var(--week10-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week10-light);
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--week10-gradient);
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.2);
+            border-color: var(--week10-primary);
+        }
+
+        .objective-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .objective-content h3 {
+            color: var(--week10-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .difficulty-badge.intermediate {
+            background: var(--week10-primary);
+            color: white;
+        }
+
+        .difficulty-badge.advanced {
+            background: var(--week10-secondary);
+            color: white;
+        }
+
+        .difficulty-badge.expert {
+            background: var(--week10-accent);
+            color: white;
+        }
+
+        .difficulty-badge.basic {
+            background: var(--week10-light);
+            color: var(--week10-dark);
+        }
+
+        /* Assessment Section Difficulty Badges Container */
+        .difficulty-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-badges .difficulty-badge {
+            position: static;
+            margin: 0;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--week10-light);
+            color: var(--week10-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+
+        /* Learning Roadmap Styling */
+        .learning-roadmap {
+            background: var(--week10-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week10-light);
+        }
+
+        .roadmap-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .roadmap-step {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.1);
+            border-left: 5px solid var(--week10-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .roadmap-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+        }
+
+        .step-number {
+            background: var(--week10-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--week10-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill {
+            background: var(--week10-light);
+            color: var(--week10-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+            display: inline-block;
+        }
+
+        .step-connection {
+            position: absolute;
+            bottom: -15px;
+            left: 35px;
+            width: 2px;
+            height: 30px;
+            background: var(--week10-primary);
+        }
+
+        .roadmap-step:last-child .step-connection {
+            display: none;
+        }
+
+        .roadmap-progress {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.1);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--week10-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--week10-gradient);
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Enhanced Calculator Styling */
+        .enhanced-calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
+            border: 2px solid var(--week10-light);
+        }
+
+        .biomechanics-calculator-grid,
+        .kinetic-chain-calculator-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--week10-dark);
+        }
+
+        .physics-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .physics-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week10-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .physics-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week10-primary);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .slider-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .marker {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .calculation-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .result-card.primary {
+            border-color: var(--week10-primary);
+        }
+
+        .result-card.secondary {
+            border-color: var(--week10-secondary);
+        }
+
+        .result-card.tertiary {
+            border-color: var(--week10-accent);
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--week10-dark);
+        }
+
+        .result-sub {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .formula-display {
+            background: var(--week10-gradient-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 2px solid var(--week10-light);
+        }
+
+        .formula-equation {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--week10-dark);
+        }
+
+        .formula-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Strategy and Profile Cards */
+        .strategy-grid,
+        .pitcher-profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .strategy-card,
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .strategy-card:hover,
+        .profile-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--week10-primary);
+        }
+
+        .strategy-icon,
+        .profile-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-stats,
+        .profile-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .strategy-apply-btn,
+        .profile-apply-btn {
+            background: var(--week10-gradient);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .strategy-apply-btn:hover,
+        .profile-apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Kinetic Chain Visualization */
+        .kinetic-chain-visualization {
+            background: var(--week10-gradient-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .chain-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .chain-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .segment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .segment-label {
+            font-weight: bold;
+            color: var(--week10-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .energy-bar {
+            width: 80px;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .energy-fill {
+            height: 100%;
+            background: var(--week10-gradient);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .energy-value {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--week10-primary);
+        }
+
+        .transfer-arrow {
+            font-size: 1.5rem;
+            color: var(--week10-primary);
+            font-weight: bold;
+        }
+
+        /* Animation */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .biomechanics-calculator-grid,
+            .kinetic-chain-calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chain-diagram {
+                flex-direction: column;
+            }
+
+            .transfer-arrow {
+                transform: rotate(90deg);
+            }
+
+            .strategy-grid,
+            .pitcher-profiles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .roadmap-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 0 1rem 0;
+            }
+
+            .step-connection {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,6 +593,226 @@
                     This week bridges physics principles with practical application, analyzing how force, motion, energy, momentum, and torque contribute to efficient, powerful, and safe pitching delivery.
                 </p>
             </header>
+
+            <!-- Learning Objectives Section -->
+            <section class="learning-objectives">
+                <h2>🎯 Week 10 Learning Objectives</h2>
+                <p class="objectives-intro">Master the integration of all physics principles to optimize pitching mechanics, maximize performance, and understand the biomechanical foundation of elite pitching delivery.</p>
+
+                <div class="objectives-grid">
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">⚙️</div>
+                        <div class="objective-content">
+                            <h3>Physics Integration Mastery</h3>
+                            <p>Synthesize Newton's Laws, Work-Energy, Impulse-Momentum, and Torque principles into a unified understanding of pitching mechanics.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Newton's Laws</span>
+                                <span class="skill-tag">Energy Transfer</span>
+                                <span class="skill-tag">Force Integration</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">🔗</div>
+                        <div class="objective-content">
+                            <h3>Kinetic Chain Optimization</h3>
+                            <p>Analyze and optimize the sequential energy transfer from ground force through legs, hips, torso, and arm to maximize ball velocity.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Sequential Motion</span>
+                                <span class="skill-tag">Energy Efficiency</span>
+                                <span class="skill-tag">Timing Analysis</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">🚀</div>
+                        <div class="objective-content">
+                            <h3>Velocity Maximization</h3>
+                            <p>Apply impulse-momentum theorem and work-energy relationships to identify and eliminate velocity-limiting factors in pitching delivery.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Impulse-Momentum</span>
+                                <span class="skill-tag">Force Application</span>
+                                <span class="skill-tag">Contact Time</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">⚖️</div>
+                        <div class="objective-content">
+                            <h3>Performance Balance</h3>
+                            <p>Understand the biomechanical trade-offs between velocity, control, and injury prevention to optimize long-term pitching performance.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Performance Trade-offs</span>
+                                <span class="skill-tag">Efficiency Analysis</span>
+                                <span class="skill-tag">Safety Optimization</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="intermediate">
+                        <div class="objective-icon">📊</div>
+                        <div class="objective-content">
+                            <h3>Biomechanical Analysis</h3>
+                            <p>Use video analysis and measurement tools to quantify pitching mechanics and apply physics principles for performance improvement.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Motion Analysis</span>
+                                <span class="skill-tag">Data Collection</span>
+                                <span class="skill-tag">Performance Metrics</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">🎯</div>
+                        <div class="objective-content">
+                            <h3>Strategic Application</h3>
+                            <p>Develop personalized optimization strategies based on physics analysis to enhance individual pitching performance and effectiveness.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Personalization</span>
+                                <span class="skill-tag">Strategy Development</span>
+                                <span class="skill-tag">Performance Enhancement</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Roadmap Section -->
+            <section class="learning-roadmap">
+                <h2>🗺️ Week 10: Pitching Mechanics Mastery</h2>
+                <p class="roadmap-intro">Navigate through the comprehensive integration of physics principles to achieve elite pitching mechanics - from foundation physics review to advanced biomechanical optimization.</p>
+
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>⚖️ Physics Foundation Review</h3>
+                            <p>Master the integration of Newton's Laws, Work-Energy, Impulse-Momentum, and Torque principles as they apply to pitching mechanics.</p>
+                            <div class="step-skills">
+                                <span class="skill">Newton's Laws</span>
+                                <span class="skill">Energy Conservation</span>
+                                <span class="skill">Momentum Transfer</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>🔗 Kinetic Chain Analysis</h3>
+                            <p>Understand the sequential energy transfer from ground force through legs, hips, torso, and arm to maximize power generation.</p>
+                            <div class="step-skills">
+                                <span class="skill">Sequential Motion</span>
+                                <span class="skill">Force Transfer</span>
+                                <span class="skill">Timing Optimization</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>🚀 Velocity Maximization</h3>
+                            <p>Apply impulse-momentum relationships and energy transfer principles to identify and eliminate velocity-limiting factors.</p>
+                            <div class="step-skills">
+                                <span class="skill">Impulse-Momentum</span>
+                                <span class="skill">Force Application</span>
+                                <span class="skill">Contact Time Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>⚖️ Performance Balance</h3>
+                            <p>Understand the critical trade-offs between velocity, control, and injury prevention to optimize long-term performance.</p>
+                            <div class="step-skills">
+                                <span class="skill">Efficiency Analysis</span>
+                                <span class="skill">Control Factors</span>
+                                <span class="skill">Safety Optimization</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>📊 Biomechanical Analysis</h3>
+                            <p>Use advanced video analysis and measurement techniques to quantify mechanics and identify optimization opportunities.</p>
+                            <div class="step-skills">
+                                <span class="skill">Motion Capture</span>
+                                <span class="skill">Data Analysis</span>
+                                <span class="skill">Performance Metrics</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>🔬 Experimental Validation</h3>
+                            <p>Conduct controlled experiments to test biomechanical hypotheses and validate physics-based optimization strategies.</p>
+                            <div class="step-skills">
+                                <span class="skill">Experimental Design</span>
+                                <span class="skill">Data Validation</span>
+                                <span class="skill">Statistical Analysis</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="7">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3>🎯 Strategic Implementation</h3>
+                            <p>Develop and implement personalized optimization strategies based on comprehensive physics analysis and biomechanical assessment.</p>
+                            <div class="step-skills">
+                                <span class="skill">Personalization</span>
+                                <span class="skill">Strategy Development</span>
+                                <span class="skill">Performance Enhancement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-progress">
+                    <div class="progress-header">
+                        <h3>🏆 Your Progress</h3>
+                        <div class="progress-stats">
+                            <span class="stat">
+                                <span class="stat-number" id="completed-steps">0</span>
+                                <span class="stat-label">Steps Completed</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="total-steps">7</span>
+                                <span class="stat-label">Total Steps</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="mastery-level">Beginner</span>
+                                <span class="stat-label">Mastery Level</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -82,26 +870,143 @@
                     </div>
                 </div>
 
-                <div class="interactive-calculator" id="impulse-calculator">
-                    <h3>Impulse-Momentum Calculator</h3>
-                    <div class="calculator-container">
+                <div class="interactive-physics">
+                    <h3>🧮 Enhanced Biomechanics Calculator</h3>
+                    <div class="biomechanics-calculator-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>⚡ Impulse-Momentum Analysis</h4>
+                            <p class="calculator-description">Analyze force application and timing to optimize ball velocity and reduce arm stress.</p>
+
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label for="force-slider">Average Force: <span id="force-value">500</span> N</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="force-slider" min="200" max="800" step="10" value="500" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="200">Low</span>
+                                            <span class="marker" data-value="500">Average</span>
+                                            <span class="marker" data-value="800">High</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="time-slider">Contact Time: <span id="time-value">0.15</span> s</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="time-slider" min="0.08" max="0.25" step="0.01" value="0.15" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0.08">Quick</span>
+                                            <span class="marker" data-value="0.15">Optimal</span>
+                                            <span class="marker" data-value="0.25">Extended</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="mass-slider">Ball Mass: <span id="mass-value">0.145</span> kg</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="mass-slider" min="0.140" max="0.150" step="0.001" value="0.145" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0.140">Light</span>
+                                            <span class="marker" data-value="0.145">Standard</span>
+                                            <span class="marker" data-value="0.150">Heavy</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="calculation-results">
+                                <div class="result-card primary">
+                                    <div class="result-icon">⚡</div>
+                                    <div class="result-content">
+                                        <h5>Impulse</h5>
+                                        <div class="result-value">
+                                            <span id="impulse-display">75.0</span> N·s
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card secondary">
+                                    <div class="result-icon">🚀</div>
+                                    <div class="result-content">
+                                        <h5>Ball Velocity</h5>
+                                        <div class="result-value">
+                                            <span id="velocity-display">115.6</span> mph
+                                        </div>
+                                        <div class="result-sub">(<span id="velocity-ms">51.7</span> m/s)</div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card tertiary">
+                                    <div class="result-icon">💪</div>
+                                    <div class="result-content">
+                                        <h5>Arm Stress</h5>
+                                        <div class="result-value" id="stress-level">Moderate</div>
+                                        <div class="result-sub" id="stress-indicator">Sustainable</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="formula-display">
+                                <h5>Impulse-Momentum Theorem</h5>
+                                <div class="formula-equation">
+                                    J = F·Δt = mΔv = <span id="formula-values">500 × 0.15</span> = <span id="formula-result">75.0</span> N·s
+                                </div>
+                                <div class="formula-legend">
+                                    <span>J = Impulse (N·s)</span>
+                                    <span>F = Average Force (N)</span>
+                                    <span>Δt = Contact Time (s)</span>
+                                    <span>m = Mass (kg), Δv = Velocity Change (m/s)</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="calculator-section">
-                            <h4>Force Application Analysis</h4>
-                            <div class="input-group">
-                                <label for="force">Average Force (N):</label>
-                                <input type="number" id="force" value="500" step="10" min="0">
-                            </div>
-                            <div class="input-group">
-                                <label for="time">Contact Time (s):</label>
-                                <input type="number" id="time" value="0.15" step="0.01" min="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="mass">Baseball Mass (kg):</label>
-                                <input type="number" id="mass" value="0.145" step="0.001" min="0.1">
-                            </div>
-                            <div class="result">
-                                <strong>Impulse: <span id="impulse-result">75.00</span> N·s</strong><br>
-                                <strong>Ball Velocity: <span id="ball-velocity-result">115.6</span> mph</strong>
+                            <h4>🎯 Optimization Strategies</h4>
+                            <div class="strategy-grid">
+                                <div class="strategy-card" data-strategy="power">
+                                    <div class="strategy-icon">💥</div>
+                                    <h5>Maximum Power</h5>
+                                    <div class="strategy-stats">
+                                        <span>Force: 750N</span>
+                                        <span>Time: 0.12s</span>
+                                        <span>High Stress</span>
+                                    </div>
+                                    <button class="strategy-apply-btn" data-force="750" data-time="0.12">Apply</button>
+                                </div>
+
+                                <div class="strategy-card" data-strategy="balanced">
+                                    <div class="strategy-icon">⚖️</div>
+                                    <h5>Balanced Approach</h5>
+                                    <div class="strategy-stats">
+                                        <span>Force: 550N</span>
+                                        <span>Time: 0.15s</span>
+                                        <span>Moderate Stress</span>
+                                    </div>
+                                    <button class="strategy-apply-btn" data-force="550" data-time="0.15">Apply</button>
+                                </div>
+
+                                <div class="strategy-card" data-strategy="endurance">
+                                    <div class="strategy-icon">🛡️</div>
+                                    <h5>Endurance Focus</h5>
+                                    <div class="strategy-stats">
+                                        <span>Force: 400N</span>
+                                        <span>Time: 0.20s</span>
+                                        <span>Low Stress</span>
+                                    </div>
+                                    <button class="strategy-apply-btn" data-force="400" data-time="0.20">Apply</button>
+                                </div>
+
+                                <div class="strategy-card" data-strategy="control">
+                                    <div class="strategy-icon">🎯</div>
+                                    <h5>Control Priority</h5>
+                                    <div class="strategy-stats">
+                                        <span>Force: 450N</span>
+                                        <span>Time: 0.18s</span>
+                                        <span>Low Stress</span>
+                                    </div>
+                                    <button class="strategy-apply-btn" data-force="450" data-time="0.18">Apply</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -195,22 +1100,194 @@
                     </div>
                 </div>
 
-                <div class="interactive-calculator" id="energy-transfer-calculator">
-                    <h3>Energy Transfer Efficiency Calculator</h3>
-                    <div class="calculator-container">
+                <div class="interactive-physics">
+                    <h3>🔗 Kinetic Chain Energy Transfer</h3>
+                    <div class="kinetic-chain-calculator-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>⚡ Sequential Energy Analysis</h4>
+                            <p class="calculator-description">Analyze energy transfer efficiency through the kinetic chain to optimize pitching power and minimize energy loss.</p>
+
+                            <div class="calculator-controls">
+                                <div class="control-group">
+                                    <label for="leg-energy-slider">Leg Drive Energy: <span id="leg-energy-value">300</span> J</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="leg-energy-slider" min="150" max="450" step="10" value="300" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="150">Weak</span>
+                                            <span class="marker" data-value="300">Strong</span>
+                                            <span class="marker" data-value="450">Elite</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="hip-efficiency-slider">Hip Transfer Efficiency: <span id="hip-efficiency-value">80</span>%</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="hip-efficiency-slider" min="60" max="95" step="1" value="80" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="60">Poor</span>
+                                            <span class="marker" data-value="80">Good</span>
+                                            <span class="marker" data-value="95">Elite</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="torso-efficiency-slider">Torso Transfer Efficiency: <span id="torso-efficiency-value">85</span>%</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="torso-efficiency-slider" min="65" max="95" step="1" value="85" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="65">Poor</span>
+                                            <span class="marker" data-value="85">Good</span>
+                                            <span class="marker" data-value="95">Elite</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="arm-efficiency-slider">Arm Transfer Efficiency: <span id="arm-efficiency-value">75</span>%</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="arm-efficiency-slider" min="55" max="90" step="1" value="75" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="55">Poor</span>
+                                            <span class="marker" data-value="75">Good</span>
+                                            <span class="marker" data-value="90">Elite</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kinetic-chain-visualization">
+                                <h5>🔗 Energy Flow Visualization</h5>
+                                <div class="chain-diagram">
+                                    <div class="chain-segment" data-segment="legs">
+                                        <div class="segment-icon">🦵</div>
+                                        <div class="segment-label">Legs</div>
+                                        <div class="energy-bar">
+                                            <div class="energy-fill" id="legs-energy" style="width: 100%"></div>
+                                        </div>
+                                        <div class="energy-value" id="legs-value">300 J</div>
+                                    </div>
+
+                                    <div class="transfer-arrow">→</div>
+
+                                    <div class="chain-segment" data-segment="hips">
+                                        <div class="segment-icon">🔄</div>
+                                        <div class="segment-label">Hips</div>
+                                        <div class="energy-bar">
+                                            <div class="energy-fill" id="hips-energy" style="width: 80%"></div>
+                                        </div>
+                                        <div class="energy-value" id="hips-value">240 J</div>
+                                    </div>
+
+                                    <div class="transfer-arrow">→</div>
+
+                                    <div class="chain-segment" data-segment="torso">
+                                        <div class="segment-icon">💪</div>
+                                        <div class="segment-label">Torso</div>
+                                        <div class="energy-bar">
+                                            <div class="energy-fill" id="torso-energy" style="width: 68%"></div>
+                                        </div>
+                                        <div class="energy-value" id="torso-value">204 J</div>
+                                    </div>
+
+                                    <div class="transfer-arrow">→</div>
+
+                                    <div class="chain-segment" data-segment="arm">
+                                        <div class="segment-icon">🎯</div>
+                                        <div class="segment-label">Arm</div>
+                                        <div class="energy-bar">
+                                            <div class="energy-fill" id="arm-energy" style="width: 51%"></div>
+                                        </div>
+                                        <div class="energy-value" id="arm-value">153 J</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="calculation-results">
+                                <div class="result-card primary">
+                                    <div class="result-icon">⚡</div>
+                                    <div class="result-content">
+                                        <h5>Final Energy</h5>
+                                        <div class="result-value">
+                                            <span id="final-energy-display">153</span> J
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card secondary">
+                                    <div class="result-icon">📊</div>
+                                    <div class="result-content">
+                                        <h5>Overall Efficiency</h5>
+                                        <div class="result-value">
+                                            <span id="overall-efficiency-display">51</span>%
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card tertiary">
+                                    <div class="result-icon">🚀</div>
+                                    <div class="result-content">
+                                        <h5>Ball Velocity</h5>
+                                        <div class="result-value">
+                                            <span id="ball-velocity-display">97.3</span> mph
+                                        </div>
+                                        <div class="result-sub">(<span id="ball-velocity-ms">43.5</span> m/s)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="calculator-section">
-                            <h4>Kinetic Chain Energy Analysis</h4>
-                            <div class="input-group">
-                                <label for="initial-energy">Initial Energy (J):</label>
-                                <input type="number" id="initial-energy" value="200" step="10" min="0">
-                            </div>
-                            <div class="input-group">
-                                <label for="efficiency">Transfer Efficiency (%):</label>
-                                <input type="number" id="efficiency" value="65" step="1" min="0" max="100">
-                            </div>
-                            <div class="result">
-                                <strong>Transferred Energy: <span id="transferred-energy">130.0</span> J</strong><br>
-                                <strong>Resulting Velocity: <span id="energy-velocity">95.5</span> mph</strong>
+                            <h4>🏆 Elite Pitcher Profiles</h4>
+                            <div class="pitcher-profiles-grid">
+                                <div class="profile-card" data-profile="power">
+                                    <div class="profile-icon">💥</div>
+                                    <h5>Power Pitcher</h5>
+                                    <div class="profile-stats">
+                                        <span>Leg: 400J</span>
+                                        <span>Hip: 85%</span>
+                                        <span>Torso: 90%</span>
+                                        <span>Arm: 80%</span>
+                                    </div>
+                                    <button class="profile-apply-btn" data-leg="400" data-hip="85" data-torso="90" data-arm="80">Apply</button>
+                                </div>
+
+                                <div class="profile-card" data-profile="finesse">
+                                    <div class="profile-icon">🎯</div>
+                                    <h5>Finesse Pitcher</h5>
+                                    <div class="profile-stats">
+                                        <span>Leg: 250J</span>
+                                        <span>Hip: 90%</span>
+                                        <span>Torso: 88%</span>
+                                        <span>Arm: 85%</span>
+                                    </div>
+                                    <button class="profile-apply-btn" data-leg="250" data-hip="90" data-torso="88" data-arm="85">Apply</button>
+                                </div>
+
+                                <div class="profile-card" data-profile="balanced">
+                                    <div class="profile-icon">⚖️</div>
+                                    <h5>Balanced Athlete</h5>
+                                    <div class="profile-stats">
+                                        <span>Leg: 320J</span>
+                                        <span>Hip: 82%</span>
+                                        <span>Torso: 86%</span>
+                                        <span>Arm: 78%</span>
+                                    </div>
+                                    <button class="profile-apply-btn" data-leg="320" data-hip="82" data-torso="86" data-arm="78">Apply</button>
+                                </div>
+
+                                <div class="profile-card" data-profile="developing">
+                                    <div class="profile-icon">📈</div>
+                                    <h5>Developing Player</h5>
+                                    <div class="profile-stats">
+                                        <span>Leg: 200J</span>
+                                        <span>Hip: 70%</span>
+                                        <span>Torso: 75%</span>
+                                        <span>Arm: 65%</span>
+                                    </div>
+                                    <button class="profile-apply-btn" data-leg="200" data-hip="70" data-torso="75" data-arm="65">Apply</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -798,36 +1875,182 @@
         });
     </script>
     <script>
-        // Week 10 specific JS
-        function calculateImpulse() {
-            const force = parseFloat(document.getElementById('force').value); // N
-            const time = parseFloat(document.getElementById('time').value); // s
-            const mass = parseFloat(document.getElementById('mass').value); // kg
-            
-            if (force > 0 && time > 0 && mass > 0) {
-                const impulse = force * time; // N⋅s
-                const velocity = impulse / mass; // m/s
-                const velocityMph = velocity * 2.237; // mph
-                
-                document.getElementById('impulse-result').textContent = impulse.toFixed(2);
-                document.getElementById('ball-velocity-result').textContent = velocityMph.toFixed(1);
-            }
-        }
+        // Week 10 Enhanced Interactive Biomechanics JS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Biomechanics Calculator
+            const forceSlider = document.getElementById('force-slider');
+            const timeSlider = document.getElementById('time-slider');
+            const massSlider = document.getElementById('mass-slider');
 
-        function calculateEnergyTransfer() {
-            const initialEnergy = parseFloat(document.getElementById('initial-energy').value); // J
-            const efficiency = parseFloat(document.getElementById('efficiency').value) / 100; // decimal
-            
-            if (initialEnergy > 0 && efficiency > 0) {
-                const transferredEnergy = initialEnergy * efficiency; // J
-                const mass = 0.145; // kg (baseball)
-                const velocity = Math.sqrt(2 * transferredEnergy / mass); // m/s
-                const velocityMph = velocity * 2.237; // mph
-                
-                document.getElementById('transferred-energy').textContent = transferredEnergy.toFixed(1);
-                document.getElementById('energy-velocity').textContent = velocityMph.toFixed(1);
+            // Kinetic Chain Calculator
+            const legEnergySlider = document.getElementById('leg-energy-slider');
+            const hipEfficiencySlider = document.getElementById('hip-efficiency-slider');
+            const torsoEfficiencySlider = document.getElementById('torso-efficiency-slider');
+            const armEfficiencySlider = document.getElementById('arm-efficiency-slider');
+
+            function updateBiomechanicsCalculations() {
+                const force = parseFloat(forceSlider?.value || 500); // N
+                const time = parseFloat(timeSlider?.value || 0.15); // s
+                const mass = parseFloat(massSlider?.value || 0.145); // kg
+
+                // Update display values
+                const forceValue = document.getElementById('force-value');
+                const timeValue = document.getElementById('time-value');
+                const massValue = document.getElementById('mass-value');
+
+                if (forceValue) forceValue.textContent = force;
+                if (timeValue) timeValue.textContent = time.toFixed(2);
+                if (massValue) massValue.textContent = mass.toFixed(3);
+
+                // Calculate impulse and velocity
+                const impulse = force * time;
+                const velocity = impulse / mass; // m/s
+                const velocityMph = velocity * 2.237;
+
+                // Update result displays
+                const impulseDisplay = document.getElementById('impulse-display');
+                const velocityDisplay = document.getElementById('velocity-display');
+                const velocityMs = document.getElementById('velocity-ms');
+
+                if (impulseDisplay) impulseDisplay.textContent = impulse.toFixed(1);
+                if (velocityDisplay) velocityDisplay.textContent = velocityMph.toFixed(1);
+                if (velocityMs) velocityMs.textContent = velocity.toFixed(1);
+
+                // Determine arm stress level
+                const stressLevel = document.getElementById('stress-level');
+                const stressIndicator = document.getElementById('stress-indicator');
+
+                let stress = 'Low';
+                let indicator = 'Sustainable';
+
+                if (force > 650) {
+                    stress = 'High';
+                    indicator = 'Risk of injury';
+                } else if (force > 500) {
+                    stress = 'Moderate';
+                    indicator = 'Monitor carefully';
+                }
+
+                if (stressLevel) stressLevel.textContent = stress;
+                if (stressIndicator) stressIndicator.textContent = indicator;
+
+                // Update formula display
+                const formulaValues = document.getElementById('formula-values');
+                const formulaResult = document.getElementById('formula-result');
+
+                if (formulaValues) formulaValues.textContent = `${force} × ${time.toFixed(2)}`;
+                if (formulaResult) formulaResult.textContent = impulse.toFixed(1);
             }
-        }
+
+            function updateKineticChainCalculations() {
+                const legEnergy = parseFloat(legEnergySlider?.value || 300); // J
+                const hipEfficiency = parseFloat(hipEfficiencySlider?.value || 80) / 100;
+                const torsoEfficiency = parseFloat(torsoEfficiencySlider?.value || 85) / 100;
+                const armEfficiency = parseFloat(armEfficiencySlider?.value || 75) / 100;
+
+                // Update display values
+                const legEnergyValue = document.getElementById('leg-energy-value');
+                const hipEfficiencyValue = document.getElementById('hip-efficiency-value');
+                const torsoEfficiencyValue = document.getElementById('torso-efficiency-value');
+                const armEfficiencyValue = document.getElementById('arm-efficiency-value');
+
+                if (legEnergyValue) legEnergyValue.textContent = legEnergy;
+                if (hipEfficiencyValue) hipEfficiencyValue.textContent = Math.round(hipEfficiency * 100);
+                if (torsoEfficiencyValue) torsoEfficiencyValue.textContent = Math.round(torsoEfficiency * 100);
+                if (armEfficiencyValue) armEfficiencyValue.textContent = Math.round(armEfficiency * 100);
+
+                // Calculate energy at each stage
+                const hipEnergy = legEnergy * hipEfficiency;
+                const torsoEnergy = hipEnergy * torsoEfficiency;
+                const armEnergy = torsoEnergy * armEfficiency;
+
+                // Calculate ball energy (90% transfer from arm)
+                const ballEnergy = armEnergy * 0.9;
+                const mass = 0.145; // kg
+                const ballVelocity = Math.sqrt(2 * ballEnergy / mass); // m/s
+                const ballVelocityMph = ballVelocity * 2.237;
+
+                // Update kinetic chain visualization
+                const legsValue = document.getElementById('legs-value');
+                const hipsValue = document.getElementById('hips-value');
+                const torsoValue = document.getElementById('torso-value');
+                const armValue = document.getElementById('arm-value');
+
+                const legsEnergy = document.getElementById('legs-energy');
+                const hipsEnergyBar = document.getElementById('hips-energy');
+                const torsoEnergyBar = document.getElementById('torso-energy');
+                const armEnergyBar = document.getElementById('arm-energy');
+
+                if (legsValue) legsValue.textContent = Math.round(legEnergy) + ' J';
+                if (hipsValue) hipsValue.textContent = Math.round(hipEnergy) + ' J';
+                if (torsoValue) torsoValue.textContent = Math.round(torsoEnergy) + ' J';
+                if (armValue) armValue.textContent = Math.round(armEnergy) + ' J';
+
+                // Update energy bars (relative to initial energy)
+                if (legsEnergy) legsEnergy.style.width = '100%';
+                if (hipsEnergyBar) hipsEnergyBar.style.width = (hipEfficiency * 100) + '%';
+                if (torsoEnergyBar) torsoEnergyBar.style.width = (hipEfficiency * torsoEfficiency * 100) + '%';
+                if (armEnergyBar) armEnergyBar.style.width = (hipEfficiency * torsoEfficiency * armEfficiency * 100) + '%';
+
+                // Update result displays
+                const finalEnergyDisplay = document.getElementById('final-energy-display');
+                const overallEfficiencyDisplay = document.getElementById('overall-efficiency-display');
+                const ballVelocityDisplay = document.getElementById('ball-velocity-display');
+                const ballVelocityMs = document.getElementById('ball-velocity-ms');
+
+                const overallEfficiency = (armEnergy / legEnergy) * 100;
+
+                if (finalEnergyDisplay) finalEnergyDisplay.textContent = Math.round(armEnergy);
+                if (overallEfficiencyDisplay) overallEfficiencyDisplay.textContent = Math.round(overallEfficiency);
+                if (ballVelocityDisplay) ballVelocityDisplay.textContent = ballVelocityMph.toFixed(1);
+                if (ballVelocityMs) ballVelocityMs.textContent = ballVelocity.toFixed(1);
+            }
+
+            // Add event listeners for biomechanics calculator
+            if (forceSlider) forceSlider.addEventListener('input', updateBiomechanicsCalculations);
+            if (timeSlider) timeSlider.addEventListener('input', updateBiomechanicsCalculations);
+            if (massSlider) massSlider.addEventListener('input', updateBiomechanicsCalculations);
+
+            // Add event listeners for kinetic chain calculator
+            if (legEnergySlider) legEnergySlider.addEventListener('input', updateKineticChainCalculations);
+            if (hipEfficiencySlider) hipEfficiencySlider.addEventListener('input', updateKineticChainCalculations);
+            if (torsoEfficiencySlider) torsoEfficiencySlider.addEventListener('input', updateKineticChainCalculations);
+            if (armEfficiencySlider) armEfficiencySlider.addEventListener('input', updateKineticChainCalculations);
+
+            // Strategy preset buttons
+            document.querySelectorAll('.strategy-apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const force = this.getAttribute('data-force');
+                    const time = this.getAttribute('data-time');
+
+                    if (forceSlider && force) forceSlider.value = force;
+                    if (timeSlider && time) timeSlider.value = time;
+
+                    updateBiomechanicsCalculations();
+                });
+            });
+
+            // Profile preset buttons
+            document.querySelectorAll('.profile-apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const leg = this.getAttribute('data-leg');
+                    const hip = this.getAttribute('data-hip');
+                    const torso = this.getAttribute('data-torso');
+                    const arm = this.getAttribute('data-arm');
+
+                    if (legEnergySlider && leg) legEnergySlider.value = leg;
+                    if (hipEfficiencySlider && hip) hipEfficiencySlider.value = hip;
+                    if (torsoEfficiencySlider && torso) torsoEfficiencySlider.value = torso;
+                    if (armEfficiencySlider && arm) armEfficiencySlider.value = arm;
+
+                    updateKineticChainCalculations();
+                });
+            });
+
+            // Initialize calculations
+            updateBiomechanicsCalculations();
+            updateKineticChainCalculations();
+        });
 
         // Auto-calculate when values change
         document.addEventListener('DOMContentLoaded', async function() {
