@@ -7,7 +7,654 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>⚾</text></svg>">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/calculators.css">
-    <link rel="stylesheet" >
+    <style>
+        /* Week 11 Specific Styling - Green/Emerald Data Analysis Theme */
+        :root {
+            --week11-primary: #059669;
+            --week11-secondary: #047857;
+            --week11-accent: #10b981;
+            --week11-light: #d1fae5;
+            --week11-dark: #064e3b;
+            --week11-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --week11-gradient-subtle: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        }
+
+        /* Week Header Styling */
+        .week-header {
+            background: var(--week11-gradient);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .week-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .week-description {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            background: var(--week11-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week11-light);
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--week11-gradient);
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.2);
+            border-color: var(--week11-primary);
+        }
+
+        .objective-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .objective-content h3 {
+            color: var(--week11-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .difficulty-badge.intermediate {
+            background: var(--week11-primary);
+            color: white;
+        }
+
+        .difficulty-badge.advanced {
+            background: var(--week11-secondary);
+            color: white;
+        }
+
+        .difficulty-badge.expert {
+            background: var(--week11-accent);
+            color: white;
+        }
+
+        .difficulty-badge.basic {
+            background: var(--week11-light);
+            color: var(--week11-dark);
+        }
+
+        /* Assessment Section Difficulty Badges Container */
+        .difficulty-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-badges .difficulty-badge {
+            position: static;
+            margin: 0;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--week11-light);
+            color: var(--week11-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+
+        /* Learning Roadmap Styling */
+        .learning-roadmap {
+            background: var(--week11-gradient-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--week11-light);
+        }
+
+        .roadmap-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .roadmap-step {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.1);
+            border-left: 5px solid var(--week11-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .roadmap-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.15);
+        }
+
+        .step-number {
+            background: var(--week11-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: var(--week11-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill {
+            background: var(--week11-light);
+            color: var(--week11-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0 0;
+            display: inline-block;
+        }
+
+        .step-connection {
+            position: absolute;
+            bottom: -15px;
+            left: 35px;
+            width: 2px;
+            height: 30px;
+            background: var(--week11-primary);
+        }
+
+        .roadmap-step:last-child .step-connection {
+            display: none;
+        }
+
+        .roadmap-progress {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.1);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--week11-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--week11-gradient);
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Enhanced Calculator Styling */
+        .enhanced-calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.1);
+            border: 2px solid var(--week11-light);
+        }
+
+        .measurement-tools-grid,
+        .statistical-analysis-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--week11-dark);
+        }
+
+        .physics-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .physics-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week11-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .physics-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--week11-primary);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .slider-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .marker {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .conversion-results,
+        .calculation-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .result-card.primary {
+            border-color: var(--week11-primary);
+        }
+
+        .result-card.secondary {
+            border-color: var(--week11-secondary);
+        }
+
+        .result-card.tertiary {
+            border-color: var(--week11-accent);
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--week11-dark);
+        }
+
+        .result-sub {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .formula-display {
+            background: var(--week11-gradient-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 2px solid var(--week11-light);
+        }
+
+        .formula-equation {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--week11-dark);
+        }
+
+        .formula-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Conversion and Sample Presets */
+        .preset-grid,
+        .sample-data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .preset-card,
+        .sample-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .preset-card:hover,
+        .sample-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--week11-primary);
+        }
+
+        .preset-icon,
+        .sample-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .preset-values,
+        .sample-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .preset-apply-btn,
+        .sample-apply-btn {
+            background: var(--week11-gradient);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .preset-apply-btn:hover,
+        .sample-apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Statistical Analysis Specific */
+        .data-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 1rem;
+            border: 2px solid var(--week11-light);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+
+        .calculate-btn {
+            background: var(--week11-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+        }
+
+        .stat-card.primary {
+            border-color: var(--week11-primary);
+        }
+
+        .stat-card.secondary {
+            border-color: var(--week11-secondary);
+        }
+
+        .stat-card.tertiary {
+            border-color: var(--week11-accent);
+        }
+
+        .stat-values {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background: var(--week11-gradient-subtle);
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: var(--week11-dark);
+        }
+
+        .stat-value {
+            color: var(--week11-primary);
+            font-weight: bold;
+        }
+
+        .distribution-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            background: var(--week11-gradient-subtle);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #histogram-canvas {
+            max-width: 100%;
+            border: 1px solid var(--week11-light);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .distribution-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .dist-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .dist-label {
+            font-weight: bold;
+            color: var(--week11-dark);
+        }
+
+        .dist-value {
+            color: var(--week11-primary);
+            font-weight: bold;
+        }
+
+        /* Conversion Selector */
+        .conversion-selector {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--week11-light);
+            border-radius: 8px;
+            background: white;
+            color: var(--week11-dark);
+            font-size: 1rem;
+        }
+
+        /* Animation */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .measurement-tools-grid,
+            .statistical-analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .distribution-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preset-grid,
+            .sample-data-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .roadmap-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 0 1rem 0;
+            }
+
+            .step-connection {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,9 +669,230 @@
                     <h1 class="week-title">Week 11: Measurement and Data Analysis</h1>
                 </div>
                 <p class="week-description">
-                    This week focuses on quantitative data collection, analysis, and interpretation of baseball pitching characteristics using iPhone, Pocket Radar, and potentially Rapsodo technology.
+                    This week focuses on quantitative data collection, analysis, and interpretation of baseball pitching characteristics using advanced measurement technologies including Rapsodo 3.0, iPhone apps, and Pocket Radar devices.
                 </p>
             </header>
+
+            <!-- Learning Objectives Section -->
+            <section class="learning-objectives">
+                <h2>🎯 Week 11 Learning Objectives</h2>
+                <p class="objectives-intro">Master the scientific method through precise measurement, rigorous data analysis, and statistical interpretation to transform raw baseball data into meaningful insights and evidence-based conclusions.</p>
+
+                <div class="objectives-grid">
+                    <div class="objective-card" data-difficulty="intermediate">
+                        <div class="objective-icon">📏</div>
+                        <div class="objective-content">
+                            <h3>Measurement Science Mastery</h3>
+                            <p>Master units, conversions, significant figures, and measurement uncertainty to ensure accurate and precise data collection protocols.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Unit Conversions</span>
+                                <span class="skill-tag">Significant Figures</span>
+                                <span class="skill-tag">Measurement Uncertainty</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">🎯</div>
+                        <div class="objective-content">
+                            <h3>Accuracy & Precision Analysis</h3>
+                            <p>Distinguish between accuracy and precision, identify systematic vs. random errors, and implement quality control measures in experimental design.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Error Analysis</span>
+                                <span class="skill-tag">Quality Control</span>
+                                <span class="skill-tag">Calibration Methods</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">📊</div>
+                        <div class="objective-content">
+                            <h3>Statistical Analysis Expertise</h3>
+                            <p>Apply descriptive and inferential statistics, calculate confidence intervals, perform hypothesis testing, and interpret statistical significance.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Descriptive Statistics</span>
+                                <span class="skill-tag">Hypothesis Testing</span>
+                                <span class="skill-tag">Confidence Intervals</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="intermediate">
+                        <div class="objective-icon">📈</div>
+                        <div class="objective-content">
+                            <h3>Data Visualization & Communication</h3>
+                            <p>Create professional graphs, identify trends and patterns, and communicate scientific findings effectively through visual data presentation.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Graph Creation</span>
+                                <span class="skill-tag">Trend Analysis</span>
+                                <span class="skill-tag">Scientific Communication</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="advanced">
+                        <div class="objective-icon">📡</div>
+                        <div class="objective-content">
+                            <h3>Technology-Enhanced Measurement</h3>
+                            <p>Utilize modern measurement technologies (Pocket Radar, high-speed cameras, apps) with proper calibration and data validation protocols.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Radar Technology</span>
+                                <span class="skill-tag">Digital Analysis</span>
+                                <span class="skill-tag">Data Validation</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge advanced">Advanced</div>
+                    </div>
+
+                    <div class="objective-card" data-difficulty="expert">
+                        <div class="objective-icon">🔬</div>
+                        <div class="objective-content">
+                            <h3>Research Design & Scientific Method</h3>
+                            <p>Design controlled experiments, implement proper sampling methods, and apply the complete scientific method to baseball performance research.</p>
+                            <div class="objective-skills">
+                                <span class="skill-tag">Experimental Design</span>
+                                <span class="skill-tag">Scientific Method</span>
+                                <span class="skill-tag">Research Protocols</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge expert">Expert</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Roadmap Section -->
+            <section class="learning-roadmap">
+                <h2>🗺️ Week 11: Measurement & Data Analysis Journey</h2>
+                <p class="roadmap-intro">Navigate through the complete scientific method - from precise measurement techniques to advanced statistical analysis and professional data presentation for evidence-based conclusions.</p>
+
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>📏 Measurement Fundamentals</h3>
+                            <p>Master scientific measurement principles including units, conversions, significant figures, and precision requirements for accurate data collection.</p>
+                            <div class="step-skills">
+                                <span class="skill">Unit Systems</span>
+                                <span class="skill">Significant Figures</span>
+                                <span class="skill">Scientific Notation</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>🎯 Accuracy & Precision Analysis</h3>
+                            <p>Understand the critical distinction between accuracy and precision, identify error sources, and implement quality control measures.</p>
+                            <div class="step-skills">
+                                <span class="skill">Error Classification</span>
+                                <span class="skill">Calibration</span>
+                                <span class="skill">Quality Control</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>📡 Technology-Enhanced Data Collection</h3>
+                            <p>Utilize advanced measurement technologies including Rapsodo 3.0, radar guns, high-speed cameras, and digital analysis tools with proper protocols and calibration.</p>
+                            <div class="step-skills">
+                                <span class="skill">Rapsodo 3.0</span>
+                                <span class="skill">Radar Technology</span>
+                                <span class="skill">Digital Tools</span>
+                                <span class="skill">Data Validation</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>📈 Data Visualization & Pattern Recognition</h3>
+                            <p>Create professional graphs, identify trends and relationships, and develop skills in visual data communication and interpretation.</p>
+                            <div class="step-skills">
+                                <span class="skill">Graph Design</span>
+                                <span class="skill">Pattern Analysis</span>
+                                <span class="skill">Visual Communication</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>📊 Statistical Analysis Mastery</h3>
+                            <p>Apply descriptive and inferential statistics, calculate confidence intervals, and perform hypothesis testing for scientific conclusions.</p>
+                            <div class="step-skills">
+                                <span class="skill">Descriptive Statistics</span>
+                                <span class="skill">Hypothesis Testing</span>
+                                <span class="skill">Confidence Intervals</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>🔬 Research Design & Experimental Methods</h3>
+                            <p>Design controlled experiments, implement proper sampling strategies, and apply rigorous scientific methodology to baseball research.</p>
+                            <div class="step-skills">
+                                <span class="skill">Experimental Design</span>
+                                <span class="skill">Sample Methods</span>
+                                <span class="skill">Control Variables</span>
+                            </div>
+                        </div>
+                        <div class="step-connection"></div>
+                    </div>
+
+                    <div class="roadmap-step" data-step="7">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3>📝 Scientific Communication & Reporting</h3>
+                            <p>Synthesize analysis results into professional scientific reports with proper data presentation, interpretation, and evidence-based conclusions.</p>
+                            <div class="step-skills">
+                                <span class="skill">Scientific Writing</span>
+                                <span class="skill">Data Interpretation</span>
+                                <span class="skill">Evidence-Based Conclusions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-progress">
+                    <div class="progress-header">
+                        <h3>🏆 Your Progress</h3>
+                        <div class="progress-stats">
+                            <span class="stat">
+                                <span class="stat-number" id="completed-steps">0</span>
+                                <span class="stat-label">Steps Completed</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="total-steps">7</span>
+                                <span class="stat-label">Total Steps</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat-number" id="mastery-level">Beginner</span>
+                                <span class="stat-label">Mastery Level</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
 
             <section class="day-section" id="day-1">
                 <div class="day-header">
@@ -90,24 +958,141 @@
                         </div>
                     </div>
                     
-                    <h3>🧮 Interactive Unit Converter</h3>
-                    <div class="physics-calculators">
-                        <div class="calculator-section">
-                            <h4>Unit Conversion Calculator</h4>
-                            <div class="calculator-inputs">
-                                <label>Input Value: <input type="number" id="input-value" value="90" step="0.1"></label>
-                                <label>Conversion Type: 
-                                    <select id="conversion-type">
-                                        <option value="mph-ms">mph to m/s</option>
-                                        <option value="ms-mph">m/s to mph</option>
-                                        <option value="rpm-rads">RPM to rad/s</option>
-                                        <option value="rads-rpm">rad/s to RPM</option>
-                                        <option value="ft-m">feet to meters</option>
-                                        <option value="m-ft">meters to feet</option>
+                    <h3>🧮 Enhanced Unit Conversion & Measurement Tools</h3>
+                    <div class="measurement-tools-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>🔄 Advanced Unit Converter</h4>
+                            <p class="calculator-description">Convert between metric and imperial units with precision control and uncertainty propagation.</p>
+
+                            <div class="converter-controls">
+                                <div class="control-group">
+                                    <label for="input-value-slider">Input Value: <span id="input-display">90.0</span></label>
+                                    <div class="slider-container">
+                                        <input type="range" id="input-value-slider" min="0" max="200" step="0.1" value="90" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0">0</span>
+                                            <span class="marker" data-value="100">100</span>
+                                            <span class="marker" data-value="200">200</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="conversion-type-select">Conversion Type:</label>
+                                    <select id="conversion-type-select" class="conversion-selector">
+                                        <optgroup label="Velocity">
+                                            <option value="mph-ms">mph → m/s</option>
+                                            <option value="ms-mph">m/s → mph</option>
+                                        </optgroup>
+                                        <optgroup label="Angular Velocity">
+                                            <option value="rpm-rads">RPM → rad/s</option>
+                                            <option value="rads-rpm">rad/s → RPM</option>
+                                        </optgroup>
+                                        <optgroup label="Distance">
+                                            <option value="ft-m">feet → meters</option>
+                                            <option value="m-ft">meters → feet</option>
+                                            <option value="in-cm">inches → cm</option>
+                                            <option value="cm-in">cm → inches</option>
+                                        </optgroup>
                                     </select>
-                                </label>
-                                <div class="calculator-result">
-                                    <p>Result: <span id="conversion-result">40.2</span> <span id="result-units">m/s</span></p>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="precision-slider">Precision (decimal places): <span id="precision-display">2</span></label>
+                                    <div class="slider-container">
+                                        <input type="range" id="precision-slider" min="0" max="5" step="1" value="2" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="0">0</span>
+                                            <span class="marker" data-value="2">2</span>
+                                            <span class="marker" data-value="5">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="conversion-results">
+                                <div class="result-card primary">
+                                    <div class="result-icon">🎯</div>
+                                    <div class="result-content">
+                                        <h5>Converted Value</h5>
+                                        <div class="result-value">
+                                            <span id="conversion-result-display">40.23</span> <span id="result-units-display">m/s</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card secondary">
+                                    <div class="result-icon">📏</div>
+                                    <div class="result-content">
+                                        <h5>Conversion Factor</h5>
+                                        <div class="result-value">
+                                            <span id="conversion-factor-display">0.447</span>
+                                        </div>
+                                        <div class="result-sub" id="factor-description">mph to m/s</div>
+                                    </div>
+                                </div>
+
+                                <div class="result-card tertiary">
+                                    <div class="result-icon">🔬</div>
+                                    <div class="result-content">
+                                        <h5>Scientific Notation</h5>
+                                        <div class="result-value">
+                                            <span id="scientific-notation">4.02 × 10¹</span>
+                                        </div>
+                                        <div class="result-sub">Standard form</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="formula-display">
+                                <h5>Conversion Formula</h5>
+                                <div class="formula-equation">
+                                    <span id="formula-text">90.0 mph × 0.447 (m/s)/(mph) = 40.23 m/s</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calculator-section">
+                            <h4>⚡ Quick Conversion Presets</h4>
+                            <div class="preset-grid">
+                                <div class="preset-card" data-preset="fastball">
+                                    <div class="preset-icon">⚾</div>
+                                    <h5>Fastball Speed</h5>
+                                    <div class="preset-values">
+                                        <span>95 mph</span>
+                                        <span>42.5 m/s</span>
+                                    </div>
+                                    <button class="preset-apply-btn" data-value="95" data-type="mph-ms">Apply</button>
+                                </div>
+
+                                <div class="preset-card" data-preset="spin-rate">
+                                    <div class="preset-icon">🌪️</div>
+                                    <h5>Typical Spin Rate</h5>
+                                    <div class="preset-values">
+                                        <span>2400 RPM</span>
+                                        <span>251 rad/s</span>
+                                    </div>
+                                    <button class="preset-apply-btn" data-value="2400" data-type="rpm-rads">Apply</button>
+                                </div>
+
+                                <div class="preset-card" data-preset="mound-distance">
+                                    <div class="preset-icon">📏</div>
+                                    <h5>Mound Distance</h5>
+                                    <div class="preset-values">
+                                        <span>60.5 feet</span>
+                                        <span>18.44 meters</span>
+                                    </div>
+                                    <button class="preset-apply-btn" data-value="60.5" data-type="ft-m">Apply</button>
+                                </div>
+
+                                <div class="preset-card" data-preset="strike-zone">
+                                    <div class="preset-icon">🎯</div>
+                                    <h5>Strike Zone Height</h5>
+                                    <div class="preset-values">
+                                        <span>17 inches</span>
+                                        <span>43.2 cm</span>
+                                    </div>
+                                    <button class="preset-apply-btn" data-value="17" data-type="in-cm">Apply</button>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +1217,7 @@
 
             <section class="day-section" id="day-3">
                 <div class="day-header">
-                    <h2 class="day-title">Day 3: Pocket Radar Data Collection</h2>
+                    <h2 class="day-title">Day 3: Advanced Technology Data Collection</h2>
                     <div class="day-meta">
                         <span class="duration">50 minutes</span>
                         <span class="complexity">Practical</span>
@@ -243,57 +1228,95 @@
                     <h3>🎯 Key Topics</h3>
                     <div class="topics-grid">
                         <div class="topic-card">
+                            <span class="topic-icon">🎯</span>
+                            <div class="topic-info">
+                                <h4>Rapsodo 3.0 Technology</h4>
+                                <p>Advanced pitch analysis using dual-frequency Doppler radar and machine vision for comprehensive ball tracking.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
                             <span class="topic-icon">📡</span>
                             <div class="topic-info">
                                 <h4>Radar Technology</h4>
-                                <p>Doppler effect principles and radar gun operation for velocity measurement.</p>
+                                <p>Doppler effect principles and radar gun operation for velocity measurement comparison studies.</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">📊</span>
                             <div class="topic-info">
-                                <h4>Data Collection Protocol</h4>
-                                <p>Systematic methods for gathering consistent, reliable measurement data.</p>
+                                <h4>Multi-Device Data Collection</h4>
+                                <p>Systematic methods for gathering data from multiple devices with cross-validation protocols.</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">📋</span>
                             <div class="topic-info">
-                                <h4>Data Recording</h4>
-                                <p>Proper documentation and organization of experimental measurements.</p>
+                                <h4>Advanced Data Recording</h4>
+                                <p>Comprehensive documentation of velocity, spin rate, release angle, and trajectory data.</p>
                             </div>
                         </div>
                         <div class="topic-card">
                             <span class="topic-icon">⚙️</span>
                             <div class="topic-info">
-                                <h4>Equipment Calibration</h4>
-                                <p>Ensuring measurement accuracy through proper equipment setup.</p>
+                                <h4>Multi-Device Calibration</h4>
+                                <p>Ensuring measurement accuracy across different technologies and cross-referencing results.</p>
+                            </div>
+                        </div>
+                        <div class="topic-card">
+                            <span class="topic-icon">🔬</span>
+                            <div class="topic-info">
+                                <h4>Measurement Validation</h4>
+                                <p>Statistical methods for comparing and validating measurements across different devices.</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="procedure-timeline">
-                        <h3>📝 Lab Procedure: Radar Data Collection</h3>
+                        <h3>📝 Lab Procedure: Advanced Technology Data Collection</h3>
                         <div class="procedure-steps">
                             <div class="procedure-step">
                                 <div class="step-number">1</div>
                                 <div class="step-content">
-                                    <h4>Equipment Setup (10 min)</h4>
-                                    <p>Position Pocket Radar, establish measurement distance, calibrate equipment.</p>
+                                    <h4>Rapsodo 3.0 Setup (15 min)</h4>
+                                    <p>Position Rapsodo 3.0 device, configure app settings, calibrate distance measurements, establish proper alignment with mound and plate.</p>
+                                    <div class="setup-details">
+                                        <ul>
+                                            <li>Place unit 6-8 feet behind home plate</li>
+                                            <li>Align with pitcher's mound using app guidance</li>
+                                            <li>Verify environmental conditions (lighting, wind)</li>
+                                            <li>Test connectivity and data recording</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
                                 <div class="step-number">2</div>
                                 <div class="step-content">
-                                    <h4>Data Collection (30 min)</h4>
-                                    <p>Record multiple pitches, document conditions, maintain consistent protocol.</p>
+                                    <h4>Multi-Device Data Collection (25 min)</h4>
+                                    <p>Simultaneously collect data using Rapsodo 3.0 and Pocket Radar for comparison analysis, documenting all environmental conditions.</p>
+                                    <div class="setup-details">
+                                        <ul>
+                                            <li>Record 30+ pitches per pitcher</li>
+                                            <li>Document velocity, spin rate, release metrics</li>
+                                            <li>Cross-reference radar gun readings</li>
+                                            <li>Note weather conditions and ball type</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="procedure-step">
                                 <div class="step-number">3</div>
                                 <div class="step-content">
-                                    <h4>Data Organization (10 min)</h4>
-                                    <p>Organize data in tables, check for outliers, prepare for analysis.</p>
+                                    <h4>Data Validation & Export (10 min)</h4>
+                                    <p>Export Rapsodo data, organize measurements, perform initial quality checks, and prepare datasets for statistical analysis.</p>
+                                    <div class="setup-details">
+                                        <ul>
+                                            <li>Export CSV data from Rapsodo app</li>
+                                            <li>Organize radar gun measurements</li>
+                                            <li>Check for measurement outliers</li>
+                                            <li>Prepare data for statistical software</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -302,24 +1325,24 @@
                     <h3>🚀 Activities</h3>
                     <div class="activities-timeline">
                         <div class="activity-item">
-                            <div class="activity-icon">📡</div>
+                            <div class="activity-icon">🎯</div>
                             <div class="activity-content">
-                                <h4>Radar Setup & Calibration (15 min)</h4>
-                                <p>Learn proper radar gun positioning and calibration procedures.</p>
+                                <h4>Rapsodo 3.0 Setup & Calibration (15 min)</h4>
+                                <p>Learn proper Rapsodo positioning, app configuration, and alignment procedures for optimal data collection.</p>
                             </div>
                         </div>
                         <div class="activity-item">
                             <div class="activity-icon">📊</div>
                             <div class="activity-content">
-                                <h4>Systematic Data Collection (25 min)</h4>
-                                <p>Collect velocity data using standardized measurement protocols.</p>
+                                <h4>Multi-Device Data Collection Protocol (25 min)</h4>
+                                <p>Simultaneously collect comprehensive data using Rapsodo 3.0 and traditional radar technology for comparison analysis.</p>
                             </div>
                         </div>
                         <div class="activity-item">
                             <div class="activity-icon">📋</div>
                             <div class="activity-content">
-                                <h4>Data Quality Assessment (10 min)</h4>
-                                <p>Review collected data for consistency and identify potential errors.</p>
+                                <h4>Advanced Data Export & Validation (10 min)</h4>
+                                <p>Export multi-parameter data from Rapsodo app and validate measurements across different devices.</p>
                             </div>
                         </div>
                     </div>
@@ -437,22 +1460,182 @@
                         </div>
                     </div>
                     
-                    <h3>🧮 Statistical Analysis Calculator</h3>
-                    <div class="physics-calculators">
+                    <h3>📊 Advanced Statistical Analysis Tools</h3>
+                    <div class="statistical-analysis-grid">
+                        <div class="calculator-section enhanced-calculator">
+                            <h4>📈 Comprehensive Statistics Calculator</h4>
+                            <p class="calculator-description">Perform complete statistical analysis with descriptive statistics, confidence intervals, and distribution analysis.</p>
+
+                            <div class="data-input-section">
+                                <div class="control-group">
+                                    <label for="data-input-area">Data Values (comma or space separated):</label>
+                                    <textarea id="data-input-area" class="data-textarea" placeholder="Enter your data values here... e.g., 88 90 89 91 87 92 88 90">88, 90, 89, 91, 87, 92, 88, 90, 89, 91, 90, 88, 89, 90, 91</textarea>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="confidence-level-slider">Confidence Level: <span id="confidence-level-display">95</span>%</label>
+                                    <div class="slider-container">
+                                        <input type="range" id="confidence-level-slider" min="80" max="99" step="1" value="95" class="physics-slider">
+                                        <div class="slider-markers">
+                                            <span class="marker" data-value="90">90%</span>
+                                            <span class="marker" data-value="95">95%</span>
+                                            <span class="marker" data-value="99">99%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="calculate-btn" id="calculate-stats-btn">
+                                    <span class="btn-icon">📊</span>
+                                    <span class="btn-text">Calculate Statistics</span>
+                                </button>
+                            </div>
+
+                            <div class="statistics-results" id="stats-results" style="display: none;">
+                                <div class="stats-grid">
+                                    <div class="stat-card primary">
+                                        <div class="stat-icon">📊</div>
+                                        <div class="stat-content">
+                                            <h5>Descriptive Statistics</h5>
+                                            <div class="stat-values">
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Count (n):</span>
+                                                    <span class="stat-value" id="stat-count-display">15</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Mean (x̄):</span>
+                                                    <span class="stat-value" id="stat-mean-display">89.4</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Median:</span>
+                                                    <span class="stat-value" id="stat-median-display">89.0</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Mode:</span>
+                                                    <span class="stat-value" id="stat-mode-display">90</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="stat-card secondary">
+                                        <div class="stat-icon">📏</div>
+                                        <div class="stat-content">
+                                            <h5>Variability Measures</h5>
+                                            <div class="stat-values">
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Range:</span>
+                                                    <span class="stat-value" id="stat-range-display">5.0</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Std Dev (s):</span>
+                                                    <span class="stat-value" id="stat-stddev-display">1.4</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Variance (s²):</span>
+                                                    <span class="stat-value" id="stat-variance-display">2.0</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">CV (%):</span>
+                                                    <span class="stat-value" id="stat-cv-display">1.6</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="stat-card tertiary">
+                                        <div class="stat-icon">🎯</div>
+                                        <div class="stat-content">
+                                            <h5>Confidence Interval</h5>
+                                            <div class="stat-values">
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Margin of Error:</span>
+                                                    <span class="stat-value" id="stat-margin-display">±0.7</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Lower Bound:</span>
+                                                    <span class="stat-value" id="stat-lower-display">88.7</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">Upper Bound:</span>
+                                                    <span class="stat-value" id="stat-upper-display">90.1</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">CI Range:</span>
+                                                    <span class="stat-value" id="stat-ci-display">[88.7, 90.1]</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="distribution-analysis">
+                                    <h5>📊 Distribution Analysis</h5>
+                                    <div class="distribution-container">
+                                        <div class="histogram-container">
+                                            <canvas id="histogram-canvas" width="400" height="200"></canvas>
+                                        </div>
+                                        <div class="distribution-info">
+                                            <div class="distribution-stats">
+                                                <div class="dist-stat">
+                                                    <span class="dist-label">Skewness:</span>
+                                                    <span class="dist-value" id="skewness-display">0.12</span>
+                                                </div>
+                                                <div class="dist-stat">
+                                                    <span class="dist-label">Kurtosis:</span>
+                                                    <span class="dist-value" id="kurtosis-display">-0.35</span>
+                                                </div>
+                                                <div class="dist-stat">
+                                                    <span class="dist-label">Distribution:</span>
+                                                    <span class="dist-value" id="distribution-type">Normal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="calculator-section">
-                            <h4>Data Statistics Calculator</h4>
-                            <div class="calculator-inputs">
-                                <label>Data Values (comma-separated): 
-                                    <input type="text" id="data-values" value="88, 90, 89, 91, 87, 92, 88, 90" placeholder="Enter values...">
-                                </label>
-                                <button onclick="calculateStatistics()">Calculate Statistics</button>
-                                <div class="calculator-result" id="stats-display" style="display: none;">
-                                    <p>Count: <span id="stat-count">8</span></p>
-                                    <p>Mean: <span id="stat-mean">89.4</span></p>
-                                    <p>Median: <span id="stat-median">89.5</span></p>
-                                    <p>Std Dev: <span id="stat-stddev">1.7</span></p>
-                                    <p>Range: <span id="stat-range">5</span></p>
-                                    <p>Min: <span id="stat-min">87</span> | Max: <span id="stat-max">92</span></p>
+                            <h4>📈 Sample Data Sets</h4>
+                            <div class="sample-data-grid">
+                                <div class="sample-card" data-sample="fastball">
+                                    <div class="sample-icon">⚾</div>
+                                    <h5>Fastball Velocities</h5>
+                                    <div class="sample-stats">
+                                        <span>15 measurements</span>
+                                        <span>MLB pitcher data</span>
+                                    </div>
+                                    <button class="sample-apply-btn" data-values="92, 94, 93, 95, 91, 96, 92, 94, 93, 95, 94, 93, 92, 94, 95">Load Data</button>
+                                </div>
+
+                                <div class="sample-card" data-sample="curveball">
+                                    <div class="sample-icon">🌀</div>
+                                    <h5>Curveball Spin Rates</h5>
+                                    <div class="sample-stats">
+                                        <span>12 measurements</span>
+                                        <span>RPM data</span>
+                                    </div>
+                                    <button class="sample-apply-btn" data-values="2580, 2650, 2720, 2590, 2680, 2640, 2700, 2620, 2750, 2600, 2690, 2660">Load Data</button>
+                                </div>
+
+                                <div class="sample-card" data-sample="accuracy">
+                                    <div class="sample-icon">🎯</div>
+                                    <h5>Strike Zone Accuracy</h5>
+                                    <div class="sample-stats">
+                                        <span>20 measurements</span>
+                                        <span>Distance from center (in)</span>
+                                    </div>
+                                    <button class="sample-apply-btn" data-values="2.1, 1.8, 3.2, 2.5, 1.9, 2.8, 1.5, 2.2, 3.1, 2.0, 1.7, 2.6, 1.4, 2.9, 2.3, 1.6, 2.7, 2.4, 1.8, 2.1">Load Data</button>
+                                </div>
+
+                                <div class="sample-card" data-sample="mixed">
+                                    <div class="sample-icon">🔄</div>
+                                    <h5>Mixed Pitch Types</h5>
+                                    <div class="sample-stats">
+                                        <span>18 measurements</span>
+                                        <span>Velocity variation</span>
+                                    </div>
+                                    <button class="sample-apply-btn" data-values="94, 82, 88, 95, 79, 90, 93, 81, 87, 96, 78, 89, 92, 83, 86, 94, 80, 91">Load Data</button>
                                 </div>
                             </div>
                         </div>
@@ -930,19 +2113,21 @@
                                 <div class="lab-section">
                                     <h5>Materials & Equipment</h5>
                                     <ul>
-                                        <li>Pocket Radar or similar velocity measurement device</li>
+                                        <li>Rapsodo 3.0 pitch tracking device with mobile app</li>
+                                        <li>Pocket Radar or similar velocity measurement device for comparison</li>
                                         <li>High-speed camera or smartphone with slow-motion capability</li>
                                         <li>Measuring tape and protractor for positional measurements</li>
                                         <li>Data collection sheets and statistical software/calculator</li>
-                                        <li>Multiple baseballs for consistency testing</li>
+                                        <li>Multiple baseballs for consistency testing across devices</li>
                                         <li>Environmental measurement tools (temperature, humidity, wind)</li>
+                                        <li>Laptop/tablet for data analysis and export from Rapsodo app</li>
                                     </ul>
                                 </div>
                                 <div class="lab-section">
                                     <h5>Experimental Design</h5>
-                                    <p><strong>Research Question:</strong> How do environmental and mechanical factors affect pitching velocity and accuracy?</p>
+                                    <p><strong>Research Question:</strong> How do environmental and mechanical factors affect pitching velocity, spin rate, release angle, and accuracy using advanced measurement technology?</p>
                                     <ol>
-                                        <li><strong>Variable Identification:</strong> Independent (arm angle, effort level, environmental conditions) and dependent (velocity, accuracy) variables</li>
+                                        <li><strong>Variable Identification:</strong> Independent (arm angle, effort level, environmental conditions) and dependent (velocity, spin rate, release angle, accuracy) variables</li>
                                         <li><strong>Control Factors:</strong> Consistent pitcher, same balls, standardized measurement protocol</li>
                                         <li><strong>Sample Size:</strong> Minimum 30 pitches per condition for statistical significance</li>
                                         <li><strong>Randomization:</strong> Randomize order of conditions to minimize systematic bias</li>
@@ -1053,24 +2238,24 @@
         function calculateStatistics() {
             const input = document.getElementById('data-values').value;
             const values = input.split(',').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-            
+
             if (values.length === 0) return;
-            
+
             // Sort values for median calculation
             const sortedValues = [...values].sort((a, b) => a - b);
-            
+
             // Calculate statistics
             const count = values.length;
             const mean = values.reduce((sum, v) => sum + v, 0) / count;
-            const median = count % 2 === 0 
-                ? (sortedValues[count/2 - 1] + sortedValues[count/2]) / 2 
+            const median = count % 2 === 0
+                ? (sortedValues[count/2 - 1] + sortedValues[count/2]) / 2
                 : sortedValues[Math.floor(count/2)];
             const variance = values.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / (count - 1);
             const stddev = Math.sqrt(variance);
             const min = sortedValues[0];
             const max = sortedValues[count - 1];
             const range = max - min;
-            
+
             // Update display
             document.getElementById('stat-count').textContent = count;
             document.getElementById('stat-mean').textContent = mean.toFixed(2);
@@ -1079,8 +2264,194 @@
             document.getElementById('stat-range').textContent = range.toFixed(2);
             document.getElementById('stat-min').textContent = min.toFixed(2);
             document.getElementById('stat-max').textContent = max.toFixed(2);
-            
+
             document.getElementById('stats-display').style.display = 'block';
+        }
+
+        // Enhanced Statistical Calculator Functions
+        function calculateEnhancedStatistics() {
+            const textarea = document.getElementById('data-input-area');
+            if (!textarea) return;
+
+            const input = textarea.value;
+            const values = input.split(/[,\s\n]+/).map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+
+            if (values.length === 0) return;
+
+            // Sort values
+            const sortedValues = [...values].sort((a, b) => a - b);
+            const n = values.length;
+
+            // Basic statistics
+            const mean = values.reduce((sum, v) => sum + v, 0) / n;
+            const median = n % 2 === 0
+                ? (sortedValues[n/2 - 1] + sortedValues[n/2]) / 2
+                : sortedValues[Math.floor(n/2)];
+
+            // Mode calculation
+            const frequency = {};
+            values.forEach(v => frequency[v] = (frequency[v] || 0) + 1);
+            const maxFreq = Math.max(...Object.values(frequency));
+            const modes = Object.keys(frequency).filter(k => frequency[k] === maxFreq).map(Number);
+            const mode = modes.length === n ? 'No mode' : modes.join(', ');
+
+            // Variance and standard deviation
+            const variance = values.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / (n - 1);
+            const stddev = Math.sqrt(variance);
+            const stdError = stddev / Math.sqrt(n);
+
+            // Range and quartiles
+            const min = sortedValues[0];
+            const max = sortedValues[n - 1];
+            const range = max - min;
+            const q1 = sortedValues[Math.floor(n * 0.25)];
+            const q3 = sortedValues[Math.floor(n * 0.75)];
+            const iqr = q3 - q1;
+
+            // Confidence interval
+            const confidenceLevel = parseInt(document.getElementById('confidence-level-slider').value);
+            const alpha = (100 - confidenceLevel) / 100;
+            const tValue = getTValue(alpha/2, n-1); // Simplified t-value lookup
+            const marginError = tValue * stdError;
+            const ciLower = mean - marginError;
+            const ciUpper = mean + marginError;
+
+            // Update enhanced display
+            updateEnhancedDisplay({
+                n, mean, median, mode, stddev, stdError, min, max, range,
+                q1, q3, iqr, confidenceLevel, ciLower, ciUpper, marginError
+            });
+
+            // Create histogram
+            createHistogram(values);
+        }
+
+        function getTValue(alpha, df) {
+            // Simplified t-value lookup for common cases
+            const tTable = {
+                0.025: { // 95% confidence
+                    5: 2.571, 10: 2.228, 15: 2.131, 20: 2.086, 30: 2.042,
+                    40: 2.021, 50: 2.009, 100: 1.984, Infinity: 1.960
+                },
+                0.05: { // 90% confidence
+                    5: 2.015, 10: 1.812, 15: 1.753, 20: 1.725, 30: 1.697,
+                    40: 1.684, 50: 1.676, 100: 1.660, Infinity: 1.645
+                },
+                0.01: { // 99% confidence
+                    5: 4.032, 10: 3.169, 15: 2.947, 20: 2.845, 30: 2.750,
+                    40: 2.704, 50: 2.678, 100: 2.626, Infinity: 2.576
+                }
+            };
+
+            const table = tTable[alpha] || tTable[0.025];
+            const dfKeys = Object.keys(table).map(Number).sort((a, b) => a - b);
+
+            for (let key of dfKeys) {
+                if (df <= key || key === Infinity) {
+                    return table[key];
+                }
+            }
+            return table[Infinity];
+        }
+
+        function updateEnhancedDisplay(stats) {
+            // Update basic stats
+            document.getElementById('enhanced-count').textContent = stats.n;
+            document.getElementById('enhanced-mean').textContent = stats.mean.toFixed(3);
+            document.getElementById('enhanced-median').textContent = stats.median.toFixed(3);
+            document.getElementById('enhanced-mode').textContent = stats.mode;
+            document.getElementById('enhanced-stddev').textContent = stats.stddev.toFixed(3);
+            document.getElementById('enhanced-stderr').textContent = stats.stdError.toFixed(3);
+
+            // Update range stats
+            document.getElementById('enhanced-min').textContent = stats.min.toFixed(3);
+            document.getElementById('enhanced-max').textContent = stats.max.toFixed(3);
+            document.getElementById('enhanced-range').textContent = stats.range.toFixed(3);
+            document.getElementById('enhanced-q1').textContent = stats.q1.toFixed(3);
+            document.getElementById('enhanced-q3').textContent = stats.q3.toFixed(3);
+            document.getElementById('enhanced-iqr').textContent = stats.iqr.toFixed(3);
+
+            // Update confidence interval
+            document.getElementById('ci-level').textContent = stats.confidenceLevel;
+            document.getElementById('ci-lower').textContent = stats.ciLower.toFixed(3);
+            document.getElementById('ci-upper').textContent = stats.ciUpper.toFixed(3);
+            document.getElementById('margin-error').textContent = stats.marginError.toFixed(3);
+
+            // Show results
+            document.getElementById('enhanced-stats-display').style.display = 'block';
+        }
+
+        function createHistogram(values) {
+            const canvas = document.getElementById('histogram-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = 400;
+            const height = canvas.height = 200;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Calculate bins
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            const binCount = Math.min(10, Math.ceil(Math.sqrt(values.length)));
+            const binWidth = (max - min) / binCount;
+
+            const bins = Array(binCount).fill(0);
+            values.forEach(value => {
+                const binIndex = Math.min(binCount - 1, Math.floor((value - min) / binWidth));
+                bins[binIndex]++;
+            });
+
+            // Draw histogram
+            const maxBinHeight = Math.max(...bins);
+            const barWidth = width / binCount;
+            const scaleFactor = (height - 40) / maxBinHeight;
+
+            ctx.fillStyle = '#10b981';
+            ctx.strokeStyle = '#059669';
+            ctx.lineWidth = 1;
+
+            bins.forEach((count, i) => {
+                const barHeight = count * scaleFactor;
+                const x = i * barWidth;
+                const y = height - 20 - barHeight;
+
+                ctx.fillRect(x + 1, y, barWidth - 2, barHeight);
+                ctx.strokeRect(x + 1, y, barWidth - 2, barHeight);
+
+                // Draw bin labels
+                ctx.fillStyle = '#374151';
+                ctx.font = '10px Arial';
+                ctx.textAlign = 'center';
+                const binValue = min + (i + 0.5) * binWidth;
+                ctx.fillText(binValue.toFixed(1), x + barWidth/2, height - 5);
+                ctx.fillStyle = '#10b981';
+            });
+        }
+
+        function updateConfidenceLevel() {
+            const slider = document.getElementById('confidence-level-slider');
+            const display = document.getElementById('confidence-level-display');
+            if (slider && display) {
+                display.textContent = slider.value;
+                calculateEnhancedStatistics(); // Recalculate with new confidence level
+            }
+        }
+
+        function loadSampleData(dataset) {
+            const textarea = document.getElementById('data-input-area');
+            if (!textarea) return;
+
+            const sampleDatasets = {
+                velocity: '88, 90, 89, 91, 87, 92, 88, 90, 89, 91, 90, 88, 89, 90, 91',
+                spin: '2100, 2250, 2180, 2300, 2150, 2280, 2200, 2240, 2190, 2260, 2170, 2220, 2210, 2180, 2290',
+                accuracy: '95.2, 94.8, 96.1, 95.7, 94.9, 95.8, 96.0, 95.3, 95.9, 94.7, 95.6, 95.1, 95.4, 96.2, 95.0'
+            };
+
+            textarea.value = sampleDatasets[dataset] || '';
+            calculateEnhancedStatistics();
         }
 
         // Auto-calculate when values change
@@ -1104,12 +2475,53 @@
             }
         });
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('input-value').addEventListener('input', calculateConversion);
-            document.getElementById('conversion-type').addEventListener('change', calculateConversion);
-            
-            // Calculate initial values
-            calculateConversion();
-            calculateStatistics();
+            // Basic calculator event listeners
+            const inputValue = document.getElementById('input-value');
+            const conversionType = document.getElementById('conversion-type');
+            if (inputValue && conversionType) {
+                inputValue.addEventListener('input', calculateConversion);
+                conversionType.addEventListener('change', calculateConversion);
+                calculateConversion();
+            }
+
+            const dataValues = document.getElementById('data-values');
+            if (dataValues) {
+                dataValues.addEventListener('input', calculateStatistics);
+                calculateStatistics();
+            }
+
+            // Enhanced calculator event listeners
+            const dataInputArea = document.getElementById('data-input-area');
+            if (dataInputArea) {
+                dataInputArea.addEventListener('input', calculateEnhancedStatistics);
+                // Load default sample data
+                loadSampleData('velocity');
+            }
+
+            const confidenceLevelSlider = document.getElementById('confidence-level-slider');
+            if (confidenceLevelSlider) {
+                confidenceLevelSlider.addEventListener('input', updateConfidenceLevel);
+                updateConfidenceLevel();
+            }
+
+            // Sample data buttons
+            const sampleButtons = document.querySelectorAll('[onclick^="loadSampleData"]');
+            sampleButtons.forEach(button => {
+                const dataset = button.getAttribute('onclick').match(/loadSampleData\('(.+)'\)/)[1];
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loadSampleData(dataset);
+                });
+            });
+
+            // Precision control for unit converter
+            const precisionSlider = document.getElementById('precision-slider');
+            if (precisionSlider) {
+                precisionSlider.addEventListener('input', function() {
+                    document.getElementById('precision-display').textContent = this.value;
+                    calculateConversion();
+                });
+            }
         });
     </script>
     
