@@ -44,3 +44,8 @@ config.local.*
 
 # Development artifacts
 *.orig
+
+# Claude Code files
+.claude/
+CLAUDE.md
+claude.*
