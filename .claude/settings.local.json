@@ -43,7 +43,8 @@
       "Bash(start http://localhost:8080/weeks/week-04.html)",
       "Bash(start http://localhost:8080/weeks/week-05.html)",
       "Bash(start http://localhost:8080/weeks/week-06.html)",
-      "Bash(start http://localhost:8080/weeks/week-07.html)"
+      "Bash(start http://localhost:8080/weeks/week-07.html)",
+      "Bash(start http://localhost:8080/weeks/week-13.html)"
     ],
     "deny": [],
     "ask": []
