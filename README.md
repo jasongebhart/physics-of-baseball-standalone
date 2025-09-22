@@ -1,4 +1,4 @@
-# Physics of Baseball 🎾⚾
+# Physics of Baseball ⚾
 
 A **modern vanilla JavaScript** educational web application exploring the physics concepts behind America's favorite pastime.
 
